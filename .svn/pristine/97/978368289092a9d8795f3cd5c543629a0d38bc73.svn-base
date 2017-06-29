@@ -1,0 +1,589 @@
+package cv.focus.core.infrastructure.persistence.hibernate.impl;
+
+import cv.focus.common.infrastructure.util.paginaction.WebPage;
+import cv.focus.core.domain.school.model.profile.*;
+import cv.focus.core.domain.student.model.profile.GraduationSchool;
+import cv.focus.core.domain.student.model.profile.StudentProfile;
+import cv.focus.core.infrastructure.persistence.hibernate.HibernateRepository;
+import cv.focus.core.interfaces.school.dto.AdmissionProfileDTO;
+import org.hibernate.Query;
+import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
+
+import java.util.List;
+
+/**
+ * AdmissionProfileRepositoryHibernateImpl
+ *
+ * @author liuruichao
+ * Created on 2016-04-02 13:03
+ */
+@Repository
+public class AdmissionProfileRepositoryHibernateImpl extends HibernateRepository implements AdmissionProfileRepository {
+
+    @Override
+    public AdmissionProfile findById(AdmissionProfileId admissionProfileId) {
+        Query query = getSession().createQuery("from AdmissionProfile where admissionProfileId=:admissionProfileId");
+        query.setParameter("admissionProfileId", admissionProfileId);
+        return (AdmissionProfile) query.uniqueResult();
+    }
+
+    @Override
+    public AdmissionProfile findByEmail(String email) {
+        Query query = getSession().createQuery("from AdmissionProfile where email=:email");
+        query.setParameter("email", email);
+        AdmissionProfile uniqueResult = (AdmissionProfile)query.uniqueResult();
+        return  uniqueResult;
+    }
+
+    @Override
+    public AdmissionProfile findByPublicUri(String publicUri) {
+        Query query = getSession().createQuery("from AdmissionProfile where publicUri=:publicUri");
+        query.setParameter("publicUri", publicUri);
+        AdmissionProfile uniqueResult = (AdmissionProfile)query.uniqueResult();
+        return  uniqueResult;
+    }
+
+    @Override
+    public void store(AdmissionProfile admissionProfile) {
+        getSession().saveOrUpdate(admissionProfile);
+    }
+
+    @Override
+    public List<AdmissionProfile> findByOrigPublicUri(String origPublicUri) {
+        Query query = getSession().createQuery("from AdmissionProfile where origPublicUri=:origPublicUri");
+        query.setParameter("origPublicUri", origPublicUri);
+        List<AdmissionProfile> list = query.list();
+        return list;
+    }
+
+    @Override
+    public List<AdmissionRemark> findRemarkByProfileId(AdmissionProfileId admissionProfileId) {
+        Query query = getSession().createQuery("from AdmissionRemark where owner.admissionProfileId=:admissionProfileId");
+        query.setParameter("admissionProfileId", admissionProfileId);
+        return query.list();
+    }
+
+
+    @Override
+    public List<AdmissionProfile> getSchools(SchoolCountry country) {
+        String hql = "from AdmissionProfile where recommend=1 and country=:country order by weight desc";
+        Query query = getSession().createQuery(hql);
+        query.setParameter("country", country);
+        return query.list();
+    }
+    @Override
+    public List<AdmissionProfile> getUSchools(SchoolCountry country) {
+        String hql = "from AdmissionProfile where  country=:country and schoolLevel=1 order by weight desc";
+        Query query = getSession().createQuery(hql);
+        query.setFirstResult(0);
+        query.setMaxResults(8);
+
+        query.setParameter("country", country);
+        List<AdmissionProfile> list = query.list();
+        return list;
+    }
+
+    @Override
+    public List<AdmissionProfile> getHSchools(SchoolCountry country) {
+        String hql = "from AdmissionProfile where country=:country and schoolLevel=2 order by weight desc";
+        Query query = getSession().createQuery(hql);
+        query.setFirstResult(0);
+        query.setMaxResults(8);
+        query.setParameter("country", country);
+        List<AdmissionProfile> list = query.list();
+        return list;
+    }
+
+    @Override
+    public List<StudentProfile> findOurStudents(String schoolName, Integer startIndex, Integer maxResult) {
+        Query query = getSession().createQuery("select distinct s from StudentProfile s left join s.biography.graduationSchoolList g where g.name=:name or s.biography.currentSchool=:name");
+        query.setParameter("name", schoolName);
+        query.setFirstResult(startIndex);
+		query.setMaxResults(maxResult);
+        return query.list();
+    }
+
+    @Override
+    public int queryOurStudentsCount(String name) {
+        Query query = getSession().createQuery("select count(distinct s) from StudentProfile s left join s.biography.graduationSchoolList g where g.name=:name  or s.biography.currentSchool=:name");
+        query.setParameter("name", name);
+        Number count = (Number) query.uniqueResult();
+        return count.intValue();
+    }
+
+    @Override
+    public List<AdmissionProfile> findSchoolByKeywords(String name) {
+        Query query = getSession().createQuery("SELECT ap FROM AdmissionProfile ap WHERE UPPER(ap.biography.name) LIKE :keywords ORDER BY ap.biography.name");
+        query.setParameter("keywords", "%" + name.toUpperCase() + "%");
+        List<AdmissionProfile> list = query.list();
+        return list;
+    }
+
+    public WebPage<Object> querySchools(String keywords, WebPage<Object> webPage){
+
+        try{
+
+
+            Query query = getSession().createQuery("SELECT ap FROM AdmissionProfile ap WHERE UPPER(ap.biography.name) LIKE :keywords OR UPPER(ap.biography.cname) LIKE :keywords ORDER BY ap.biography.name ");
+            query.setParameter("keywords","%"+keywords+"%");
+
+            List<Object> list = query.list();
+
+            // 查询到的记录总数
+            Integer totalRow = Long.valueOf(list.size()).intValue();
+            webPage.setTotalCount(totalRow);
+            webPage.setPageSize(5);
+            double c = Math.ceil((float)totalRow/(float)webPage.getPageSize());
+            webPage.setTotalPage((int)c);
+            webPage.setStartCount((webPage.getCurrentPage() - 1 ) * webPage.getPageSize());
+            webPage.setEndCount(webPage.getStartCount()+webPage.getPageSize());
+            webPage.setData(list);
+
+            Query query1 = getSession().createQuery("SELECT ap FROM AdmissionProfile ap WHERE UPPER(ap.biography.name) LIKE :keywords OR UPPER(ap.biography.cname) LIKE :keywords ORDER BY ap.biography.name ");
+            query1.setParameter("keywords","%"+keywords+"%");
+            query1.setFirstResult((webPage.getCurrentPage() - 1 ) * webPage.getPageSize());
+            query1.setMaxResults(webPage.getPageSize());
+
+            List<Object> list2 = query1.list();
+
+            webPage.setData(list2);
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return webPage;
+    }
+
+    @Override
+    public WebPage<Object> getSchoolsList4Page(AdmissionProfile admissionProfile, WebPage<Object> webPage, String strLodge, String schoolLevel, String toeflscore, String ieltsScore) {
+        String hql = "from AdmissionProfile where 1=1 and country=1 and recommend=1";
+
+        hql = getStringSql(admissionProfile, hql, strLodge, schoolLevel, toeflscore, ieltsScore);
+        Query query = getSession().createQuery(hql);
+
+        //所在地区
+        List list = query.list();
+
+        Integer totalRow = Long.valueOf(list.size()).intValue();
+        webPage.setTotalCount(totalRow);
+        double c = Math.ceil((float) totalRow / (float) webPage.getPageSize());
+        webPage.setTotalPage((int) c);
+        webPage.setStartCount((webPage.getCurrentPage() - 1) * webPage.getPageSize());
+        webPage.setEndCount(webPage.getStartCount() + webPage.getPageSize());
+
+        Query query1 = getSession().createQuery(hql);
+
+        query1.setFirstResult((webPage.getCurrentPage() - 1) * webPage.getPageSize());
+        query1.setMaxResults(webPage.getPageSize());
+
+        List<Object> list2 = query1.list();
+        webPage.setData(list2);
+        return webPage;
+    }
+
+    @Override
+    public WebPage queryUniversity(String schoolLevel, WebPage webPage) {
+        try{
+            String hql="from AdmissionProfile where recommend=1 and schoolLevel = :schoolLevel and country =1 order by weight";
+
+            Query query = getSession().createQuery(hql);
+            query.setParameter("schoolLevel",schoolLevel);
+            List<Object> list = query.list();
+            // 查询到的记录总数
+            Integer totalRow = Long.valueOf(list.size()).intValue();
+            webPage.setTotalCount(totalRow);
+            double c = Math.ceil((float)totalRow/(float)webPage.getPageSize());
+            webPage.setTotalPage((int)c);
+            webPage.setStartCount((webPage.getCurrentPage() - 1 ) * webPage.getPageSize());
+            webPage.setEndCount(webPage.getStartCount()+webPage.getPageSize());
+
+            Query query1 = getSession().createQuery(hql);
+            query1.setParameter("schoolLevel",schoolLevel);
+            query1.setFirstResult((webPage.getCurrentPage() - 1 ) * webPage.getPageSize());
+            query1.setMaxResults(webPage.getPageSize());
+
+            List<Object> list2 = query1.list();
+
+            webPage.setData(list2);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return webPage;
+    }
+
+    private String getStringSql(AdmissionProfile admissionProfile, String hql, String strLodge, String schoolLevel, String toeflscore, String ieltsScore) {
+        String sql2 = "";
+        String sql3 = "from AdmissionProfile country=1 and recommend=1";
+        String sql4 = "";
+        String sql5 = "";
+        String sql6 = "";
+        String sql7 = "";
+        String sql8 = "";
+        String sql9 = "";
+
+        /**临时存储sql*/
+        String sql10 = "";
+        String sql11 = "";
+        String sql12 = "";
+        String sql13 = "";
+        String sql14 = "";
+        String sql15 = "";
+        String sql16 = "";
+        String sql17 = "";
+
+        boolean flag = false;
+        // 本科 高中 初中
+        if (schoolLevel != null) {
+            hql = hql + "and schoolLevel=" + schoolLevel + " ";
+            ;
+        }
+
+        //是否sat
+        if (!StringUtils.isEmpty(admissionProfile.getApplication())) {
+            String issat = admissionProfile.getApplication().getIssat();
+            if (!StringUtils.isEmpty(issat)) {
+                hql = hql + "and issat=" + issat + " ";
+                ;
+            }
+        }
+        //是否早申
+        if (!StringUtils.isEmpty(admissionProfile.getApplication())) {
+            String ed = admissionProfile.getApplication().getED();
+            if (!StringUtils.isEmpty(ed)) {
+                hql = hql + "and ED= " + ed + " ";
+                ;
+            }
+        }
+
+        //城市类型
+        if (!StringUtils.isEmpty(admissionProfile.getBiography())) {
+            //地域类型
+            String settings = admissionProfile.getBiography().getSettings();
+            if (settings != null) {
+                hql = hql + "and settings= " + settings + " ";
+                ;
+            }
+        }
+        //最低托福
+        if (toeflscore != null) {
+            if (toeflscore.equals("100")) {
+                hql = hql + "and toeflscore > " + toeflscore + " ";
+                ;
+            }
+            if (toeflscore.equals("80")) {
+                hql = hql + "and toeflscore < " + toeflscore + " ";
+                ;
+            }
+            if (!toeflscore.equals("80") && !toeflscore.equals("100")) {
+                String[] split = toeflscore.split("-");
+                Integer min = Integer.parseInt(split[0]);
+                Integer max = Integer.parseInt(split[1]);
+                hql = hql + "and toeflscore >=" + min + " and toeflscore <=" + max + " ";
+            }
+        }
+
+        //最低雅思
+        if (ieltsScore != null) {
+            if (ieltsScore.equals("5")) {
+                hql = hql + " and ieltsScore < " + ieltsScore + " ";
+            }
+            if (ieltsScore.equals("7")) {
+                hql = hql + " and ieltsScore <= " + ieltsScore + " ";
+            }
+            if (!ieltsScore.equals("5") && !ieltsScore.equals("7")) {
+                String[] split = ieltsScore.split("-");
+                Integer min = Integer.parseInt(split[0]);
+                Integer max = Integer.parseInt(split[1]);
+                hql = hql + "and ieltsScore >=" + min + " and ieltsScore <=" + max + " ";
+                ;
+            }
+        }
+
+        //学生人数
+        if (!StringUtils.isEmpty(admissionProfile.getBiography())) {
+            //学生人数
+            if (!StringUtils.isEmpty(admissionProfile.getBiography().getNewbornNum())) {
+                String newBornNum = admissionProfile.getBiography().getNewbornNum();
+                if (newBornNum.equals("20000")) {
+                    hql = hql + " and newbornNum >" + newBornNum;
+                }
+                if (newBornNum.equals("500")) {
+                    hql = hql + " and newbornNum <" + newBornNum;
+                }
+                if (!newBornNum.equals("20000") && !newBornNum.equals("500")) {
+                    String[] split = ieltsScore.split("-");
+                    Integer min = Integer.parseInt(split[0]);
+                    Integer max = Integer.parseInt(split[1]);
+                    hql = hql + "and newbornNum >=" + min + " and newbornNum <=" + max;
+                }
+            }
+        }
+        //男校，女校 男女混校
+        if (!StringUtils.isEmpty(admissionProfile.getBiography())) {
+            String schoolSex = admissionProfile.getBiography().getSchoolSex();
+            if (schoolSex != null) {
+                hql = hql + "and schoolSex=" + schoolSex + " ";
+            }
+        }
+
+        //是否为0寄宿高中 1走读高中 2 综合公立大学 3综合私立大学 4文理大学 5社区学校 6其他
+        if (strLodge != null) {
+            String[] split = strLodge.split(",");
+            if (split.length == 1) {
+                hql = hql + "and lodge= " + strLodge + " ";
+            } else {
+                for (int i = 0; i < split.length; i++) {
+                    sql2 = hql.replaceAll(sql3, "");
+                    sql2 = sql2.substring(4, sql2.length());
+                    if (i == 0) {
+                        sql5 = " and " + sql2 + " and lodge=" + split[i] + " ";
+                    }
+                    if (i == 1) {
+                        sql6 = sql2 + " and lodge=" + split[i] + " ";
+                    }
+                    if (i == 2) {
+                        sql7 = sql2 + " and lodge=" + split[i] + " ";
+                    }
+                    if (i == 3) {
+                        sql8 = sql2 + " and lodge=" + split[i] + " ";
+                    }
+                }
+                //拼接sql语句
+                if(split.length==2){
+                    hql = sql3 + sql5 + " or " + sql6;
+                }if(split.length==3){
+                    hql = sql3 + sql5 + " or " + sql6+ " or "+sql7;
+                }if(split.length==4){
+                    hql = sql3 + sql5 + " or " + sql6+ " or "+sql7+" or "+sql8;
+                }
+
+
+            }
+        }
+        //所在地区
+        if (!StringUtils.isEmpty(admissionProfile.getBiography())) {
+            String province = admissionProfile.getBiography().getProvince();
+            if (province != null) {
+                String[] split = admissionProfile.getBiography().getProvince().split(",");
+                int length = split.length;
+                if (length == 1) {
+                    if (hql.indexOf(" or ") != -1) {
+                        String[] ors = hql.split(" or ");
+                        if (ors.length == 1) {
+                            sql5 = sql5 + " and province=" + province + " ";
+                        }
+                        if (ors.length == 2) {
+                            sql5 = sql5 + " and province=" + province + " ";
+                            sql6 = sql6 + " and province=" + province + " ";
+                        }
+                        if (ors.length == 3) {
+                            sql5 = sql5 + " and province=" + province + " ";
+                            sql6 = sql6 + " and province=" + province + " ";
+                            sql7 = sql7 + " and province=" + province + " ";
+                        }
+                        if (ors.length == 4) {
+                            sql5 = sql5 + " and province=" + province + " ";
+                            sql6 = sql6 + " and province=" + province + " ";
+                            sql7 = sql7 + " and province=" + province + " ";
+                            sql8 = sql8 + " and province=" + province + " ";
+                        }
+                    }
+                    if (hql.indexOf(" or ") != -1) {
+                        String[] ors = hql.split(" or ");
+                        if (ors.length == 4) {
+                            hql = sql3 + sql5 + " or " + sql6 + " or " + sql7 + " or" + sql8;
+                        }
+                        if (ors.length == 3) {
+                            hql = sql3 + sql5 + " or " + sql6 + " or " + sql7;
+                        }
+                        if (ors.length == 2) {
+                            hql = sql3 + sql5 + " or " + sql6;
+                        }
+                        if (ors.length == 1) {
+                            hql = sql3 + sql5;
+                        }
+                    } else {
+                        hql = hql + " and province=" + province + " ";
+                    }
+                } else {
+                    if (hql.indexOf(" or ") == -1) {
+                        if (split.length == 2) {
+                            flag = true;
+                            sql5 = hql.replaceAll(sql3, "");
+                            sql5 = sql5.substring(4, sql5.length());
+                            for (int i = 0; i < split.length; i++) {
+                                if (i == 0) {
+                                    sql6 = sql5 + " and province=" + split[i] + " ";
+                                }
+                                if (i == 1) {
+                                    sql7 = sql5 + " and province=" + split[i] + " ";
+                                }
+                            }
+                        }
+                        if (split.length == 3) {
+                            flag = true;
+                            sql5 = hql.replaceAll(sql3, "");
+                            sql5 = sql5.substring(4, sql5.length());
+                            for (int i = 0; i < split.length; i++) {
+                                if (i == 0) {
+                                    sql6 = sql5 + " and province=" + split[i] + " ";
+                                }
+                                if (i == 1) {
+                                    sql7 = sql5 + " and province=" + split[i] + " ";
+                                }
+                                if (i == 2) {
+                                    sql8 = sql5 + " and province=" + split[i] + " ";
+                                }
+                            }
+                        }
+                    } else {
+                        for (int i = 0; i < split.length; i++) {
+                            if (i == 0) {
+                                sql10 = sql5;
+                                sql11 = sql6;
+                                sql12 = sql7;
+                                sql13 = sql8;
+                                sql14 = sql5;
+                                sql15 = sql6;
+                                sql16 = sql7;
+                                sql17 = sql8;
+                                if (hql.indexOf(" or ") != -1) {
+                                    String[] ors = hql.split(" or ");
+                                    int length2 = ors.length;
+                                    if (length2 == 1) {
+                                        sql5 = sql5 + " and province=" + split[i] + " ";
+                                    }
+                                    if (length2 == 2) {
+                                        sql5 = sql5 + " and province=" + split[i] + " ";
+                                        sql6 = sql6 + " and province=" + split[i] + " ";
+                                    }
+                                    if (length2 == 3) {
+                                        sql5 = sql5 + " and province=" + split[i] + " ";
+                                        sql6 = sql6 + " and province=" + split[i] + " ";
+                                        sql7 = sql7 + " and province=" + split[i] + " ";
+                                    }
+                                    if (length2 == 4) {
+                                        sql5 = sql5 + " and province=" + split[i] + " ";
+                                        sql6 = sql6 + " and province=" + split[i] + " ";
+                                        sql7 = sql7 + " and province=" + split[i] + " ";
+                                        sql8 = sql8 + " and province=" + split[i] + " ";
+                                    }
+                                }
+                            }
+                            if (i == 1) {
+                                if (hql.indexOf(" or ") != -1) {
+                                    String[] ors = hql.split(" or ");
+                                    if (ors.length == 1) {
+                                        sql10 = sql10 + " and province=" + split[i] + " ";
+                                    }
+                                    if (ors.length == 2) {
+                                        sql10 = sql10 + " and province=" + split[i] + " ";
+                                        sql11 = sql11 + " and province=" + split[i] + " ";
+                                    }
+                                    if (ors.length == 3) {
+                                        sql10 = sql10 + " and province=" + split[i] + " ";
+                                        sql11 = sql11 + " and province=" + split[i] + " ";
+                                        sql12 = sql12 + " and province=" + split[i] + " ";
+                                    }
+                                    if (ors.length == 4) {
+                                        sql10 = sql10 + " and province=" + split[i] + " ";
+                                        sql11 = sql11 + " and province=" + split[i] + " ";
+                                        sql12 = sql12 + " and province=" + split[i] + " ";
+                                        sql13 = sql13 + " and province=" + split[i] + " ";
+                                    }
+                                }
+                            }
+                            if (i == 2) {
+                                if (hql.indexOf("or") != -1) {
+                                    String[] ors = hql.split(" or ");
+                                    if (ors.length == 1) {
+                                        sql14 = sql14 + " and province=" + split[i] + " ";
+                                    }
+                                    if (ors.length == 2) {
+                                        sql14 = sql14 + " and province=" + split[i] + " ";
+                                        sql15 = sql15 + " and province=" + split[i] + " ";
+                                    }
+                                    if (ors.length == 3) {
+                                        sql14 = sql14 + " and province=" + split[i] + " ";
+                                        sql15 = sql15 + " and province=" + split[i] + " ";
+                                        sql16 = sql16 + " and province=" + split[i] + " ";
+                                    }
+                                    if (ors.length == 4) {
+                                        sql14 = sql14 + " and province=" + split[i] + " ";
+                                        sql15 = sql15 + " and province=" + split[i] + " ";
+                                        sql16 = sql16 + " and province=" + split[i] + " ";
+                                        sql17 = sql17 + " and province=" + split[i] + " ";
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                }
+                //拼接sql语句
+                if (hql.indexOf(" or ") != -1) {
+                    String[] ors = hql.split(" or ");
+                    if (ors.length == 4) {
+                        if (split.length == 3) {
+                            String substring = sql10.substring(4, sql10.length());
+                            String substring1 = sql14.substring(4, sql10.length());
+                            hql = sql3 + sql5 + " or " + sql6 + " or " + sql7 + " or" + sql8 + " or " + substring + "or " + sql11 + "or " + sql12 + "or " + sql13 + " or " +
+                                    "" + substring1 + "or " + sql15 + " or " + sql16 + " or " + sql17;
+                        }
+                        if (split.length == 2) {
+                            String substring = sql10.substring(4, sql10.length());
+                            hql = sql3 + sql5 + " or " + sql6 + " or " + sql7 + " or" + sql8 + " or " + substring + "or " + sql11 + "or " + sql12 + "or " + sql13;
+                        }
+                        if (split.length == 1) {
+                            hql = sql3 + sql5 + " or " + sql6 + " or " + sql7 + " or" + sql8;
+                        }
+                    }
+                    if (ors.length == 3) {
+                        if (split.length == 3) {
+                            String substring = sql10.substring(4, sql10.length());
+                            String substring1 = sql14.substring(4, sql10.length());
+                            hql = sql3 + sql5 + " or " + sql6 + " or " + sql7 + " or " + substring + "or " + sql11 + "or " + sql12 + " or " +
+                                    "" + substring1 + "or " + sql15 + " or " + sql16;
+                        }
+                        if (split.length == 2) {
+                            String substring = sql10.substring(4, sql10.length());
+                            hql = sql3 + sql5 + " or " + sql6 + " or " + sql7 + " or " + substring + "or " + sql11 + "or " + sql12;
+
+                        }
+                        if (split.length == 1) {
+                            hql = sql3 + sql5 + " or " + sql6 + " or " + sql7;
+                        }
+                    }
+                    if (ors.length == 2) {
+                        if (split.length == 3) {
+                            String substring = sql10.substring(4, sql10.length());
+                            String substring1 = sql14.substring(4, sql10.length());
+                            hql = sql3 + sql5 + " or " + sql6 + " or " + substring + "or " + sql11 + " or " +
+                                    "" + substring1 + "or " + sql15 + " or " + sql16;
+
+                        }
+                        if (split.length == 2) {
+                            String substring = sql10.substring(4, sql10.length());
+                            hql = sql3 + sql5 + " or " + sql6 + " or " + substring + "or " + sql11 + "or " + sql12;
+                        }
+                        if (split.length == 1) {
+                            hql = sql3 + sql5 + " or " + sql6;
+                        }
+                    }
+                }
+                if (flag) {
+                    if (split.length == 2) {
+                        hql = sql3 + " and " + sql6 + " or " + sql7;
+                    }
+                    if (split.length == 3) {
+                        hql = sql3 + " and " + sql6 + " or " + sql7 + " or " + sql8;
+                    }
+                }
+            }
+        }
+        return hql;
+    }
+
+}
+

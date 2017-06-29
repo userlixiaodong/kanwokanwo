@@ -1,0 +1,4 @@
+mailServerHost=smtp.exmail.qq.com
+mailServerPort=25
+mailUserName=service@kanwokanwo.com
+mailPassWord=Focusedu123

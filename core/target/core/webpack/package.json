@@ -1,0 +1,36 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "assets-webpack-plugin": "^3.1.0",
+    "webpack": "^1.12.2"
+  },
+  "devDependencies": {
+    "assets-webpack-plugin": "^3.1.0",
+    "babel-core": "^6.0.16",
+    "babel-loader": "^6.0.0",
+    "css-loader": "^0.21.0",
+    "expose-loader": "^0.7.1",
+    "file-loader": "^0.8.4",
+    "promise-loader": "^1.0.0",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^3.1.1",
+    "script-loader": "^0.6.1",
+    "scriptjs": "^2.5.8",
+    "style-loader": "^0.13.0",
+    "text-loader": "0.0.1",
+    "url-loader": "^0.5.6",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.14.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

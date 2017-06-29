@@ -1,0 +1,39 @@
+@charset "utf-8";
+.testimonials{ background:#F5F5F5;}
+.testimonials-header{height:415px;background:url(../images/testimonials-banner.jpg) no-repeat center center;-webkit-background-size:cover;background-size:cover;}
+
+.testimonials-header h2{color:#fff;text-transform: uppercase;letter-spacing: -0.04em; font-size:48px; line-height:310px; font-weight:600;}
+.testimonials-video{ width:638px; margin:100px auto;}
+.testimonials-video a{ height:358px; display:block; position:relative; color:#fff;}
+.testimonials-video em{ z-index:1; position:absolute; top:44%; left:0; display:block; width:100%;}
+.testimonials-video i{ font-size:80px;}
+.testimonials-video a:hover i{ color:#1BB38C;}
+/*.testimonials-video span{ width:100%; z-index:1; position:absolute; bottom:20%; left:0;}*/
+
+.testimonials-student-list .testimony{background:#fff;border-radius:6px;margin:0 25px 50px;overflow:hidden;padding-bottom:25px;}
+.testimonials-student-list .testimony img.portfolio{width:100%}
+.testimonials-student-list .testimony img.avatar{border-radius:50%;border:2px solid #fff;width:56px;height:56px;margin-top:-30px}
+.testimonials-student-list .testimony p{font-size:14px;line-height:1.45;margin:0 30px 20px;height:140px;}
+.testimonials-student-list .testimony .meta{color:#999999}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

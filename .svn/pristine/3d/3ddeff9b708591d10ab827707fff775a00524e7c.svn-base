@@ -1,0 +1,114 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <link href="/style/public.css" rel="stylesheet" type="text/css">
+    <link href="/style/frame.css" rel="stylesheet" type="text/css">
+    <link href="/style/pacific.css" rel="stylesheet" type="text/css">
+    <title>看我看我活动专区</title>
+</head>
+<body>
+<%@include file="/WEB-INF/views/common/top.jsp" %>
+<div class="banner" id="banner">
+    <img src="/images/tpy-banner.jpg">
+</div>
+<div class="container">
+    <div class="languge-pacific">
+        <div class="lp-title">
+            <img src="/images/Languge-Pacifia.png">
+        </div>
+        <div class="lp-content">
+            <div class="lp-con-img">
+                <img src="/images/lp-con-img.jpg">
+            </div>
+            <div class="lp-con-txt">
+                <h3>太平洋语言学校</h3>
+                <span  class="texts">
+                    太平洋语言学校成立于1979年，位于旧金山湾区的硅谷。是美国教育部认证，并且有英语语言课程认证委员会（CEA）认证的北加州最受尊敬的语言学校之一。
+                </span>
+                <span  class="texts">
+                    太平洋语言学校致力于为非英语母语的学生提供全日制的英语课程，支持CEA英语语言课程。学员遍布世界各地共65个国家，也不乏王室贵族来此求学。
+                </span>
+                <span  class="texts">
+                    太平洋语言学校与旧金山湾区的12所本科学校和8所社区大学合作，对于计划前往美国学习的学生，在这里学习会有很大升学优势。
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="advantage">
+        <h2>名校留学直通车，得天独厚的优势</h2>
+        <div class="ad-content">
+            <ul>
+                <li>
+                    <img src="/images/authority.png">
+                    <p class="ad-content-p">权威性</p>
+                    <span class="ad-content-span">美国教育部认证、移民局授权、CEA认证</span>
+                </li>
+                <li>
+                    <img src="/images/school.png">
+                    <p class="ad-content-p">名校合作</p>
+                    <span class="ad-content-span">与UCLA、Berkeley等20余所顶级名校合作</span>
+                </li>
+                <li>
+                    <img src="/images/way.png">
+                    <p class="ad-content-p">名校直通</p>
+                    <span class="ad-content-span">成绩优异的学员可直接进入合作大学</span>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <img src="/images/diversification.png">
+                    <p class="ad-content-p">多元化</p>
+                    <span class="ad-content-span lspan">无需托福雅思成绩即可入学托福高分学员也可进行深造</span>
+                </li>
+                <li>
+                    <img src="/images/location.png">
+                    <p class="ad-content-p">位置优越</p>
+                    <span class="ad-content-span">位于硅谷中心毗邻斯坦福大学</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="system">
+        <h2 class="system-title">教学制度</h2>
+        <div class="system-content">
+            <div class="system-content-img">
+                <img src="/images/qrCode.png" style="width:50%;margin: 0 auto;">
+                <a href="javascript:;" class="consult">详情咨询</a>
+            </div>
+            <div  class="system-content-txt">
+                <span>
+                    学校分为6个等级，根据入学考试成绩决定入学等级；
+                每2个月进行一次升级考试，通过考试可升入下一等级；每4个月为一个学期；
+                </span>
+                <span>
+                    进入第5级，相当于托福70分，学员无需额外参加托福考试，即可申请进入合作大学就学；
+                </span>
+                <span>
+                    进入第6级，相当于托福90分，学员无需额外参加托福考试，即可申请进入合作大学研究生项目，其中包含全美排名前50合作项目(托福高分学员可直接申请)；
+                </span>
+            </div>
+        </div>
+    </div>
+
+</div>
+<%@include file="/WEB-INF/views/common/bottom.jsp"%>
+<script src="/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var liWin = $(".ad-content ul li").width();
+        var spanWin = $(".ad-content-span").width();
+        var lspanWin = $(".lspan").width();
+        console.log(liWin);
+        console.log(spanWin);
+        $(".ad-content-span").css("left",(liWin-spanWin)*0.5);
+        $(".lspan").css("left",(liWin-lspanWin)*0.5);
+    })
+</script>
+</body>
+</html>

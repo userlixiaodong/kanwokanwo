@@ -1,0 +1,117 @@
+package cv.focus.core.infrastructure.persistence.hibernate.impl;
+
+import cv.focus.core.domain.user.model.User;
+import cv.focus.core.domain.user.model.UserFollow;
+import cv.focus.core.domain.user.model.UserRepository;
+import cv.focus.core.infrastructure.persistence.hibernate.HibernateRepository;
+import org.hibernate.Query;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * Created by song on 16/1/29.
+ */
+@Repository
+public class UserRepositoryHibernateImpl extends HibernateRepository implements UserRepository {
+    @Override
+    public User findByEmail(String email) {
+        Query query = getSession().createQuery("from User where email = :email");
+        query.setParameter("email",email);
+        return (User) query.uniqueResult();
+    }
+
+    @Override
+    public void store(User user) {
+        getSession().saveOrUpdate(user);
+    }
+
+    @Override
+    public List<User> findByUserName(String userName) {
+        Query query = getSession().createQuery("from User where userName = :userName");
+        query.setParameter("userName",userName);
+        List<User> list = query.list();
+        return list;
+    }
+
+    @Override
+    public User findOnlyUserByUserName(String email) {
+        Query query = getSession().createQuery("from User where email = :email");
+        query.setParameter("email", email);
+        return (User) query.uniqueResult();
+
+    }
+
+        @Override
+    public void update(User user) {
+        getSession().update(user);
+    }
+
+    @Override
+    public User findByMobile(String mobile) {
+        Query query = getSession().createQuery("from User where mobile = :mobile");
+        query.setParameter("mobile", mobile);
+        List list = query.list();
+        if (list != null && list.size() > 0) {
+            return (User) list.get(0);
+        }
+        return null;
+    }
+
+    @Override
+    public User findById(Integer userId) {
+        return (User) getSession().load(User.class, userId);
+    }
+
+    @Override
+    public User findByActiveCode(String activeCode) {
+        String hql = "from User where activeCode=:code";
+        Query query = getSession().createQuery(hql);
+        query.setParameter("code", activeCode);
+        List list = query.list();
+        if (list != null && list.size() > 0) {
+            return (User) list.get(0);
+        }
+        return null;
+    }
+
+    @Override
+    public void storeFollow(UserFollow follow) {
+        getSession().saveOrUpdate(follow);
+    }
+
+    @Override
+    public UserFollow findByFromIdAndOwnerId(Integer fromId, Integer ownerId) {
+        String hql = "from UserFollow f where f.from.userId = :fromId and f.owner.userId = :ownerId";
+        Query query = getSession().createQuery(hql);
+        query.setParameter("fromId", fromId);
+        query.setParameter("ownerId", ownerId);
+        List list = query.list();
+        if (list != null && list.size() > 0) {
+            return (UserFollow) list.get(0);
+        }
+        return null;
+    }
+
+    @Override
+    public void delFollow(UserFollow follow) {
+        getSession().delete(follow);
+    }
+
+    @Override
+    public int queryFollowCount(Integer userId) {
+        String hql = "select count(1) from UserFollow where owner.userId = :ownerId";
+        Query query = getSession().createQuery(hql);
+        query.setParameter("ownerId", userId);
+        Number count = (Number) query.uniqueResult();
+        return count.intValue();
+    }
+
+    @Override
+    public List<UserFollow> findUserByFollowUser(Integer userId) {
+        String hql = "from UserFollow f where f.owner.userId = :userId";
+        Query query = getSession().createQuery(hql);
+        query.setParameter("userId", userId);
+        return query.list();
+    }
+}

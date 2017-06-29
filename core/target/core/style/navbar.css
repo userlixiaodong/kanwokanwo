@@ -1,0 +1,13 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.dropdown-menu {
+  background-color: #222;
+}
+.navbar {
+  /*margin-bottom: 20px;*/
+}
+/*.navbar-brand{background:url(../images/logo.png) no-repeat scroll left center;*/
+  /*!*margin-right:190px;*!*/
+  /*width:198px; float:left; height: 75px; line-height: 75px;margin-left: 25px; overflow: hidden;}*/

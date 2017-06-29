@@ -1,0 +1,11 @@
+package cv.focus.core.application;
+
+import cv.focus.core.domain.activity.ApplyActivity;
+
+/**
+ * Created by 晓东 on 2017/5/3.
+ */
+public interface OrderService {
+
+
+}

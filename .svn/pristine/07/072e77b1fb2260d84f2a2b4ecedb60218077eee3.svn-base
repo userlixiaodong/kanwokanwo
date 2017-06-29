@@ -1,0 +1,1668 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 微软雅黑;
+}
+
+html {
+    font-size: 20px;
+}
+
+@media screen and (max-width: 1920px) {
+    html {
+        font-size: 18px !important;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    html {
+        font-size: 16px !important;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    html {
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    html {
+        font-size: 12px !important;
+    }
+}
+
+.clear {
+    clear: both;
+}
+.weixinFrame{
+    width:8rem;
+    height:14rem;
+    background: url("/images/weixinFrame.png") no-repeat;
+    background-size: contain;
+    position: fixed;
+    left:0;
+    top:30%;
+    z-index: 9999;
+}
+.gis_banner {
+    height: 25rem;
+  /*  background: url(/images/BA-manteng.jpg) no-repeat center top;*/
+/*    background-size: 100%;*/
+    margin-top: 3.7rem;
+    position: relative;
+}
+.gis_banner .bannerIcon{
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+}
+.gis_banner_btn {
+    height: 3rem;
+    width: 40%;
+    margin: 0 auto;
+    padding-top: -3rem;
+    position: absolute;
+    left: 30%;
+    bottom: 10%;
+}
+
+.signUp {
+    display: inline-block;
+    width: 8rem;
+    height: 2.4rem;
+    margin-top:1rem;
+    background: #018b9b;
+    border-radius: 0.2rem;
+    text-align: center;
+    line-height: 2.4rem;
+    color: #fff;
+    font-family: "微软雅黑 Light";
+    font-weight:bold;
+    font-size:0.9rem;
+    letter-spacing: 0.1em;
+}
+
+.signUp:nth-of-type(1) {
+    float: left;
+    margin-left: 3rem;
+}
+
+.signUp:nth-of-type(2) {
+    float: right;
+    margin-right: 3rem;
+}
+
+.login-before {
+    width: 35rem;
+    height: 17rem;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 1000;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    background: #e1e4e8;
+    display: none;
+}
+
+.login-before .login-before-close-btn {
+    color: #aaaaaa;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+}
+
+.login-before p {
+    font-family: "Microsoft Yahei";
+    font-size: 0.9rem;
+    margin-top: 4.5rem;
+    width: 100%;
+    text-align: center;
+}
+
+.login-before .login-btn {
+    display: block;
+    width: 7rem;
+    height: 2.75rem;
+    font-size: 1.2rem;
+    line-height: 2.75rem;
+    color: #fff;
+    text-align: center;
+    margin: 3.5rem auto;
+    background-color: #28b38d;
+}
+.leadFrame{
+    display: none;
+}
+/*标题样式*/
+.titles{
+    width:100%;
+    height:2rem;
+    text-align: center;
+    line-height:2rem;
+    font-size:1.8rem;
+    font-weight:400;
+    color: #333;
+    letter-spacing: 1px;
+    margin-bottom: 2.5rem;
+}
+/*项目背景start*/
+.projectBackground{
+    margin: 4rem 0;
+    background: url(/images/manteng_xmbjBA.jpg) no-repeat 0rem 32rem;
+}
+.projectAnalyse{
+    width: 60%;
+    margin: 0 auto;
+}
+.projectAnalyse h5{
+    font-size: 1rem;
+    font-weight: normal;
+    width: 96%;
+    line-height: 1.6rem;
+    border: 0.1rem solid #66ab3d;
+    padding: 1rem 3rem;
+    color: #333333;
+    font-family: "Microsoft Yahei";
+    font-size: 0.96rem;
+    margin: 0 auto 2rem;
+}
+.projectAnalyse h5 b{
+    display: block;
+    height: 4rem;
+    float: left;
+    margin-right: 1rem;
+    font-size: 1rem;
+}
+.projectAnalyse h6{
+    font-size: 1.2rem;
+    text-align: left;
+    font-weight: normal;
+    color: #1d8866;
+    font-family:"Microsoft Yahei";
+}
+#hcharts{
+    width: 100%;
+}
+#hcharts img{
+    width: 100%;
+}
+.nakedReason{
+    padding: 1rem 1rem 4rem 8rem;
+    color: #fff;
+
+}
+.nakedReason p{
+    font-size: 0.99rem;
+}
+.nakedReason b{
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+/*项目特色*/
+.advantage{
+    width:100%;
+    height:auto;
+    position: relative;
+    margin:3rem auto;
+}
+.advantage ul{
+    width:66%;
+    height:auto;
+    margin:2rem auto;
+}
+.advantage ul li{
+    list-style-type: none;
+    width:30%;
+   /* height:12rem;*/
+    float: left;
+    margin:1rem 0 0 1rem;
+    text-align: center;
+    overflow: hidden;
+    background-color:rgb(245, 248, 250) ;
+}
+.advantage ul li img{
+    display: block;
+    margin: 1rem auto 0 auto;
+}
+.advantage ul li:nth-child(4){
+    margin-left: 11.5rem;
+}
+.advantage ul li h4{
+    font-family:"微软雅黑 Light";
+    color: #333;
+    margin-top:1rem;
+}
+.advantage ul li span{
+    display: block;
+    width:80%;
+    height:4rem;
+    margin:1rem auto;
+    font-size:0.8rem;
+    font-family:"微软雅黑 Light";
+    color: #7d7e7e;
+    line-height:1.2rem;
+}
+/*项目详情*/
+.projectDetail{
+    width:100%;
+    height:auto;
+    background: url(/images/keru-detail.jpg) no-repeat ;
+    padding: 3rem 0;
+    margin-top: 4rem;
+    /* background-size: 107%;*/
+}
+.project_details {
+    width: 60rem;
+    height: auto;
+    background-color: #f3f6f9;
+    border-right: 0.45rem solid #16a2b2;
+    border-radius: 1rem;
+    margin: 3rem auto 1.5rem auto;
+    padding:0 0 4rem 0;
+}
+
+.project_details h2 {
+    padding: 2rem 0 2.5rem 5.5rem;
+    color: #018c9c;
+    font-size: 1.8rem;
+}
+
+.project_details .contens {
+    width: 48.7rem;
+    margin-left: 5.45rem;
+    margin-bottom: 1rem;
+    background: url(/images/CIS_05.png) no-repeat 0.1rem 0.05rem;
+    padding-bottom: 0.5rem;
+}
+
+.project_details .contens p {
+    padding-left: 4.2rem;
+    /*padding-top: 1.15rem;*/
+    font-family: "Microsoft Yahei";
+}
+
+.project_details .contens b {
+    font-size: 0.9rem;
+    color: #333333;
+    font-weight: normal;
+    display: block;
+    float: left;
+    ont-family:"Microsoft Yahei";
+}
+
+.project_details .contens span {
+    font-size: 0.9rem;
+    color: #666666;
+    display: inline-block;
+    padding-left: 1.1rem;
+    ont-family:"Microsoft Yahei";
+    letter-spacing: 0.05rem;
+}
+.metarial{
+    display: block;
+    width:80%;
+    height:auto;
+}
+/*项目介绍视频*/
+.videoIntroduce{
+    width:100%;
+    height:auto;
+    position: relative;
+    margin:4rem auto;
+    padding:2rem 0 6rem 0;
+    overflow: hidden;
+    /* background: url(/images/CIS-video.jpg) no-repeat;*/
+}
+.videoWrapper{
+    width: 44.3rem;
+    height: 51%;
+    margin: 2rem auto;
+    background-color: rgb(0,0,0);
+    cursor: pointer;
+    padding: 1rem;
+}
+.videoSignUp{
+    display: block;
+    width:8rem;
+    height:2.4rem;
+    background: #0085a7;
+    border-radius:0.2rem;
+    margin:1rem auto;
+    text-align: center;
+    line-height:2.4rem;
+    color: #fff;
+    font-family:"微软雅黑 Light";
+    font-size:1.2rem;
+    font-weight:bold;
+    letter-spacing: 0.1em;
+}
+/*项目活动or实习样式start*/
+.programBox{
+    width: 100%;
+    background-color: #eeefee;
+    padding: 3rem 0;
+}
+.summerProgram{
+    margin: 0 auto;
+    height: auto;
+
+}
+.summerProgram .titles{
+    margin-bottom: 2rem;
+}
+.int_list {
+    width: 70%;
+    margin: 0 auto;
+    list-style: none;
+}
+
+.int_list li {
+    float: left;
+    list-style: none;
+    width: 33%;
+    height:auto;
+    text-align: center;
+    padding-left: 0;
+    margin-bottom:2rem;
+
+}
+.int_list li .intBox{
+    width: 92%;
+    margin: 0 auto;
+    background-color: #f4f7fa;
+    border-bottom: 0.3rem solid #20abbb;
+    border-radius: 1rem;
+}
+.int_list li img{
+    display: block;
+    width: 100%;
+}
+
+.int_list li h6 {
+    color: #1e919e;
+    font-size: 1.4rem;
+    font-weight: normal;
+    margin-top: 2rem;
+    font-family: 微软雅黑;
+}
+
+.int_list li p {
+    margin: 0 auto;
+    text-align: left;
+    padding:0rem 1rem 0rem 1rem;
+    line-height: 2rem;
+    font-size: 0.9rem;
+    color: #666666;
+    text-align: justify;
+    font-family: 微软雅黑;
+}
+/*鹰计划*/
+.yjh{
+    width: 100%;
+    margin: 0 auto;
+    background-color: #f1f6f9;
+    padding: 5rem 0;
+    height: 42rem;
+}
+.yjh ul{
+    width: 74%;
+    margin: 0 auto;
+}
+.yjh li{
+    width: 20%;
+    height: 10rem;
+    float: left;
+}
+.yjh li .yjhCont{
+    width: 99%;
+    margin: 0 auto;
+}
+.yjhCont h6{
+    width: 100%;
+    background-color: #32b792;
+    text-align: center;
+    padding: 1.3rem;
+    font-size: 1.4rem;
+    color: #fff;
+    margin: 0;
+}
+.yjhCont .line{
+    display: block;
+    position: relative;
+    font-family: "Microsoft Yahei";
+}
+.yjhCont .line:before{
+    display: block;
+    content: "";
+    width: 100%;
+    height: 1rem;
+    position: absolute;
+    background: url("/images/mantengLine.png")no-repeat center;
+    bottom: -1.5rem;
+    left: 0;
+}
+
+.yjhCont h6 i{
+    font-style: normal;
+    display: block;
+    /* margin-top: 1rem;*/
+    font-weight: normal;
+}
+.yjhInfo {
+    background-color: #eaeaea;
+    height: 19rem;
+    border-bottom: 0.2rem solid #32b792;
+}
+.yjhInfo p{
+    padding: 0rem 1rem;
+    font-size: 0.96rem;
+}
+.yjhInfo b{
+    color: #32b792;
+    display: block;
+
+}
+.yjhInfo span{
+    color: #666;
+    display: block;
+    font-family: "Microsoft Yahei";
+}
+/*活动成果*/
+.activityResults{
+    width:100%;
+    height:auto;
+    position: relative;
+    margin:4rem auto;
+    overflow: hidden;
+}
+.results{
+    width:70%;
+    height:32rem;
+    margin:4rem auto;
+    background:url("/images/BA-results.png") no-repeat center center;
+    background-size: 40%;
+}
+.resultsPart{
+    width:35%;
+    height:32rem;
+    margin-top:0;
+}
+.resultsPart:nth-of-type(1){
+    float: left;
+    text-align: right;
+}
+.resultsPart:nth-of-type(2){
+    float: right;
+    text-align: left;
+}
+.results-parts{
+    width:14rem;
+    height:8rem;
+    margin-top:2rem;
+}
+.results-parts h4{
+    margin-top:2.8rem;
+}
+.resultsPart:nth-of-type(1) .results-parts{
+    float: right;
+}
+.resultsPart:nth-of-type(2) .results-parts{
+    float: left;
+}
+.results-span{
+    display: block;
+    width:14rem;
+    height:6rem;
+    font-size:0.7rem;
+    font-family:"微软雅黑 Light";
+    line-height:1.4rem;
+    padding:0;
+}
+.resultsPart:nth-of-type(1) .results-parts:nth-of-type(2){
+    margin-right:3rem;
+}
+.resultsPart:nth-of-type(2) .results-parts:nth-of-type(2){
+    margin-left:3rem;
+}
+
+/*成功案例*/
+.successCase{
+    width:100%;
+    height:auto;
+    position: relative;
+    padding:4rem 0 11rem 0;
+    background: url("/images/BA-cases.jpg") no-repeat;
+}
+.cases{
+    width:100%;
+    height:auto;
+    margin-top:2rem;
+    text-align: center;
+}
+.cases ul{
+    width:100%;
+    height:12rem;
+    margin:3rem auto;
+}
+.cases ul li{
+    display: inline-block;
+    width:25%;
+    height:12rem;
+}
+.caseSpan {
+    display: block;
+    width: 56%;
+    height: 4rem;
+    position: relative;
+    margin: 9rem auto;
+    font-size: 0.8rem;
+    font-family: "微软雅黑 Light";
+    line-height: 1.4rem;
+    color: #fff;
+    text-align: center;
+}
+.characters{
+    width:62%;
+    height:4rem;
+    background: url("/images/quotes.png") no-repeat left top;
+    background-size:100%;
+    position: relative;
+    margin:5rem auto 13rem auto;
+    font-family:"微软雅黑 Light";
+    font-size:0.8rem;
+    color: #fff;
+    line-height:1.6rem;
+}
+.characters span{
+    display: none;
+    width: 76%;
+    height: auto;
+    margin: 6rem auto 2rem;
+    font-family: "微软雅黑 Light";
+    font-size: 0.84rem;
+    color: #fff;
+    /* line-height: 1.8rem; */
+    text-align: left;
+    height: 15rem;
+}
+.charactersImg{
+    width:60%;
+    height:auto;
+    position: relative;
+    margin:2rem auto 2rem;
+    text-align: center;
+}
+.charactersImg li{
+    display: inline-block;
+    width:4rem;
+    height:4rem;
+    margin:0 1rem;
+    border-radius: 50%;
+    /*display: none;*/
+    cursor: pointer;
+}
+.charactersImg li img{
+    width:100%;
+    height:auto;
+    /* display: none;*/
+}
+.imgMask{
+    display: block;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.2);
+    border-radius:50%;
+    position: relative;
+    top:-3.8rem;
+    left:0;
+}
+/*师资介绍*/
+/*师资介绍*/
+.teachers{
+    width:100%;
+    height:auto;
+    background: #f1f6f8;
+    padding:3rem 0;
+}
+.teachers-wrapper{
+    height:24rem;
+    margin:4rem auto 0;
+    overflow: hidden;
+}
+.teachers ul{
+    float: left;
+    height:24rem;
+    margin-left:0;
+    text-align: center;
+}
+.teachers ul li{
+    height:24rem;
+    display: inline-block;
+    text-align: center;
+    margin-left:-4px;
+}
+.teachers ul li img{
+    width: 42%;
+}
+.en-name{
+    color: #005f6a;
+    font-style: italic;
+    font-weight: bold;
+    font-family:"Arial";
+    font-size:0.8rem;
+    margin-top:4rem;
+}
+.ch-name{
+    color: #018b9b;
+    font-family:"Adobe 黑体 Std";
+    font-size:0.7rem;
+}
+.teacher-describe{
+    display: block;
+    width:100%;
+    height:7rem;
+    font-family:"微软雅黑";
+    color: #333;
+    font-size:0.7rem;
+    line-height:1.2rem;
+    overflow: hidden;
+}
+#prev, #next{
+    position: relative;
+    top:-18rem;
+    z-index: 3;
+    cursor: pointer;}
+#prev{
+    float: left;
+    margin-left:20rem;
+}
+#next{
+    float: right;
+    margin-right:20rem;
+}
+#prev:hover, #next:hover{opacity: 0.5;filter:alpha(opacity=50);}
+/*项目成功案例start*/
+.case{
+    margin: 4rem auto;
+    padding: 4rem 0;
+}
+.case ul{
+    width:64%;
+    margin: 0 auto;
+}
+.case ul li{
+    float: left;
+    width: 33.33%;
+    margin: 1.5rem 0;
+}
+.case ul li img{
+    width: 100%;
+}
+.case  li p i{
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #fff;
+    margin: 0 auto;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 2.3rem;
+    color: #3F51B5;
+    font-size: 1.1rem;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.case li p{
+    width: 90%;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: #f1f6f9;
+    height: 18.6rem;
+}
+.case li:nth-child(4){
+    margin-left: 10rem;
+}
+.case li p span{
+    display: block;
+    padding-left: 0;
+    margin-top: -1.4rem;
+    position: relative;
+    text-align: center;
+    font-size:0.9rem;
+}
+/*学员反馈*/
+.feedback{
+    width:100%;
+    height:auto;
+    background: url(/images/africa-feedback-bg.jpg) no-repeat;
+    background-size:cover ;
+    padding:5rem 0 3rem 0;
+    text-align: center;
+}
+.feed-content{
+    /*width:70%;*/
+    height:auto;
+    margin:0rem auto;
+    overflow: hidden;
+    padding:2rem 0;
+    text-align: left;
+    border: 0.13rem solid #92b54d;
+    border-bottom: none;
+    border-radius-topright: 3rem;
+    -webkit-border-top-right-radius: 3rem;
+    -moz-border-radius-topright:3rem;
+    border-top-right-radius:3rem;
+    background-color: #fff;
+    margin-bottom: 3rem;
+}
+.xyfk{
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
+}
+.xyfk img{
+    position: absolute;
+    left: -3rem;
+    top: -2rem;
+}
+
+/*.feed-content:nth-of-type(1){
+    !*background: url("/images/feed-bg1.png") no-repeat;*!
+    background-size:cover;
+}
+.feed-content:nth-of-type(2){
+    !*background: url("/images/feed-bg2.png") no-repeat;*!
+    background-size:cover;
+}
+.feed-content:nth-of-type(3){
+    !*background: url("/images/feed-bg3.png") no-repeat;*!
+    background-size:cover;
+}*/
+.feed-span{
+    display: block;
+    width:90%;
+    height:auto;
+    margin:0 auto;
+    position: relative;
+    padding:1rem 0;
+    border-bottom:1px dashed #90aa4d;
+    font-size:0.9rem;
+    line-height:1.4rem;
+}
+.feed-p{
+    width:94%;
+    height:2rem;
+    position: relative;
+    margin-top:2.5rem;
+    margin-left:4rem;
+    font-weight:bold;
+    line-height:2rem;
+    padding-left:0.5rem;
+}
+.feed-content ul{
+    width:94%;
+    height:auto;
+    position: relative;
+    left:2rem;
+    top:0rem;
+    padding:1rem 0;
+    margin:-1.5rem auto;
+}
+.feed-content ul li{
+    list-style-type: square;
+    color: #66ab3d;
+    margin:0.5rem 0 0 2rem;
+}
+.feed-content ul li span{
+    display: block;
+    color: #333;
+    font-size:0.8rem;
+}
+/*学员录取学校start*/
+.admissionSchool{
+    margin: 3rem auto;
+    height: auto;
+}
+
+.admissionSchool ul{
+    width: 60%;
+    height:auto;
+    margin: 3rem auto;
+}
+.admissionList li{
+    list-style-type: none;
+    width: 20%;
+    height: auto;
+    float: left;
+    margin: 1rem 0 ;
+}
+.admissionList li p{
+    width: 76%;
+    height:auto;
+    margin: 0 auto;
+    padding: 0.5rem;
+    border: 0.1rem solid #a0a0a0;
+    text-align: center;
+}
+.admissionList p img{
+    width:100%;
+    height:auto;
+}
+
+/*更多信息*/
+.moreMessage{
+    width:100%;
+    height:auto;
+    margin:2rem auto 0;
+    padding:3rem 0;
+}
+.moreMessage ul{
+    width:60%;
+    height:auto;
+    margin:3rem auto;
+    text-align: center;
+}
+.moreMessage ul li{
+    display: inline-block;
+    width:26%;
+    height:18rem;
+    background: url("/images/africa-bg-more.png") no-repeat;
+    background-size:99% 100%;
+    overflow: hidden;
+    margin:0 1rem;
+}
+.moreMessage ul li p{
+    width:100%;
+    height:2rem;
+    margin:2rem auto;
+    color: #333;
+    font-weight:600;
+    padding-left: 0;
+}
+.moreMessage ul li a{
+    display: block;
+    width:6rem;
+    height:1.6rem;
+    border:1px solid #1988a4;
+    border-radius: 0.2rem;
+    margin:2.4rem auto;
+    font-size:0.8rem;
+    line-height:1.6rem;
+}
+/*微信联系方式*/
+.application{
+    width: 100%;
+    height: 30rem;
+    position: relative;
+    background: url("/images/BA-application.jpg") no-repeat;
+    background-size:100% ;
+    margin:4rem auto 0;
+    padding:2rem 0 3rem;
+}
+.application a{
+    text-decoration: none;
+    color: #333;
+}
+
+.consulting {
+    width: 23rem;
+    height: 12rem;
+    margin: 2rem auto 2rem;
+    text-align: center;
+    border-bottom:0.2rem solid #26baa0;
+}
+.erweima{
+    width:11.5rem;
+    height:11.8rem;
+    text-align: center;
+    padding-top:1.5rem;
+}
+.erweima:nth-of-type(1){
+    float: left;
+    background: #fff;
+}
+.erweima:nth-of-type(2){
+    float: right;
+    background: #f8fafc;
+}
+.erweima span{
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: #111;
+    font-family: 微软雅黑;
+    font-weight:normal;
+    position: relative;
+}
+.erweima img{
+    width:50%;
+    height:auto;
+}
+.tel-yw-icon{
+    width:20%;
+    height:7.6rem;
+    background:url("/images/yw_icon.png") no-repeat left bottom;
+    background-size:28%;
+    margin:0.6rem auto 0;
+}
+.consult_tel {
+    display: inline-block;
+    width: 70%;
+    height: 2rem;
+    background: url(/images/tel-keru.png) no-repeat left center;
+    background-size:11%;
+    float: right;
+    margin: 3rem auto;
+    padding-left:2rem;
+    line-height:2rem;
+    font-size:1rem;
+    font-weight:bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1780px){
+    .yjh{
+        height: 74rem;
+    }
+    .yjh li{
+        width: 33.33%;
+        height: 30rem;
+    }
+    .yjhInfo p{
+        padding: 0.1rem 3rem;
+    }
+    .yjh li:nth-child(4){
+        margin-left: 12rem;
+    }
+    .advantage ul li span br{
+        display: none;
+    }
+}
+@media (max-width: 1460px){
+    /*成功案例*/
+    .characters{
+        width: 87%;
+    }
+}
+@media (max-width: 1300px){
+    /*顶部banner*/
+    .gis_banner {
+        background-size: 110rem;
+        background-position: center;
+    }
+   /* 项目背景*/
+    .projectBackground {
+        margin: 4rem 0;
+        background: url(/images/manteng_xmbjBA.jpg) no-repeat 0rem 27rem;
+    }
+    /*鹰计划*/
+    .yjhInfo{
+        height: 23rem;
+    }
+    .yjh li{
+        height: 36rem;
+    }
+    .yjh{
+        height: 82rem;
+    }
+    .yjhInfo p {
+        font-size: 1.2rem;
+    }
+
+}
+
+
+@media (max-width: 1024px){
+    /*顶部banner*/
+    .gis_banner{
+        height: 21rem;
+    }
+    .gis_banner_btn{
+        width: 55%;
+        background-size: 93rem;
+        background-position: -16rem;
+        left: 26%;
+    }
+    /* 项目背景*/
+    .projectBackground{
+        background: url(/images/manteng_xmbjBA.jpg) no-repeat 0rem 24rem;
+    }
+    .projectAnalyse{
+        width: 84%;
+    }
+    /*项目特色*/
+    .advantage ul{
+        width: 94%;
+    }
+    .advantage ul li{
+       /* height: 13rem;*/
+    }
+
+    .videoWrapper{
+        height: 29%;
+    }
+    /*项目详情*/
+    .project_details{
+        width: 80%;
+    }
+    .project_details .contens{
+        width: auto;
+        margin-left: 1.45rem;
+    }
+    /*鹰计划*/
+    .yjh ul{
+        width: 90%;
+    }
+    /*成功案例*/
+
+    /*师资介绍*/
+    #prev{
+        margin-left: 8rem;
+    }
+    #next{
+        margin-right: 8rem;
+    }
+    .teachers ul li img {
+        width: 60%;
+    }
+    /*项目成功案例start*/
+    .case ul{
+        width: 94%;
+    }
+    .case li p{
+        height: 19rem;
+    }
+    .case li p span{
+        font-size:0.7rem;
+    }
+    /*学员反馈*/
+    .xyfk img{
+        width: 11%;
+    }
+
+}
+
+@media (max-width: 895px){
+    /*鹰计划*/
+    .yjhInfo p {
+        padding: 0.1rem 1rem;
+    }
+    .yjh li:nth-child(4) {
+        margin-left: 9rem;
+    }
+}
+@media (max-width: 870px){
+    .characters span{
+        width: 90%;
+        height: auto;
+    }
+    .successCase{
+        padding: 4rem 0 10rem 0;;
+    }
+}
+
+@media (max-width: 768px){
+    /*顶部banner*/
+    .gis_banner {
+        height: 17rem;
+        background-size: 87rem;
+        background-position: -27rem;
+    }
+    .gis_banner_btn {
+        width: 80%;
+        padding-top: 17rem;
+        left: 11%;
+        bottom: 22%;
+        margin-bottom: 1rem;
+    }
+    .gis_banner{
+        margin-top: 3rem;
+    }
+    /* 项目背景*/
+    .projectBackground{
+        background: url(/images/manteng_xmbjBA.jpg) no-repeat 0rem 16rem;
+    }
+    .videoWrapper {
+        height: 39%;
+    }
+    /*项目特色*/
+    .advantage ul{
+        height: auto;
+    }
+    /*鹰计划*/
+    .yjhInfo span{
+        font-size: 1rem;
+    }
+    /*活动成果*/
+    .activityResults{
+        width:100%;
+        height:auto;
+        position: relative;
+        margin:4rem auto;
+        overflow: hidden;
+    }
+    .results{
+        width:80%;
+        height:32rem;
+        margin:4rem auto;
+        background:url("/images/BA-results.png") no-repeat center center;
+        background-size: 50%;
+    }
+    .resultsPart{
+        width:35%;
+        height:32rem;
+        margin-top:0;
+    }
+    .results-parts{
+        width:14rem;
+        /*height:8rem;*/
+        height:auto;
+        margin-top:1.5rem;
+    }
+    .results-parts h4{
+        font-size:0.8rem;
+        margin-top:2.4rem;
+    }
+    .resultsPart:nth-of-type(1) .results-parts{
+        float: right;
+    }
+    .resultsPart:nth-of-type(2) .results-parts{
+        float: left;
+    }
+    .results-span{
+        display: block;
+        width:14rem;
+        height:4.8rem;
+        font-size:0.7rem;
+        font-family:"微软雅黑 Light";
+        line-height:1.2rem;
+        padding:0;
+    }
+    .resultsPart:nth-of-type(1) .results-parts:nth-of-type(2){
+        margin-right:3rem;
+    }
+    .resultsPart:nth-of-type(2) .results-parts:nth-of-type(2){
+        margin-left:3rem;
+    }
+    /*成功案例*/
+    .characters span{
+        width: 87%;
+    }
+    /*师资介绍*/
+    .teachers{
+        width:100%;
+        height:auto;
+        background: #f1f6f8;
+        padding:3rem 0;
+    }
+    .teachers-wrapper{
+        width:90%;
+        height:auto;
+        margin:1rem auto 0;
+    }
+    .teachers ul{
+        width:100%;
+        height:auto;
+        margin-left:0;
+        text-align: center;
+    }
+    .teachers ul li{
+        width:80%;
+        height:auto;
+        text-align: center;
+        margin:0 auto;
+    }
+    .en-name{
+        color: #005f6a;
+        font-style: italic;
+        font-weight: bold;
+        font-family:"Arial";
+        font-size:1rem;
+        margin-top:0rem;
+    }
+    .ch-name{
+        color: #018b9b;
+        font-family:"Adobe 黑体 Std";
+        font-size:0.9rem;
+    }
+    .teacher-describe{
+        display: block;
+        width:100%;
+        height:auto;
+        font-family:"微软雅黑";
+        color: #333;
+        font-size:0.9rem;
+        line-height:1.4rem;
+        margin-bottom: 2rem;
+    }
+    #prev, #next{
+        display: none;
+    }
+    .teachers ul li img {
+        width: 40%;
+    }
+   /* 学员反馈*/
+    .xyfk{
+        width:86%;
+    }
+    /*学员录取学校*/
+    .admissionSchool ul{
+        width: 100%;
+        height:auto;
+        margin: 3rem auto;
+    }
+    /*更多信息*/
+    .moreMessage{
+        padding:2rem 0 0;
+    }
+    .moreMessage ul{
+        width:90%;
+    }
+    .moreMessage ul li{
+        width:32%;
+        margin:0 0;
+    }
+    .moreMessage ul li img{
+        width:40%;
+    }
+   /* 底部微信联系方式*/
+    .application{
+        width: 100%;
+        height: 30rem;
+        position: relative;
+        background: url("/images/BA-application.jpg") no-repeat center;
+        background-size:cover;
+        margin:4rem auto 0;
+        padding:2rem 0 3rem;
+    }
+    .application a{
+        text-decoration: none;
+        color: #333;
+    }
+
+    .consulting {
+        width: 23rem;
+        height: 12rem;
+        margin: 2rem auto 2rem;
+        text-align: center;
+        border-bottom:0.2rem solid #26baa0;
+    }
+    .erweima{
+        width:11.5rem;
+        height:11.8rem;
+        text-align: center;
+        padding-top:1.5rem;
+    }
+    .erweima:nth-of-type(1){
+        float: left;
+        background: #fff;
+    }
+    .erweima:nth-of-type(2){
+        float: right;
+        background: #f8fafc;
+    }
+    .erweima span{
+        display: block;
+        margin-top: 1rem;
+        font-size: 0.8rem;
+        color: #111;
+        font-family: 微软雅黑;
+        font-weight:normal;
+        position: relative;
+    }
+    .erweima img{
+        width:50%;
+        height:auto;
+    }
+    .tel-yw-icon{
+        width:66%;
+        height:5.6rem;
+        background:url("/images/yw_icon.png") no-repeat left center;
+        background-size:contain;
+        margin:0.6rem auto 0;
+    }
+    .consult_tel {
+        display: inline-block;
+        width: 72%;
+        height: 2rem;
+        background: url(/images/tel-keru.png) no-repeat left center;
+        background-size:contain;
+        float: right;
+        margin-top: 1.8rem;
+        padding-left:2rem;
+        line-height:2rem;
+        font-size:1.2rem;
+        font-weight:bold;
+    }
+
+}
+@media (max-width: 767px){
+    /*顶部banner*/
+    .gis_banner {
+        height: 17rem;
+       /* background: url(/images/indexBanner01.jpg) no-repeat center top;*/
+        background-size: 100%;
+        margin-top: 6rem;
+        height: auto;
+        margin-bottom: 5rem;
+    }
+    .gis_banner .bannerIcon{
+        height: auto;
+        width: 100%;
+    }
+    /* 项目背景*/
+    .projectAnalyse{
+        width: 90%;
+    }
+    .projectAnalyse h5 b{
+        height: auto;
+    }
+    .nakedReason{
+        padding: 1rem 1rem 4rem 1rem;
+    }
+    .projectBackground{
+        margin: 0 auto;
+    }
+   /* 项目特色*/
+    .advantage ul{
+        width: 94%;
+    }
+    .advantage ul li{
+        width: 80%;
+        float: none;
+        margin: 2rem auto;
+        height: auto;
+        padding-bottom: 1rem;
+    }
+    .advantage ul li:nth-child(4) {
+        margin: 2rem auto;
+    }
+    /*项目详情*/
+    .project_details .contens p{
+        padding-left: 2.2rem;
+    }
+    /*鹰计划*/
+    .yjhInfo {
+        height: 23rem;
+    }
+    .yjh ul {
+        width: 60%;
+    }
+    .yjh ul li {
+        width: 100%;
+    }
+    .yjhInfo p {
+        padding: 0.5rem 5rem;
+    }
+    .yjh {
+        height: 200rem;
+    }
+    .yjh li:nth-child(4) {
+        margin-left: 0rem;
+    }
+    .yjhInfo span {
+        font-size: 1.2rem;
+    }
+    /*成功案例*/
+    .successCase{
+        padding: 4rem 0 14rem 0;
+
+    }
+    .charactersImg{
+        width: auto;
+    }
+    /*项目成功案例*/
+    .case ul li{
+        width: 100%;
+    }
+    .case li:nth-child(4){
+        margin-left: 0;
+    }
+    .case li p{
+        height: auto;
+    }
+    /*学员录取学校*/
+    .admissionList li{
+        width: 50%;
+    }
+    .admissionList li p{
+        width: 50%;
+    }
+    /*更多信息*/
+    .moreMessage ul{
+        width:100%;
+    }
+    .moreMessage ul li{
+        width:60%;
+        height:20rem;
+        margin:0.5rem auto;
+        padding:0 0.7rem 0;
+    }
+    .moreMessage ul li a{
+        width:7rem;
+        height:2.1rem;
+        font-size:0.9rem;
+        line-height:2.1rem;
+    }
+}
+@media (max-width: 640px) {
+    /*活动成果*/
+    .results{
+        width:100%;
+        height:35rem;
+        margin:4rem auto;
+        background:url("/images/BA-results.png") no-repeat center center;
+        background-size: 48%;
+    }
+    .resultsPart{
+        width:40%;
+        height:auto;
+        margin-top:0;
+    }
+    .resultsPart:nth-of-type(1){
+        float: left;
+        text-align: right;
+    }
+    .resultsPart:nth-of-type(2){
+        float: right;
+        text-align: left;
+    }
+    .results-parts{
+        width:10rem;
+        height:auto;
+        margin-top:1rem;
+    }
+    .results-parts h4{
+        font-size:0.8rem;
+        margin-top:2rem;
+    }
+    .resultsPart:nth-of-type(1) .results-parts{
+        float: right;
+    }
+    .resultsPart:nth-of-type(2) .results-parts{
+        float: left;
+    }
+    .results-span{
+        display: block;
+        width:10rem;
+        height:7rem;
+        font-size:0.7rem;
+        font-family:"微软雅黑 Light";
+        line-height:1.2rem;
+        padding:0;
+        margin-top:-0.5rem;
+    }
+    .resultsPart:nth-of-type(1) .results-parts:nth-of-type(2){
+        margin-right:2rem;
+    }
+    .resultsPart:nth-of-type(2) .results-parts:nth-of-type(2){
+        margin-left:2rem;
+    }
+  /*  师资介绍*/
+    .en-name{
+        color: #005f6a;
+        font-style: italic;
+        font-weight: bold;
+        font-family:"Arial";
+        font-size:0.8rem;
+       /* margin-top:16rem;*/
+    }
+    .teacher-describe{
+        display: block;
+        width:100%;
+        /*height:7rem;*/
+        font-family:"微软雅黑";
+        color: #333;
+        font-size:0.7rem;
+        line-height:1.4rem;
+        text-align: left;
+    }
+    .teacher-describe br{
+        display: none;
+    }
+/*    学员反馈*/
+
+    .xyfk{
+        width:96%;
+    }
+    .feed-span{
+        text-indent:2em;
+    }
+    .feed-p{
+        margin-left:4rem;
+        margin-top:3rem;
+    }
+
+}
+@media (max-width: 618px){
+    .yjhInfo p {
+        padding: 0.5rem 2rem;
+    }
+    /*成功案例*/
+    .successCase{
+        padding: 4rem 0 16rem 0;
+
+    }
+}
+@media (max-width: 414px){
+    /*顶部banner*/
+    .signUp{
+        width: 7rem;
+        font-weight: normal;
+        font-size: 0.8rem;
+        height: auto;
+        line-height: 2rem;
+    }
+    /* 项目背景*/
+    .projectAnalyse h5{
+        padding: 1rem;
+    }
+    /*项目特色*/
+    .advantage ul li{
+        width: 90%;
+    }
+    /*项目详情视频*/
+    .videoIntroduce{
+        margin: 0 auto;
+    }
+    .videoWrapper{
+        width: 27.3rem;
+        height: 17.5rem;
+    }
+    /*项目活动or实习*/
+
+   /* 鹰计划*/
+    .yjh ul {
+        width: 84%;
+    }
+    .yjhInfo p {
+        padding: 0.5rem;
+    }
+    .yjh ul {
+        width: 94%;
+    }
+    .yjh {
+        height: 194rem;
+        /*margin-top: -6rem;*/
+    }
+    .yjhInfo {
+        padding: 0 2rem;
+    }
+    /*成功案例*/
+    .successCase{
+        padding: 2rem 0 20rem 0;
+
+    }
+    .characters span{
+        margin: 4rem auto 2rem;
+    }
+    .characters {
+        width: 98%;
+    }
+    /*师资介绍*/
+    .teachers ul li img {
+        width: 50%;
+    }
+    /*学员反馈*/
+    .xyfk{
+        width:90%;
+    }
+    .xyfk img {
+        width: 18%;
+        left: -1rem;
+        top: -2rem;
+    }
+    /*学员录取学校*/
+    .admissionList li p{
+        width: 82%;
+    }
+
+}
+@media (max-width: 320px){
+    /*顶部banner*/
+    .gis_banner{
+        /*height: 15rem;*/
+    }
+   /* 项目详情视频*/
+    .videoWrapper{
+        width: 24.3rem;
+        height: 15.5rem;
+    }
+    .advantage ul li{
+        padding-bottom: 0.6rem;
+    }
+    /*鹰计划*/
+    .yjhInfo p {
+        padding: 0.5rem 1rem;
+    }
+    /*活动成果*/
+    .resultsPart:nth-of-type(1){
+        margin-left: 1.5rem;
+    }
+    .resultsPart:nth-of-type(2){
+        margin-right: 1.5rem;
+    }
+    .results{
+        background-size: 36%;
+    }
+    /*学员录取学校*/
+    .admissionList li{
+        margin: 0.3rem 0;
+    }
+}

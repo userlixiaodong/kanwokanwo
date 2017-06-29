@@ -1,0 +1,278 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 20px;
+}
+
+@media screen and (max-width: 1920px) {
+    html{
+        font-size: 18px!important;
+    }
+}
+@media screen and (max-width: 1366px) {
+    html{
+        font-size: 16px!important;
+    }
+}
+@media screen and (max-width: 1280px) {
+    html{
+        font-size: 14px!important;
+    }
+}
+@media screen and (max-width: 750px) {
+    html{
+        font-size: 12px!important;
+    }
+}
+
+body {
+    background: #ffffff;
+}
+
+.container {
+    width: 60rem;
+    margin: 5rem auto 4rem auto;
+}
+
+.searchBar {
+    width: 100%;
+    height: 2.5rem;
+}
+
+.searchForm {
+    display: block;
+    width: 100%;
+    height: 2.5rem;
+    margin-top: 0;
+}
+
+.searchGroup {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.searchInput {
+    display: block;
+    font-size: 0.8rem;
+    padding: 0.65rem 1.5rem;
+    height: 100%;
+    width: 90%;
+    border: 0.05rem solid #000;
+}
+
+.searchButton {
+    width: 10%;
+    height: 100%;
+    background: #18ad92;
+    position: absolute;
+    right: 0;
+    top: 0px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-style: normal;
+    text-align: center;
+    line-height: 2.5rem;
+    cursor: pointer;
+}
+
+.term {
+    width: 100%;
+    height: auto;
+    background: #f3f6f9;
+    margin: 2.5rem auto 0 auto;
+    padding: 1.75rem 0 0.5rem 0;
+    /*overflow: hidden;*/
+}
+
+.term-filter {
+    display: block;
+    width: 100%;
+    height: auto;
+    background-color: #f3f6f9;
+    padding-left:20px;
+}
+.term-filter ul{
+    position: relative;
+}
+.screen {
+    list-style-type: none;
+    width: 100%;
+    height: 2rem;
+    margin-bottom: 0.25rem;
+    line-height: 2rem;
+    border-bottom: 0.05rem solid #e2e9ef;
+}
+
+.screen input {
+    display: inline-block;
+    margin-left: 1rem;
+    margin-right:0.3rem;
+}
+.secondary{
+    height:2.7rem;
+    background-color: #e2e9ef;
+    position: absolute;
+    top:1.5rem;
+    padding-top:1.1rem;
+    overflow: hidden;
+}
+.secondary1{
+    width:21.8rem;
+    background: url("/images/university.png") no-repeat;
+    left:4.2rem;
+    display: none;
+}
+.secondary2{
+    width:20rem;
+    background: url("/images/senior.png") no-repeat -2.4rem 0;
+    left:4.2rem;
+    display: none;
+}
+.secondary3{
+    width:28rem;
+    background: url("/images/junior.png") no-repeat -4.8rem 0;
+    left:4.2rem;
+    display: none;
+}
+.secondary input{
+    display: inline-block;
+    margin-left: 0.8rem;
+    margin-right:0.3rem;
+}
+
+.more {
+    width: 100%;
+    height: 2rem;
+    background: #f3f6f9;
+    text-align: center;
+    line-height: 2rem;
+    overflow: hidden;
+}
+
+.more button {
+    display: inline-block;
+    width: 3.5rem;
+    height: 1.5rem;
+    background: #18ad92;
+    color: #fff;
+    text-align: center;
+    line-height: 1.5rem;
+    border: none;
+    border-radius: 0.15rem;
+    float: left;
+    margin: 0.25rem 0 0 0.75rem;
+}
+
+.more a {
+    width: 7.5rem;
+    height: 1.3rem;
+    display: inline-block;
+    text-decoration: none;
+    color: #666;
+    background: url("/images/down.png") no-repeat 5rem 0.75rem;
+    background-size: 13%;
+    text-align: left;
+}
+.resultsHeader{
+    width:100%;
+    height:1.5rem;
+    border-bottom:1px solid #cad7dd;
+    margin-top:1.5rem;
+    overflow: hidden;
+}
+.schoolNum{
+    display: inline-block;
+    float: left;
+    font-size:0.65rem;
+    font-family:"微软雅黑 Light";
+}
+.clear{
+    display: block;
+    float: right;
+    font-size:0.65rem;
+    font-family:"微软雅黑 Light";
+    background: url("/images/clear.png") no-repeat 0 0.15rem;
+    background-size: 20% auto;
+    padding-left:1rem;
+    cursor: pointer;
+}
+.searchResults{
+    width:100%;
+    height:auto;
+}
+.searchWrapper{
+    width:100%;
+    height:auto;
+    font-family:"yahei";
+}
+.searchWrapper li{
+    display: inline-block;
+}
+.searchWrapper_li{
+    border-bottom:1px solid #cad7dd;
+    width:100%;
+}
+.searchItem_li{
+    /*padding-top:1rem;*/
+}
+.searchItem_li:nth-child(1){
+    width:150px;
+    height:150px;
+    float: left;
+    text-align: left;
+    overflow: hidden;
+    border-radius:50%;
+    margin:1rem 1.5rem 1rem 0;
+}
+.searchItem_li:nth-child(2){
+    float: left;
+}
+.searchItem_li:nth-child(3){
+    float: right;
+}
+.searchItem_li img{
+    width:100%;
+    height:auto;
+
+}
+.searchItem_li h4{
+    font-weight:bold;
+    color: #333;
+    margin-top:1rem;
+}
+.searchItem_li h5{
+    font-weight:bold;
+    color: #666;
+}
+.searchText{
+    font-size:0.7rem;
+    color: #999;
+}
+.score{
+    margin-top:1.5rem;
+}
+.searchText{
+    margin-top:0.25rem;
+}
+.searchItem_li p{
+    font-size:0.6rem;
+    color: #999;
+    margin-top: 0.7rem;
+}
+.searchItem_li span{
+    display: block;
+    width:5.5rem;
+    height:1.5rem;
+    border-radius: 0.2rem;
+    background: #00b292;
+    text-align: center;
+    line-height:1.5rem;
+    color: #fff;
+    font-size:0.7rem;
+    font-family:"微软雅黑 Light";
+    margin-top:0.8rem;
+    cursor: pointer;
+}

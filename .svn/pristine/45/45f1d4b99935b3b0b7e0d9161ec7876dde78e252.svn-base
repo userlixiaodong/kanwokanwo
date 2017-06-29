@@ -1,0 +1,384 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: 1009
+  Date: 2017/3/15
+  Time: 9:35
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<html>
+<head>
+    <title>院校库</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Touch enabled minimalistic slider written in vanilla JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <script src="/js/jquery-2.2.1.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/style/public.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/frame.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/app.css">
+    <link rel="stylesheet" type="text/css" href="/style/school-list.css?201604271"/>
+    <link rel="stylesheet" type="text/css" href="/style/video-js.css?20160322"/>
+    <style>
+        .school-list-header h2{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);color:#fff;font-size:60px;margin:0;}
+        @media (max-width: 768px){.school-list-header h2{font-size:29px;}}
+        @media (max-width: 414px){.school-list-header h2{font-size:15px;}}
+        @media (max-width: 320px){.school-list-header h2{font-size:12px;}}
+
+        .colleges-content dl{
+            bottom: 6%;
+        }
+        /* 搜索栏样式*/
+        .container {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            padding-top: 888px;
+            margin-bottom:50px;
+        }
+
+        .head_banner{
+            width: 100%;
+            height: 508px;
+            background: url("../../../images/BA_search.jpg") no-repeat center;
+
+        }
+        .banner_box{
+            width: 1200px;
+            /* border: 1px solid red;*/
+            margin: 0 auto;
+            padding-top: 190px;
+        }
+        .banner_box img{
+            display: block;
+            width: 692px;
+            margin: 0 auto;
+        }
+        .banner_box span,.banner_box .search_btn, .head_partnership .partnership h4, .partnership li span, .middle .title,.middle .school p,.school_list li span {
+            font-family: arial, "Hiragino Sans GB", "Microsoft Yahei", 微软雅黑, 宋体, Tahoma, Arial, Helvetica, STHeiti;
+        }
+        .banner_box span{
+            font-size: 24px;
+            line-height:26px;
+            color: #fff;
+            display: block;
+            padding-left: 247px;
+            margin-top: 60px;
+        }
+        .banner_box form{
+            width:746px ;
+            height:68px ;
+            margin: 0 auto;
+            background-color: rgba(255,255, 255, 0.3);
+            margin-top: 14px;
+        }
+        .banner_box input{
+            display:block;
+            margin-top: 8px;
+            border: none;
+        }
+        .banner_box .search_box{
+            width: 586px;
+            height: 52px;
+            float: left;
+            margin-left: 8px;
+            font-size: 18px;
+            color: #b9bac0;
+            text-indent: 20px;
+            /* letter-spacing: 4px;*/
+        }
+        .banner_box .search_btn{
+            height: 52px;
+            width: 144px;
+            background-color: #18ad92;
+            border: none;
+            margin-left: -6px;
+            font-size: 30px;
+            color: #ffffff;
+            float: right;
+            margin-right: 8px;
+            letter-spacing:8px;
+        }
+
+        .head_partnership{
+            width:100% ;
+            height: 670px;
+            background-color: #f5f5f5;
+        }
+        .head_partnership .partnership{
+            width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .head_partnership .partnership h4{
+            margin: 0;
+            height: 210px;
+            line-height: 210px;
+            font-size: 40px;
+            color: #333333;
+            font-weight: normal;
+        }
+
+        .partnership li {
+            float: left;
+            width: 386px;
+            list-style: none;
+            height: 346px;
+            background-color: white;
+            text-align: center;
+            box-shadow: 0px 3px 20px #999;
+        }
+
+        .partnership li img {
+            margin-top: 34px;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .partnership li span {
+            display: block;
+            text-align: center;
+            font-size: 24px;
+            color: #000000;
+            line-height: 56px;
+        }
+
+        .middle {
+            width: 1200px;
+            margin: 0 auto;
+            color: #333333;
+        }
+
+        .middle .title {
+            margin-top: 155px;
+            font-size: 40px;
+            text-align: center;
+            font-weight: normal;
+        }
+
+        .middle .school p {
+            margin-top: 110px;
+            height: 44px;
+            line-height: 44px;
+            letter-spacing: 12px;
+            font-size: 36px;
+            text-indent: 24px;
+            position: relative;
+        }
+
+        .middle .school p span {
+            display: block;
+            float: left;
+            width: 8px;
+            height: 44px;
+            background-color: #2cb098;
+            border-radius: 10px;
+        }
+        .middle .school p a{
+            position: absolute;
+            display: inline-block;
+            font-size: 14px;
+            letter-spacing: 2px;
+            right: 0px;
+            top: 14px
+        }
+
+        .middle .school p:after {
+            content: "";
+            display: block;
+            width: 1196px;
+            border: 1px solid #bac3c8;
+            float: right;
+            margin-top: 9px;
+        }
+
+        .school_list li {
+            list-style: none;
+            float: left;
+            width: 280px;
+            height:350px;
+            text-align: center;
+            margin-left: 16px;
+            margin-top:20px;
+        }
+
+        .school_list li img {
+            /*background-color: #f3f6f9;*/
+            width: 220px;
+            height:200px;
+        }
+
+        .school_list li span {
+            display: block;
+            width:auto;
+            height:20px;
+            text-align: center;
+            position: relative;
+            top:40px;
+        }
+        .video-decoretion{
+            text-decoration: none;
+            display: block;
+            color: #333;
+            line-height:20px;
+            font-size:14px;
+        }
+        .highSchool-video-a{
+            display: block;
+            padding:40px;
+            border-radius: 10px;
+            background-color: #f6f6f6;
+        }
+
+    </style>
+</head>
+<body>
+<%@include file="/WEB-INF/views/common/top.jsp" %>
+<div class="colleges-column text-center col-lg-12 col-xs-12 relative-position clearfix" >
+    <img src="../../../images/colleges-big-pic.jpg" materialSrc="//kw-cdn.kanwokanwo.com/schoolvideo/universityofsanfrancisco.mp4">
+    <div class="colleges-content col-lg-12 col-xs-12">
+        <h3>WE LOVE ALL OUR PARTNERS</h3>
+        <dl class="absolute-position">
+            <dt>Stanley D. Nel</dt>
+            <dd>Vice President of University of San Francisco</dd>
+            <dd>
+            <dd>
+            <dd>
+                <a href="javascript:;" class="md-trigger video-container" data-modal="cusGuide">
+                    <i class="glyphicon glyphicon-play-circle" src="../../../images/colleges-big-pic.jpg" materialSrc="//kw-cdn.kanwokanwo.com/schoolvideo/universityofsanfrancisco.mp4"></i>
+                </a>
+            </dd>
+            <%--<dd><img src="images/colleges-small-pic.jpg"></dd>--%>
+        </dl>
+        <a href="javascript:;" class="colleges-btn md-trigger video-container" data-modal="cusGuide">
+            <i class="glyphicon glyphicon-play-circle" src="../../../images/colleges-big-pic.jpg" materialSrc="//kw-cdn.kanwokanwo.com/schoolvideo/universityofsanfrancisco.mp4"></i>
+        </a>
+    </div>
+
+</div>
+<div class="container clearfix">
+    <!--顶部banner start-->
+    <div class="header">
+        <!--搜索框 start-->
+        <div class="head_banner">
+            <div class="banner_box">
+                <img src="../../../images/search_text.png">
+                <span>搜学校</span>
+                <form action="${staticPath}/admission/profile/searchList" id="formid">
+                    <input class="search_box"  name="keywords"  placeholder="搜索学校名" />
+                    <input class="search_btn" type="button" value="搜索"/>
+                </form>
+            </div>
+
+        </div>
+        <!--搜索框 end-->
+        <!--院校库partnership start-->
+        <div class="head_partnership">
+            <div class="partnership">
+                <h4>成为院校库的Partnership，您可以获得</h4>
+                <ul class="imgs">
+                    <li style="margin-right: 20px">
+                        <img src="../../../images/partnership_1.jpg" >
+                        <span>免费的在线宣讲机会</span>
+                    </li>
+                    <li style="margin-right: 20px">
+                        <img src="../../../images/partnership_2.jpg">
+                        <span>专属、独特的展示页面</span>
+                    </li>
+                    <li>
+                        <img src="../../../images/partnership_3.jpg">
+                        <span>与潜在生源的直接接触</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--院校库partnership end-->
+    </div>
+    <!--顶部banner end-->
+    <!--内容区choose start-->
+    <div class="middle">
+        <h4 class="title">他们纷纷选择了看我看我</h4>
+        <div class="mid-college school">
+            <p><span></span>大学 <a href="/admission/profile/pagelistu" target="/admission/profile/pagelistu" class="more">查看更多 >></a></p>
+           <%-- <a href="/video/pagelistu" target="/video/pagelistu" class="more">查看更多 >></a>--%>
+            <ul class="school_list college_list">
+                <c:forEach items="${uList}" var="University">
+                    <li>
+                        <a href="/${University.publicUri}" target="_blank" class="highSchool-video-a">
+                            <c:if test="${not empty University.biography.avatar}">
+                                <c:set var="string1" value="${University.biography.avatar}"/>
+                                <c:set var="string2" value="${fn:replace(string1,'focusedu.oss-cn-hangzhou.aliyuncs.com' , 'img-cdn.kanwokanwo.com')}"/>
+                                <img src="${string2}@1e_1c_0o_0l_200h_200w_80q.src">
+                            </c:if>
+                            <c:if test="${ empty University.biography.avatar}">
+                                <img src="../../../images/school_1.png">
+                            </c:if>
+                        </a>
+                        <span><a title="${University.biography.name}" href="/${University.publicUri}" target="_blank" class="video-decoretion">${University.biography.name}</a></span>
+                    </li>
+                </c:forEach>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <!-- start-->
+        <div class="mid_hightSchool school">
+            <p><span></span>高中 <a href="/admission/profile/pagelisth" target="/admission/profile/pagelisth" class="more">查看更多 >></a></p>
+            <ul class="school_list hightSchool_list">
+
+               <c:forEach items="${hList}" var="HighSchool">
+                    <li>
+                        <a href="/${HighSchool.publicUri}" target="_blank" class="highSchool-video-a">
+                            <c:if test="${not empty HighSchool.biography.avatar}">
+                                <c:set var="string1" value="${HighSchool.biography.avatar}"/>
+                                <c:set var="string2" value="${fn:replace(string1,'focusedu.oss-cn-hangzhou.aliyuncs.com' , 'img-cdn.kanwokanwo.com')}"/>
+                                <img src="${string2}@1e_1c_0o_0l_200h_200w_80q.src">
+                            </c:if>
+                            <c:if test="${ empty HighSchool.biography.avatar}">
+                                <img src="../../../images/school_1.png">
+                            </c:if>
+                        </a>
+                        <span><a title="${HighSchool.biography.name}" href="/${HighSchool.publicUri}" target="_blank" class="video-decoretion">${HighSchool.biography.name}</a></span>
+                    </li>
+                </c:forEach>
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+    <!--内容区choose end-->
+</div>
+<%@include file="/WEB-INF/views/common/bottom.jsp" %>
+<script src="/js/video.js"></script>
+<script type="text/javascript" src="/js/video-popup.js?20160512"></script>
+</body>
+<script>
+    $(function () {
+        setInterval(function () {
+            var clintH = $('.colleges-column').height();
+            $('.container').css('paddingTop', clintH + 70 + 'px')
+        }, 1);
+        //btn按钮点击事件
+        $('.search_btn').hover(function () {
+            $(this).css('background','#1ac2a4')
+        },function () {
+            $(this).css('background','#18ad92')
+        })
+    });
+    //表单提交事件
+    $('.search_btn').click(function () {
+        var text=$('.search_box').val();
+        if(text==null || text==''){
+            return false
+        }else {
+            $('#formid').submit()
+        }
+    })
+
+
+</script>
+</html>

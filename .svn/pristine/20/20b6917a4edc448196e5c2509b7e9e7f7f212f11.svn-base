@@ -1,0 +1,311 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 20px;
+}
+body{
+    font-family: "微软雅黑";
+}
+a{
+    text-decoration: none;
+}
+@media screen and (max-width: 1920px) {
+    html {
+        font-size: 18px !important;
+    }
+}
+@media screen and (max-width: 1300px) {
+    html {
+        font-size: 16px !important;
+    }
+}
+@media screen and (max-width: 1280px) {
+    html {
+        font-size: 14px !important;
+    }
+}
+@media screen and (max-width: 769px) {
+    html {
+        font-size: 12px !important;
+    }
+    body {
+        max-width: 769px;
+    }
+}
+/* iphone6 plus */
+@media (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+    html {
+        font-size: 25.875px;
+    }
+}
+/* iphone 6 */
+@media (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+    html {
+        font-size: 23.4375px;
+    }
+}
+/* 判断iphone5 *//* 横屏竖屏判断方法与ipad一样 */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+    html {
+        font-size: 20px;
+    }
+}
+.clear {
+    clear: both;
+}
+
+@media (max-width: 769px) {
+    .mid-content{
+        width:100%;
+        height:auto;
+        background: #fff;
+        margin:0 auto;
+    }
+    .phone-logo{
+        width:100%;
+        height:6rem;
+        background: #17ac84;
+    }
+    .phone-logo img{
+        width:48%;
+        margin:0.8rem auto auto 1rem;
+    }
+    .login-register{
+        width:100%;
+        height:4.6rem;
+        background: #fff;
+    }
+    .phone-login{
+        display: block;
+        float: left;
+        width:50%;
+        height:100%;
+        border-right:1px solid #eee;
+        font-size:1.6rem;
+        font-family:"微软雅黑 Light";
+        text-align: center;
+        line-height:4.6rem;
+    }
+    .phone-register{
+        display: block;
+        float: left;
+        width:50%;
+        height:100%;
+        font-size:1.6rem;
+        font-family:"微软雅黑 Light";
+        text-align: center;
+        line-height:4.6rem;
+    }
+    .loginPage{
+        max-width: 768px;
+        width:90%;
+        margin: 4rem auto 0;
+        padding-top: .25rem;
+    }
+    .input-container{
+        position: relative;
+        width: 100%;
+        height:auto;
+        line-height: 4rem;
+        padding: 0;
+        border-radius:0.2rem;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        margin-top:2rem;
+    }
+    .input-container input[type=text]{
+        border-radius: 0.2rem;
+        display: inline-block;
+        background: #f0f0f0;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        font-family: "微软雅黑";
+        font-size: 1.2rem;
+        color: #999;
+        outline: 0;
+        border-color:transparent;
+        text-align: left;
+    }
+    .telphone{
+        width: 100%;
+        padding: 0 0.5rem 0 1rem;
+    }
+    .password{
+        width: 100%;
+        padding: 0 0.5rem 0 1rem;
+    }
+    .forgetpwd{
+        float: right;
+        color: #009cff;
+        font-size:1rem;
+        font-weight:500;
+        margin:1rem 0;
+    }
+    .warns{
+        width:100%;
+        height:2.2rem;
+        margin:1rem auto -1rem;
+        background:transparent;
+        vertical-align: top;
+        line-height:2.2rem;
+        padding-left:0.5rem;
+        color: #f00;
+        font-size:1rem;
+        font-family:"微软雅黑";
+    }
+    .loginBtn{
+        display: block;
+        width:100%;
+        height: 3.8rem;
+        line-height: 3.8rem;
+        background-color: #1bb38c;
+        /*background: #999;*/
+        border-radius: 0.2rem;
+        border: 0;
+        font-size: 1.4rem;
+        font-weight:500;
+        color: #fff;
+        outline: 0;
+        text-align: center;
+    }
+    .otherMethod{
+        width:100%;
+        height:2rem;
+        text-align: center;
+        margin-top:4rem;
+        color: #1bb38c;
+        font-size:1.4rem;
+        font-weight:400;
+    }
+    .login-wx{
+        display: block;
+        width:4rem;
+        height:auto;
+        margin:2rem auto 0;
+        text-align: center;
+    }
+    .userAgreement{
+        text-align: center;
+        margin:1rem auto;
+    }
+    .input-container span{
+        display: inline-block;
+        font-size:1.4rem;
+        color: #666;
+        font-family:"微软雅黑";
+    }
+    .star{
+        display: inline-block;
+        color: #f00;
+        font-size:2rem;
+        font-style: normal;
+        vertical-align: middle;
+    }
+    .getCode{
+        display: inline-block;
+        width:6.6rem;
+        height:2.6rem;
+        background: #0aaa82;
+        border-radius:0.4rem;
+        float: right;
+        margin:0.6rem 0rem 0 0;
+        color: #fff;
+        font-size:0.7rem;
+        padding:0;
+        text-align: center;
+        line-height:2.6rem;
+        outline:none;
+        border:none;
+    }
+    /*设置页面列表样式start*/
+    .accountNumber{
+        display: block;
+        width:90%;
+        height:3rem;
+        line-height:3rem;
+        margin:5rem auto -2rem;
+        border-left:0.5rem solid #0aaa82;
+        padding-left:1rem;
+        font-size:1.8rem;
+        font-weight:600;
+        color: #0aaa82;
+    }
+    .settingList{
+        width:100%;
+        height:auto;
+        margin:5rem auto;
+    }
+    .settingList li{
+        width:100%;
+        height:8rem;
+        margin-top:1px;
+        padding-left:7.4rem;
+        position: relative;
+    }
+    .settingList li span{
+        display: block;
+        height:8rem;
+        line-height:8rem;
+        font-size:1.8rem;
+        font-family:"微软雅黑 Light";
+        font-weight:500;
+        color: #333;
+    }
+    .settingList li i{
+        width:3rem;
+        height:3rem;
+        position: absolute;
+        right:1rem;
+        top:2.5rem;
+        padding:0.3rem 0 0;
+    }
+    .settingList li i img{
+        width:76%;
+    }
+    /*设置页面列表样式end*/
+    @media (max-width: 640px) {
+        .mid-content{
+            margin:0 auto;
+        }
+        .phone-logo{
+            height:4rem;
+        }
+        /*设置页面列表样式start*/
+        .accountNumber{
+            display: block;
+            width:90%;
+            height:3rem;
+            line-height:3rem;
+            margin:3rem auto -2rem;
+            border-left:0.5rem solid #0aaa82;
+            padding-left:1rem;
+            font-size:1.8rem;
+            font-weight:600;
+            color: #0aaa82;
+        }
+        .settingList li{
+            padding-left:6rem;
+        }
+        .settingList{
+            margin:3rem auto;
+        }
+        .settingList li{
+            height:6rem;
+        }
+        .settingList li span{
+            height:6rem;
+            line-height:6rem;
+            font-size:1.4rem;
+        }
+        .settingList li i{
+            top:1.5rem;
+        }
+        /*设置页面列表样式end*/
+        @media (max-width: 320px) {
+
+        }
+    }
+}

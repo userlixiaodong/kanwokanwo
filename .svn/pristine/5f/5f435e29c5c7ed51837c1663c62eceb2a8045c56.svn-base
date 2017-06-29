@@ -1,0 +1,56 @@
+.popup_box {
+    width: 30rem;
+    height: 20rem;
+    background-color: #f3f7ff;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -15rem;
+    margin-top: -10rem;
+    z-index: 999;
+    /* display: none;*/
+}
+
+.popup_box a {
+    display: block;
+    width: 11rem;
+    height: 3rem;
+    line-height: 3rem;
+    text-decoration: none;
+    margin-left: 10rem;
+    background-color: #54c5d4;
+    text-align: center;
+    color: #fff;
+    border-radius: 1rem;
+}
+
+.popup_box img {
+    display: block;
+    margin: 0 auto;
+    padding: 62px 0 40px 0;
+}
+
+.popup_box .popup_close {
+    display: block;
+    cursor: pointer;
+    width: 23px;
+    height: 23px;
+    background: url(/images/cisformclose.png)no-repeat center;
+    position: absolute;
+    right: 13px;
+    top: 13px
+}
+
+.fe_window_mask {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 699;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #000 none repeat scroll 0 0;
+    opacity: 0.3;
+}

@@ -1,0 +1,23 @@
+package cv.focus.core.interfaces.user.mobile;
+
+import cv.focus.core.infrastructure.util.BaseController;
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+/**
+ * UserMobileController
+ * 
+ * @author liuruichao
+ * Created on 2016-06-18 16:55
+ */
+@Controller
+@RequestMapping("/user/mobile")
+public class UserMobileController extends BaseController {
+    private final Logger logger = Logger.getLogger(UserMobileController.class);
+
+    @RequestMapping("/login")
+    public String toLogin() {
+        return "/mobile/common/login";
+    }
+}

@@ -1,0 +1,181 @@
+package cv.focus.core.application.impl;
+
+/**
+ * Created by Administrator on 2016/9/12.
+ */
+
+import cv.focus.common.infrastructure.util.paginaction.WebPage;
+import cv.focus.core.application.SpecializationService;
+import cv.focus.core.domain.activity.*;
+import cv.focus.core.interfaces.cisactivity.dto.UserItemDTO;
+import cv.focus.core.domain.user.model.Specialization;
+import cv.focus.core.domain.user.model.SpecializationRepository;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.Date;
+import java.util.List;
+
+@Service
+public class SpecializationServiceImpl implements SpecializationService {
+    @Resource
+    private SpecializationRepository specializationRepositoryHibernateImpl;
+
+    public Specialization createSpecialization( Integer userId, String userName,Integer tutorId, String tutorName, Date specializationTime, int specializationPeriod, String nickname, String mobile, String email, String comments, int state, Date insertTime, float cost){
+        Specialization specialization = new Specialization(userId,userName,tutorId,tutorName,specializationTime,specializationPeriod,nickname,mobile,email,comments,state,insertTime,cost);
+        specializationRepositoryHibernateImpl.store(specialization);
+        return  specialization;
+    };
+
+    public List<Specialization> findByTutorName(String tutorName){
+        List<Specialization> list = specializationRepositoryHibernateImpl.findByTutorName(tutorName);
+        return list;
+    };
+
+    public List<Specialization> findByTutorId(Integer tutorId){
+        List<Specialization> list = specializationRepositoryHibernateImpl.findByTutorId(tutorId);
+        return list;
+    }
+
+
+    public List<Specialization> findByUserId(Integer userId){
+        List<Specialization> list = specializationRepositoryHibernateImpl.findByUserId(userId);
+        return list;
+    }
+
+    public List<Specialization> findAll(){
+        List<Specialization> list = specializationRepositoryHibernateImpl.findAll();
+        return list;
+    }
+
+    @Override
+    public List<ItemEntity> findItemList() {
+        return specializationRepositoryHibernateImpl.findItemList();
+    }
+
+    @Override
+    public List<ItemEntity> findTopItemList(int n) {
+        return specializationRepositoryHibernateImpl.findTopItemList(n);
+    }
+
+
+    @Override
+    public ItemEntity findItemById(Integer itemId) {
+        return specializationRepositoryHibernateImpl.findItemById(itemId);
+    }
+
+    @Override
+    public void addPageviews(ItemEntity item) {
+        Integer chickNum = item.getChickNum();
+        Integer itemId = item.getItemId();
+        Integer afterClickNum = chickNum + 1;
+       specializationRepositoryHibernateImpl.addPageviews(itemId,afterClickNum);
+    }
+
+    @Override
+    public List<ItemEntity> findBannerList() {
+        return specializationRepositoryHibernateImpl.findBannerList();
+    }
+
+    public List<UserItemDTO> findUserItemByUserId(Integer userId){
+        List<UserItemDTO> list = specializationRepositoryHibernateImpl.findUserItemByUserId(userId);
+        return list;
+    }
+
+    @Override
+    public List<CourseEntity> findCourseByType(String courseType) {
+        List<CourseEntity> list=specializationRepositoryHibernateImpl.findCourseByType(courseType);
+        return list;
+    }
+
+    @Override
+    public void saveApplyInfo(ApplyActivity applyActivity) {
+        specializationRepositoryHibernateImpl.saveApplyInfo(applyActivity);
+    }
+
+    @Override
+    public void saveApplyActivity(UserApplyActivity userApplyActivity) {
+        specializationRepositoryHibernateImpl.saveApplyActivity(userApplyActivity);
+    }
+
+    @Override
+    public CourseEntity findExamInfoById(String id) {
+        return  specializationRepositoryHibernateImpl.findExamInfoById(id);
+    }
+
+    @Override
+    public void saveUserScore(UserScore userScore) {
+        specializationRepositoryHibernateImpl.saveUserScore(userScore);
+    }
+
+    @Override
+    public ApplyActivity findApplyActivityByUserId(Integer userId) {
+       return specializationRepositoryHibernateImpl.findApplyActivityByUserId(userId);
+    }
+
+
+    @Override
+    public List<UserScore> findUserScoreByType(Integer userId, String type) {
+        return specializationRepositoryHibernateImpl.findUserScoreByType(userId,type);
+    }
+
+    @Override
+    public UserApplyActivity findUserActivityById(String id) {
+        return specializationRepositoryHibernateImpl.findUserActivityById(id);
+    }
+
+    @Override
+    public void deleteUserActivity(UserApplyActivity userApplyActivity) {
+         specializationRepositoryHibernateImpl.deleteUserActivity(userApplyActivity);
+    }
+
+    @Override
+    public UserScore findUserScoreById(String id) {
+       return specializationRepositoryHibernateImpl.findUserScoreById(id);
+    }
+
+    @Override
+    public void deleteUserScore(UserScore userScore) {
+        specializationRepositoryHibernateImpl.deleteUserScore(userScore);
+    }
+
+    @Override
+    public UserApplyActivity findUserActivityByUserId(Integer userId, String activityName) {
+        return specializationRepositoryHibernateImpl.findUserActivityByUserId(userId,activityName);
+    }
+
+    @Override
+    public UserScore findUserScoreByExamId(String examId,Integer userId) {
+        return specializationRepositoryHibernateImpl.findUserScoreByExamId(examId,userId);
+    }
+
+    @Override
+    public void deleteApplyActivity(ApplyActivity existApplyActivity) {
+        specializationRepositoryHibernateImpl.deleteApplyActivity(existApplyActivity);
+    }
+
+
+    @Override
+    public List<UserApplyActivity> findAllUserApplyActivity(Integer userId) {
+        return specializationRepositoryHibernateImpl.findAllUserApplyActivity(userId);
+    }
+
+    @Override
+    public WebPage findItemListByPage(WebPage webPage) {
+        return specializationRepositoryHibernateImpl.findItemListByPage(webPage);
+    }
+
+    @Override
+    public WebPage findItemListByUserId(Integer userId, WebPage webPage) {
+        return specializationRepositoryHibernateImpl.findItemListByUserId(userId,webPage);
+    }
+
+    @Override
+    public WebPage queryActivityList(String keywords, WebPage page) {
+        return specializationRepositoryHibernateImpl.queryActivityList(page,keywords);
+    }
+
+
+
+}

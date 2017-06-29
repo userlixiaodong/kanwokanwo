@@ -1,0 +1,15 @@
+@charset "utf-8";
+.search-list{ padding:20px 0; max-width:1200px; margin:0 auto;}
+
+.search-header,.search-header a i,.search-header a{ color:#1BB38C; font-size:20px; height:40px;}
+.search-header a i,.search-header-bar i{ font-size:26px; margin-right:10px;}
+.search-header .search-description{ color:#3d3d3d; display:inline-block;}
+.search-header-bar { border-bottom:1px solid #999;}
+
+.mt20{ margin-top:20px;}
+.user-list{ padding:0 10px;}
+.user-list a{ display:block;}
+.user-list dl{ width:100%; padding: 7px 15px; background:#333; color:#fff; height: 94px;-webkit-transition: all .2s ease-in-out;transition: all .2s ease-in-out;}
+.user-list dt{ font-size:22px; font-weight:100;}
+.user-list dd{ font-size:14px;}
+.user-list a:hover dl{ background:#000;}

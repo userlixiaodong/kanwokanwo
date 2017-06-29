@@ -1,0 +1,40 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<link rel="stylesheet" type="text/css" href="/style/bottom.css"/>
+<footer class="clearfix">
+    <div class="row">
+        <div class="col-md-12">
+      <span>
+        Learn more about Kanwokanwo <br>
+        <br>
+         © 2017.Kanwokanwo<br>
+          <em>京ICP备14049391号-1</em>
+      </span>
+        </div>
+    </div>
+</footer>
+<%--<script>--%>
+<%--var _hmt = _hmt || [];--%>
+<%--(function() {--%>
+   <%--var hm = document.createElement("script");--%>
+     <%--hm.src = "//hm.baidu.com/hm.js?bbf35b4303ced08fa9af56df2c374a0d";--%>
+       <%--var s = document.getElementsByTagName("script")[0];--%>
+         <%--s.parentNode.insertBefore(hm, s);--%>
+         <%--})();--%>
+<%--</script>--%>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-75362333-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<script>
+(function() {
+   var _53code = document.createElement("script");
+     _53code.src = "//tb.53kf.com/code/code/10089574/4";
+       var s = document.getElementsByTagName("script")[0];
+         s.parentNode.insertBefore(_53code, s);
+         })();
+</script>

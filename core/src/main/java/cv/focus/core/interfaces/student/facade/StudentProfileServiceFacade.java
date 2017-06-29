@@ -1,0 +1,63 @@
+package cv.focus.core.interfaces.student.facade;
+
+import cv.focus.core.domain.student.model.Badge;
+import cv.focus.core.domain.student.model.activity.Activity;
+import cv.focus.core.domain.material.MaterialModule;
+import cv.focus.core.domain.material.MaterialType;
+import cv.focus.core.domain.student.model.profile.Remark;
+import cv.focus.core.domain.student.model.profile.StudentProfile;
+import cv.focus.core.domain.student.model.profile.exam.ExamRecord;
+import cv.focus.core.interfaces.student.dto.BiographyDTO;
+import cv.focus.core.interfaces.student.dto.RemarkDTO;
+import cv.focus.core.domain.student.model.profile.exam.ExamType;
+
+import java.io.InputStream;
+import java.text.ParseException;
+import java.util.List;
+
+/**
+ * Created by song on 16/2/21.
+ */
+public interface StudentProfileServiceFacade {
+    StudentProfile findStudentProfileByPublicUri(String uri);
+
+    String getHomePageUrl(String email);
+
+    StudentProfile getProfileByEmail(String email);
+
+
+    BiographyDTO updateBiography(String studentProfileId, String name, String location, String currentSchool, String graduationYear, String hobby, String graduationSchool) throws ParseException;
+
+    void updateAndSynchronizeProfile(String email, String school);
+
+    void updateStoryDesc(String email, String storyDesc);
+
+    String uploadFile(String email, String fileName, InputStream fileInputStream, MaterialType materialType, MaterialModule module);
+
+    void updateRewardDesc(String email, String rewardDesc);
+
+    String checkUploadFile(MaterialType type, String fileName, long fileSize);
+
+    RemarkDTO addRemark(String fromUser, String toUser, String content);
+
+
+    /**
+     * remarkDto转换
+     * @param remarkList
+     * @return
+     */
+    List<RemarkDTO> transRemarkListToDTO(List<Remark> remarkList) ;
+
+    void addExamRecord(String email, ExamType type, String[] scores);
+    void addExamRecords(String email, List<ExamRecord> ers);
+
+    List<RemarkDTO> getRemarkByStudentProfileId(String studentProfileId);
+
+    List<Badge> getBadges(StudentProfile sp,List<Activity> ats);
+
+    Integer calcuBadgesCompletionDegree(List<Badge> badges);
+
+    void updateHonorDesc(String email, String honorDesc);
+
+    void updateDesc(String params, String module, String email);
+}

@@ -1,0 +1,240 @@
+/*** 页面重置初始化样式开始 ***/
+*{margin:0;padding:0;-webkit-box-sizing: border-box;box-sizing: border-box;}
+body{color:#4d4d4d;background:#FFF;font-size:0.24rem;font-family:"Lato", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif,"Microsoft Yahei";font-weight:300; font-style:normal; line-height:1.4;}
+img{border:0;}
+:focus{outline:0;}
+input,select,textarea{font-family: "Lato", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif,"Microsoft Yahei";height:0.2rem;font-size:0.12rem;line-height:0.2rem;}
+ol,ul,li{list-style:none;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+em,i{font-style:normal;}
+a,a:link,a:visited,a:active{text-decoration:none;}
+a i{ color:#fff;}
+.clearfix:after { content: "."; display: block; clear: both; height: 0; visibility: hidden; }
+.clearfix { display: block; min-height: 1%; }
+.fl{float:left;}
+.fr{float:right;}
+.pos_a{position:absolute;}
+.pos_r{position:relative;}
+.pos_f{position:fixed;}
+/* 外边距样式 */
+.mt10{margin-top:0.10rem;}
+.mt20{margin-top:0.20rem;}
+/* 对齐方式 */
+.tac{text-align:center;}
+.tal{text-align:left;}
+.tar{text-align:right;}
+/* 省略号 */
+.omit,.our_students li p{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;_text-overflow:clip;}
+/* 强制换行 */
+.wbw_b{word-break:break-all; /*支持IE，chrome，FF不支持*/word-wrap:break-word;/*支持IE，chrome，FF*/}
+.wp{max-width:768px;min-width:320px;margin:0 auto;overflow:hidden;}
+/*水平 竖直居中*/
+.center{position:absolute; left:50%; top:50%;transform:translate(-50%,-50%); -webkit-transform:translate(-50%,-50%);}
+/*竖直居中*/
+/*.v_center{position:absolute; top:50%; left:0; transform:translateY(-50%); -webkit-transform:translateY(-50%);}*/
+/*字体*/
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 100;
+    src: local('Lato Hairline'), local('Lato-Hairline'), url(/style/mobile/font/typeface/eFRpvGLEW31oiexbYNx7Y_esZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 100;
+    src: local('Lato Hairline'), local('Lato-Hairline'), url(/style/mobile/font/typeface/GtRkRNTnri0g82CjKnEB0Q.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin-ext */
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Lato Light'), local('Lato-Light'), url(/style/mobile/font/typeface/dPJ5r9gl3kK6ijoeP1IRsvY6323mHUZFJMgTvxaG2iE.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Lato Light'), local('Lato-Light'), url(/style/mobile/font/typeface/EsvMC5un3kjyUhB9ZEPPwg.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin-ext */
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Lato Bold'), local('Lato-Bold'), url(/style/mobile/font/typeface/ObQr5XYcoH0WBoUxiaYK3_Y6323mHUZFJMgTvxaG2iE.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Lato Bold'), local('Lato-Bold'), url(/style/mobile/font/typeface/H2DMvhDLycM56KNuAtbJYA.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Open Sans Condensed';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Open Sans Condensed Bold'), local('OpenSans-CondensedBold'), url(/style/mobile/font/typeface/gk5FxslNkTTHtojXrkp-xBrT1lp9IdZ6Q20XTtjH6Zv3rGVtsTkPsbDajuO5ueQw.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+}
+/* cyrillic */
+@font-face {
+    font-family: 'Open Sans Condensed';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Open Sans Condensed Bold'), local('OpenSans-CondensedBold'), url(/style/mobile/font/typeface/gk5FxslNkTTHtojXrkp-xIS898UBCVj0FEntoasBk6P3rGVtsTkPsbDajuO5ueQw.woff2) format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+    font-family: 'Open Sans Condensed';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Open Sans Condensed Bold'), local('OpenSans-CondensedBold'), url(/style/mobile/font/typeface/gk5FxslNkTTHtojXrkp-xBkraXwpsr1uSZUhAAol_4_3rGVtsTkPsbDajuO5ueQw.woff2) format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+    font-family: 'Open Sans Condensed';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Open Sans Condensed Bold'), local('OpenSans-CondensedBold'), url(/style/mobile/font/typeface/gk5FxslNkTTHtojXrkp-xKTAHfCyYjmaKhz-jw4dXo73rGVtsTkPsbDajuO5ueQw.woff2) format('woff2');
+    unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+    font-family: 'Open Sans Condensed';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Open Sans Condensed Bold'), local('OpenSans-CondensedBold'), url(/style/mobile/font/typeface/gk5FxslNkTTHtojXrkp-xP1CsDU87ma3di2VmaZcPSr3rGVtsTkPsbDajuO5ueQw.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+1EA0-1EF1, U+20AB;
+}
+/* latin-ext */
+@font-face {
+    font-family: 'Open Sans Condensed';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Open Sans Condensed Bold'), local('OpenSans-CondensedBold'), url(/style/mobile/font/typeface/gk5FxslNkTTHtojXrkp-xBztfhWvsElVqpbWxzFHK633rGVtsTkPsbDajuO5ueQw.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Open Sans Condensed';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Open Sans Condensed Bold'), local('OpenSans-CondensedBold'), url(/style/mobile/font/typeface/gk5FxslNkTTHtojXrkp-xIF8zhZCJ7x9Pr62cRgaVUA.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/*图标*/
+@font-face {font-family: "iconfont";
+  src: url('/style/mobile/font/icon/iconfont.eot?t=1465813233'); /* IE9*/
+  src: url('/style/mobile/font/icon/iconfont.eot?t=1465813233#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('/style/mobile/font/icon/iconfont.woff?t=1465813233') format('woff'), /* chrome, firefox */
+  url('/style/mobile/font/icon/iconfont.ttf?t=1465813233') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('/style/mobile/font/icon/iconfont.svg?t=1465813233#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont {font-family:"iconfont" !important;font-style:normal;}
+.icon_qq:before { content: "\e622"; }
+.icon_fenxiang:before { content: "\e611"; }
+.icon_duihuakuang:before { content: "\e600"; }
+.icon_dingwei:before { content: "\e601"; }
+.icon_zhuye:before { content: "\e602"; }
+.icon_xin_shi:before { content: "\e616"; }
+.icon_youxiang:before { content: "\e603"; }
+.icon_logout:before { content: "\e61b"; }
+.icon_setting:before { content: "\e61c"; }
+.icon_weixin:before { content: "\e614"; }
+.icon_dianhua:before { content: "\e604"; }
+.icon_facebook:before { content: "\e605"; }
+.icon_xin_kong:before { content: "\e606"; }
+.icon_sousuo:before { content: "\e607"; }
+.icon_xinlang:before { content: "\e615"; }
+.icon_xiangji:before { content: "\e623"; }
+.icon_twitter:before { content: "\e609"; }
+.icon_preview:before { content: "\e61d"; }
+.icon_jiantouxia_strong:before { content: "\e61a"; }
+.icon_dianzan_shi:before { content: "\e617"; }
+.icon_yiwen:before { content: "\e61e"; }
+.icon_sample:before { content: "\e61f"; }
+.icon_shenqing:before { content: "\e60a"; }
+.icon_lianxifangshi:before { content: "\e60b"; }
+.icon_dianzan_kong:before { content: "\e618"; }
+.icon_wangzhi:before { content: "\e60c"; }
+.icon_lianjie:before { content: "\e60d"; }
+.icon_xinxi_strong:before { content: "\e60e"; }
+.icon_message:before { content: "\e620"; }
+.icon_xinxi_normal:before { content: "\e60f"; }
+.icon_xueshengjiachang:before { content: "\e610"; }
+.icon_xuexiao_right:before { content: "\e621"; }
+.icon_xuexiao:before { content: "\e612"; }
+.icon_jiantouzuo:before { content: "\e619"; }
+.icon_jiantouxia2_normal:before { content: "\e613"; }
+/*页头样式*/
+header{background-color:#333;height:.8rem;padding-left:.1rem;}
+header .fl{width:40%;height:inherit;}
+header .fr{/*width: 2.64rem;*/width: 2.64rem;height:inherit;}
+header a,header .top_share,header .drop_down_btn{color:#fff;display:inline-block;height:100%;position:relative;width:.5rem;text-align:center;}
+header .fr a{width:.4rem;}
+header a i{font-size:.3rem;}
+header a img,header .green_circle{border-radius:50%;}
+header .fl a img{width:.4rem;height:.4rem;}
+header .green_circle{top:32%;right:20%;width:.1rem;height:.1rem;background-color:#1bb38c;}
+header .avatar{width:.7rem !important;}
+header .avatar img{border:3px solid #fff;width:.4rem;height:.4rem;}
+i.icon_duihuakuang.iconfont.center{font-size:.36rem;}
+i.icon_lianjie.iconfont.center{font-size:.26rem;}
+.red{color:#F00;}
+/*公共头部分享式*/
+.school_share{left:0rem;top:.6rem;z-index:999;background-color:#333;display:none;}
+.school_share li{height:.5rem;line-height:.5rem;}
+.school_share li a{display:block;text-align:center;width:.6rem;}
+/*公共头部学校头像展开折叠式*/
+header{left: 0;top:0;z-index: 999;width: 100%;}
+header .drop_down_btn{width:64%;}
+header .drop_down_btn.active{background-color:#1bb38c}
+header .drop_down_box,header .drop_down_box a{color:#fff;}
+header .drop_down_box{background-color:#333;left:0;top:.8rem;z-index:999;width:1.8rem;padding:.1rem 0 .1rem .08rem;display:none;}
+header .drop_down_box a{text-align:left;}
+header .drop_down_box dt{height:.5rem;}
+header .drop_down_box dd span,header .drop_down_box dd a{width:100%;display:block;}
+header .drop_down_box dd span{font-size:.18rem;width:96%;margin:0 auto;}
+header .drop_down_box dd a{font-size:.14rem;margin-bottom:.1rem;}
+header .drop_down_box ul li{height:.5rem;}
+header .drop_down_box ul li a i,header .drop_down_box ul li span{font-size:.18rem;display:inline-block;}
+header .drop_down_box ul li a i{width:80%;}
+header .drop_down_box ul li span{width:0;text-transform:capitalize;}
+/*学校头部式*/
+.school_top{padding:.2rem 0 .16rem;background-color:#333;margin-top: .8rem;}
+.school_top h2{font-size:.4rem;color:#fff;font-weight:900;padding:0 .1rem;text-transform:uppercase;}
+.school_top h6{font-size:.18rem;color:#b5b4b4;}
+.school_top p{padding:0 .4rem;}
+.school_top p span{display:inline-block;width:49%;margin-top:.2rem;}
+.school_top .like{font-size:.2rem;color:#fff;}
+.school_top .get_btn a{display:inline-block;padding:.16rem .14rem;color:#fff;background-color:#eb6100;}
+.school_top .school_avatar{left:50%;bottom:0;transform:translate(-50%,50%);-webkit-transform:translate(-50%,50%);}
+.school_top .school_avatar img{width:1.4rem;height:1.4rem;border-radius: 50%;}
+/*学校内容式*/
+.item_tit{color:#333;font-size:.3rem;font-weight:900;text-transform:uppercase;margin:.8rem 0 .2rem;}
+/*底部导航*/
+.footer_nav{bottom:0;left:0;width:100%;z-index:9999;}
+.footer_nav ul li{width:25%;background-color:#333;float:left;padding:.2rem 0;text-transform:uppercase;}
+.footer_nav ul li.active{background-color:#1bb38c;}
+.footer_nav ul li a{color:#fff;font-size:.2rem !important;}
+.footer_nav i{font-size:.4rem;}
+.footer_nav i,.footer_nav span{display:block;}
+section .return{ left:.4rem; top:0rem;}
+section .return i{ color:#333; font-size:.3rem;}
+/*未登录*/
+.login_in{width: 1.2rem !important;line-height: .8rem;}
+section{margin-bottom: 1.2rem;}

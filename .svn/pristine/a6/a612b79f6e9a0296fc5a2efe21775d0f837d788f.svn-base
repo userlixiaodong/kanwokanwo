@@ -1,0 +1,317 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>太平洋语言学校</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Touch enabled minimalistic slider written in vanilla JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="/style/public.css"/>
+    <link rel="stylesheet" type="text/css" href="/style/frame.css"/>
+    <link rel="stylesheet" href="/style/pacific.css">
+</head>
+<body>
+<div class="login-before">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>您还未登录，请在登录之后再进行申请哦！~</p>
+    <a class="login-btn md-trigger" data-modal="modal-12" href="javascript:trackOutboundLink('', 'index_login');">登录</a>
+</div>
+<div class="leadFrame">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>请使用电脑进行登录</p>
+</div>
+<div class="weixinFrame"></div>
+
+<div class="container_box">
+    <%@include file="/WEB-INF/views/common/top.jsp" %>
+    <input type="hidden" id="ItemId" value="${Item.itemId}">
+    <div class="gis_banner">
+        <img src="/images/BA-pacific.jpg" class="ban-pic">
+        <img src="/images/banner-wx.png" class="ban-wx">
+        <div class="gis_banner_btn">
+            <c:choose>
+                <c:when test="${sessionScope.loginUser == null}">
+                    <a href="javascript: loginAlert();;" class="signUp" id="signUp">点击报名</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="javascript:toApply();;" class="signUp" id="signUp">点击报名</a>
+                </c:otherwise>
+            </c:choose>
+            <%--<a href="//kw-cdn.kanwokanwo.com/videos/cis.mp4" class="signUp">观看往期直播</a>--%>
+        </div>
+    </div>
+
+    <div class="mid_cont">
+        <div class="advantage">
+            <p class="titles">学院优势</p>
+            <ul>
+                <li>
+                    <h4>100%升学保证，直通名校</h4>
+                    <span>Lanpa庞大且拥有优先录取权的保读网络，确保每一位学生都能成功转入心仪的学校。</span>
+                </li>
+                <li>
+                    <h4>众多合作大学</h4>
+                    <span>LanPa与八所排名前50的社区大学、十二所四年制大学、5所研究生课程大学合作。</span>
+                </li>
+                <li>
+                    <h4>地理位置优越</h4>
+                    <span>位于世界高科技创新中心“硅谷”的发源地，毗邻斯坦福大学。教育水平高，治安良好。</span>
+                </li>
+                <li>
+                    <h4>I-20签证通过率100%</h4>
+                    <span>首批美国教育部认证，移民局授权可发放I-20的ESL语言学院，且签证通过率100%。</span>
+                </li>
+                <li>
+                    <h4>节约6万美金学费</h4>
+                    <span>完成LanPa ESL-5课程即可转入合作社区大学，完成社区大学课程可直接进入四年制大学。</span>
+                </li>
+                <li>
+                    <h4>优先注册权</h4>
+                    <span>LanPa拥有合作大学优先注册权，开学前30天通过测试也可注册入学，节约大量时间与费用。</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="projectDetail">
+            <p class="titles">学院信息</p>
+            <div class="project_details">
+                <h2>学院信息</h2>
+                <div class="contens">
+                    <p>
+                        <b>学院地址： </b><span>美国加州旧金山湾区南部</span>
+                    </p>
+                    <p>
+                        <b>申请期限： </b><span>滚动申请</span>
+                    </p>
+                    <p>
+                        <b>主办单位：</b><span>太平洋语言学校</span>
+                    </p>
+                    <p>
+                        <b>住宿方式：</b><span>寄宿家庭、公寓</span>
+                    </p>
+                    <p>
+                        <b>适合人群：</b><span>高中毕业、高中未毕业18岁以上</span>
+                    </p>
+                    <p>
+                        <b>学院简介： </b>
+                        <span class="metarial">
+                            美国太平洋国际语言学院（Language Pacifica）创⽴于1979年，是⼀家全⽇制英语学院，从建校⾄今ESL课程教学已有超过37年的历史。是12所美国社区大学的双录取预科语言学校，是直升美国前50名⼤学的最佳捷径。美国太平洋国际语言学院（简称LP）位于斯坦福⼤学所在地，也是世界⾼科技创新中⼼硅⾕的发源地。此区教育⽔平极⾼，环境安全，气候四季如春，被选为北美99个城市中⽣活环境最佳的地区。学校距旧金山约45分钟车程，据旧金山国际机场和圣何塞国际机场都只有25分钟的车程，交通极为⽅便。学校旺季时有世界各地三⼗多个国家的学⽣来此学习。几⼗年来，已有近万名来⾃世界各地的学⽣通过LP实现了他们的美国梦。此外，学⽣在这里不仅可使他们的英语得到迅速提⾼，转⼊他们理想的美国⼤学，交到世界各地的朋友，扩⼤⾃⼰的视野，还可以住在美国家庭，深⼊了解美国的家庭⽣活，为今后在美国的留学⽣活打下良好的⽂化和⼈脉基础。
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <%--<div class="videoIntroduce">--%>
+        <%--<p class="titles" style="color: #fff;">太平洋语言学院详情介绍</p>--%>
+        <%--<div class="videoWrapper">--%>
+        <%--<video id="video1" src="http://focusedu.oss-cn-hangzhou.aliyuncs.com/videos/CIS2.mp4" type="video/mp4" width="100%" height="100%" controls="controls" poster="/images/video2.png" webkit-playsinline></video>--%>
+        <%--&lt;%&ndash;<i id="play" class="play"></i>&ndash;%&gt;--%>
+        <%--</div>--%>
+        <%--<c:choose>--%>
+        <%--<c:when test="${sessionScope.loginUser == null}">--%>
+        <%--<a  href="javascript: loginAlert();" class="videoSignUp" >报名申请</a>--%>
+        <%--</c:when>--%>
+        <%--<c:otherwise>--%>
+        <%--<a class="videoSignUp" href="javascript: toApply();">报名申请</a>--%>
+        <%--</c:otherwise>--%>
+        <%--</c:choose>--%>
+        <%--</div>--%>
+
+        <%--成功案例end--%>
+        <div class="successCase">
+            <p class="titles" style="color: #fff;">成功案例</p>
+            <div class="cases">
+
+                <hr style="width: 62%;margin: 0 auto -3rem;">
+                <div class="characters">
+                    <span style="display: block;">
+                        <label style="font-weight: bold;">姓名：</label>Marco Z <br/>
+                        <label style="font-weight: bold;">转学路径：</label><br/>
+2010年⾼中毕业后来到美国太平洋国际语言学院学习英语，2011年转入De Anza College, 两年后升⼊UC Berkeley（加⼤伯克利分校）， 2013年毕业后被电商巨头Ebay 公司录⽤。
+                    </span>
+                    <span>
+                        <label style="font-weight: bold;">姓名：</label>Sylvia T <br/>
+                        <label style="font-weight: bold;">转学路径：</label><br/>
+2013从台湾来到Language Pacifica学习英语，同年转入College of San Mateo进⾏⼤学基础课程的学习，2015年升 ⼊UC San Diego（加⼤圣地亚哥分校）攻读本科学位。
+                    </span>
+                    <span>
+                        <label style="font-weight: bold;">姓名：</label>Olivia C <br/>
+                        <label style="font-weight: bold;">转学路径：</label><br/>
+2013年⾼中毕业后从深圳来到Language Pacifica学习英语，同年转⼊College of San Mateo进⾏⼤学基础可程的学习，2015年升⼊San Jose State University（SJSU，圣何塞州立大学），现在SJSU攻读会计专业。
+                    </span>
+                    <span>
+                        <label style="font-weight: bold;">姓名：</label>Yan H <br/>
+                        <label style="font-weight: bold;">转学路径：</label><br/>
+2013年放弃了国內已修1年的⼤学本科课程来到Language Pacifica学习英语，同年转⼊College of San Mateo 进⾏两年的基础课程学习，后升⼊UCLA（加⼤洛杉矶分校）学习英语文学专业，将于2017年从UCLA毕业。
+                    </span>
+                </div>
+                <ol class="charactersImg">
+                    <li style="border: 2px solid #fff;">
+                        <img src="/images/keruper1.png" title="陈尤琪"><span class="imgMask" style="display: none"></span>
+                    </li>
+                    <li>
+                        <img src="/images/keruper2.png" title="高楠"><span class="imgMask"></span>
+                    </li>
+                    <li>
+                        <img src="/images/keruper1.png" title="陈尤琪"><span class="imgMask" style="display: none"></span>
+                    </li>
+                    <li>
+                        <img src="/images/keruper2.png" title="高楠"><span class="imgMask"></span>
+                    </li>
+                </ol>
+            </div>
+            <%--<a href="#" class="videoSignUp">点击报名</a>--%>
+        </div>
+
+        <div class="application">
+            <%--<p class="titles"><a href="">提升你的学术背景，让你的履历在<br />招生官的眼中再升一个等级吧~</a></p>--%>
+            <div class="tel-yw-icon">
+                <span class="consult_tel">13681039513</span>
+            </div>
+            <div class="consulting">
+                <div class="erweima">
+                    <img src="/images/gzh.png" alt=""><span>关注看我看我公众号<br/>获得更多留学资讯</span>
+                </div>
+                <div class="erweima">
+                    <img src="/images/kefu.png" alt=""><span>独家报名通道<br/>添加看我客服</span>
+                </div>
+            </div>
+            <c:choose>
+                <c:when test="${sessionScope.loginUser == null}">
+                    <a class="videoSignUp" href="javascript:loginAlert();" style="color:#fff;">点击报名</a>
+                </c:when>
+                <c:otherwise>
+                    <a class="videoSignUp" href="javascript:toApply();" style="color:#fff;">点击报名</a>
+                </c:otherwise>
+            </c:choose>
+        </div>
+    </div>
+    <%@include file="/WEB-INF/views/common/bottom.jsp" %>
+</div>
+<div class="mask"></div>
+</body>
+<script type="text/javascript">
+    var wid = $(window).width();
+    var hei = $(window).height();
+
+    function loginAlert(){
+        if (wid < 769){
+            $("#signUp,.videoSignUp").on("click",function () {
+                $(".mask").css("display","block").bind("touchmove",function(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                },false);
+                $(".leadFrame").show(400).bind("touchmove",function(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                },false);
+            });
+            $(".login-before-close-btn").on("click",function () {
+                $(".mask").css("display","none");
+                $(".leadFrame").css("display","none");
+            });
+        }else {
+            $(".login-before").css('display','block');
+        }
+    }
+    function closeAlert(){
+        $(".login-before").css('display','none');
+        location.reload();
+    }
+    function toApply(){
+        location.href = "/userItem/apply";
+    }
+    $(function () {
+        //成功案例添加背景图片
+        var list = $(".cases ul li");
+        var advList = $(".advantage ul li");
+        var resList = $(".results-parts");
+        var chaImgList = $(".charactersImg li");
+
+
+        for (var i = 0; i < list.length ; i++) {
+//            console.log(list[i]);
+            var listUrl = '/images/case'+parseInt(i+1)+'.png';
+//            console.log(listUrl);
+            list.eq(i).css({"background":"url("+listUrl+") no-repeat center top","background-size":"25%"});
+
+        }
+        for (var i = 0; i < advList.length ; i++) {
+//            console.log(advList[i]);
+            var advListUrl = '/images/adv'+parseInt(i+1)+'.png';
+//            console.log(advListUrl);
+            advList.eq(i).css("background","url("+advListUrl+") no-repeat center 30px #f5f8fa");
+        }
+        for (var i = 0; i < resList.length ; i++) {
+//            console.log(resList[i]);
+            var resListUrl = '/images/results'+parseInt(i+1)+'.png';
+//            console.log(advListUrl);
+            resList.eq(i).css({"background":"url("+resListUrl+") no-repeat top left #fff","background-size":"14%"});
+            if(i < 3){
+                resList.eq(i).css("background-position","top right");
+            }
+        }
+        //成功案例图像对应内容切换
+        $(".charactersImg li").on("click",function(){
+            var i = $(this).index();
+            var chaSpanList = $(".characters span").eq(i);
+//            console.log(i);
+//            console.log(chaSpanList.html());
+            $(this).css("border","2px solid #fff").children("span").css("display","none");
+            $(this).siblings("li").css("border","none").children("span").css("display","block");
+            chaSpanList.css("display","block").siblings().css("display","none");
+        });
+//        console.log($(".gis_banner").height());
+//        console.log(wid);
+        $(".gis_banner_btn").css({"width":wid*0.4,"top":$(".gis_banner").height()*0.8,"left":wid*0.3});
+        if (wid < 769){
+            $(".mid_cont").css({"width":wid,"max-width":"750px","margin":"0 auto"});
+            $(".advantageTable").css("width",wid);
+            $(".gis_banner").css("width",wid);
+            $(".gis_banner_btn").css({"width":wid,"top":$(".gis_banner").height()*0.7,"left":0});
+            $(".project_details").css({"width":wid*0.98,"margin-left":wid*0.01});
+            $(".leadFrame").css({"width":wid*0.8,"left":wid*0.5});
+            $(".user-login").css({"width":wid,"height":hei,"position":"fixed","margin-left":wid*0.1,"top":"0px"});
+
+            if(wid > 640){
+                for (var i = 0; i < list.length ; i++) {
+//            console.log(list[i]);
+                    var listUrl = '/images/case'+parseInt(i+1)+'.png';
+//            console.log(listUrl);
+                    list.eq(i).css({"background":"url("+listUrl+") no-repeat center top","background-size":"15%"});
+                }
+            }
+            //    简介文字超出字数用省略号代替
+            $(function () {
+                //成功案例部分
+//                var strs = "";
+//                for (var i=0;i<$(".caseSpan").length;i++){
+//                    var str = $(".caseSpan").eq(i).html();
+//                    var s = str.length;
+////                    console.log(str);
+////                    console.log(s);
+//                    if(s > 20){
+//                        strs = strs + $(".caseSpan").eq(i).html(str.substr(0,36)+"......");
+//                    }
+//                }
+                //活动成果部分
+//                for (var i=0;i<$(".results-span").length;i++){
+//                    var str = $(".results-span").eq(i).html();
+//                    var s = str.length;
+////                    console.log(s);
+////                    console.log(str);
+//                    if(s > 50){
+//                        strs = strs + $(".results-span").eq(i).html(str.substr(0,50)+"...");
+//                    }
+//                }
+
+//            报名按钮点击事件及弹出框屏幕禁止事件
+
+            })
+        }
+    })
+
+</script>
+
+</html>

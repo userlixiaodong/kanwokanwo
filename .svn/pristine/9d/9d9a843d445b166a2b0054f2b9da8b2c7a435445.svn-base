@@ -1,0 +1,402 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: 1009
+  Date: 2017/3/15
+  Time: 10:31
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<html>
+<head>
+    <title>院校库搜索</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="Expires" CONTENT="0"/>
+    <meta http-equiv="Cache-Control" CONTENT="no-cache"/>
+    <meta http-equiv="Pragma" CONTENT="no-cache"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=9, IE=8">
+    <link rel="stylesheet" type="text/css" href="/style/public.css?201604278722121100000"/>
+    <link rel="stylesheet" type="text/css" href="/style/frame.css?20160427"/>
+    <link rel="stylesheet" type="text/css" href="/style/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/style/searchpartnersSchool.css">
+    <style>
+
+        .pages{
+            color: #000000;
+            cursor: default;
+            font-size: 10px;
+            font-family: Tahoma, Verdana;
+            padding: 3px 0px 3px 0px;
+            text-align: center;
+            margin-top: 15px;
+        }
+        .pagination-sm > li > a, .pagination-sm > li > span{
+            font-size: 18px !important;
+        }
+    </style>
+</head>
+<body>
+<%@include file="/WEB-INF/views/common/top.jsp" %>
+<div class="container">
+    <div class="searchBar">
+        <form class="searchForm" role="search" action="${staticPath}/admission/profile/searchList" id="formid">
+            <div class="searchGroup">
+                <input type="text"  id="searchcontent" name="keywords" class="searchInput" placeholder="搜索学校名" value="${keywords}"
+                       style="border-bottom-color: #0aaa82;box-shadow:0 0 1px rgb(24,173,146);">
+                <input type="button" id="btn1" class="searchButton" value="搜索">
+            </div>
+        </form>
+
+       <%-- <form method="post" action="${staticPath}/admission/profile/searchList" id="formid">
+            <input class="search_box"  name="keywords"  placeholder="搜索学校名" />
+            <input class="search_btn" type="button" value="搜索"/>
+        </form>--%>
+    </div>
+    <form class="term-filter" id="form" action="/admission/profile/search" method="post" name="myform" >
+    <div class="conditions">
+        <div class="term">
+                <ul>
+                    <li class="screen">
+                        <label>学校类型：</label>
+                        <input type="radio" name="schoolLevel" value="1" <c:if test="${schoolLevel==1}"></c:if> id="schoolLevel1" class="schoolLevel">本科
+                        <input type="radio" name="schoolLevel" value="2" <c:if test="${schoolLevel==2}"></c:if> id="schoolLevel2" class="schoolLevel">高中
+                        <input type="radio" name="schoolLevel" value="3" <c:if test="${schoolLevel==3}"></c:if> id="schoolLevel3" class="schoolLevel">初中
+                    </li>
+                    <li class="secondary secondary1" id="secondary1">
+                        <input type="checkbox" name="strLodge" value="2" class="strLodge" >综合公立
+                        <input type="checkbox" name="strLodge" value="3" class="strLodge" >综合私立
+                        <input type="checkbox" name="strLodge" value="4" class="strLodge" >文理学院
+                        <input type="checkbox" name="strLodge" value="5" class="strLodge">社区大学
+                    </li>
+                    <li class="secondary secondary2" id="secondary2">
+                        <input type="checkbox" name="strLodge" value="0" >寄宿
+                        <input type="checkbox" name="strLodge" value="1" >走读
+                        <input type="radio" name="biography.schoolSex" value="1"  class="schoolSex">男校
+                        <input type="radio" name="biography.schoolSex" value="2" class="schoolSex" >女校
+                        <input type="radio" name="biography.schoolSex" value="0" class="schoolSex" >男女混校
+                    </li>
+                    <li class="secondary secondary3" id="secondary3">
+                        <input type="checkbox" name="strLodge" value="0" >寄宿
+                        <input type="checkbox" name="strLodge" value="1" >走读
+                        <input type="radio" name="biography.schoolSex" value="1"  class="schoolSex">男校
+                        <input type="radio" name="biography.schoolSex" value="2" class="schoolSex" >女校
+                        <input type="radio" name="biography.schoolSex" value="0" class="schoolSex" >男女混校
+                    </li>
+                    <li class="screen">
+                        <label>学生数量：</label>
+                        <input type="radio" name="biography.newbornNum" class="newbornNum" value="20000">20000以上
+                        <input type="radio" name="biography.newbornNum" class="newbornNum" value="10000-20000">10000-20000
+                        <input type="radio" name="biography.newbornNum" class="newbornNum" value="3000-10000">3000-10000
+                        <input type="radio" name="biography.newbornNum" class="newbornNum" value="1000-3000">1000-3000
+                        <input type="radio" name="biography.newbornNum" class="newbornNum" value="500-1000">500-1000
+                        <input type="radio" name="biography.newbornNum" class="newbornNum" value="500">500以下
+                    </li>
+                    <li class="screen">
+                        <label>所在地区：</label>
+                        <input type="checkbox" name="biography.province" class="province" value="1" ><i style="color:#fc6364;font-style: normal;">纽约</i>
+                        <input type="checkbox" name="biography.province" class="province" value="2" ><i style="color:#fc6364;font-style: normal;">加州</i>
+                        <input type="checkbox" name="biography.province" class="province" value="3"  ><i style="color:#fc6364;font-style: normal;">德州</i>
+                        <input type="radio" name="biography.area" value="1" class="area">东北
+                        <input type="radio" name="biography.area" value="2" class="area">东部其他
+                        <input type="radio" name="biography.area" value="3" class="area" >西部
+                        <input type="radio" name="biography.area" value="4" class="area">中部
+                        <input type="radio" name="biography.area" value="5" class="area">南部
+                    </li>
+                    <li class="screen">
+                        <label>地域类型：</label>
+                        <input type="radio" name="biography.settings" class="settings" value="1" >大城市
+                        <input type="radio" name="biography.settings" class="settings" value="2" >中小城市
+                        <input type="radio" name="biography.settings" class="settings" value="3" >郊区
+                        <input type="radio" name="biography.settings" class="settings" value="4" >小镇/乡村
+                    </li>
+                    <li class="screen">
+                        <label>是否早申：</label>
+                        <input type="radio" name="application.ED" value="1" <c:if test="${application.ED==1}">checked="checked"</c:if>>是
+                        <input type="radio" name="application.ED" value="0" <c:if test="${application.ED==0}">checked="checked"</c:if>>否
+                    </li>
+
+                    <li class="screen" id='tuofu'>
+                        <label>最低托福：</label>
+                        <input type="radio" name="tScore" class="tScore" value="100" >100以上
+                        <input type="radio" name="tScore" class="tScore" value="80-100">80-100
+                        <input type="radio" name="tScore" class="tScore" value="80" >80以下
+                    </li>
+                    <li class="screen" id="yasi">
+                        <label>最低雅思：</label>
+                        <input type="radio" name="yScore" class="yScore" value="7">7以上
+                        <input type="radio" name="yScore" class="yScore" value="6-7">6-7
+                        <input type="radio" name="yScore" class="yScore" value="5-6">5-6
+                        <input type="radio" name="yScore" class="yScore" value="5">5以下
+                    </li>
+                    <li class="screen" id="sat">
+                        <label>是否需要SAT成绩：</label>
+                        <input type="radio" name="application.issat" value="1" <c:if test="${application.issat==1}">checked="checked"</c:if>>是
+                        <input type="radio" name="application.issat" value="0" <c:if test="${application.issat==0}">checked="checked"</c:if>>否
+                        <input type="reset" style="display: none">
+                    </li>
+
+                </ul>
+        </div>
+
+        <div class="more">
+            <input id="btn2" type="button" class="btnSearch" value="确定">
+            <a href="javascript:;" id='moreOpt'>更多选项</a>
+        </div>
+    </div>
+    </form>
+    <iframe id="rfFrame" name="rfFrame" src="about:blank" style="display:none;"></iframe>
+    <div class="resultsHeader">
+        <span class="schoolNum">共找到${page.totalCount}所大学</span>
+        <span class="clear" id="clear">清空条件</span>
+    </div>
+
+    <div class="searchResults">
+        <ul class="searchWrapper">
+            <c:forEach items="${page.data}" var="u">
+
+                <li class="searchWrapper_li">
+                    <ul class="searchItem">
+                        <li class="searchItem_li">
+                            <a href="/${u.publicUri}" target="_blank">
+                            <c:if test="${not empty u.biography.avatar}">
+                                <c:set var="string1" value="${u.biography.avatar}"/>
+                                <c:set var="string2" value="${fn:replace(string1,'focusedu.oss-cn-hangzhou.aliyuncs.com','img-cdn.kanwokanwo.com')}"/>
+                                <img src="${string2}@1e_1c_0o_0l_200h_200w_80q.src">
+                            </c:if>
+                            <c:if test="${empty u.biography.avatar}">
+                                <img src="/images/s1.png">
+                            </c:if>
+                            </a>
+                        </li>
+                        <li class="searchItem_li">
+                            <h4>${u.biography.cname}</h4>
+                            <h5>${u.biography.name}</h5>
+                            <ul class="score">
+                                <li class="searchText">托福成绩：${u.application.toeflscore}</li>
+                                <li class="searchText">SAT成绩：${u.application.middlesatscore}</li>
+                                <li class="searchText">雅思成绩：${u.application.ieltsScore}</li>
+                            </ul>
+                            <p class="searchText">每年学费：${u.application.tuition}</p>
+                        </li>
+                        <li class="searchItem_li">
+                            <p>综合私立大学</p>
+
+                            <p>国家综合大学- ${u.application.ranking}名</p>
+                            <a href="/${u.publicUri}"><span>查看详情</span></a>
+                        </li>
+                    </ul>
+                </li>
+            </c:forEach>
+        </ul>
+
+    </div>
+
+</div>
+</div>
+<div class="row">
+    <div class="clearfix search-page text-center">
+        <div class="col-md-12">
+            <nav>
+                <div class="pages" id="divPage"></div>
+                <script type="text/javascript" src="/js/splitpage.js"></script>
+                <script type="text/javascript">
+                    var pg = new showPages('pg');
+                    $(document).ready(function() {
+                        pg.argName = 'currentPage';
+                        pg.pageCount = ${page.totalPage};//定义总页数(必要)
+                        pg.printHtml('divPage');
+                    });
+                </script>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<%@include file="/WEB-INF/views/common/bottom.jsp" %>
+<%--<script src="/js/jquery-1.9.1.min.js"></script>--%>
+<script src="/js/checkBoxStyle.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/video.js"></script>
+<script src="/js/myVideo.js"></script>
+<script src="/js/video-popup.js?20160512"></script>
+<script type="text/javascript">
+    // 点击加载更多选项
+    $(function(){
+
+        //学校等级回显
+        var strLodge = "${strLodge}";
+        if (strLodge==null){
+            return;
+        }else {
+            var split=strLodge.split(",");
+            for(var i=0;i<split.length;i++){
+                $(".strLodge").each(function () {
+                    if($(this).val()==split[i]){
+                        $(this).prop("checked","checked");
+                    }
+                })
+            }
+        }
+        //学生人数回显
+        var newbornNum="${biography.newbornNum}";
+        if (newbornNum ==null){
+            return;
+        }else {
+             $(".newbornNum").each(function () {
+                 if($(this).val()==newbornNum){
+                     $(this).prop("checked","checked");
+                 }
+             })
+        }
+        //地域类型回显
+        var settings="${biography.settings}";
+        if(settings==null){
+            return;
+        }else{
+            $(".settings").each(function () {
+                if($(this).val()==settings){
+                    $(this).prop("checked","checked");
+                }
+            })
+        }
+       //托福分数回显
+        var tScore="${tScore}";
+        if(tScore==null){
+            return;
+        }else{
+            $(".tScore").each(function () {
+                if($(this).val()==tScore){
+                    $(this).prop("checked","checked");
+                }
+            })
+        }
+        //雅思分数回显
+        var yScore="${yScore}";
+        if(yScore==null){
+            return;
+        }else{
+            $(".yScore").each(function () {
+                if($(this).val()==yScore){
+                    $(this).prop("checked","checked");
+                }
+            })
+        }
+        //biography.province回显
+        var province="${biography.province}";
+        if(province==null){
+            return;
+        }else{
+            var split=province.split(",");
+            for(var i=0;i<split.length;i++){
+                $(".province").each(function () {
+                    if($(this).val()==split[i]){
+                        $(this).prop("checked","checked");
+                    }
+                })
+            }
+        }
+        //男校，女校男女混校
+
+        $("#tuofu").hide();
+        $("#yasi").hide();
+        $("#sat").hide();
+        $("#moreOpt").click(function(){
+            if($(this).html()=="更多选项"){
+                $("#tuofu").show();
+                $("#yasi").show();
+                $("#sat").show();
+                $(this).text("点击收起");
+                $(this).css("background","url('/images/up.png') no-repeat 100px 15px");
+            }else{
+                $("#tuofu").hide();
+                $("#yasi").hide();
+                $("#sat").hide();
+                $(this).text("更多选项");
+                $(this).css("background","url('/images/down.png') no-repeat 100px 15px");
+            }
+        });
+
+        $("#schoolLevel1").checkBoxStyle({
+            DomIdentifyingArr : ["#tuofu","#yasi","#sat"],
+            curryAttr : {"disabled":false}
+        });
+        $("#schoolLevel2").checkBoxStyle({
+            DomIdentifyingArr : ["#tuofu","#yasi","#sat"],
+            curryStyle : {"cursor":"default","background":"rgb(243,246,249)","color":"#666"},
+            curryAttr : {"disabled":"disabled"}
+        });
+        $("#schoolLevel3").checkBoxStyle({
+            DomIdentifyingArr : ["#tuofu","#yasi","#sat"],
+            curryStyle : {"cursor":"default","background":"rgb(243,246,249)","color":"#666"},
+            curryAttr : {"disabled":"disabled"}
+        });
+
+
+       //学校类型筛选
+        for(var i = 1;i<=$(".schoolLevel").length;i++){
+            $("#schoolLevel"+i).on("click",function (){
+                $(this).show();
+            });
+        }
+
+
+        $(document).on("click",function () {
+            var e = event || window.event;      //兼容IE和非IE的event
+            var aim = e.srcElement || e.target;     //兼容IE和非IE的事件源
+            for(var i = 1;i<=$(".schoolLevel").length;i++){
+                aim != $("#schoolLevel"+i)[0] && !$("#secondary"+i)[0].contains(aim) ? $("#secondary"+i).hide(): $("#secondary"+i).show();
+                console.log($("#schoolLevel"+i)[0].contains(aim));
+            }
+
+            for(var i = 1;i<=$(".schoolLevel").length;i++){
+                $("#schoolLevel"+i).attr({"index":i});
+                $("#schoolLevel"+i).on("click",function (){
+                    $(this).show();
+                    for (var j = 1;j<=$(".schoolLevel").length;j++){
+                        if (j!=$(this).attr("index")){
+                            $("#secondary"+j).find("input").attr({"checked":false});
+                        }
+                    }
+                });
+            }
+
+        });
+
+
+        //表单提交事件
+        $("#btn1").click(function () {
+            var text=$('#searchcontent').val();
+            if(text==null || text==''){
+                return false
+            }else {
+                $('#formid').submit();
+
+            }
+        })
+
+        $("#btn2").click(function () {
+            $("#form").submit();
+            $("#form").attr("target","rfFrame");
+        })
+
+        //清空条件
+        $("#clear").click(function () {
+            $('input[type="checkbox"]:checked').each(function () {
+                $(this).prop("checked","");
+            });
+            $('input[type="radio"]:checked').each(function () {
+                $(this).prop("checked","");
+            })
+        })
+
+
+    });
+
+</script>
+</body>
+</html>

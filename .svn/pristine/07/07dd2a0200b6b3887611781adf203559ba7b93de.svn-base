@@ -1,0 +1,40 @@
+screen.top.interview=Reserve Interview
+screen.top.follow=Follow
+
+screen.left.connect=connect
+screen.left.conntext=Connect with me on social:
+screen.left.application=APPLICATION
+screen.left.ranking=Ranking
+screen.left.typeofschool=Type of schools
+screen.left.applicationrequirements=Application requirements
+screen.left.deadlines=Deadlines
+screen.left.ed=Early Admission
+screen.left.sat=Sat Need
+screen.left.satScore=Average SAT Score
+screen.left.minToeflScore=Minimum TOEFL Score
+screen.left.middleToeflScore=Average TOEFL Score
+screen.left.ielts=IELTS Score
+screen.left.gpa=GPA
+screen.left.visitcampus=Visit Campus
+screen.left.tuitions=Scholarships and tuitions
+screen.left.officeemail=Admission office email
+screen.left.officewebsite=Admission office website
+screen.left.topics=Application essay topics
+screen.left.development=Graduate development
+screen.left.ourstudents=OUR STUDENTS
+screen.left.ourstudentsmore=MORE
+
+screen.right.timeline=Timeline
+screen.right.about=About
+screen.right.picture=PICTURE
+screen.right.video=VIDEO
+
+screen.right.meetmevideo=MEET ME VIDEO
+screen.right.ourschool=OUR SCHOOL
+screen.right.academics=ACADEMICS
+screen.right.residentiallife=RESIDENTIAL LIFE
+screen.right.extlife=EXTRACURRICULAR LIFE
+screen.right.deadlineinfo=DEADLINE INFORMATION
+screen.right.required=REQUIRED APPLICATION MATERIALS
+screen.right.financialaid=FINANCIAL AID
+screen.right.additionalinfo=ADDITIONAL INFORMATION

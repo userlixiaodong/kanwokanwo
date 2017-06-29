@@ -1,0 +1,402 @@
+package cv.focus.core.interfaces.school.web;
+
+import com.google.gson.Gson;
+import cv.focus.common.infrastructure.util.paginaction.WebPage;
+import cv.focus.core.application.AdmissionProfileService;
+import cv.focus.core.application.UserService;
+import cv.focus.core.domain.material.MaterialModule;
+import cv.focus.core.domain.school.model.profile.SchoolCountry;
+import cv.focus.core.domain.school.model.profile.SchoolLevel;
+import cv.focus.core.domain.school.model.profile.*;
+import cv.focus.core.domain.user.model.Role;
+import cv.focus.core.infrastructure.util.BaseController;
+import cv.focus.core.infrastructure.util.CommonUtil;
+import cv.focus.core.infrastructure.util.Result;
+import cv.focus.core.infrastructure.util.ResultMessages;
+import cv.focus.core.interfaces.school.dto.AdRemarkDTO;
+import cv.focus.core.interfaces.school.dto.AdmissionProfileDTO;
+import cv.focus.core.interfaces.school.dto.BiographyDTO;
+import cv.focus.core.interfaces.school.dto.SchoolApplicationDTO;
+import cv.focus.core.interfaces.school.dto.SchoolOurStudentDTO;
+import cv.focus.core.interfaces.school.facade.AdmissionProfileServiceFacade;
+import cv.focus.core.interfaces.user.dto.UserDTO;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.servlet.ModelAndView;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+/**
+ * AdmissionProfileController
+ * 
+ * @author liuruichao
+ * Created on 2016-04-02 13:10
+ */
+@Controller
+@RequestMapping("/admission/profile")
+public class AdmissionProfileController extends BaseController {
+    private final Logger logger = Logger.getLogger(AdmissionProfileController.class);
+    @Resource
+    private AdmissionProfileServiceFacade admissionProfileServiceFacade;
+    @Resource
+    private UserService userService;
+    @Resource
+    private AdmissionProfileService admissionProfileService;
+
+    @RequestMapping(value = "/search")
+    public String getProfileList(AdmissionProfile admissionProfile, HttpServletRequest request,@ModelAttribute("page") WebPage page,Model model,String strLodge,String schoolLevel,String tScore,String yScore){
+        try {
+            if(page == null){
+                page = new WebPage();
+            }
+            page = admissionProfileService.getSchoolsList4Page(admissionProfile,page,strLodge,schoolLevel,tScore,yScore);
+            if(null!=page&&page.getPageSize()>0)
+            {
+                List dataList = page.getData();
+                Gson gson = new Gson();
+                model.addAttribute("schools",gson.toJson(dataList));
+                model.addAttribute("page",page);
+                //筛选条件回显
+                Biography biography = admissionProfile.getBiography();
+                SchoolApplication application = admissionProfile.getApplication();
+                model.addAttribute("biography",biography);
+                model.addAttribute("application",application);
+                model.addAttribute("strLodge",strLodge);
+                model.addAttribute("schoolLevel",schoolLevel);
+                model.addAttribute("tScore",tScore);
+                model.addAttribute("yScore",yScore);
+            }
+        } catch (Exception e) {
+            logger.error("AdmissionProfileController.getProfileList()", e);
+        }
+        return  "school/searchpartnersSchool";
+    }
+
+    @RequestMapping("/ourstudents/{schoolName}/{currentPage}.json")
+    @ResponseBody
+    public Result<WebPage<SchoolOurStudentDTO>> informationList(
+            @PathVariable String schoolName,
+            @PathVariable Integer currentPage,
+            HttpServletRequest request) {
+        Result<WebPage<SchoolOurStudentDTO>> result = null;
+        try {
+            if (StringUtils.isBlank(schoolName)) {
+                return newFaildResult(ResultMessages.PARAM_ERROR);
+            }
+            WebPage<SchoolOurStudentDTO> webPage = admissionProfileServiceFacade.getOurStudentList(schoolName, currentPage);
+            result = newSuccessResult(ResultMessages.OPERATE_SUCCESS, webPage);
+        } catch (Exception e) {
+            logger.error("InformationController.informationList()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }
+
+    @RequestMapping("/addRemark")
+    @ResponseBody
+    public Result<AdRemarkDTO> addRemark(
+            @RequestParam String fromUser,
+            @RequestParam String toUser,
+            @RequestParam String impression) {
+        Result<AdRemarkDTO> result = null;
+        try {
+            AdRemarkDTO remarkDTO = admissionProfileServiceFacade.addReamrk(fromUser, toUser, impression);
+            result = newSuccessResult(ResultMessages.OPERATE_SUCCESS, remarkDTO);
+        } catch (Exception e) {
+            logger.error("AdmissionProfileController.addRemark()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }
+
+    @RequestMapping("/application/update")
+    @ResponseBody
+    public Result<SchoolApplicationDTO> updateApplication(
+            @RequestParam String specialty,
+            @RequestParam String requirement,
+            @RequestParam String tuitionUrl,
+            @RequestParam String admissionEmail,
+            @RequestParam String applicationUrl,
+            @RequestParam String docTitle,
+            @RequestParam String ourStudentUrl,
+            @RequestParam String visitUrl,
+            @RequestParam String other,
+            @RequestParam String enrollmentUrl,
+            @RequestParam String advice,
+            @RequestParam String enrollmentScale,
+            @RequestParam String deadline,
+            @RequestParam String tuition,
+            @RequestParam String studiesGuide,
+            @RequestParam String courseType,
+            @RequestParam String culturePlan,
+            @RequestParam String courseSys,
+            @RequestParam String admissionSituation,
+            @RequestParam int ranking,
+            @RequestParam String ED,
+            @RequestParam String issat,
+            @RequestParam int toeflscore,
+            @RequestParam int middlesatscore,
+            @RequestParam int middletoeflscore,
+            @RequestParam float middlegpascore,
+            @RequestParam float ieltsScore,
+            HttpServletRequest request) {
+        Result<SchoolApplicationDTO> result = null;
+        try {
+            UserDTO userDTO = getLoginUser(request);
+            if (userDTO == null || userDTO.getRole() == Role.STUDENT) {
+                return newFaildResult(ResultMessages.NO_LOGIN);
+            }
+            SchoolApplicationDTO applicationDTO = admissionProfileServiceFacade.updateApplication(userDTO.getAdmissionProfileId(),specialty,
+                    requirement, tuitionUrl, admissionEmail, applicationUrl, docTitle, ourStudentUrl, visitUrl, other,
+                    enrollmentUrl, advice, enrollmentScale, deadline, tuition, studiesGuide, courseType, culturePlan, courseSys, admissionSituation,ranking,ED,issat
+                    ,toeflscore,middlesatscore,middletoeflscore, middlegpascore,ieltsScore);
+            result = newSuccessResult(ResultMessages.OPERATE_SUCCESS, applicationDTO);
+        } catch (Exception e) {
+            logger.error("AdmissionProfileController.updateApplication()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }
+
+    @RequestMapping("/myschool/updateDesc")
+    @ResponseBody
+    public Result<String> updateMySchoolDesc(
+            @RequestParam String description,
+            HttpServletRequest request) {
+        Result<String> result = null;
+        try {
+            UserDTO userDTO = getLoginUser(request);
+            if (userDTO == null) {
+                return newFaildResult(ResultMessages.NO_LOGIN);
+            }
+            admissionProfileServiceFacade.updateMySchoolDesc(userDTO.getEmail(), description);
+            result = newSuccessResult(ResultMessages.OPERATE_SUCCESS, description);
+        } catch (Exception e) {
+            logger.error("AdmissionProfileController.updateMySchoolDesc()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }
+
+    @RequestMapping("/biography/update")
+    @ResponseBody
+    public Result<BiographyDTO> updateBiography(
+            @RequestParam String name,
+            @RequestParam String schoolRank,
+            @RequestParam String location,
+            @RequestParam String webSite,
+            @RequestParam String phone,
+            @RequestParam String biographyOther,
+            @RequestParam String linkEmail,
+            @RequestParam String linkFacebook,
+            @RequestParam String linkTwitter,
+            @RequestParam String linkInstagram,
+            @RequestParam Integer schoolLevel,
+            @RequestParam Integer lodge,
+            @RequestParam String province,
+            @RequestParam String city,
+            @RequestParam String area,
+            @RequestParam String createSchoolTime,
+            @RequestParam String newbornNum,
+            @RequestParam String schoolAcreage,
+            @RequestParam String classSize,
+            @RequestParam String teacherEducational,
+            @RequestParam String teacherStudentRatio,
+            @RequestParam String settings,
+            @RequestParam String schoolSex,
+            HttpServletRequest request) {
+        Result<BiographyDTO> result = null;
+        try {
+            UserDTO userDTO = getLoginUser(request);
+            if (userDTO == null) {
+                return newFaildResult(ResultMessages.NO_LOGIN);
+            }
+            if (StringUtils.isBlank(name)) {
+                return newFaildResult(ResultMessages.PARAM_ERROR);
+            }
+            if (StringUtils.isNotBlank(linkEmail)) {
+                if (!admissionProfileServiceFacade.checkEmail(linkEmail)) {
+                    return newFaildResult(ResultMessages.VALID_EMAIL_ERROR);
+                }
+            }
+            if (StringUtils.isNotBlank(linkTwitter)) {
+                if (!admissionProfileServiceFacade.checkSNSAccount(linkTwitter)) {
+                    return newFaildResult(ResultMessages.VALID_TWITTER_ERROR);
+                }
+            }
+            if (StringUtils.isNotBlank(linkFacebook)) {
+                if (!admissionProfileServiceFacade.checkSNSAccount(linkFacebook)) {
+                    return newFaildResult(ResultMessages.VALID_FACEBOOK_ERROR);
+                }
+            }
+            if (StringUtils.isNotBlank(linkInstagram)) {
+                if (!admissionProfileServiceFacade.checkSNSAccount(linkInstagram)) {
+                    return newFaildResult(ResultMessages.VALID_INSTAGRAM_ERROR);
+                }
+            }
+            BiographyDTO biographyDTO = admissionProfileServiceFacade.updateBiography(userDTO.getAdmissionProfileId(),
+                    name, schoolRank, location, webSite, phone, biographyOther, linkEmail, linkFacebook, linkTwitter, linkInstagram, schoolLevel, lodge,
+                    province, city, area, createSchoolTime, newbornNum, schoolAcreage, classSize, teacherEducational, teacherStudentRatio,settings,schoolSex);
+            result = newSuccessResult(ResultMessages.OPERATE_SUCCESS, biographyDTO);
+        } catch (Exception e) {
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+            logger.error("AdmissionProfileController.updateBiography()", e);
+        }
+        return result;
+    }
+
+    @RequestMapping(value = "/description/{id}", method = RequestMethod.PUT)
+    @ResponseBody
+    public Result modifyDesc(HttpServletRequest request, @PathVariable MaterialModule id)  {
+        Result result = null;
+        String email = getLoginEmail(request);
+        try {
+            if (StringUtils.isBlank(email)) {
+                return newFaildResult(ResultMessages.NO_LOGIN);
+            }
+            String params = CommonUtil.streamToString(request.getInputStream(), "utf-8");
+            if (params != null && params.length() > 0) {
+                admissionProfileServiceFacade.updateDesc(params,id, email);
+                result = newSuccessResult(ResultMessages.OPERATE_SUCCESS, null);
+            }
+
+        } catch (Exception e) {
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+            logger.error("AdmissionProfileController.modifyDesc()", e);
+        }
+
+        return result;
+    }
+
+    @RequestMapping("/schoolList")
+    public String schoolList(@RequestParam(required = false) SchoolCountry country, HttpServletRequest request) {
+       try {
+
+            List<AdmissionProfileDTO> admissionProfiles = admissionProfileServiceFacade.getSchools(country);
+            request.setAttribute("admissionProfiles", admissionProfiles);
+            request.setAttribute("country", country);
+        } catch (Exception e) {
+            logger.error("AdmissionProfileController.schoolList()", e);
+        }
+        return "school/partners";
+    }
+
+    @RequestMapping("/partnerschoolList")
+    public String partnerschoolList(HttpServletRequest request) {
+        try {
+            //获取大学前10 以权重排
+            SchoolCountry country = SchoolCountry.OTHER;
+            List<AdmissionProfile> uList=admissionProfileServiceFacade.getUSchools(country);
+            //获取高中前10 以权重排
+            List<AdmissionProfile> hList=admissionProfileServiceFacade.getHSchools(country);
+            request.setAttribute("uList",uList);
+            request.setAttribute("hList",hList);
+            request.setAttribute("country", country);
+        } catch (Exception e) {
+            logger.error("AdmissionProfileController.schoolList()", e);
+        }
+        return "school/partnersSchool";
+    }
+
+
+    @RequestMapping(value = "/alumniOnline", method = RequestMethod.GET)
+    public String toalumniOnline()  {
+
+        return "user/alumniOnline";
+    }
+
+
+    @RequestMapping(value = "/videoDocument", method = RequestMethod.GET)
+    public String tovideoDocument()  {
+
+        return "user/videoDocument";
+    }
+
+    @RequestMapping(value = "/aboutUs", method = RequestMethod.GET)
+    public String toaboutUs() {
+        return "user/aboutUs";
+    }
+
+
+    @RequestMapping(value = "/searchList")
+    public String tosearchList(HttpServletRequest request,  @ModelAttribute("page") WebPage page, Model model) {
+        try{
+            if(page == null){
+                page = new WebPage();
+            }
+            String keywords = request.getParameter("keywords");
+            if("搜索".equals(keywords) || keywords == null){
+                keywords = "";
+            }
+            page = admissionProfileService.querySchools(keywords,page);
+            if(null!=page&&page.getPageSize()>0)
+            {
+                List dataList = page.getData();
+                Gson gson = new Gson();
+                model.addAttribute("schools",gson.toJson(dataList));
+                model.addAttribute("page",page);
+                model.addAttribute("keywords",keywords);
+            }
+
+        }catch (Exception ex){
+            logger.error("SpecializationController.inBox2()", ex);
+        }
+        return "school/searchpartnersSchool";
+       /* return "school/searchSchools";*/
+
+
+    }
+
+    //查看更多 大学
+    @RequestMapping("/pagelistu")
+    public String queryUniversity(HttpServletRequest request,  @ModelAttribute("page") WebPage page, Model model) {
+        try{
+            if(page == null){
+                page = new WebPage();
+            }
+            page=admissionProfileService.queryUniversity("1",page);
+            if(null!=page&&page.getPageSize()>0)
+            {
+                List dataList = page.getData();
+                Gson gson = new Gson();
+                model.addAttribute("Universitys",gson.toJson(dataList));
+                model.addAttribute("page",page);
+            }
+
+        }catch (Exception ex){
+            logger.error("SpecializationController.inBox2()", ex);
+        }
+        return "school/pagelistu";
+    }
+
+    //查看更多 大学
+    @RequestMapping("/pagelisth")
+    public String queryHighSchool(HttpServletRequest request,  @ModelAttribute("page") WebPage page, Model model) {
+        try{
+            if(page == null){
+                page = new WebPage();
+            }
+            page=admissionProfileService.queryUniversity("2",page);
+            if(null!=page&&page.getPageSize()>0)
+            {
+                List dataList = page.getData();
+                Gson gson = new Gson();
+                model.addAttribute("HighSchool",gson.toJson(dataList));
+                model.addAttribute("page",page);
+            }
+
+        }catch (Exception ex){
+            logger.error("SpecializationController.inBox2()", ex);
+        }
+        return "school/pagelisth";
+    }
+}

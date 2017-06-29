@@ -1,0 +1,161 @@
+package cv.focus.core.interfaces.user.facade.impl;
+
+import cv.focus.core.application.AdmissionProfileService;
+import cv.focus.core.application.StudentProfileService;
+import cv.focus.core.application.UserService;
+import cv.focus.core.domain.school.model.profile.SchoolCountry;
+import cv.focus.core.domain.user.model.Role;
+import cv.focus.core.domain.user.model.User;
+import cv.focus.core.interfaces.user.facade.UserServiceFacade;
+import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
+
+/**
+ * Created by szj on 2016/2/2.
+ */
+@Service
+public class UserServiceFacadeImpl implements UserServiceFacade {
+    @Resource
+    private UserService userService;
+    @Resource
+    private StudentProfileService studentProfileService;
+    @Resource
+    private AdmissionProfileService admissionProfileService;
+
+    @Override
+    public boolean register(String email, String userName, String userPwd, String school, Role type, String roleR) {
+        return register(email, userName, userPwd, school, type, null, roleR);
+    }
+
+    @Override
+    public boolean register(String email, String userName, String userPwd, String school, Role type, SchoolCountry country, String roleR) {
+        User user = userService.createUser(email, userName, userPwd, type,roleR);
+        if(null == user){
+            return false;
+        }
+        if (type == Role.STUDENT) {
+            studentProfileService.createStudentProfile(user);
+        } else {
+            admissionProfileService.createAdmissionProfile(user, school, country);
+        }
+        return true;
+    }
+
+    @Override
+    public User findUserByMobile(String mobile) {
+        return userService.findUserByMobile(mobile);
+    }
+
+    @Override
+    public boolean register(String mobile, String email, String userName, String userPwd, String roleR) {
+        User user = userService.createUser(mobile, email, userName, userPwd, Role.STUDENT,roleR);
+        if(null == user){
+            return false;
+        }
+        studentProfileService.createStudentProfile(user);
+        return true;
+    }
+
+    @Override
+    public boolean updateEmail(String mobile, String email) {
+        try {
+            userService.updateEmail(mobile, email);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public User findUserByUserId(Integer userId) {
+        return userService.findUserById(userId);
+    }
+
+    @Override
+    public void updateUserName(Integer userId, String userName) {
+        userService.updateUserName(userId, userName);
+    }
+
+    @Override
+    public void follow(Integer fromId, Integer ownerId) {
+        userService.follow(fromId, ownerId);
+    }
+
+    @Override
+    public void unfollow(Integer fromId, Integer ownerId) {
+        userService.unfollow(fromId, ownerId);
+    }
+
+    @Override
+    public boolean isFollow(Integer fromId, Integer ownerId) {
+        return userService.isFollow(fromId, ownerId);
+    }
+
+    @Override
+    public int getUserFollowCount(Integer userId) {
+        return userService.getFollowCount(userId);
+    }
+
+    @Override
+    public void resetPasswordByMobile(String mobile, String pwd) {
+        userService.resetPasswordByMobile(mobile,pwd);
+    }
+
+    @Override
+    public void modifyPassword(User user, String pwdn) {
+        userService.modifyPassword(user,pwdn);
+    }
+
+    @Override
+    public void updateMobile(User user, String mobile) {
+        userService.updateMobile(user,mobile);
+    }
+
+    @Override
+    public void deactive(String email) {
+        userService.deactive(email);
+    }
+
+    @Override
+    public User activate(String code) {
+        return userService.activate(code);
+    }
+
+    @Override
+    public User findUserByEmail(String email) {
+        return userService.findUserByEmail(email);
+    }
+
+    @Override
+    public void resetPassword(String email, String password) {
+        userService.resetPassword(email, password);
+    }
+
+    @Override
+    public void sendEmail(String email) {
+        userService.forgetPassword(email);
+    }
+
+    @Override
+    public boolean checkResetLink(String email, String sid) {
+        return userService.checkResetLink(email, sid);
+    }
+
+    @Override
+    public boolean checkLogin(String loginName, String userPwd) {
+        User user = userService.findUserByEmail(loginName);
+        if (user == null) {
+            user = userService.findUserByMobile(loginName);
+        }
+        return user != null && user.getUserPwd().equals(user.encryptPasswd(userPwd));
+    }
+
+    @Override
+    public User findUserByUserName(String userName){
+        return userService.findOnlyUserByUserName(userName);
+    };
+}

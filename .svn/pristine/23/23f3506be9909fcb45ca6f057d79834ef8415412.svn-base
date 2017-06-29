@@ -1,0 +1,228 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>视频简历</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Touch enabled minimalistic slider written in vanilla JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="/style/public.css"/>
+    <link rel="stylesheet" type="text/css" href="/style/frame.css"/>
+    <link rel="stylesheet" type="text/css" href="/style/video-js.css?20160322"/>
+    <link rel="stylesheet" href="/style/videoProfile.css">
+</head>
+<body>
+    <div class="container_box">
+        <%@include file="/WEB-INF/views/common/top.jsp" %>
+        <div class="gis_banner">
+            <img src="/images/BA-videoProfile.jpg" class="ban-pic">
+            <%--<img src="/images/banner-wx.png" class="ban-wx">--%>
+            <div class="gis_banner_btn">
+                <c:choose>
+                    <c:when test="${sessionScope.loginUser == null}">
+                        <a href="javascript:trackOutboundLink('', 'index_topRightSignUp');" class="registerBtn" id="registerBtn">免费注册</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="javascript:trackOutboundLink('', 'index_topRightSignUp');" class="registerBtn" id="registerBtn">免费注册</a>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+        </div>
+        <div class="mid_cont">
+            <%--part1视频简历可以用于申请所有的美国大学start--%>
+            <div class="part1">
+                <div class="part1-wrapper">
+                    <div class="part1-text">
+                        <ul class="part1-title">
+                            <li>
+                                <b>现在，视频简历可以用于申请所有的美国大学</b>
+                            </li>
+                        </ul>
+                        <div class="texts">
+                            <p>"KanwoKanwo profile is a great tool for students to personalize their college applications and for us to see the real person behind each application. I'd like to see more applicants use KanwoKanwo to showcase their unique identity and extracurricular accomplishments."</p>
+                            <p>看我看我是一个对于学生个性化申请具有很大作用的网站，通过看我看我，我们可以看到文书背后对应申请者真正的样子。希望能看到更多的申请人使用看我看我展示他们独特的一面和课外成就。</p>
+                            <img src="/images/videoProfile-part1-teacher.png">
+                            <div class="interview-describe">
+                                <span>Stanley D. Nel</span>
+                                <span>旧金山大学副校长</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="part1-video">
+                        <div class="text-center col-lg-12 col-xs-12 relative-position">
+                            <img src="/images/videoProfile-part1-videoImg.png" materialSrc="//kw-cdn.kanwokanwo.com/schoolvideo/universityofsanfrancisco.mp4">
+                            <div class="colleges-content col-lg-12 col-xs-12">
+                                <dl class="absolute-position">
+                                    <dd>
+                                        <a href="javascript:;" class="md-trigger video-container" data-modal="cusGuide">
+                                            <i class="glyphicon glyphicon-play-circle" src="/images/colleges-big-pic.jpg" materialSrc="//kw-cdn.kanwokanwo.com/schoolvideo/universityofsanfrancisco.mp4"></i>
+                                        </a>
+                                    </dd>
+                                    <dt>Stanley D. Nel</dt>
+                                    <dd>Vice President of University of San Francisco</dd>
+                                </dl>
+                                <a href="javascript:;" class="colleges-btn md-trigger video-container" data-modal="cusGuide">
+                                    <i class="glyphicon glyphicon-play-circle" src="/images/videoProfile-part1-videoImg.png" materialSrc="//kw-cdn.kanwokanwo.com/schoolvideo/universityofsanfrancisco.mp4"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%--part1视频简历可以用于申请所有的美国大学end--%>
+            <%--part2视频简历——让你在招生官眼中更鲜活start--%>
+            <div class="part2">
+                <h3 class="titles" style="color: #fff;"><b class="toLine">视频简历</b>——让你在招生官眼中更鲜活</h3>
+                <div class="part2-wrapper">
+                    <div class="part2-video">
+                        <div class="colleges-column text-center col-lg-12 col-xs-12 relative-position">
+                            <img src="/images/videoProfile-part2-videoImg.jpg" materialSrc="//kw-cdn.kanwokanwo.com/videos/xiesixiong67908202553385976790829491843795.mp4">
+                            <div class="colleges-content col-lg-12 col-xs-12 part2-btn">
+                                <dl class="absolute-position">
+                                    <dd>
+                                        <a href="javascript:;" class="md-trigger video-container" data-modal="cusGuide">
+                                            <i class="glyphicon glyphicon-play-circle" src="/images/videoProfile-part2-videoImg.jpg" materialSrc="//kw-cdn.kanwokanwo.com/videos/xiesixiong67908202553385976790829491843795.mp4"></i>
+                                        </a>
+                                    </dd>
+                                </dl>
+                                <a href="javascript:;" class="colleges-btn md-trigger video-container" data-modal="cusGuide">
+                                    <i class="glyphicon glyphicon-play-circle" src="/images/videoProfile-part2-videoImg.jpg" materialSrc="//kw-cdn.kanwokanwo.com/videos/xiesixiong67908202553385976790829491843795.mp4"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="video-introduce-left">
+                            <p>XIE SIXIONG<a target="_blank" href="/xiesixiong" class="hisVideo video-description">他的视频简历</a></p>
+                            <p>Trinity-Pawling School Loyola School, NY</p>
+                        </div>
+                    </div>
+                    <ul class="part2-students">
+                        <li>
+                            <div class="video-introduce">
+                                <p>SHINING ZHAO<a href="/shiningzhao" class="hisVideo">他的视频简历</a></p>
+                                <p>牛津大学&nbsp;&nbsp;&nbsp;&nbsp;帝国理工大学&nbsp;&nbsp;&nbsp;&nbsp;佐治亚理工学院</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="video-introduce">
+                                <p>XINYUYAO<a href="/xinyuyao" class="hisVideo">她的视频简历</a></p>
+                                <p>波士顿学院&nbsp;&nbsp;&nbsp;&nbsp;罗彻斯特大学&nbsp;&nbsp;&nbsp;&nbsp;凯斯西储大学</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="video-introduce">
+                                <p>CHENG CHI<a href="/chengchi" class="hisVideo">他的视频简历</a></p>
+                                <p>南加州大学&nbsp;&nbsp;&nbsp;&nbsp;密歇根大学工程&nbsp;&nbsp;&nbsp;&nbsp;北卡教堂山</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <%--part2视频简历——让你在招生官眼中更鲜活end--%>
+            <%--part3从七年级开始，记录你的活动和成就，以便在申请学校时做出系统性的展现start--%>
+            <div class="part3">
+                <h3 class="titles">从七年级开始，记录你的活动和成就，以便在申请学校时做出系统性的展现</h3>
+                <div class="underLine"></div>
+                <div class="part3-wrapper">
+                    <div class="part3-left">
+                        <img src="/images/videoProfile-leftImg.png">
+                    </div>
+                    <div class="part3-text">
+                        <ul class="part1-title" style="padding-left:4rem;">
+                            <li style="margin-left:-3rem;">
+                                <b>你的看我看我视频简历链接可以添加到任何学校的申请中</b>
+                            </li>
+                        </ul>
+                        <div class="texts">
+                            <p>"It doesn't matter where you are applying, every high school and college can now see your whole story.Sometimes it's hard to choose the words that accurately express your passions; however, Kanwokanwo allowed me to show, rather than just talk."</p>
+                            <p>不管你申请哪里的大学，每一个个高中和大学都能看到你完整的履历。有时很难选择一个精准的词汇来表达你想说的话，不过在看我看我，你可以用行动与语言一起展示出你想表达的，这回比只用语言描述更到位。</p>
+                            <img src="/images/videoProfile-part3-student.png">
+                            <div class="interview-describe">
+                                <span>Cindy Chow</span>
+                                <span>高中申请学员</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%--part3从七年级开始，记录你的活动和成就，以便在申请学校时做出系统性的展现end--%>
+            <%--part4一份独具特色的视频简历是如何诞生的start--%>
+            <div class="part4">
+                <h3 class="titles">一份独具特色的<b class="toLine">视频简历</b>是如何诞生的</h3>
+                <ul class="howToBorn">
+                    <li>
+                        <img src="/images/videoProfile-howToBorn1.png">
+                        <span>根据学员提供的背景资料提炼学员闪光点</span>
+                    </li>
+                    <li>
+                        <span>导师、学生和拍摄团队进行头脑风暴，制定拍摄方案</span>
+                        <img src="/images/videoProfile-howToBorn2.png">
+                    </li>
+                    <li>
+                        <img src="/images/videoProfile-howToBorn3.png">
+                        <span>拟定拍摄文本内容，拍摄团队为学员进行拍摄</span>
+                    </li>
+                    <li>
+                        <span>剪辑出最符合学员定位且最能突出学员特长的视频简历</span>
+                        <img src="/images/videoProfile-howToBorn4.png">
+                    </li>
+                </ul>
+            </div>
+            <%--part4一份独具特色的视频简历是如何诞生的end--%>
+            <%--part5底部模块start--%>
+            <div class="part5">
+                <div class="part5-video">
+                    <div class="text-center col-lg-12 col-xs-12 relative-position">
+                        <img src="/images/videoProfile-part5-videoImg.jpg" materialSrc="//kw-cdn.kanwokanwo.com/videos/index_student_video.mp4">
+                        <div class="colleges-content col-lg-12 col-xs-12 part2-btn">
+                            <dl class="absolute-position">
+                                <dd>
+                                    <a href="javascript:;" class="md-trigger video-container" data-modal="cusGuide">
+                                        <i class="glyphicon glyphicon-play-circle" src="/images/videoProfile-part5-videoImg.jpg" materialSrc="//kw-cdn.kanwokanwo.com/videos/index_student_video.mp4"></i>
+                                    </a>
+                                </dd>
+                            </dl>
+                            <a href="javascript:;" class="colleges-btn md-trigger video-container" data-modal="cusGuide">
+                                <i class="glyphicon glyphicon-play-circle" src="/images/videoProfile-part5-videoImg.jpg" materialSrc="//kw-cdn.kanwokanwo.com/videos/index_student_video.mp4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="part5-right">
+                    <div class="part5-rightInner">
+                        <ul class="part5-list">
+                            <li>
+                                <b>美国大学认可</b>
+                            </li>
+                            <li>
+                                <b>众多成功案例</b>
+                            </li>
+                            <li>
+                                <b>更生动、更真实</b>
+                            </li>
+                            <li>
+                                <b>留学申请新潮流</b>
+                            </li>
+                            <li>
+                                <a href="#">建立自己的视频简历</a>
+                            </li>
+                        </ul>
+                        <div class="part5-erweima">
+                            <img src="/images/videoProfile-part5-erweima.jpg">
+                            <p>电话：13681039513</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%--part5底部模块end--%>
+        </div>
+        <%@include file="/WEB-INF/views/common/bottom.jsp" %>
+    </div>
+</body>
+<script src="/js/video.js"></script>
+<script type="text/javascript" src="/js/video-popup.js?201605121953"></script>
+<script type="text/javascript">
+    $(function () {
+
+    })
+</script>
+</html>

@@ -1,0 +1,506 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2017/5/18
+  Time: 11:38
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<html>
+<head>
+    <title>template</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Touch enabled minimalistic slider written in vanilla JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="/style/public.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/frame.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/app.css">
+    <link rel="stylesheet" href="/style/qdtest.css?20170428">
+</head>
+<body>
+<div class="login-before">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>您还未登录，请在登录之后再进行申请哦！~</p>
+    <a class="login-btn md-trigger" data-modal="modal-12" href="javascript:trackOutboundLink('', 'index_login');">登录</a>
+</div>
+<div class="leadFrame">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>请使用电脑进行登录</p>
+</div>
+<div class="container_box">
+    <%@include file="/WEB-INF/views/common/top.jsp" %>
+    <input type="hidden" id="ItemId" value="${Item.itemId}">
+    <div class="gis_banner">
+        <img src="/images/BA-manteng.jpg" alt="" class="bannerIcon">
+        <div class="gis_banner_btn">
+            <c:choose>
+                <c:when test="${sessionScope.loginUser == null}">
+                    <a href="javascript: loginAlert();;" class="signUp" id="signUp">点击报名</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="javascript:toApply();;" class="signUp" id="signUp">点击报名</a>
+                </c:otherwise>
+            </c:choose>
+            <a href="//focusedu.oss-cn-hangzhou.aliyuncs.com/videos/manteng.mp4" class="signUp">观看往期直播</a>
+        </div>
+    </div>
+
+     <div class="mid_cont">
+
+        <c:if test="${fn:length(backgroundMaterialList) ne 0}">
+             <%--项目背景start--%>
+             <%----------------------------------------------------------------------------项目背景开始-------------------------------------------------------------------------------%>
+             <div class="projectBackground">
+                 <p class="titles">项目背景</p>
+                    <c:forEach items="${backgroundMaterialList}" var="background">
+                        <div class="projectAnalyse">
+                             <h5>${background.note}
+                             </h5>
+                             <div id="hcharts">
+                                 <img src="${background.bitmap}" alt="">
+                             </div>
+                             <div class="nakedReason">
+                                 ${background.note1}
+                             </div>
+                        </div>
+                    </c:forEach>   
+             </div>
+             <%----------------------------------------------------------------------------项目背景结束-------------------------------------------------------------------------------%>
+         </c:if>
+
+         <%--项目特色start 注意：背景小图标动态生成命名格式统一以mantengIcon+由1开始的数字命名--%>
+         <div class="advantage">
+                 <p class="titles">项目特色</p>
+                 <ul class="clearfix">
+                     <li>
+                         <img src="/images/mantengIcon1.png" alt="">
+                         <h4>职场大数据</h4>
+                         <span>基于智能大数据<br/>伴随式成长引擎<br/>完善的职场引擎</span>
+                     </li>
+                     <li>
+                         <img src="/images/mantengIcon2.png" alt="">
+                         <h4>名企直通车</h4>
+                         <span>数百美名企资源<br/>美名企推荐机会<br/>实习+正式工作</span>
+                     </li>
+                     <li>
+                         <img src="/images/mantengIcon3.png" alt="">
+                         <h4>精英导师</h4>
+                         <span>“千人计划”专家<br/>全球500强高管<br/>“独角兽”创业精英</span>
+                     </li>
+                     <li>
+                         <img src="/images/mantengIcon4.png" alt="">
+                         <h4>全面的职业规划</h4>
+                         <span>科学职业测评<br/>全面简历提升<br/>专业面试培训</span>
+                     </li>
+                     <%--<li>
+                         <img src="/images/mantengIcon5.png" alt="">
+                         <h4>VIP专享订制</h4>
+                         <span>蔓藤鹰计划<br/>个性化定制服务<br/>针对性职业路径</span>
+                     </li>--%>
+                    <%-- <li>
+                         <h4>VIP专享订制</h4>
+                         <span>蔓藤鹰计划<br/>个性化定制服务<br/>针对性职业路径</span>
+                     </li>--%>
+                 </ul>
+             </div>
+
+<%----------------------------------------------------------------------------项目详情开始-------------------------------------------------------------------------------%>
+         <%--项目详情--%>
+         <div class="projectDetail">
+                <p class="titles">项目信息</p>
+                <div class="project_details">
+                    <h2>项目信息</h2>
+                    <div class="contens">
+                        <c:if test="${not empty Item.dt_location}">
+                            <p>
+                                <b>公司地址： </b><span>${Item.dt_location}</span>
+                            </p>
+                        </c:if>
+                        <c:if test="${not empty Item.dt_time}">
+                        <p>
+                            <b>申请期限： </b><span>${Item.dt_time}</span>
+                        </p>
+                        </c:if>
+                        <c:if test="${not empty Item.dt_people}">
+                        <p>
+                            <b>适合人群： </b><span>${Item.dt_people}</span>
+                        </p>
+                        </c:if>
+                        <c:if test="${not empty Item.dt_company}">
+                            <p>
+                                <b>主办单位： </b><span>${Item.dt_company}</span>
+                            </p>
+                        </c:if>
+                        <c:if test="${not empty Item.dt_intro}">
+                        <p>
+                            <b>项目简介： </b>
+                            <span class="metarial">
+                                ${Item.dt_intro}
+                            </span>
+                        </p>
+                        </c:if>
+                    </div>
+             </div>
+        </div>
+<%----------------------------------------------------------------------------项目详情结束-------------------------------------------------------------------------------%>
+
+        
+ <c:if test="${fn:length(videoMaterialList) ne 0}">
+    <%-------------------------------------------------------------------------视频介绍开始----------------------------------------------------------------------------------%>
+     <%--项目介绍视频--%>
+            <div class="videoIntroduce">
+                <c:forEach items="${videoMaterialList}" var="video">
+                        <p class="titles" >${video.title}</p>
+                        <div class="videoWrapper">
+                            <video id="video1" src="${video.videoUrl}"
+                                   type="video/mp4" width="100%" height="100%" controls="controls" poster="${video.bitmap}"
+                                   webkit-playsinline></video>
+                            <%--<i id="play" class="play"></i>--%>
+                        </div>
+                </c:forEach>
+                
+                <c:choose>
+                    <c:when test="${sessionScope.loginUser == null}">
+                        <a href="javascript: loginAlert();" class="videoSignUp">报名申请</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="videoSignUp" href="javascript: toApply();">报名申请</a>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+    <%--------------------------------------------------------------------------视频介绍结束---------------------------------------------------------------------------------------------%>
+</c:if>
+
+ <c:if test="${fn:length(positionMaterialList) ne 0}">
+    <%-------------------------------------------------------------------------活动职位开始----------------------------------------------------------------------------------%>
+         <%--项目活动Or实习start--%>
+         <div class="programBox">
+             <div class="summerProgram">
+
+                    <c:forEach items="${positionMaterialList}" var="position">
+                        <c:if test="${not empty position.title}">
+                            <p class="titles" >${position.title}</p>
+                            <ul class="int_list clearfix">
+                        </c:if>
+
+                        <li>
+                         <div class="intBox">
+                             <img src="${position.bitmap}" />
+                             ${position.note}
+                         </div>
+                        </li>
+                    </c:forEach>
+                     
+                     <div class="clear"></div>
+                 </ul>
+             </div>
+         </div>
+    <%--------------------------------------------------------------------------活动职位结束---------------------------------------------------------------------------------------------%>
+</c:if>
+         <%--鹰计划开始--%>
+         <div class="yjh">
+             <p class="titles">鹰计划</p>
+             <ul class="clearfix">
+                 <li>
+                     <div class="yjhCont">
+                         <h6><b class="line">雏<br>鹰</b> <br><i>$1499</i></h6>
+                         <div class="yjhInfo">
+                             <p><b>适合于：</b><span>正在申请美国大学的学生</span></p>
+                             <p><b>提供：</b><span>1、职场导师辅导（3课时）</span><span>2、留学推荐信（5封）</span></p>
+                         </div>
+                     </div>
+                 </li>
+                 <li>
+                     <div class="yjhCont">
+                         <h6><b class="line">精<br>鹰</b> <br><i>$7500-12500</i></h6>
+                         <div class="yjhInfo">
+                             <p><b>四档收费（每年）：</b><span>$7500/$9500/$10500/$12500</span></p>
+                             <p><b>适合于：</b><span>本科在读学生和研究生在读学生</span></p>
+                             <p><b>提供：</b><span>1、次美国公司实习</span><span>2、职场导师辅导（12次/年）</span><span>3、职业规划顾问咨询（48次/年）</span></p>
+                         </div>
+                     </div>
+                 </li>
+                 <li>
+                     <div class="yjhCont">
+                         <h6><b class="line">雄<br>鹰</b> <br><i>$58000</i></h6>
+                         <div class="yjhInfo">
+                             <p><b>适合于：</b><span>本科在读学生和研究生在读学生</span></p>
+                             <p><b>提供：</b><span>1、1份H-1B工作Offer</span><span>2、1次美国公司实习</span><span>3、顶尖导师辅导（不超过15次）</span><span>4、首席职业规划顾问咨询（不超过60次）</span><span>5、3次顶尖导师模拟面试</span></p>
+                         </div>
+                     </div>
+                 </li>
+                 <li>
+                     <div class="yjhCont">
+                         <h6><b class="line">飞<br>鹰</b> <br><i>$6500</i></h6>
+                         <div class="yjhInfo">
+                             <p><b>适合于：</b><span>本科在读学生和研究生在读学生</span></p>
+                             <p><b>提供：</b><span>1、次美国公司实习</span><span>2、1次职场导师辅导。</span><span>3、3次职业规划顾问咨询</span></p>
+                             <p><b style="width: 113%">远程项目实习（战鹰$5000）：</b><span>项目实践+4次辅导+1封推荐信+(Plus:$2999升级6封网推荐信)</span></p>
+                         </div>
+                     </div>
+                 </li>
+                 <li>
+                     <div class="yjhCont">
+                         <h6><b class="line">新<br>鹰</b> <br><i>$2999</i></h6>
+                         <div class="yjhInfo">
+                             <p><b>适合于：</b><span>临近毕业，准备找工作。或者已经毕业，求职过程中遇到瓶颈的学生</span></p>
+                             <p><b>提供：</b><span>1、职场精英导师辅导（5次）</span><span>2、求职文书修改</span><span>3、蔓藤岗位资源库</span></p>
+                         </div>
+                     </div>
+                 </li>
+             </ul>
+         </div>
+         <%--活动成果--%>
+         <div class="activityResults">
+             <p class="titles">活动成果</p>
+             <div class="results">
+                 <div class="resultsPart">
+                     <div class="results-parts">
+                         <h4>美国大学学分</h4>
+                         <span class="results-span">
+                            CIS项目目前已经与美国两百多所大学完成了学分认证的工作,所有项目学员可以在项目结束后与美国大学沟通转换学分
+                        </span>
+                     </div>
+                     <div class="results-parts">
+                         <h4>学术背景提升</h4>
+                         <span class="results-span">
+                            项目将给学生申请带来显著的学术优势。往期学员极高的名校录取比例说明了CIS在学生背景提升上的作用
+                        </span>
+                     </div>
+                     <div class="results-parts">
+                         <h4>成绩单</h4>
+                         <span class="results-span">
+                            教授将根据学生一个月的课上、课下、思维、沟通、考试、论文等多方面综合给予项目结业评分B-以上评分被认为是合格毕业学员
+                        </span>
+                     </div>
+                 </div>
+                 <div class="resultsPart">
+                     <div class="results-parts">
+                         <h4>私人推荐信</h4>
+                         <span class="results-span">
+                            如果学生表现优异，将有可能得到教授由个人办公室署名，直接通过CA等申请系统向大学提交的推荐信
+                        </span>
+                     </div>
+                     <div class="results-parts">
+                         <h4>官方推荐信</h4>
+                         <span class="results-span">
+                            CIS项目官方将要求教授为学员出具项目官方推荐信（教授将根据学员实际表现出具推荐信）
+                        </span>
+                     </div>
+                     <div class="results-parts">
+                         <h4>论文</h4>
+                         <span class="results-span">
+                            所有学员会在项目结束后获得自身研究成果。A评级学员中50%优异学术成果将发表在由清华大学联合举办的青少年科研年刊
+                        </span>
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+         <%--成功案例--%>
+         <div class="successCase">
+             <p class="titles" style="color: #fff;">成功案例</p>
+             <div class="cases">
+                 <hr style="width: 62%;margin: 0 auto -3rem;">
+                 <div class="characters">
+                     <div class="charactersBox">
+                     <span style="display:block;">精鹰计划1年学员    <b>姓名：</b>Kevin Wang        <b>学校：</b>USC         <b>专业：</b>EE        <b>GPA：</b>3.55    <b>工作offer：</b>IBM模拟电路设计师 <br>
+                    <b>职业规划路径</b><br>
+                    1、研一，Kevin对自己的综合背景很有信心，在研一下学期自己投实习的岗位，没拿到任何offer.<br>
+                    2、研一暑假，加入蔓藤的精鹰计划。辅导Kevin的是Andrew导师，Andrew是美国博通公司（全球第二大的芯片设计公司）任技术总监，对于计算机行业有着丰富的职业经验和对行业趋势的准确预判<br>
+                    3、Andrew导师认为未来的智能制造，机器人，电动汽车等新兴高速发展行业需求，由此推荐Kevin选修了电力电子专业（power electronics）方向。并对下学期的选课提供了意见和辅助。学习期间做了几个课外的模拟实战设计项目。并在研二春假开始了在Linear Technology公司的实习项目。<br>
+                    4、面临毕业季了，当周围有的同学开始准备找工作的时候，Kevin已经通过导师的内推，拿到了两个offer，一封来自亚马逊，一封来自IBM。
+                </span>
+                         <span  style="display: none;">精鹰计划3年学员    <b>姓名：</b>Andy Li         <b>学校：</b>华盛顿大学        <b>专业：</b>Accounting        <b>GPA：</b>3.6    <b>工作offer：</b>KPMG MassMutual<br>
+                    <b>职业规划路径</b><br>
+                    1、大一，Andy没有很明确的职业方向，GPA3.0，暑期旅游，加入学校社团<br>
+                    2、大二 ，加入蔓藤的精鹰计划，职业测评明确了自身优劣势，Carl导师（KPMG CPA 10年审计工作经验）一对一辅导，明确了职业方向审计，规划了3年时间表。大二暑期：Lee CPA & Associate实习生<br>
+                    3、大三，通过Carl导师每月一次的辅导和完成导师布置的Project，阅读推荐书目，学习Excel V look up技能。暑假，通过内推方式拿到PwC 普华永道的暑期实习offer。<br>
+                    4、大四，有针对性的选修专业课程，备考CPA课程，在导师帮助下Networking，春招拿到KPMG和MassMutual的offer。
+                </span>
+
+                     </div>
+
+
+                     <ol class="charactersImg">
+                         <li style="border: 2px solid #fff;">
+                             <img src="/images/mantengInfo01.png" ><span class="imgMask"></span>
+                         </li>
+                         <li>
+                             <img src="/images/mantengInfo02.png" ><span class="imgMask"></span>
+                         </li>
+                         <li>
+                             <img src="/images/mantengInfo02.png" ><span class="imgMask"></span>
+                         </li>
+                     </ol>
+                 </div>
+
+             </div>
+             <%--<a href="#" class="videoSignUp">点击报名</a>--%>
+         </div>
+
+         <div style="margin-bottom: 15rem"></div>
+     </div>
+
+
+    <%@include file="/WEB-INF/views/common/bottom.jsp" %>
+</div>
+<div class="mask"></div>
+
+</body>
+<script type="text/javascript">
+    var wid = $(window).width();
+    function loginAlert() {
+        if (wid < 769) {
+            $("#signUp,.videoSignUp").on("click", function () {
+                var ban = 0;
+                $(".mask").css("display", "block");
+                $(".leadFrame").show(400);
+                document.addEventListener("touchmove", function (e) {
+                    if (ban == 0) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                }, false);
+            });
+            $(".login-before-close-btn").on("click", function () {
+                $(".mask").css("display", "none");
+                $(".leadFrame").css("display", "none");
+            });
+        } else {
+            $(".login-before").css('display', 'block');
+        }
+    }
+    function closeAlert() {
+        $(".login-before").css('display', 'none');
+        location.reload();
+    }
+    function toApply() {
+        location.href = "/userItem/applymanteng";
+    }
+    $(function () {
+        /*顶部banner变为手机端图片更换*/
+        if(wid<=767){
+            $(".gis_banner .bannerIcon").attr("src","/images/indexBanner01.jpg")
+        }
+        /*项目特色不同数量更换不同样式2017-5-18*/
+        var num01=$(".advantage li").length;
+       /* console.log(num01)*/
+        if(num01==4){
+            $(".advantage ul li").css("width","22%")
+            $(".advantage ul li:eq(3)").css("margin-left","1rem")
+        }if(num01==6){
+            /* $(".advantage ul li").css("width","30%")*/
+            $(".advantage ul li:eq(3)").css("margin-left","1rem")
+        }
+        /*项目活动or实习不同数量更换不同样式2017-5-18*/
+        var num02=$(".int_list li").length;
+        console.log(num02)
+        if(num02==2){
+            $(".int_list").css("width","60%")
+            $(".int_list li").css("width","50%")
+        }if(num02==3){
+            $(".int_list li").css("width","33.33%")
+        }if(num02==4){
+            $(".int_list").css("width","85%")
+            $(".int_list li").css("width","25%")
+            $(".int_list li .intBox").css("width","95%")
+            if($(window).width()<= 1024){
+                $(".int_list li").css("width","50%")
+                $(".int_list li").css("margin","1rem 0")
+            }
+        }
+        if(num02==5){
+            $(".int_list li").css("width","33.33%")
+            $(".int_list li").css("margin","1rem 0")
+            $(".int_list li:eq(3)").css("margin-left","12rem")
+        } if(num02==6){
+            $(".int_list li").css("width","33.33%")
+            $(".int_list li").css("margin","1rem 0")
+        }
+        if($(window).width()<= 1024){
+            $(".int_list").css("width","90%")
+        }
+        if($(window).width()<= 768){
+            $(".int_list").css("width","96%")
+        }
+        if($(window).width()<= 414){
+            $(".int_list li").css("width","100%")
+            $(".int_list li").css("margin","1rem 0")
+            $(".int_list li:eq(3)").css("margin-left","0")
+        }
+        /*鹰计划不同数量更换不同样式2017-5-19*/
+        var num03=$(".yjh ul li").length;
+        console.log(num03)
+        if(num03%3==0){
+            $(".yjh ul li").css({
+                "width":"33%",
+                "height":"auto",
+                "margin-bottom":"1rem",
+            });
+            $(".yjh ul li:eq(3)").css("margin-left","0")
+            if($(window).width()<= 1300){
+                $(".yjhInfo").css("height","26rem")
+                $(".yjh").css("height","auto")
+            }
+            if($(window).width()<= 767){
+                $(".yjh ul li").css("width","100%")
+                $(".yjh").css("height","auto")
+
+            }
+        }if(num03==4){
+            $(".yjh ul li").css("width","25%")
+            $(".yjh ul li:eq(3)").css("margin-left","0")
+            if($(window).width()<= 1300){
+                $(".yjh ul li").css("width","50%")
+                $(".yjh").css("height","auto")
+            }
+            if($(window).width()<= 767){
+                $(".yjh ul li").css("width","100%")
+                $(".yjh").css("height","auto")
+
+            }
+        }
+
+        if (wid < 767) {
+            $(".mid_cont").css({"width": wid, "max-width": "750px", "margin": "0 auto"});
+            $(".advantageTable").css("width", wid);
+            $(".gis_banner").css("width", wid);
+             $(".gis_banner_btn").css({"padding-top": wid* 0.28});
+            $(".project_details").css({"width": wid * 0.98, "margin-left": wid * 0.01});
+            $(".leadFrame").css({"width": wid * 0.8, "left": wid * 0.5});
+            $(".advantage ul li").css("width","90%")
+            $(".user-login").css({
+                "width": wid,
+                /*"height": hei,*/
+                "position": "fixed",
+                "margin-left": wid * 0.1,
+                "top": "0px"
+            });
+            if (wid > 640) {
+                for (var i = 0; i < list.length; i++) {
+                    var listUrl = '/images/case' + parseInt(i + 1) + '.png';
+                    list.eq(i).css({
+                        "background": "url(" + listUrl + ") no-repeat center top",
+                        "background-size": "15%"
+                    });
+                }
+            }
+
+        }
+        //成功案例图像对应内容切换
+        $(".charactersImg li").on("click", function () {
+            var i = $(this).index();
+            var chaSpanList = $(".charactersBox span").eq(i);
+            $(this).css("border", "2px solid #fff").siblings().css("border", "none");
+            $(".charactersbox span").eq(i).css("display", "block").siblings().css("display", "none");
+        });
+
+    })
+
+    $("#goTopBtn").css("right", "0")
+
+</script>
+</html>

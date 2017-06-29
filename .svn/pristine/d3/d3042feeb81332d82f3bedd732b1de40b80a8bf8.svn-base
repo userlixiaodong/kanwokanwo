@@ -1,0 +1,228 @@
+package cv.focus.core.domain.user.model;
+
+import cv.focus.core.domain.school.model.profile.AdmissionProfile;
+import cv.focus.core.domain.school.model.profile.AdmissionProfileId;
+import cv.focus.core.domain.student.model.profile.StudentProfile;
+import cv.focus.core.domain.student.model.profile.StudentProfileId;
+import org.apache.commons.codec.digest.DigestUtils;
+
+import javax.persistence.*;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
+
+/**
+ * Created by song on 16/1/23.
+ */
+@Entity
+@Table(name = "Users")
+public class User implements cv.focus.core.domain.shared.Entity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer userId;
+    private String email; // Read-only 唯一主键
+    private String userPwd;
+    private String userName; // Read-only 注册时设置
+    private Role type; // Read-only
+    private Integer state;//状态 1为启用 0为禁用
+    private Date outDate;//找回密码过期时间
+    private String validateCode;//找回密码唯一验证码
+    private Date registerTime;
+    private String lastLoginIp;
+    private Date lastLoginTime;
+    private String mobile;
+    //*************Zan Li 08.29,2016 Added***********************//
+    //private String chatRoomUrl;//用户预约的视频聊天室地址
+    //************************************//
+    //*************Zan Li 09.05,2016 Added***********************//
+    private String roleR;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
+    @OrderBy("informationId")
+    private Set<Information> informations; // 发布的消息
+    private String activeCode;// 邮箱注册激活码
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Date getOutDate() {
+        return outDate;
+    }
+
+    public String getValidateCode() {
+        return validateCode;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getUserPwd() {
+        return userPwd;
+    }
+
+    public void changeUserPwd(String userPwd) {
+        this.userPwd = encryptPasswd(userPwd);
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void changeUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public Role getType() {
+        return type;
+    }
+
+    public void setType(Role type) {
+        this.type = type;
+    }
+
+    public User(String email, String userName, String userPwd, Role type, String roleR) {
+        this.email = email;
+        this.userName = userName;
+        this.userPwd = encryptPasswd(userPwd);
+        this.type = type;
+        this.registerTime = new Date();
+        this.roleR = roleR;
+    }
+
+    public User(String email, String mobile, String userName, String userPwd, Role type, String roleR) {
+        this.email = email;
+        this.mobile = mobile;
+        this.userName = userName;
+        this.userPwd = encryptPasswd(userPwd);
+        this.type = type;
+        this.registerTime = new Date();
+        this.roleR = roleR;
+    }
+
+    public User() {
+
+    }
+
+    //应该作为project创建的工厂
+    public StudentProfile createStudentProfile(StudentProfileId studentProfileId) {
+        assert getType() == Role.STUDENT : "用户类型为Student，可以创建StudentProfile";
+        StudentProfile studentProfile = new StudentProfile(studentProfileId, this);
+        return studentProfile;
+    }
+
+    public AdmissionProfile createAdmissionProfile(AdmissionProfileId admissionProfileId) {
+        assert getType() == Role.AD_REP : "用户类型为AD_REP, 可以创建AdmissionProfile";
+        return new AdmissionProfile(admissionProfileId, this);
+    }
+
+    public String encryptPasswd(String origPasswd) {
+        return DigestUtils.md5Hex(origPasswd);
+    }
+
+    public String genDigitalSignature() {
+        String secretKey = UUID.randomUUID().toString(); // 密钥
+        Timestamp outDate = new Timestamp(System.currentTimeMillis() + 30 * 60 * 1000);// 30分钟后过期
+        long date = outDate.getTime() / 1000 * 1000;// 忽略毫秒数  mySql 取出时间是忽略毫秒数的
+        this.validateCode = secretKey;
+        this.outDate = outDate;
+        String key = this.email + "$" + date + "$" + secretKey;
+        //md5加密key
+        return encryptPasswd(key);// 数字签名
+    }
+
+    public boolean validateDigitalSignature(String digitalSignature) {
+        String key = this.email + "$" + this.outDate.getTime() / 1000 * 1000 + "$" + this.validateCode;
+        return encryptPasswd(key).equals(digitalSignature);
+    }
+
+    public void setValidateCode(String validateCode) {
+        this.validateCode = validateCode;
+    }
+
+    public Date getRegisterTime() {
+        return registerTime;
+    }
+
+    public void setRegisterTime(Date registerTime) {
+        this.registerTime = registerTime;
+    }
+
+    public String getLastLoginIp() {
+        return lastLoginIp;
+    }
+
+    public void setLastLoginIp(String lastLoginIp) {
+        this.lastLoginIp = lastLoginIp;
+    }
+
+    public Date getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(Date lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public Set<Information> getInformations() {
+        return informations;
+    }
+
+    public void setInformations(Set<Information> informations) {
+        this.informations = informations;
+    }
+
+    @Override
+    public boolean sameIdentityAs(Object other) {
+        return false;
+    }
+
+    public String getActiveCode() {
+        return activeCode;
+    }
+
+    public void setActiveCode(String activeCode) {
+        this.activeCode = activeCode;
+    }
+
+    public void setUserPwd(String userPwd) {
+        this.userPwd = userPwd;
+    }
+
+    //*************Zan Li 08.29,2016 Added***********************//
+    //public void setUserChatRoomUrl(String chatRoomUrl){this.chatRoomUrl = chatRoomUrl; };
+
+    //public String getUserChatRoomUrl(){return chatRoomUrl; };
+    //************************************//
+    public void setRoleR(String roleR) {
+        this.roleR = roleR;
+    }
+    public String getRoleR() {
+        return roleR;
+    }
+}

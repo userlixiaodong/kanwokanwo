@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>第三方面试页面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="email=no">
+<link rel="stylesheet" type="text/css" href="style/frame.css"/>
+<link rel="stylesheet" type="text/css" href="style/public.css"/>
+<link rel="stylesheet" type="text/css" href="style/interview.css"/>
+</head>
+
+<body>
+applicants
+<div class="interview applicants clearfix">
+  <div class="applicants-banner text-center pos_r"> <img src="images/applicants-banner.jpg">
+    <p class="col-lg-12 col-xs-12">Introduction to The kanwokanwo Interview</p>
+    <p class="col-lg-12 col-xs-12 pTwo"><a class="btn" href="https://jinshuju.net/f/fZDcSo" target="_blank">Reserve Interview</a></p>
+  </div>
+  <div class="row">
+    <div class="w1200">
+      <p class="applicants-tit-top text-justify">The kanwokanwo Interview consists of a proctored writing sample and a face-to-face video interview. It provides US and Canadian schools with a more true and direct method for quickly assessing applicants’ English communication skills and personality. For applicants, The kanwokanwo Interview is a fast, comprehensive, and intuitive way for them to show admissions officers who they truly are.</p>
+      <div class="applicants-model clearfix">
+        <div class="col-lg-12 col-xs-12">
+          <p class="applicants-model-tit">1. Writing Sample</p>
+        </div>
+        <div class="col-lg-7 col-xs-12">
+          <div  class="applicants-model-p text-justify">
+            <p>kanwokanwo’s writing test is designed to showcase an applicant’s academic writing ability. Each applicant has 30 minutes to complete the essay after selecting one of three randomly assigned essay question prompts. Graduate program applicants are given only two prompts to choose from.</p>
+            <p>Writing tests are handwritten and our testing facilities do not have clocks. The proctor responsible for overseeing the writing test will notify the applicant when five minutes remain in the writing session. Applicants must bring their own watch if they wish to monitor their time.</p>
+            <p>Applicants may write an outline or draft on the back of the third writing sample page; however only writing on the lined side of kanwokanwo’s writing sample will be shared with institutions.</p>
+          </div>
+        </div>
+        <div class="col-lg-5 col-xs-12 text-right"> <img src="images/applicants-img1.jpg"> </div>
+      </div>
+      <div class="applicants-model clearfix">
+        <div class="col-lg-12 col-xs-12 text-right">
+          <p class="applicants-model-tit">2. Video Interview</p>
+        </div>
+        <div class="col-lg-5 col-xs-12 text-left"> <a href="javascript:;" class="md-trigger text-center video-container" data-modal="cusGuide"><img src="images/applicants-img2.jpg"></a> </div>
+        <div class="col-lg-7 col-xs-12">
+          <div  class="applicants-model-p text-justify">
+            <p>kanwokanwo’s video interview is the best platform for applicants to shine. Interviews are conducted in-person with a native English speaker.  Interviews are 10-12 minutes in length and are recorded so admission officers may watch the interview.</p>
+            <p>kanwokanwo’s video interview is divided into the following five sections:</p>
+            <p>1-2 minutes :  Warm-up question<br>
+              2-4 minutes : Two picture comparison<br>
+              4-7 minutes : In-depth questions<br>
+              8-10 minutes :  Intended major related questions (optional) <br>
+              10-12 minutes : Free speech+questions for our counselors (optional)</p>
+          </div>
+        </div>
+      </div>
+      <div class="applicants-model clearfix">
+        <div class="col-lg-12 col-xs-12">
+          <p class="applicants-model-tit">3. Kanwokanwo English Evaluation (KEE)</p>
+        </div>
+        <div class="col-lg-7 col-xs-12">
+          <div  class="applicants-model-p text-justify">
+            <p>After the interview, kanwokanwo’s evaluation team watches and scores the recorded interview according to our SEE rubric. Within 10 working days, kanwokanwo sends the writing sample, video interview, and SEE score to the institutions which the applicant has chosen. Applicants will not receive a copy of their video or writing sample, but will receive an SEE report including their SEE score.</p>
+            <p>Note: kanwokanwo Partner Institutions often send kanwokanwo a student list of the applicants they would like to have interviewed.  Applicants should reserve a kanwokanwo Interview as soon as they’re notified, so kanwokanwo Partner Institutions may view the applicant’s video, writing sample and SEE score as soon as possible.</p>
+          </div>
+        </div>
+        <div class="col-lg-5 col-xs-12 text-right"> <img src="images/applicants-img3.jpg"> </div>
+      </div>
+      <div class="applicants-btn-model clearfix text-center">
+       <div class="col-lg-6 col-xs-12"><a class="btn btnA" href="https://jinshuju.net/f/fZDcSo" target="_blank">Reserve Interview</a></div>
+       <div class="col-lg-6 col-xs-12"><a class="btn" href="http://www1.53kf.com/webCompany.php?arg=10089574&style=4" target="_blank">More Question</a></div>
+      </div>
+      <div class="applicants-three-columns">
+        <div class="col-lg-4 col-xs-12"><i class="interview-icon interview-iconfont icon-duihao"></i>
+          <p>Each interview is live, unscripted and interactive.</p>
+        </div>
+        <div class="col-lg-4 col-xs-12"><i class="interview-icon interview-iconfont icon-duihao"></i>
+          <p>We put your interview in a format that admission offices love.</p>
+        </div>
+        <div class="col-lg-4 col-xs-12"><i class="interview-icon interview-iconfont icon-duihao"></i>
+          <p>We only send it to the universities at your direction.</p>
+        </div>
+        <div class="col-lg-4 col-xs-12"><i class="interview-icon interview-iconfont icon-duihao"></i>
+          <p>The questions are different for each interview. At the end of every interview, however, you can share with admission officials whatever you like.</p>
+        </div>
+        <div class="col-lg-4 col-xs-12"><i class="interview-icon interview-iconfont icon-duihao"></i>
+          <p>Each applicant may do more than one interview, but only one per month and each time it will be with a different interviewer and different questions.</p>
+        </div>
+        <div class="col-lg-4 col-xs-12"><i class="interview-icon interview-iconfont icon-duihao"></i>
+          <p>Set yourself apart!</p>
+        </div>
+      </div>
+      <div class="applicants-model">
+        <p class="col-lg-12 col-xs-12 text-center"><em class="interview-em-text1">Our interviews are only RMB650 (approximately US$99)<br>
+          and we send the interview link and writing sample to as many schools as requested.</em></p>
+        <p class="col-lg-12 col-xs-12"><em class="interview-em-text2">&quot;Kanwokanwo interview provides the ultimate platform for oversea college recruitment </em><br>
+          <span class="interview-span-text1">by demonstrating a better view of our applicants as well as allowing us to make the most appropriate enrollment decisions. These Kanwo interviews defused the toughness of our recruitment decisions while bringing the best students into our sights. </span><em class="interview-em-text2 text-right">"</em></p>
+        <p class="col-lg-12 col-xs-12"><em class="interview-em-text3">Stanley D. Nel </em><br>
+          <span class="interview-span-text2">Vice President for International Relations, University of San Francisco</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+admission officer
+<div class="interview admission-officer clearfix">
+  <div class="admission-officer-banner text-center pos_r"> <img src="images/admission-officer-bg1.jpg">
+    <p class="admission-officer-top-tit"><em>Manage <strong>thousands</strong> <br>
+      of Chinese applicants<br>
+      all by yourself.</em><br>
+      Gain control of your growing Chinese applicant pool. <br>
+      Evaluate applicants via third-party verified video interviews.</p>
+  </div>
+  <div class="admission-officer-modelVideo">
+    <div class="row">
+      <div class="w1200 clearfix">
+        <div class="col-lg-6 col-xs-12 text-center"><a href="javascript:;" class="md-trigger text-center video-container" data-modal="cusGuide"><img src="images/applicants-img2.jpg"></a></div>
+        <div class="col-lg-6 col-xs-12">
+          <dl>
+            <dt>The <strong>fastest</strong> way to target your top applicants.</dt>
+            <dd>Instantly sort all of your Chinese applicants by spoken English ability.</dd>
+            <dd>Watch the verified <strong>kanwokanwo Behavioral Interview</strong> for a raw look at each applicant's communication abilities.</dd>
+            <dd>Quickly determine fit and follow up with top applicants.</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="admission-officer-modelOne bgcolorOne text-center">
+    <div class="row">
+      <h2>VIDEO DOESN'T LIE</h2>
+      <div class="w1200 clearfix">
+        <div class="col-lg-4 col-xs-12">
+          <dl>
+            <dt><i class="interview-icon interview-iconfont icon-renqun"></i></dt>
+            <dd>
+              <h3>Meet each of your applicants</h3>
+            </dd>
+            <dd>Discover their thought process, <br>
+              maturity level, attitude, and personality.</dd>
+          </dl>
+        </div>
+        <div class="col-lg-4 col-xs-12">
+          <dl>
+            <dt><i class="interview-icon interview-iconfont icon-qianbi"></i></dt>
+            <dd>
+              <h3>Examine how they write</h3>
+            </dd>
+            <dd>100% verified proctored <br>
+              essay for each applicant.</dd>
+          </dl>
+        </div>
+        <div class="col-lg-4 col-xs-12">
+          <dl>
+            <dt><i class="interview-icon interview-iconfont icon-duihuakuang"></i></dt>
+            <dd>
+              <h3>Evaluate spoken English ability</h3>
+            </dd>
+            <dd>Quickly determine spoken English proficiency <br>
+              with kanwokanwo’s Spoken English Evaluation (SEE).</dd>
+          </dl>
+        </div>
+        <div class="col-lg-4 col-xs-12">
+          <dl>
+            <dt><i class="interview-icon interview-iconfont icon-dui-copy"></i></dt>
+            <dd>
+              <h3>Trust what you are seeing</h3>
+            </dd>
+            <dd>Add verified information <br>
+              to your admissions process.</dd>
+          </dl>
+        </div>
+        <div class="col-lg-4 col-xs-12">
+          <dl>
+            <dt><i class="interview-icon interview-iconfont icon-tv"></i></dt>
+            <dd>
+              <h3>Eliminate Skype problems</h3>
+            </dd>
+            <dd>Watch professionally-conducted, pre-recorded <br>
+              HD video interviews. Available online, 24/7, 365.</dd>
+          </dl>
+        </div>
+        <div class="col-lg-4 col-xs-12">
+          <dl>
+            <dt><i class="interview-icon interview-iconfont icon-chengbao"></i></dt>
+            <dd>
+              <h3>Make confident decisions</h3>
+            </dd>
+            <dd>Determine fit and admissibility <br>
+              with verified information.</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="admission-officer-modelTwo pos_r"> <img src="images/admission-officer-bg2.jpg">
+    <div class="row">
+      <h2 class="text-center">OUR ASSURANCES</h2>
+      <div class="w1200 clearfix">
+        <p><i class="interview-icon interview-iconfont icon-duihao"></i><em>Our unique model is free for educational institutions. The price for undergrad and high school applicants is USD100 (interview + writing sample).</em> </p>
+        <p><i class="interview-icon interview-iconfont icon-duihao"></i><em>In each case that price for the student includes sending their interview/writing sample to as many schools as they would like. There are no other fees in our process.</em></p>
+        <p><i class="interview-icon interview-iconfont icon-duihao"></i><em>We do not do any "academic exchange" or any interview training of any sort.</em></p>
+        <p><i class="interview-icon interview-iconfont icon-duihao"></i><em>We do not have any financial relationship of any sort with agents.</em></p>
+      </div>
+    </div>
+  </div>
+  <div class="admission-officer-modelThree bgcolorOne clearfix">
+    <div class="row">
+      <h2 class="text-center">FAQS</h2>
+      <div class="w1200 clearfix">
+        <div class="col-lg-6 col-xs-12">
+          <dl>
+            <dt>Q:Who are the interviewers?</dt>
+            <dd>A:All of our interviewers are graduates of top U.S. and U.K. universities. Our interviewers have been trained to engage each applicant in a vibrant exchange involving thought-provoking and probing questions.</dd>
+          </dl>
+        </div>
+        <div class="col-lg-6 col-xs-12">
+          <dl>
+            <dt>Q:How do you conduct your interviews?</dt>
+            <dd>
+              <p>A:Our interviews are unscripted, thereby ensuring that you get to witness the applicant’s language ability in the most authentic way possible. We ask open-ended, thought-provoking questions to start and then drill down. At the end of each interview we give the applicant a few minutes to say whatever they would like.</p>
+            </dd>
+          </dl>
+        </div>
+        <div class="col-lg-6 col-xs-12">
+          <dl>
+            <dt>Q:Can applicants do more than one interview?</dt>
+            <dd>
+              <p>A:Each applicant can only do one interview every 30 days, and each time the interview is with a different interviewer and different questions. The most recent interview is the one we keep on file (in other words, the applicant cannot do numerous interviews and then pick the best one). We do not edit for content.</p>
+            </dd>
+          </dl>
+        </div>
+        <div class="col-lg-6 col-xs-12">
+          <dl>
+            <dt>Q:How do you confirm identity?</dt>
+            <dd>
+              <p>A:Not only do we check IDs, the very nature of our interview and the fact that it serves as a preserved record of identity prevents stand-ins. As we underscore to each applicant throughout the process, we can cross-check each applicant’s video with the picture on their future university ID.</p>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="admission-officer-modelFour clearfix pos_r"> <img src="images/admission-officer-bg3.jpg">
+    <div class="row">
+      <div class="w1200">
+        <p class="col-lg-12 col-xs-12"><em class="interview-em-text2">&quot;Kanwokanwo interview provides the ultimate platform for oversea college recruitment </em><br>
+          <span class="interview-span-text1">by demonstrating a better view of our applicants as well as allowing us to make the most appropriate enrollment decisions. These Kanwo interviews defused the toughness of our recruitment decisions while bringing the best students into our sights. </span><em class="interview-em-text2 text-right">"</em></p>
+        <p class="col-lg-12 col-xs-12"><em class="interview-em-text3">Stanley D. Nel </em><br>
+          <span class="interview-span-text2">Vice President for International Relations, University of San Francisco</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  (function() {
+    var _53code = document.createElement("script");
+    _53code.src = "//tb.53kf.com/code/code/10089574/4";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(_53code, s);
+  })();
+</script>
+</body>
+</html>

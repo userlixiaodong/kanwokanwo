@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<style>
+	#canvas .circle {
+		display: inline-block;
+		margin: 1em;
+	}
+
+	.circles-decimals {
+		font-size: .4em;
+	}
+</style>
+</head>
+<body>
+<article class="htmleaf-container">
+	<div id="canvas">
+		<div class="circle" id="circle1"></div>
+	</div>
+</article>
+<script src="js/circles.min.js"></script>
+<script>
+	circle = Circles.create({
+			id:         'circle1',
+			value:		0,
+			radius:     60,
+			width:      10,
+			colors:     ['#D3B6C6', '#4B253A']
+		});
+	function setCompletionPercentage(val){
+		circle.update(val, 250);
+	}
+</script>
+</div>
+</body>
+</html>

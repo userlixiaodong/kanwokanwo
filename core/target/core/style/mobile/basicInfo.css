@@ -1,0 +1,6 @@
+.basic_info{width:70%; margin:0 auto .2rem;}
+.basic_info ul li{ margin-bottom:.2rem;}
+.basic_info a,.basic_info a i{ color:#888; font-size:.18rem;}
+.basic_info_share a i{ color:#1bb38c; font-size:.24rem; margin-left:.08rem;}
+.icon_xiangji{ margin-top:.12rem;}
+.basic_info a span{ display:inline-block; width:90%;vertical-align:text-top; margin-left:.08rem;word-break: break-all;}

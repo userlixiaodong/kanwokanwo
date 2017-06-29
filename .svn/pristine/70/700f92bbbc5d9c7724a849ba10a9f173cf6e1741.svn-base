@@ -1,0 +1,472 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 微软雅黑;
+}
+
+html {
+    font-size: 20px;
+}
+
+@media screen and (max-width: 1920px) {
+    html {
+        font-size: 18px !important;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    html {
+        font-size: 16px !important;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    html {
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    html {
+        font-size: 12px !important;
+    }
+    body {
+        max-width: 750px;
+    }
+}
+
+.selfTitles{
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 0.1rem solid #dddde0;
+}
+.points {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: normal;
+    color: #333;
+    padding: 6.3rem 0 3rem 0;
+}
+body{
+    background-color: #efeff4;
+}
+.container {
+    width: 63.3%;
+    margin: 0 auto;
+    padding: 0rem 0rem;
+    /* background-color: #fff;*/
+    margin-top: 2.4rem;
+}
+
+.saveBtn {
+    width: 3rem;
+    height: 1.5rem;
+}
+
+.saveBtn01 {
+    float: right;
+}
+
+.saveBtn02 {
+    display: block;
+    margin: 44px auto 17px;
+}
+
+.saveBtn:hover {
+    color: #fff;
+    background-color: #a09c9c;
+}
+
+.formList p {
+    width: 70%;
+    float: right;
+}
+
+.formList li b {
+    /* margin-right: 40px;*/
+    font-weight: normal;
+    display: block;
+    float: left;
+    width: 25%;
+    text-align: right;
+    font-family: "Microsoft Yahei";
+    color: #333;
+}
+.formList li b i{
+    font-style: normal;
+    color: #ffc47f;
+    font-size: 1rem;
+    margin-right: 0.3rem;
+}
+
+.formList,.optionalInfo,.formList09Cont{
+    /*width: 65%;*/
+    margin: 2rem auto;
+    /*border-bottom: 1px dashed #999;*/
+    padding: 40px 3rem 15px 3rem;
+    box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    border-radius: 0.6rem;
+    position: relative;
+}
+.formList:before,.optionalInfo:before,.formList09Cont:before{
+    display: block;
+    content: "";
+    width: 100%;
+    height: 0.5rem;
+    background: url(/images/line01.png) repeat-x;
+    position: absolute;
+    top: -0.2rem;
+    left: 0rem;
+}
+
+.formList input {
+    width: 84%;
+}
+
+.formList input, .formList select {
+    text-indent: 0.5rem;
+    font-family: "Microsoft Yahei";
+
+}
+
+.formList01 {
+    padding-top: 60px;
+}
+
+.formList li {
+    width: 77%;
+    /*height: 40px;*/
+    line-height: 40px;
+    padding-bottom: 60px;
+    margin-left: 74px;
+    position: relative;
+}
+
+.formTitle {
+    text-align: center;
+    font-size: 25px;
+    font-family: "Microsoft Yahei";
+    font-weight: normal;
+    padding-bottom: 15px;
+}
+
+.formList01 .sex input {
+    margin-right: 50px;
+    display: block;
+    float: left;
+    height: 43px;
+    width: auto;
+}
+
+.formList01 .sex label {
+    margin-right: 12px;
+    display: block;
+    float: left;
+}
+
+.formList select {
+    height: 40px;
+    width: 45%;
+}
+
+.formList06, .formList07, .formList09 {
+    border-bottom: none;
+}
+
+.formList06 select, .formList07 select {
+    width: 80%;
+    text-indent: 2px;
+}
+
+.formList06Cont .btn, .formList07Cont .btn, .formList09Cont .btn {
+    width: 7rem;
+    margin: 0 auto 20px auto;
+    /*padding-left: 84px;*/
+    font-size: 17px;
+}
+.addBtn06,.addBTn07,.addBtn09{
+    display: block;
+    text-align: center;
+    color: #1ec799;
+    font-size: 1rem;
+    font-family: "Microsoft Yahei";
+}
+.addBtn06 img,.addBTn07 img,.addBtn09 img{
+    width: 45%;
+}
+
+.formList06Cont, .formList07Cont {
+    /*border-bottom: 1px dashed #999;*/
+    position: relative;
+}
+.formList06Cont li, .formList07Cont li {
+    padding-bottom: 0;
+}
+
+.formList06Cont li .removeBtn, .formList07Cont li .removeBtn {
+    position: absolute;
+    right: 0;
+    font-size: 17px;
+    height: 2.2rem;
+    width: 2rem;
+    background: url(/images/deleteIcon.png) no-repeat center;
+}
+
+.formList09Cont li {
+    height: auto;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.formList09Cont li .removeBtn {
+    position: absolute;
+    right: 0;
+    top: 52px;
+    font-size: 17px;
+    height: 2.2rem;
+    width: 2rem;
+    background: url(/images/deleteIcon.png) no-repeat center;
+}
+
+.formList09Cont input {
+    width: 80%;
+    text-indent: 3px;
+
+}
+
+.formList09Cont textarea {
+    line-height: 30px;
+    padding: 10px;
+    width: 84%;
+}
+
+.errorInfo {
+    position: absolute;
+    right: -88px;
+    font-size: 14px;
+    color: #dc0c0c;
+    display: block;
+    width: 164px;
+    font-family: "Microsoft Yahei";
+    display: none;
+}
+.saveBox span{
+    font-size: 14px;
+    color: #dc0c0c;
+    width: 164px;
+    font-family: "Microsoft Yahei";
+    display: none;
+}
+.panel{
+    margin-top: -11px;
+}
+.saveBox{
+    width:450px;
+    margin: 0 auto;
+    text-align: center;
+}
+.saveBox input{
+    display: block;
+    width: 32%;
+    height: 2.2rem;
+    color: #fff;
+    font-size: 1rem;
+    background-color: #17ac84;
+}
+.listNav{
+    border: none;
+    background-color: #eee;
+    border-right: 0.1rem solid #fff;
+}
+.listNav td{
+    padding: 0.7rem 0;
+    width: 14.28%;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.listNav td:nth-child(1){
+    border-left: 0.1rem solid #fff;
+}
+.listNav td.active{
+    background-color: #1ec799;
+    color: #fff;
+}
+
+.optionalInfo .formList,.optionalInfo .btn{
+    display: none;
+
+}
+.optionalInfo .formList,.formList09{
+    background: none;
+    box-shadow: none;
+    padding:0 ;
+}
+.optionalInfo .formList:before,.formList09:before{
+    background: none;
+}
+.optionalInfo .formList08,.formList09{
+    display: block;
+    border-bottom: none;
+}
+.interesting span{
+    padding-left: 0rem;
+    display: block;
+    float: left;
+    width: 21.4%;
+    text-align: center;
+    background-color: #f1f1f1;
+    border: 0.4rem solid #fff;
+    color: #a4a4a4;
+    font-size: 0.84rem;
+    font-family: "Microsoft Yahei";
+    cursor: pointer
+}
+.interesting span.active{
+    background-color: #1ec799;
+    color: #fff;
+}
+@media (max-width: 1024px){
+    .container{
+        width: 92%;
+    }
+    .formList li{
+        margin-left: 0;
+        width: 90%;
+    }
+    .formList, .optionalInfo, .formList09Cont{
+        padding: 40px 0rem 15px 0rem;
+    }
+    .errorInfo{
+        right: -96px;
+    }
+}
+@media (max-width: 768px){
+    .formList li b,.formList p{
+        float: none;
+        width: auto;
+        text-align: left;
+    }
+    .formList li b{
+        text-indent: 0.5rem;
+    }
+    .formList li{
+        padding-bottom: 0;
+    }
+    .points{
+        padding: 5rem 0 1.2rem
+    }
+    .formList li{
+        width: 100%;
+        padding-left: 0;
+        padding: 0 4.5rem;
+    }
+    .formList input{
+        width: 100%;
+    }
+    .interesting span{
+        width: 25%;
+    }
+    .formList07 li b,.formList06 li b,.formList09 li b{
+        float: left;
+        width: 25%;
+        margin-right: 0.5rem;
+    }
+    .formList07 li p,.formList06 li p,.formList09 li p{
+        width: 70%;
+        float: left;
+    }
+    .formList06 select, .formList07 select,.formList09Cont textarea{
+        width: 100%;
+    }
+    .formList07 li,.formList06 li{
+
+    }
+    .formList06Cont li .removeBtn, .formList07Cont li .removeBtn,.formList09Cont li .removeBtn{
+        right: 3rem;
+    }
+}
+@media (max-width: 500px){
+    .container{
+        overflow: hidden;
+    }
+    .errorInfo{
+        position: static;
+        width: auto;
+        font-size: 1.1rem;
+        line-height: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    .container{
+        margin-top: 0;
+    }
+    .points{
+        font-size: 1.6rem;
+    }
+    .formTitle{
+        font-size: 1.5rem;
+        margin: 0;
+    }
+    .formList li{
+        padding: 0 0.5rem;
+    }
+    .interesting span{
+        font-size: 1.1rem;
+        border: 0.3rem solid #fff;
+    }
+    .errorInfos{
+        line-height: 2rem;
+    }
+    .formList li b{
+        line-height: 2rem;
+    }
+    .formList06 select, .formList07 select, .formList09Cont textarea{
+        font-size: 1.2rem;
+    }
+    .formList06 p input,.formList07 p input,.formList09 p textarea{
+        width: 86%;
+    }
+    .formList06Cont li .removeBtn, .formList07Cont li .removeBtn,.formList09Cont li .removeBtn{
+        background-size: 2rem;
+        top: 0.6rem;
+        right: 1.2rem;
+    }
+    .formList09Cont{
+        padding: 0;
+        padding-bottom: 1rem;
+    }
+    .formList input{
+        font-size: 1.2rem;
+    }
+    .formList09Cont textarea{
+        padding: 0;
+        padding-left: 0.5rem;
+        font-size: 1.2rem;
+    }
+    .formList09Cont .btn{
+        margin-top: -3rem;
+    }
+    .saveBox{
+        width: auto;
+    }
+    .saveBox input {
+        width: 89%;
+        height: 3.6rem;
+        font-size: 1.3rem;
+        margin-top: 1rem;
+    }
+    .formList li b i{
+        font-size: 1.6rem;
+    }
+    .container{
+        width: 96%;
+    }
+    .addBtn06, .addBTn07, .addBtn09{
+        font-size: 1.2rem;
+    }
+    .listNav td{
+        font-size: 1.2rem;
+    }
+
+}

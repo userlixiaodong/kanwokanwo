@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>首页</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="email=no">
+<link rel="stylesheet" type="text/css" href="style/frame.css"/>
+<link rel="stylesheet" type="text/css" href="style/public.css"/>
+<link rel="stylesheet" type="text/css" href="style/video-js.css"/>
+<link rel="stylesheet" type="text/css" href="style/index.css"/>
+<script src="js/video.js"></script>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/modernizr.custom.js"></script>
+</head>
+
+<body>
+<!--未登录--> 
+<!--=====================================top============================================-->
+<div class="fixed-top fixed-top-bar">
+  <nav class="navbar"> <a class="navbar-brand" href="/index.jsp"></a>
+    <ul class="left-side navbar-section">
+      <li> <span> <i class="glyphicon glyphicon-search"></i>
+        <input type="text" class="navbar-search-input" style="width: 289px;">
+        </span> </li>
+    </ul>
+    <ul class="not-login clearfix fr">
+      <li><a class="md-trigger" data-modal="modal-14" href="javascript:void(0);">Log in</a></li>
+      <em></em>
+      <li><a href="" target="_blank">Sign up</a></li>
+    </ul>
+  </nav>
+</div>
+<div class="index-main">
+  <div class="index-header">
+    <div class="index-header-wrapper">
+      <h2>Show a better self<br>
+        At a finer place</h2>
+      <p>20 Years of abroad study application experience,<br>
+        Rich on and offline resources, Vast fixed subscribers</p>
+      <a class="join-kanwo" href="" target="_blank">Join KANWO</a>
+      <div class="watch-video text-center"> <a href="#"><i class="glyphicon glyphicon-play-circle"></i><br>
+        Watch the Video</a> </div>
+    </div>
+    <!--视频-->
+    <div class="video-header-box">
+    <div class="video-bg"></div>
+      <video class="video-student" preload="auto" autoplay loop muted="muted" volume="0">
+           <source src="images/studentVideo.mp4" type="video/mp4">
+           <source src="movie.webm" type="video/webm">
+                Sorry, your browser does not support HTML5 video.
+      </video>
+    </div>
+    <!--end视频-->
+  </div>
+  <div class="further-info text-center">
+    <div class="row">
+      <div class="clearfix">
+        <div class="col-md-12">
+          <h2>Bring Your Story to Life</h2>
+          <p>Everyone has a story. Every story matters.<br>
+            Now every college can see your story.</p>
+          <a href="#"><strong><i class="glyphicon glyphicon-play-circle"></i></strong><img src="images/index-v.jpg"><span></span></a>
+          <p class="no-leading">Watch how easy it is to build a page.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="login-info text-center">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Now create an account to KANWO</h2>
+      </div>
+      <div class="col-md-6">
+        <div class="index-form clearfix">
+          <form>
+            <div class="fl">
+              <p><span>Phone / email</span>
+                <input type="text" value="">
+              </p>
+              <p><span>Password</span>
+                <input type="text" value="">
+              </p>
+              <p><span>Verification code</span>
+                <input type="text" value="">
+              </p>
+            </div>
+            <div class="fr">
+              <input type="submit" value="Sign up">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="student-list text-center">
+    <h2>Good students are in use</h2>
+    <div class="row">
+      <div class="clearfix">
+        <div class="col-md-4">
+          <dl>
+            <dt><a href="" target="_blank"><img src="images/1.png"></a></dt>
+            <dd>One thing I wish everybody could do is go out of their comfort zone and travel.</dd>
+          </dl>
+        </div>
+        <div class="col-md-4">
+          <dl>
+            <dt><a href="" target="_blank"><img src="images/1.png"></a></dt>
+            <dd>One thing I wish everybody could do is go out of their comfort zone and travel.</dd>
+          </dl>
+        </div>
+        <div class="col-md-4">
+          <dl class="border-no">
+            <dt><a href="" target="_blank"><img src="images/1.png"></a></dt>
+            <dd>One thing I wish everybody could do is go out of their comfort zone and travel.</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <a class="student-list-btn" href="">Read the buzz </a> </div>
+  <div class="school-list student-list text-center">
+    <h2>Colleges Committed to Your Stor</h2>
+    <p>Any college can view your KANWO page. Here are some leaders<br>
+      that are deeply committed to reviewing each student's unique story.</p>
+    <ul class="clearfix">
+      <li><a href="" target="_blank"><img src="images/s.jpg"></a></li>
+      <li><a href="" target="_blank"><img src="images/s.jpg"></a></li>
+      <li><a href="" target="_blank"><img src="images/s.jpg"></a></li>
+      <li><a href="" target="_blank"><img src="images/s.jpg"></a></li>
+      <li><a href="" target="_blank"><img src="images/s.jpg"></a></li>
+      <li><a href="" target="_blank"><img src="images/s.jpg"></a></li>
+      <li><a href="" target="_blank"><img src="images/s.jpg"></a></li>
+      <li><a href="" target="_blank"><img src="images/s.jpg"></a></li>
+      <li><a href="" target="_blank"><img src="images/s.jpg"></a></li>
+      <li><a href="" target="_blank"><img src="images/s.jpg"></a></li>
+      <li><a href="" target="_blank"><img src="images/s.jpg"></a></li>
+      <li><a href="" target="_blank"><img src="images/s.jpg"></a></li>
+    </ul>
+    <a class="student-list-btn" href="">Read the buzz </a> </div>
+</div>
+<!--<footer class="clearfix">
+  <p><img class="bottom-logo" src="images/u171.png"></p>
+  <p><img class="bottom-kanwo" src="images/kanwokanwo.png"></p>
+  <p class="pt40">FOCUSEDU brand</p>
+  <p><a href="#" target="_blank">The focus of the team</a> |<a href="#" target="_blank"> cooperative education and the media</a> |<a href="#" target="_blank"> contact us </a>| <a href="#" target="_blank">recruitment site map</a></p>
+  <p>24h national free telephone: 400-8657-088 / 010 - 51627791</p>
+  <p>The Beijing times the focus of International Education Consulting Co. Ltd. www.focusedu.cn</p>
+  <p>Copyright@2010-2015 Focus Education.All Rights Reserved. ICP Beijing No. 11025628</p>
+</footer>-->
+<div class="md-effect-1 reveal-modal user-login" id="modal-14">
+  <div class="md-content">
+    <h4 class="lead-in">FORGOT YOUR PASSWORD?</h4>
+    <h5>We'll email you instructions to reset your password.</h5>
+    <form>
+      <label>Email</label>
+      <input name="email" type="text" value="">
+      <input type="submit" value="Go" class="reveal-button">
+    </form>
+    <button class="md-close"><i class="glyphicon glyphicon-remove"></i></button>
+  </div>
+</div>
+<div class="md-overlay"></div>
+
+<footer>
+  <div class="row">
+    <div class="col-md-12">
+      <span>
+        Learn more about Kanwokanwo <br>
+        <a href="https://kanwo.daikeapp.com/">Visit our FAQ page</a><br>
+        © 2016. Kanwokanwo
+      </span>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="js/classie.js"></script> 
+<script src="js/modalEffects.js"></script> 
+<script>var polyfilter_scriptpath = '/js/';</script> 
+<script src="js/cssParser.js"></script>
+</body>
+</html>

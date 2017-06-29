@@ -1,0 +1,138 @@
+package cv.focus.core.infrastructure.persistence.hibernate.impl;
+
+import cv.focus.core.domain.activity.ItemEntity;
+import cv.focus.common.infrastructure.util.string.StringUtil;
+import cv.focus.core.interfaces.cisactivity.dto.UserItemDTO;
+import cv.focus.core.domain.user.model.Specialization;
+import cv.focus.core.domain.user.model.SpecializationRepository;
+import cv.focus.core.infrastructure.persistence.hibernate.HibernateRepository;
+import org.hibernate.Query;
+import org.springframework.stereotype.Repository;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by Administrator on 2016/8/31.
+ */
+@Repository
+public class SpecializationRepositoryHibernateImpl extends HibernateRepository implements SpecializationRepository{
+
+    public void store(Specialization Specialization){
+        getSession().saveOrUpdate(Specialization);
+    };
+
+    public List<Specialization> findByTutorName(String tutorName){
+        Query query = getSession().createQuery("from Specialization where tutorName = :tutorName order by specializationTime");
+        query.setParameter("tutorName",tutorName);
+        List<Specialization> list = query.list();
+        return list;
+    };
+
+    public List<Specialization> findByTutorId(Integer tutorId){
+        Query query = getSession().createQuery("from Specialization where tutorId = :tutorId order by specializationTime ");
+        query.setParameter("tutorId",tutorId);
+        List<Specialization> list = query.list();
+        return list;
+    };
+
+    public List<Specialization> findByUserId(Integer userId){
+        Query query = getSession().createQuery("from Specialization where userId = :userId order by specializationTime ");
+        query.setParameter("userId",userId);
+        List<Specialization> list = query.list();
+        return list;
+    };
+
+    public List<Specialization> findCurrentListByUserId(Integer userId){
+        Query query = getSession().createQuery("from Specialization where userId = :userId and specializationTime < NOW() order by specializationTime ");
+        query.setParameter("userId",userId);
+        List<Specialization> list = query.list();
+        return list;
+    };
+
+    public List<Specialization> findHistoryListByUserId(Integer userId){
+        Query query = getSession().createQuery("from Specialization where userId = :userId and specializationTime >= NOW() order by specializationTime ");
+        query.setParameter("userId",userId);
+        List<Specialization> list = query.list();
+        return list;
+    };
+
+    public List<Specialization> findCurrentListByTutorId(Integer tutorId){
+        Query query = getSession().createQuery("from Specialization where tutorId = :tutorId and specializationTime < NOW() order by specializationTime ");
+        query.setParameter("tutorId",tutorId);
+        List<Specialization> list = query.list();
+        return list;
+    };
+
+    public List<Specialization> findHistoryListByTutorId(Integer tutorId){
+        Query query = getSession().createQuery("from Specialization where tutorId = :tutorId and specializationTime >= NOW() order by specializationTime ");
+        query.setParameter("tutorId",tutorId);
+        List<Specialization> list = query.list();
+        return list;
+    };
+
+    public List<Specialization> findAll(){
+        Query query = getSession().createQuery("from Specialization order by tutorName,insertTime desc ");
+        List<Specialization> list = query.list();
+        return list;
+    }
+
+    @Override
+    public List<ItemEntity> findItemList() {
+        //Query query = getSession().createQuery("from ItemEntity where isDisplay=1 order by orderNum");
+        Query query = getSession().createQuery("from ItemEntity   order by orderNum");
+        List<ItemEntity> list=query.list();
+        return list;
+    }
+
+    @Override
+    public ItemEntity findItemById(Integer itemId) {
+        Query query = getSession().createQuery("from ItemEntity where itemId=:itemId");
+        query.setInteger("itemId",itemId);
+        ItemEntity item =(ItemEntity)query.uniqueResult();
+        return item;
+    }
+
+    @Override
+    public void addPageviews(Integer itemId, Integer afterClickNum) {
+
+        String sql="update ItemEntity set chickNum="+afterClickNum+" where itemId=:itemId";
+        Query query = getSession().createQuery(sql);
+        query.setParameter("itemId", itemId);
+        query.executeUpdate();
+    }
+
+    @Override
+    public List<ItemEntity> findBannerList() {
+        Query query = getSession().createQuery("from ItemEntity where isbanner=1 order by orderNum ");
+        List<ItemEntity> list=query.list();
+        return list;
+    }
+
+    public List<UserItemDTO> findUserItemByUserId(Integer userId){
+        String sql = "select  b.itemName,b.itemUrl,a.* from kw_user_item a, kw_item b where a.userId = '"+userId+"' and a.itemId = b.itemId order by createDate desc";
+        Query query = getSession().createSQLQuery(sql);
+        List list = query.list();
+        List<UserItemDTO> list1 = new ArrayList<UserItemDTO>();
+        for(int i = 0; i < list.size(); i++){
+            Object[] arr = (Object[])list.get(i);
+            UserItemDTO userItem = new UserItemDTO(arr[0].toString(),
+                    StringUtil.trimNull(arr[1]),
+                    StringUtil.trimNull(arr[2]),
+                    StringUtil.trimNull(arr[3]),
+                    StringUtil.trimNull(arr[4]),
+                    StringUtil.trimNull(arr[5]),
+                    StringUtil.trimNull(arr[6]),
+                    StringUtil.trimNull(arr[7]),
+                    StringUtil.trimNull(arr[8]),
+                    StringUtil.trimNull(arr[9]),
+                    StringUtil.trimNull(arr[10]),
+                    StringUtil.trimNull(arr[11]),
+                    StringUtil.trimNull(arr[12]));
+            list1.add(userItem);
+            }
+        return list1;
+    };
+
+
+}

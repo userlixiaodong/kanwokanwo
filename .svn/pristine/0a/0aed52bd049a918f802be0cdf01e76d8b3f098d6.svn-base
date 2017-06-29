@@ -1,0 +1,915 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 20px;
+    font-family: "微软雅黑";
+}
+
+@media screen and (max-width: 1920px) {
+    html {
+        font-size: 18px !important;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    html {
+        font-size: 16px !important;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    html {
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    html {
+        font-size: 12px !important;
+    }
+
+    body {
+        max-width: 769px;
+    }
+}
+
+/* iphone6 plus */
+@media (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+    html {
+        font-size: 25.875px;
+    }
+}
+
+/* iphone 6 */
+@media (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+    html {
+        font-size: 23.4375px;
+    }
+}
+
+/* 判断iphone5 *//* 横屏竖屏判断方法与ipad一样 */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+    html {
+        font-size: 20px;
+    }
+}
+.clear {
+    clear: both;
+}
+
+.gis_banner {
+    height: 25rem;
+    background: url(/images/BA-CCTV.jpg) no-repeat center top;
+    background-size: cover;
+    margin-top: 3.7rem;
+}
+.gis_banner_btn {
+    height: 3rem;
+    position: absolute;
+    text-align: center;
+}
+
+.signUp {
+    display: inline-block;
+    width: 8rem;
+    height: 2.4rem;
+    margin-top:1rem;
+    background: #0cbc9d;
+    border-radius: 0.2rem;
+    text-align: center;
+    line-height: 2.4rem;
+    color: #fff;
+    font-family: "微软雅黑 Light";
+    font-weight:bold;
+    font-size:0.9rem;
+    letter-spacing: 0.1em;
+}
+
+.signUp:nth-of-type(1) {
+    /*float: left;*/
+    /*margin-left: 6rem;*/
+}
+
+.signUp:nth-of-type(2) {
+    float: right;
+    margin-right: 6rem;
+}
+@media (max-device-width: 769px){
+    .gis_banner {
+        height: 15rem;
+        background: url(/images/BA-CCTV.jpg) no-repeat right top;
+        background-size: cover;
+        margin-top: 5rem;
+    }
+    .gis_banner_btn {
+        height: 3rem;
+        position: absolute;
+    }
+
+    .signUp {
+        display: inline-block;
+        width: 6.4rem;
+        height: 2.4rem;
+        margin-top:-0.5rem;
+        background: #018b9b;
+        border-radius: 0.2rem;
+        text-align: center;
+        line-height: 2.4rem;
+        color: #fff;
+        font-family: "微软雅黑 Light";
+        font-weight:bold;
+        font-size:0.8rem;
+        letter-spacing: 0;
+    }
+
+    .signUp:nth-of-type(1) {
+        /*float: left;*/
+        margin-top: 0.5rem;
+    }
+
+    .signUp:nth-of-type(2) {
+        float: right;
+        margin-right: 3rem;
+    }
+    @media (max-device-width: 640px) {
+        .gis_banner {
+            height: 10rem;
+            background: url(/images/BA-CCTV.jpg) no-repeat right top;
+            background-size: cover;
+            margin-top: 6rem;
+        }
+    }
+}
+.titles{
+    width:100%;
+    height:2rem;
+    text-align: center;
+    line-height:2rem;
+    font-family:"微软雅黑";
+    font-size:1.8rem;
+    font-weight:400;
+    color: #333;
+    letter-spacing: 1px;
+}
+
+.advantage{
+    width:100%;
+    height:auto;
+    position: relative;
+    margin:3rem auto;
+}
+.advantage ul{
+    width:100%;
+    height:auto;
+    margin:2rem auto;
+    text-align: center;
+}
+.advantage ul li{
+    list-style-type: none;
+    display: inline-block;
+    width:18%;
+    height:12rem;
+    margin:1rem 0 0 0.5rem;
+    text-align: center;
+    overflow: hidden;
+}
+.advantage ul li h4{
+    font-family:"微软雅黑 Light";
+    font-size:1rem;
+    color: #333;
+    margin-top:6rem;
+}
+.advantage ul li span{
+    display: block;
+    width:76%;
+    height:4rem;
+    margin:0.5rem auto;
+    font-size:0.7rem;
+    font-family:"微软雅黑 Light";
+    color: #7d7e7e;
+    line-height:1.2rem;
+}
+@media (max-width: 1300px) {
+    .advantage ul li{
+        display: inline-block;
+        width:20%;
+    }
+    .advantage ul li span{
+        width:96%;
+    }
+}
+@media (max-width: 769px) {
+    .advantage ul{
+        width:100%;
+        height:auto;
+        margin:2rem auto;
+        text-align: center;
+    }
+    .advantage ul li{
+        list-style-type: none;
+        width:45%;
+        height:14rem;
+        display: inline-block;
+        text-align: center;
+        overflow: hidden;
+    }
+    .advantage ul li h4{
+        font-size:0.8rem;
+        font-family:"微软雅黑 Light";
+        color: #333;
+        margin-top:7rem;
+    }
+    .advantage ul li span{
+        display: block;
+        width:50%;
+        height:4rem;
+        margin:1rem auto;
+        font-size:0.7rem;
+        font-family:"微软雅黑 Light";
+        color: #7d7e7e;
+        line-height:1.2rem;
+    }
+    @media (max-width: 640px) {
+        .advantage ul li span{
+            width:100%;
+        }
+    }
+}
+
+.projectDetail{
+    width:100%;
+    height:auto;
+    background: url(/images/keru-detail.jpg) no-repeat;
+    padding:3rem 0;
+}
+.project_details {
+    width: 60rem;
+    height: auto;
+    background-color: #f3f6f9;
+    border-right: 0.45rem solid #16a2b2;
+    border-radius: 0.5rem;
+    margin: 3rem auto 1.5rem auto;
+    padding:0 0 2rem 0;
+}
+
+.project_details h2 {
+    padding: 4rem 0 2.5rem 5.5rem;
+    color: #018c9c;
+    font-size: 2rem;
+}
+
+.project_details .contens {
+    width: 48.7rem;
+    margin-left: 5.45rem;
+    margin-bottom: 1rem;
+    background: url(/images/CIS_05.png) no-repeat 0.1rem 0.05rem;
+    padding-bottom: 0.5rem;
+}
+
+.project_details .contens p {
+    padding-left: 4.2rem;
+    padding-top: 1.15rem;
+    font-family: "微软雅黑";
+}
+
+.project_details .contens b {
+    font-size: 0.9rem;
+    color: #333333;
+    font-weight: normal;
+    display: block;
+    float: left;
+    font-family: "微软雅黑";
+}
+
+.project_details .contens span {
+    font-size: 0.9rem;
+    color: #666666;
+    display: inline-block;
+    padding-left: 1.1rem;
+    font-family: "微软雅黑";
+    letter-spacing: 0.05rem;
+}
+.metarial{
+    display: block;
+    width:80%;
+    height:auto;
+}
+@media (max-width: 769px) {
+    .projectDetail{
+        width:100%;
+        height:auto;
+        background: url(/images/keru-detail.jpg) no-repeat;
+        padding:3rem 0;
+        margin:0 auto;
+    }
+    .project_details {
+        width: 98%;
+        height: auto;
+        background-color: #f3f6f9;
+        border-right: 0.45rem solid #16a2b2;
+        border-radius: 0.5rem;
+        margin: 0 auto;
+    }
+
+    .project_details .contens {
+        width: 90%;
+        height: auto;
+        margin-left: 2rem;
+        background: url(/images/CIS_05.png) no-repeat 0rem 0.05rem;
+    }
+
+    .project_details h2 {
+        padding: 4rem 0 2.5rem 2rem;
+        color: #018c9c;
+        font-size: 2rem;
+    }
+
+    .project_details .contens p {
+        padding-left: 2.2rem;
+        padding-top: 1.15rem;
+        font-family: Î¢ÈíÑÅºÚ;
+    }
+
+    .project_details .contens span {
+        font-size: 0.9rem;
+        color: #666666;
+        display: inline-block;
+        padding-left: 0;
+        font-family: "微软雅黑";
+        letter-spacing: 0.05rem;
+    }
+}
+
+/*CCTV媒体实习岗位start*/
+.internship{
+    width: 50%;
+    margin: 4rem auto;
+    height: auto;
+}
+.internship .titles{
+    margin-bottom: 2rem;
+}
+.int_list {
+    width: 94%;
+    margin: 0 auto;
+    list-style: none;
+    text-align: left;
+}
+
+.int_list li {
+    display: inline-block;
+    list-style: none;
+    width: 40%;
+    height:39rem;
+    /*height:auto;*/
+    text-align: center;
+    background-color: #f4f7fa;
+    padding-left: 0;
+    border-bottom: 0.3rem solid #20abbb;
+    border-radius: 1rem;
+}
+.int_list li:nth-child(1){
+    float: left;
+}
+.int_list li:nth-child(2){
+    float: right;
+}
+.int_list li img{
+    display: block;
+    width: 100%;
+}
+.int_list li h6 {
+    color: #1e919e;
+    font-size: 1.4rem;
+    font-weight: normal;
+    margin-top: 2rem;
+    font-family: 微软雅黑;
+}
+
+.int_list li p {
+    margin: 0 auto;
+    text-align: left;
+    padding:1rem 1rem 2rem 1rem;
+    line-height: 2rem;
+    font-size: 0.7rem;
+    color: #666666;
+    text-align: justify;
+    font-family: 微软雅黑;
+}
+.int_list li p span{
+    display: block;
+    margin-top:0rem;
+    font-size:0.8rem;
+}
+.int_list li p span:first-child{
+    margin-top:0;
+}
+/*.int_list li:nth-child(2) span{*/
+    /*margin-top:2rem;*/
+/*}*/
+.practice-time{
+    display: block;
+    width:50%;
+    height:auto;
+    background: #f4f7fa;
+    margin:3rem auto 0;
+    padding:0.3rem 0.6rem;
+    text-align: center;
+    line-height:1.8rem;
+    border-bottom: 0.25rem solid #20abbb;
+    border-bottom-left-radius: 0.6rem;
+    border-bottom-right-radius: 0.6rem;
+    font-size:0.8rem;
+}
+
+@media (max-width: 1500px){
+    .internship{
+        width:80%;
+    }
+    @media (max-width: 1050px) {
+        .internship{
+            width:100%;
+        }
+        @media (max-width: 769px) {
+            .internship{
+                width: 90%;
+            }
+            .int_list{
+                width: 92%;
+            }
+            .int_list li{
+                width: 100%;
+                height:auto;
+            }
+            .int_list li:nth-child(2){
+                margin: 2rem 0;
+            }
+            .practice-time{
+                width:80%;
+            }
+        }
+    }
+}
+
+/*项目必要性*/
+.necessity{
+    width:100%;
+    height:auto;
+    background: url("/images/cctv-necessity.jpg") no-repeat;
+    margin:4rem auto;
+    padding:3rem 0;
+    color: #fff;
+}
+.nec-message{
+    width:60%;
+    margin:2rem auto;
+    padding-left:0;
+    background: url("/images/cctv-bg-nec.png") no-repeat top right;
+    background-size: 5%;
+    text-align: left;
+    line-height:1.6rem;
+    font-size:0.8rem;
+    font-family:"微软雅黑";
+    border-bottom:1px solid #fff;
+    padding-bottom:1rem;
+}
+.nec-message b{
+    font-size:0.9rem;
+}
+.cctv-nec{
+    width:60%;
+    height:auto;
+    margin:0 auto;
+    text-align: center;
+    overflow: hidden;
+}
+.cctv-nec li{
+    float: left;
+    width:32%;
+    height:16rem;
+    margin-left:0.5rem;
+}
+.cctv-nec li p{
+    width:100%;
+    height:auto;
+    margin:6rem auto 0;
+    font-size:0.9rem;
+    font-weight:bold;
+}
+.cctv-nec li span{
+    display: block;
+    width:80%;
+    height:auto;
+    margin:0.5rem auto 0;
+    font-size:0.7rem;
+    line-height:1.2rem;
+    text-align: left;
+    padding-left:0;
+}
+@media (max-width: 769px) {
+    .nec-message {
+        width: 80%;
+    }
+    .cctv-nec {
+        width: 90%;
+    }
+    @media (max-width: 640px) {
+        .necessity{
+            width:100%;
+            height:auto;
+            background: url("/images/cctv-necessity.jpg") no-repeat;
+            background-size:cover ;
+            margin:4rem auto;
+            padding:3rem 0;
+            color: #fff;
+        }
+        .cctv-nec {
+            width: 80%;
+            height:auto;
+        }
+        .cctv-nec li{
+            width:100%;
+            height:auto;
+            margin-top: 1.5rem;
+        }
+        .cctv-nec li p{
+            margin:7rem auto 0;
+            font-size:1rem;
+        }
+        .cctv-nec li span{
+            text-align: center;
+            font-size:0.9rem;
+        }
+    }
+}
+
+.application{
+    width: 100%;
+    height: 30rem;
+    position: relative;
+    background: url("/images/BA-application.jpg") no-repeat center;
+    background-size:cover ;
+    margin:4rem auto 0;
+    padding:2rem 0 3rem;
+}
+.application a{
+    text-decoration: none;
+    color: #333;
+}
+
+.consulting {
+    width: 23rem;
+    height: 12rem;
+    margin: 2rem auto 2rem;
+    text-align: center;
+    border-bottom:0.2rem solid #26baa0;
+}
+.erweima{
+    width:11.5rem;
+    height:11.8rem;
+    text-align: center;
+    padding-top:1.5rem;
+}
+.erweima:nth-of-type(1){
+    float: left;
+    background: #fff;
+}
+.erweima:nth-of-type(2){
+    float: right;
+    background: #f8fafc;
+}
+.erweima span{
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: #111;
+    font-family: 微软雅黑;
+    font-weight:normal;
+    position: relative;
+}
+.erweima img{
+    width:50%;
+    height:auto;
+}
+.tel-yw-icon{
+    width:20%;
+    height:7.6rem;
+    background:url("/images/yw_icon.png") no-repeat left bottom;
+    background-size:28%;
+    margin:0rem auto 0;
+}
+.consult_tel {
+    display: inline-block;
+    width: 70%;
+    height: 2rem;
+    background: url(/images/tel-keru.png) no-repeat left center;
+    background-size:11%;
+    float: right;
+    margin: 3.4rem auto;
+    padding-left:2rem;
+    line-height:2rem;
+    font-size:1rem;
+    font-weight:bold;
+}
+.videoSignUp{
+    display: block;
+    width:8rem;
+    height:2.4rem;
+    background: #26baa0;
+    border-radius:0.2rem;
+    margin:1rem auto;
+    text-align: center;
+    line-height:2.4rem;
+    color: #fff;
+    font-family:"微软雅黑 Light";
+    font-size:1.2rem;
+    font-weight:bold;
+    letter-spacing: 0.1em;
+}
+@media (max-width: 1686px) {
+    .consult_tel {
+        display: inline-block;
+        width: 70%;
+        height: 2rem;
+        background: url(/images/tel-keru.png) no-repeat left center;
+        background-size:11%;
+        float: right;
+        margin: 3rem auto;
+        padding-left:2rem;
+        line-height:2rem;
+        font-size:0.9rem;
+        font-weight:bold;
+    }
+}
+@media (max-width: 1550px) {
+    .tel-yw-icon{
+        width:20%;
+        margin:-2.2rem auto 0;
+    }
+    .consult_tel {
+        width: auto;
+        margin: 4rem auto;
+        font-size:0.8rem;
+    }
+}
+@media (max-width: 769px) {
+    .tel-yw-icon{
+        width:66%;
+        height:5.6rem;
+        background:url("/images/yw_icon.png") no-repeat left center;
+        background-size:contain;
+        margin:0.6rem auto 0;
+    }
+    .consult_tel {
+        display: inline-block;
+        width: 72%;
+        height: 2rem;
+        background: url(/images/tel-keru.png) no-repeat left center;
+        background-size:contain;
+        float: right;
+        margin-top: 1.8rem;
+        padding-left:2rem;
+        line-height:2rem;
+        font-size:1.2rem;
+        font-weight:bold;
+    }
+    .videoSignUp{
+        display: block;
+        width:8rem;
+        height:2.4rem;
+        background: #26baa0;
+        border-radius:0.2rem;
+        margin:1rem auto;
+        text-align: center;
+        line-height:2.4rem;
+        color: #fff;
+        font-family:"微软雅黑 Light";
+        font-size:1.2rem;
+        font-weight:bold;
+        letter-spacing: 0.1em;
+    }
+    @media (max-width: 400px) {
+        .tel-yw-icon{
+            width:70%;
+            height:5.6rem;
+            background:url("/images/yw_icon.png") no-repeat left center;
+            background-size:contain;
+            margin:0.6rem auto 0;
+        }
+        .consult_tel {
+            width: auto;
+        }
+    }
+}
+
+.login-before {
+    width: 35rem;
+    height: 17rem;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 1000;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    background: #e1e4e8;
+    display: none;
+}
+
+.login-before .login-before-close-btn {
+    color: #aaaaaa;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+}
+
+.login-before p {
+    font-family: "Microsoft Yahei";
+    font-size: 0.9rem;
+    margin-top: 4.5rem;
+    width: 100%;
+    text-align: center;
+}
+
+.login-before .login-btn {
+    display: block;
+    width: 7rem;
+    height: 2.75rem;
+    font-size: 1.2rem;
+    line-height: 2.75rem;
+    color: #fff;
+    text-align: center;
+    margin: 3.5rem auto;
+    background-color: #28b38d;
+}
+.leadFrame{
+    display: none;
+}
+
+@media (max-width: 750px) {
+    .login-before {
+        height: 15rem;
+        position: fixed;
+        top: 30%;
+        z-index: -99999;
+        text-align: center;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        background: #e1e4e8;
+        display: none;
+    }
+
+    .login-before p {
+        font-family: "Microsoft Yahei";
+        font-size: 0.8rem;
+        margin-top: 4.5rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .login-before .login-btn {
+        display: block;
+        width: 7rem;
+        height: 2.75rem;
+        font-size: 1.2rem;
+        line-height: 2.75rem;
+        color: #fff;
+        text-align: center;
+        margin: 3rem auto;
+        background-color: #28b38d;
+    }
+    .glyphicon {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        display: inline-block;
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        color: #fff;
+    }
+    .glyphicon-remove {
+        font-size: 25px !important;
+        display: block;
+    }
+
+    .mask {
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 999;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+    }
+    .leadFrame{
+        height: 15rem;
+        position: fixed;
+        top: 55%;
+        z-index: 1000;
+        text-align: center;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        background: #1bb38c;
+        display: none;
+    }
+    .leadFrame p{
+        font-family: "Microsoft Yahei";
+        font-size: 0.8rem;
+        margin-top: 6.5rem;
+        width: 100%;
+        text-align: center;
+        font-weight:bold;
+        font-size:1.4rem;
+        color:#fff;
+        letter-spacing: 0.1em;
+    }
+}
+#goTopBtn {
+    position: fixed;
+    line-height: 36px;
+    width: 36px;
+    bottom: 35px;
+    height: 36px;
+    cursor: pointer;
+    display: none;
+    background: url(/images/goTopBtn.png) no-repeat;
+    background-size: 100%;
+}
+.weixinFrame{
+    width:8rem;
+    height:14rem;
+    background: url("/images/weixinFrame.png") no-repeat;
+    background-size: contain;
+    position: fixed;
+    left:0;
+    top:30%;
+    z-index: 999;
+}
+
+/*弹窗样式*/
+
+.popup_box {
+    width: 30rem;
+    height: 20rem;
+    background-color: #f3f7ff;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -15rem;
+    margin-top: -10rem;
+    z-index: 999;
+    /* display: none;*/
+}
+
+.popup_box a {
+    display: block;
+    width: 11rem;
+    height: 3rem;
+    line-height: 3rem;
+    text-decoration: none;
+    margin-left: 10rem;
+    background-color: #54c5d4;
+    text-align: center;
+    color: #fff;
+    border-radius: 1rem;
+}
+
+.popup_box img {
+    display: block;
+    margin: 0 auto;
+    padding: 62px 0 40px 0;
+}
+
+.popup_box .popup_close {
+    display: block;
+    cursor: pointer;
+    width: 23px;
+    height: 23px;
+    background: url(/images/cisformclose.png)no-repeat center;
+    position: absolute;
+    right: 13px;
+    top: 13px
+}
+
+.fe_window_mask {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 699;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #000 none repeat scroll 0 0;
+    opacity: 0.3;
+}
+

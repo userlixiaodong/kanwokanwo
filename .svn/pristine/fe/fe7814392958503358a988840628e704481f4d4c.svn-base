@@ -1,0 +1,432 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Touch enabled minimalistic slider written in vanilla JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="/style/public.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/frame.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/app.css">
+    <link rel="stylesheet" href="/style/manteng.css?20170428">
+    <script src="/js/jquery-2.2.1.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+</head>
+<body>
+<div class="login-before">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>您还未登录，请在登录之后再进行申请哦！~</p>
+    <a class="login-btn md-trigger" data-modal="modal-12" href="javascript:trackOutboundLink('', 'index_login');">登录</a>
+</div>
+<div class="leadFrame">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>请使用电脑进行登录</p>
+</div>
+<div class="container_box">
+    <%@include file="/WEB-INF/views/common/top.jsp" %>
+    <input type="hidden" id="ItemId" value="${Item.itemId}">
+    <div class="gis_banner">
+        <div class="gis_banner_btn">
+            <c:choose>
+                <c:when test="${sessionScope.loginUser == null}">
+                    <a href="javascript: loginAlert();;" class="signUp" id="signUp">点击报名</a>
+                </c:when>
+                <c:otherwise>
+                    <%--<a href="javascript:toApply();;" class="signUp" id="signUp">点击报名</a>--%>
+                </c:otherwise>
+            </c:choose>
+            <a href="//focusedu.oss-cn-hangzhou.aliyuncs.com/videos/manteng.mp4" class="signUp">观看往期直播</a>
+        </div>
+    </div>
+
+    <div class="mid_cont">
+
+        <%--项目背景start--%>
+        <div class="projectBackground">
+            <p class="titles">项目背景</p>
+            <div class="projectAnalyse">
+                <h5><b>裸归：</b>美国留学成本最高，少则四五十万多则上百万，然而毕业后“裸归”却成为一个普遍现象。按近三年的统计数据，没有任何职场经历只是完成海外学业的“裸归”群体，回国后平均月薪不到一万元。高投入却换不来高回报。
+                </h5>
+                <%--<h6>2011~2016中国出国留学、裸归人数对比（万）</h6>--%>
+                <div id="hcharts">
+                    <img src="/images/manteng_chart.png" alt="">
+                </div>
+                <div class="nakedReason">
+                    <b>裸归原因：</b>
+                    <p>1.&nbsp;&nbsp;美国大学无法满足中国留学生对就业、职场和专业辅导的需求</p>
+                    <p> 2.&nbsp;&nbsp;中国留学生并非美国社会主体，残酷地被隔绝在实习和工作机会之外</p>
+                    <p> 3.&nbsp;&nbsp;85%中国留学生不了解美国就业市场，没有清晰的职业目标和规划，缺乏竞争力</p>
+                    <p>4.&nbsp;&nbsp;90%裸归月薪不足1万元，包括博士毕业生</p>
+                    <p>5.&nbsp;&nbsp;培养一个留学生，家长四年里平均投入150万元，怎么计算投资回报？</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="advantage">
+            <p class="titles">项目特色</p>
+            <ul class="clearfix">
+                <li>
+                    <h4>职场大数据</h4>
+                    <span>基于智能大数据<br/>伴随式成长引擎<br/>完善的职场引擎</span>
+                </li>
+                <li>
+                    <h4>名企直通车</h4>
+                    <span>数百美名企资源<br/>美名企推荐机会<br/>实习+正式工作</span>
+                </li>
+                <li>
+                    <h4>精英导师</h4>
+                    <span>“千人计划”专家<br/>全球500强高管<br/>“独角兽”创业精英</span>
+                </li>
+                <li>
+                    <h4>全面的职业规划</h4>
+                    <span>科学职业测评<br/>全面简历提升<br/>专业面试培训</span>
+                </li>
+                <li>
+                    <h4>VIP专享订制</h4>
+                    <span>蔓藤鹰计划<br/>个性化定制服务<br/>针对性职业路径</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="projectDetail">
+            <p class="titles">项目信息</p>
+            <div class="project_details">
+                <h2>项目信息</h2>
+                <div class="contens">
+                    <p>
+                        <b>公司地址： </b><span>中国——北京市朝阳区三里屯、美国——Walnut Avenue</span>
+                    </p>
+                    <p>
+                        <b>申请期限： </b><span>滚动申请</span>
+                    </p>
+                    <p>
+                        <b>适合人群： </b><span>有意向申请美国大学的学生、美国大学在读生</span>
+                    </p>
+                    <p>
+                        <b>项目简介： </b>
+                        <span class="metarial">
+                            精鹰计划：<br/>
+蔓藤教育的精英导师与蔓藤教育独家开发的成长引擎高效配合，帮助每名赴美读书的学生制定科学的、个性化的职业规划。同时，蔓藤教育的资深职业规划顾问将配合蔓藤智能引擎，记录、推动、评估学生职业规划中的每个细节，帮助每名学生实现从留学生到职场精“鹰”的蜕变。
+<br/>雄鹰计划：<br/>
+蔓藤教育雄鹰计划根据学生不同背景，针对性匹配最适合的顶级精英导师，深度挖掘学员潜能，最大力度全面提升学生能力。蔓藤教育确保每名参与雄鹰计划的学生100%在美国拿到工作offer，实现美国就业梦想。
+<br/>飞鹰计划：<br/>
+利用蔓藤教育涵盖全美各行业的强大资深导师资源库，飞鹰计划保证每一位优秀的留学生获得美国专业实习经历，帮助学生开拓国际视野、增强专业素养、提升个人综合竞争力，为将来的美国求职铺平道路。
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="videoIntroduce">
+            <p class="titles" >蔓藤教育项目介绍</p>
+            <div class="videoWrapper">
+                <video id="video1" src="http://focusedu.oss-cn-hangzhou.aliyuncs.com/videos/manteng.mp4"
+                       type="video/mp4" width="100%" height="100%" controls="controls" poster="/images/mantengv.jpg"
+                       webkit-playsinline></video>
+                <%--<i id="play" class="play"></i>--%>
+            </div>
+            <c:choose>
+                <c:when test="${sessionScope.loginUser == null}">
+                    <a href="javascript: loginAlert();" class="videoSignUp">报名申请</a>
+                </c:when>
+                <c:otherwise>
+                    <%--<a class="videoSignUp" href="javascript: toApply();">报名申请</a>--%>
+                </c:otherwise>
+            </c:choose>
+        </div>
+
+        <div class="yjh">
+            <p class="titles">鹰计划</p>
+            <ul class="clearfix">
+                <li>
+                    <div class="yjhCont">
+                        <h6><b class="line">金<br>鹰</b> <br><i>$1499</i></h6>
+                        <div class="yjhInfo">
+                            <p><b>适合于：</b><span>正在申请美国大学的学生</span></p>
+                            <p><b>提供：</b><span>1、职场导师辅导（3课时）</span><span>2、留学推荐信（5封）</span></p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="yjhCont">
+                        <h6><b class="line">金<br>鹰</b> <br><i>$7500-12500</i></h6>
+                        <div class="yjhInfo">
+                            <p><b>四档收费（每年）：</b><span>$7500/$9500/$10500/$12500</span></p>
+                            <p><b>适合于：</b><span>本科在读学生和研究生在读学生</span></p>
+                            <p><b>提供：</b><span>1、次美国公司实习</span><span>2、职场导师辅导（12次/年）</span><span>3、职业规划顾问咨询（48次/年）</span></p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="yjhCont">
+                        <h6><b class="line">雄<br>鹰</b> <br><i>$58000</i></h6>
+                        <div class="yjhInfo">
+                            <p><b>适合于：</b><span>本科在读学生和研究生在读学生</span></p>
+                            <p><b>提供：</b><span>1、1份H-1B工作Offer</span><span>2、1次美国公司实习</span><span>3、顶尖导师辅导（不超过15次）</span><span>4、首席职业规划顾问咨询（不超过60次）</span><span>5、3次顶尖导师模拟面试</span></p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="yjhCont">
+                        <h6><b class="line">金<br>鹰</b> <br><i>$6500</i></h6>
+                        <div class="yjhInfo">
+                            <p><b>适合于：</b><span>本科在读学生和研究生在读学生</span></p>
+                            <p><b>提供：</b><span>1、次美国公司实习</span><span>2、1次职场导师辅导。</span><span>3、3次职业规划顾问咨询</span></p>
+                            <p><b style="width: 113%">远程项目实习（战鹰$5000）：</b><span>项目实践+4次辅导+1封推荐信+（Plus:$2999升级6封网推荐信）</span></p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="yjhCont">
+                        <h6><b class="line">金<br>鹰</b> <br><i>$2999</i></h6>
+                        <div class="yjhInfo">
+                            <p><b>适合于：</b><span>临近毕业，准备找工作。或者已经毕业，求职过程中遇到瓶颈的学生</span></p>
+                            <p><b>提供：</b><span>1、职场精英导师辅导（5次）</span><span>2、求职文书修改</span><span>3、蔓藤岗位资源库</span></p>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="successCase">
+            <p class="titles" style="color: #fff;">成功案例</p>
+            <div class="cases">
+
+                <hr style="width: 62%;margin: 0 auto -3rem;">
+
+                <div class="characters">
+                <span style="display: block;">精鹰计划1年学员    <b>姓名：</b>Kevin Wang        <b>学校：</b>USC         <b>专业：</b>EE        <b>GPA：</b>3.55    <b>工作offer：</b>IBM模拟电路设计师 <br>
+                    <b>职业规划路径</b><br>
+                    1、大一，Andy没有很明确的职业方向，GPA3.0，暑期旅游，加入学校社团<br>
+                    2、大二 ，加入蔓藤的精鹰计划，职业测评明确了自身优劣势，Carl导师（KPMG CPA 10年审计工作经验）一对一辅导，明确了职业方向审计，规划了3年时间表。大二暑期：Lee CPA & Associate实习生<br>
+                    3、大三，通过Carl导师每月一次的辅导和完成导师布置的Project，阅读推荐书目，学习Excel V look up技能。暑假，通过内推方式拿到PwC 普华永道的暑期实习offer。<br>
+                    4、大四，有针对性的选修专业课程，备考CPA课程，在导师帮助下Networking，春招拿到KPMG和MassMutual的offer。</span>
+                    <%--<span>精鹰计划3年学员姓名：Andy Li            学校：华盛顿大学      专业：Accounting        GPA：3.6         工作offer：KPMG     MassMutual职业规划路径
+1、大一，Andy没有很明确的职业方向，GPA3.0，暑期旅游，加入学校社团
+2、大二 ，加入蔓藤的精鹰计划，职业测评明确了自身优劣势，Carl导师（KPMG CPA 10年审计工作经验）一对一辅导，明确了职业方向审计，规划了3年时间表。大二暑期：Lee CPA & Associate实习生
+3、大三，通过Carl导师每月一次的辅导和完成导师布置的Project，阅读推荐书目，学习Excel V look up技能。暑假，通过内推方式拿到PwC 普华永道的暑期实习offer。
+4、大四，有针对性的选修专业课程，备考CPA课程，在导师帮助下Networking，春招拿到KPMG和MassMutual的offer。</span>--%>
+
+                    <ol class="charactersImg">
+                        <li style="border: 2px solid #fff;">
+                            <img src="/images/mantengInfo01.png" ><span class="imgMask"></span>
+                        </li>
+                        <li>
+                            <img src="/images/mantengInfo02.png" ><span class="imgMask"></span>
+                        </li>
+                    </ol>
+                </div>
+
+            </div>
+            <%--<a href="#" class="videoSignUp">点击报名</a>--%>
+        </div>
+        <%-- 合作企业start--%>
+        <div class="businessParters" style="display: none">
+            <p class="titles">学员录取学校</p>
+            <ul class="partersList clearfix">
+                <li><p><img style="display: block; width: 100%" src="/images/u781.png" alt=""></p></li>
+                <li><p><img style="display: block; width: 100%" src="/images/u781.png" alt=""></p></li>
+                <li><p><img style="display: block; width: 100%" src="/images/u781.png" alt=""></p></li>
+                <li><p><img style="display: block; width: 100%" src="/images/u781.png" alt=""></p></li>
+                <li><p><img style="display: block; width: 100%" src="/images/u781.png" alt=""></p></li>
+                <li><p><img style="display: block; width: 100%" src="/images/u781.png" alt=""></p></li>
+                <li><p><img style="display: block; width: 100%" src="/images/u781.png" alt=""></p></li>
+                <li><p><img style="display: block; width: 100%" src="/images/u781.png" alt=""></p></li>
+                <li><p><img style="display: block; width: 100%" src="/images/u781.png" alt=""></p></li>
+                <li><p><img style="display: block; width: 100%" src="/images/u781.png" alt=""></p></li>
+            </ul>
+        </div>
+
+        <div class="application clearfix">
+            <span class="consult_tel">010-5292-8288-8018</span>
+            <%--<p class="titles"><a href="">提升你的学术背景，让你的履历在<br />招生官的眼中再升一个等级吧~</a></p>--%>
+            <div class="consulting">
+                <div class="erweima">
+                    <img src="/images/gzh.png" alt=""><span>关注看我看我公众号<br/>获得更多留学资讯</span>
+                </div>
+                <div class="erweima">
+                    <img src="/images/kefu.png" alt=""><span>独家报名通道<br/>添加看我客服</span>
+                </div>
+            </div>
+            <c:choose>
+                <c:when test="${sessionScope.loginUser == null}">
+                    <a class="videoSignUp" href="javascript:loginAlert();" style="color:#fff;">点击报名</a>
+                </c:when>
+                <c:otherwise>
+                   <%-- <a class="videoSignUp" href="javascript:toApply();" style="color:#fff;">点击报名</a>--%>
+                </c:otherwise>
+            </c:choose>
+        </div>
+        <div class="weixinFrame"></div>
+        <%--  <div id="goTopBtn"></div>--%>
+    </div>
+
+
+    <%@include file="/WEB-INF/views/common/bottom.jsp" %>
+</div>
+<div class="mask"></div>
+
+
+</body>
+<script src="/js/highcharts.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    /* var wid = $(window).width();
+     var hei = $(window).height();
+     //返回顶部
+     $(window).scroll(function() {
+     var sc = $(window).scrollTop();
+     console.log(sc);
+     var rwidth = $(window).width()
+     if (sc > 0) {
+     $("#goTopBtn").css("display", "block");
+     $("#goTopBtn").css("left", (rwidth - 36) + "px");
+     } else {
+     $("#goTopBtn").css("display", "none");
+     }
+     })
+     $("#goTopBtn").click(function() {
+     var sc = $(window).scrollTop();
+     $('body,html').animate({
+     scrollTop: 0
+     }, 500);
+     })
+     */
+    function loginAlert() {
+        if (wid < 769) {
+            $("#signUp,.videoSignUp").on("click", function () {
+                var ban = 0;
+                $(".mask").css("display", "block");
+                $(".leadFrame").show(400);
+                document.addEventListener("touchmove", function (e) {
+                    if (ban == 0) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                }, false);
+            });
+            $(".login-before-close-btn").on("click", function () {
+                $(".mask").css("display", "none");
+                $(".leadFrame").css("display", "none");
+            });
+        } else {
+            $(".login-before").css('display', 'block');
+        }
+    }
+    function closeAlert() {
+        $(".login-before").css('display', 'none');
+        location.reload();
+    }
+    function toApply() {
+        location.href = "/userItem/apply";
+    }
+    $(function () {
+        //成功案例添加背景图片
+        var list = $(".cases ul li");
+        var advList = $(".advantage ul li");
+        var resList = $(".results-parts");
+        var chaImgList = $(".charactersImg li");
+
+
+        for (var i = 0; i < list.length; i++) {
+//            console.log(list[i]);
+            var listUrl = '/images/case' + parseInt(i + 1) + '.png';
+//            console.log(listUrl);
+            list.eq(i).css({"background": "url(" + listUrl + ") no-repeat center top", "background-size": "25%"});
+
+        }
+        for (var i = 0; i < advList.length; i++) {
+//            console.log(advList[i]);
+            var advListUrl = '/images/mantengIcon' + parseInt(i + 1) + '.png';
+//            console.log(advListUrl);
+            advList.eq(i).css("background", "url(" + advListUrl + ") no-repeat center 12px #f5f8fa");
+        }
+        for (var i = 0; i < resList.length; i++) {
+//            console.log(resList[i]);
+            var resListUrl = '/images/results' + parseInt(i + 1) + '.png';
+//            console.log(advListUrl);
+            resList.eq(i).css({
+                "background": "url(" + resListUrl + ") no-repeat top left #fff",
+                "background-size": "14%"
+            });
+            if (i < 3) {
+                resList.eq(i).css("background-position", "top right");
+            }
+        }
+
+        //成功案例图像对应内容切换
+        $(".charactersImg li").on("click", function () {
+            var i = $(this).index();
+            var chaSpanList = $(".characters span").eq(i);
+//            console.log(i);
+//            console.log(chaSpanList.html());
+            $(this).css("border", "2px solid #fff").children("span").css("display", "none");
+            $(this).siblings("li").css("border", "none").children("span").css("display", "block");
+            chaSpanList.css("display", "block").siblings().css("display", "none");
+        });
+
+//        console.log($(".gis_banner").height());
+//        console.log(wid);
+        $(".gis_banner_btn").css({"width": wid * 0.4, "top": $(".gis_banner").height() * 0.8, "left": wid * 0.3});
+        if (wid < 769) {
+            $(".mid_cont").css({"width": wid, "max-width": "750px", "margin": "0 auto"});
+            $(".advantageTable").css("width", wid);
+            $(".gis_banner").css("width", wid);
+            $(".gis_banner_btn").css({"width": wid, "top": $(".gis_banner").height() * 0.7, "left": 0});
+            $(".project_details").css({"width": wid * 0.98, "margin-left": wid * 0.01});
+            $(".leadFrame").css({"width": wid * 0.8, "left": wid * 0.5});
+            $(".user-login").css({
+                "width": wid,
+                "height": hei,
+                "position": "fixed",
+                "margin-left": wid * 0.1,
+                "top": "0px"
+            });
+
+            if (wid > 640) {
+                for (var i = 0; i < list.length; i++) {
+//            console.log(list[i]);
+                    var listUrl = '/images/case' + parseInt(i + 1) + '.png';
+//            console.log(listUrl);
+                    list.eq(i).css({
+                        "background": "url(" + listUrl + ") no-repeat center top",
+                        "background-size": "15%"
+                    });
+                }
+            }
+            //    简介文字超出字数用省略号代替
+            $(function () {
+                //成功案例部分
+//                var strs = "";
+//                for (var i=0;i<$(".caseSpan").length;i++){
+//                    var str = $(".caseSpan").eq(i).html();
+//                    var s = str.length;
+////                    console.log(str);
+////                    console.log(s);
+//                    if(s > 20){
+//                        strs = strs + $(".caseSpan").eq(i).html(str.substr(0,36)+"......");
+//                    }
+//                }
+                //活动成果部分
+//                for (var i=0;i<$(".results-span").length;i++){
+//                    var str = $(".results-span").eq(i).html();
+//                    var s = str.length;
+////                    console.log(s);
+////                    console.log(str);
+//                    if(s > 50){
+//                        strs = strs + $(".results-span").eq(i).html(str.substr(0,50)+"...");
+//                    }
+//                }
+
+//            报名按钮点击事件及弹出框屏幕禁止事件
+
+            })
+        }
+    })
+
+
+    $("#goTopBtn").css("right", "0")
+
+</script>
+</html>

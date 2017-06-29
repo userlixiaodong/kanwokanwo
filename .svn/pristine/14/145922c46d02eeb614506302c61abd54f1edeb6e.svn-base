@@ -1,0 +1,195 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Touch enabled minimalistic slider written in vanilla JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="/style/public.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/frame.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/app.css">
+    <link rel="stylesheet" href="/style/cis.css?20170402">
+    <script src="/js/jquery-2.2.1.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+</head>
+<body>
+<div class="login-before">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>您还未登录，请在登录之后再预约服务哦！~</p>
+    <a class="login-btn md-trigger" data-modal="modal-12" href="javascript:trackOutboundLink('', 'index_login');">登录</a>
+</div>
+<div class="leadFrame">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>请使用电脑进行登录</p>
+</div>
+<div class="container_box">
+    <%@include file="/WEB-INF/views/common/top.jsp" %>
+    <input type="hidden" id="ItemId" value="${Item.itemId}">
+    <div class="gis_banner"></div>
+
+    <div class="mid_cont">
+        <div class="enroll_box">
+
+            <div class="enroll_top">
+                <img src="/images/CIS_01.jpg" alt="" />
+                <p><span>什么是CIS？</span><br /><br /><i style="font-style: normal;">CIS 研究项目致力于帮助中国学生学习独立研究技能，提升批判新思维能力，并且对博雅教育产生熟悉和了解。在与全球顶尖大学教授工作共同研究的过程中，学生能够熟悉如何在学习过程中创造自己的独立思维并且将其应用。在中国独特的教育环境下，CIS研究项目能够最好的弥补学生在创造性学习经验上的不足。</i></p>
+            </div>
+            <div class="enroll_bottom">
+                <img src="/images/CIS_02.jpg" />
+                <p>
+                    为什么参加CIS？<br /><br />
+                    <span><i></i>常青藤顶级教授，亲自指导学员开展科研项目。</span>
+                    <span><i></i>优秀论文可在cathaypath（清华大学与To rhea Education Group联合举办的青少年科研年刊）发表。</span>
+                    <span><i></i>CIS项目官方推荐信。</span>
+                    <span><i></i>表现非常优异的学员，将有可能得到教授由个人办公室署名，直接通过CA等申请系统向大学提交的推荐信。 </span>
+                </p>
+            </div>
+            <div class="enroll_btn">
+                <c:choose>
+                    <c:when test="${sessionScope.loginUser == null}">
+                        <a   href="javascript: loginAlert();" >点击报名</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a  href="/userItem/apply">点击报名</a>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+        </div>
+        <div class="application">
+            <p><a href="">提升你的学术背景，让你的履历在<br />招生官的眼中再升一个等级吧~</a></p>
+            <div class="consulting">
+                <img src="/images/cis_ywicon.jpg" alt="">
+                <img src="/images/kanwo_ewm.jpg" alt="">
+                <span>详情咨询</span>
+            </div>
+            <span class="consult_tel">010-5292-8288（8018）</span>
+        </div>
+
+        <div class="project_details">
+            <h2>项目详情</h2>
+            <div class="contens">
+                <p>
+                    <b>项目时间： </b><span>2017-07-10——2017-08-04</span>
+                </p>
+                <p>
+                    <b>项目师资： </b><span>20名教授（来自常青藤盟校）</span>
+                </p>
+                <p>
+                    <b>项目场地： </b><span>北京——清华大学<br />上海——上海交通大学</span>
+                </p>
+                <p>
+                    <b>项目形式：</b><span>每名教授带领一个研究小组，含有5个以内学员，并配备独立的RA顾问；<br />每日课程时长5-7小时，包含背景知识介绍、教授亲自指导研究讨论；</span>
+                </p>
+                <p>
+                    <b>成绩材料： </b>
+                    <span>
+								论文——在教授协助下获得自身研究成果。高级学术成果将发表在cathaypath <br />
+								（清华大学与To rhea Education Group联合举办的青少年科研年刊）。<br />
+								<br />
+
+								成绩单——根据课上、课下、思维、沟通、考试、论文等多方面综合给予项目结<br />
+								业评分。B-以上评分被认为合格毕业生。<br />
+								<br />
+								官方推荐信——CIS项目官方将要求教授为学员出局项目官方推荐信。<br />
+								<i>
+									但请注意：<br />
+									如果学员出现缺课，缺作业或者顶撞教授等行为，教授完全可以拒绝为您出具推荐信。<br />
+									教授推荐信将根据您的实际表现出具，不会接受添加任何夸张或虚拟成分的要求。<br />
+								</i>
+								<br />
+								私人推荐信——如果你的表现非常优异，将有可能得到教授由个人办公室署名，<br />
+								直接通过CA等申请系统向大学提交的推荐信。<br />
+								<i>
+									这将大幅提升你的录取几率。虽然CIS学员有较大概率得到私人推荐信，但这并<br />
+									非教授的义务。CIS及教授一般将多次强行要求私人推荐信的行为视为严重冒犯。
+								</i>
+							</span>
+                </p>
+                <c:choose>
+                    <c:when test="${sessionScope.loginUser == null}">
+                        <a  class="btn" href="javascript: loginAlert();" >报名申请</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="btn" href="/userItem/apply">报名申请</a>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+
+        </div>
+
+    </div>
+    <%@include file="/WEB-INF/views/common/bottom.jsp" %>
+</div>
+<div class="mask"></div>
+</body>
+<script type="text/javascript">
+    function loginAlert(){
+        $(".login-before").css('display','block');
+    }
+    function closeAlert(){
+        $(".login-before").css('display','none');
+        location.reload();
+    }
+    $(function () {
+        var wid = $(window).width();
+        var hei = $(window).height();
+        if (wid < 750){
+            $(".mid_cont").css({"width":wid,"max-width":"750px"});
+            $(".fixed-top").css("width",wid);
+            $(".clearfix").css({"width":wid,"height":"130px","position":"relative","bottom":"0px","padding-top":"16px",});
+            $(".row").css({"height":"80px","margin-top":"6px"});
+            $(".row span").css({"font-size":"14px","line-height":"24px"});
+            $(".gis_banner").css("width",wid);
+            $(".enroll_box").css({"width":wid*0.9,"margin-left":wid*0.05});
+            $(".application").css("width",wid);
+            $(".project_details").css({"width":wid*0.98,"margin-left":wid*0.01});
+            $(".leadFrame").css({"width":wid*0.8,"left":wid*0.5});
+            $(".user-login").css({"width":wid,"height":hei,"position":"fixed","margin-left":wid*0.1,"top":"0px"});
+
+            //    简介文字超出字数用省略号代替
+            $(function () {
+                var strs = "";
+                for (var i=0;i<$(".enroll_top i").length;i++){
+                    var str = $(".enroll_top i").eq(i).html();
+                    var s = str.length;
+//                    console.log(str);
+//                    console.log(s);
+                    if(s > 20){
+                        strs = strs + $(".enroll_top i").eq(i).html(str.substr(0,40)+"......");
+                    }
+                }
+                for (var i=0;i<$(".enroll_bottom p span").length;i++){
+                    var str = $(".enroll_bottom p span").eq(i).html();
+                    var s = str.length;
+                    if(s > 20){
+                        strs = strs + $(".enroll_bottom p span").eq(i).html(str.substr(0,20)+"...");
+                    }
+                }
+//            点击弹出框屏幕禁止事件
+                $(".enroll_btn,.btn").on("click",function () {
+                    var ban=0;
+                    $(".mask").css("display","block");
+                    $(".leadFrame").show(400);
+                    document.addEventListener("touchmove",function(e){
+                        if(ban==0){
+                            e.preventDefault();
+                            e.stopPropagation();
+                        }
+                    },false);
+                });
+                $(".login-before-close-btn").on("click",function () {
+                    $(".mask").css("display","none");
+                    $(".leadFrame").css("display","none");
+                });
+
+            })
+        }
+
+
+
+
+    })
+</script>
+
+</html>

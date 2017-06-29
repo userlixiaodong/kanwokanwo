@@ -1,0 +1,31 @@
+@charset "utf-8";
+/*.school-list{margin-top: 75px;}
+.school-list-header{height:600px;background:url(../images/school-list-bannerbg.jpg) no-repeat center center;-webkit-background-size:cover;background-size:cover;}
+.school-list-header h2{color:#fff;text-transform:uppercase;letter-spacing:-0.04em; font-size:48px; padding-top:220px;font-weight:600;}*/
+.school-list .w1200{max-width:1200px;width:1200px;margin:0 auto;}
+@media (max-width: 798px){.school-list .w1200{width:auto;}}
+.school-list-item { padding:20px 0;}
+.school-list-item > div{ margin-top:10px; }
+.school-list-item a.school-img{display: block;background-color: #F6F6F6;border-radius: 20px; width: 290px;height:290px;position: relative;margin: 0 auto;}
+.school-list-item img{ width: 200px; height: 200px;position:absolute; left:50%; top:50%;transform:translate(-50%,-50%); -webkit-transform:translate(-50%,-50%);}
+.school-list-item p{ width: 84%; margin: 20px auto 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-wrap: normal;}
+.school-list-item p a{color:#3d3d3d;}
+/*新版头部*/
+.colleges-column{ margin: 75px 0 40px;}
+.colleges-content{ color:#fff; top:0; left:0; height:100%;padding-top: 30px; position: absolute;}
+.colleges-content h3{ font-size:50px;}
+.colleges-content dl{ bottom:18%; left:50%; -webkit-transform:translateX(-50%);transform:translateX(-50%);}
+.colleges-content dt{ font-size:25px; font-weight:100; line-height:2;}
+.colleges-content dd{ font-size:18px; line-height:1.8;}
+.colleges-content dd a,.colleges-btn{ font-size:60px; color:#fff; display:inline-block; margin-bottom:10px;}
+.colleges-content dd{ width:100%;}
+.colleges-content dd img{ border:2px solid #fff;}
+.colleges-btn{ display:none;}
+@media (max-width: 950px){
+    .colleges-column{ margin: 75px 0 30px;}
+    .colleges-content{ padding: 0 !important; width:280px; height:264px; left:50%; top:50%; -webkit-transform: translate(-50%,-50%);transform: translate(-50%,-50%);}
+    .colleges-content h3{ font-size:20px;}
+    .colleges-content dl{ display:none;}
+    .colleges-btn{ display:block;}
+    .colleges-btn{ font-size:30px;}
+}

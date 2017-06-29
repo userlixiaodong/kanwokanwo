@@ -1,0 +1,736 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2017/5/18
+  Time: 11:38
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<html>
+<head>
+    <title>看我看我|活动详情</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Touch enabled minimalistic slider written in vanilla JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="/style/public.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/frame.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/app.css">
+    <link rel="stylesheet" href="/style/qdtest.css?20170428">
+</head>
+<body>
+<div class="login-before">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>您还未登录，请在登录之后再进行申请哦！~</p>
+    <a class="login-btn md-trigger" data-modal="modal-12" href="javascript:trackOutboundLink('', 'index_login');">登录</a>
+</div>
+<div class="leadFrame">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>请使用电脑进行登录</p>
+</div>
+<%--左边漂浮窗--%>
+<div class="weixinFrame"></div>
+<div class="container_box">
+    <%@include file="/WEB-INF/views/common/top.jsp" %>
+    <input type="hidden" id="ItemId" value="${Item.itemId}">
+    <%----------------------------------------------------------------------------项目Banner开始-------------------------------------------------------------------------------%>
+    <div class="gis_banner">
+        <img src="${Item.bannerUrl}" alt="" class="bannerIcon">
+        <div class="gis_banner_btn">
+            <c:choose>
+                <c:when test="${sessionScope.loginUser == null}">
+                    <a href="javascript: loginAlert();;" class="signUp" id="signUp">点击报名</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="javascript:toApply();;" class="signUp" id="signUp">点击报名</a>
+                </c:otherwise>
+            </c:choose>
+            <c:if test="${not empty Item.videoUrl}">
+                <a href="javascript:;" class="signUp signUp02">观看往期直播</a>
+                </c:if>
+        </div>
+    </div>
+    <%----------------------------------------------------------------------------项目Banner开始-------------------------------------------------------------------------------%>
+
+     <div class="mid_cont">
+
+        <c:if test="${fn:length(materialList1) ne 0}">
+             <%--项目背景start--%>
+             <%----------------------------------------------------------------------------项目背景开始-------------------------------------------------------------------------------%>
+             <div class="projectBackground">
+                    <c:forEach items="${materialList1}" var="background">
+                        <c:if test="${not empty background.title}">
+                            <p class="titles">${background.title}</p>
+                        </c:if>
+                        <div class="projectAnalyse">
+                             <h5>${background.note}
+                             </h5>
+                             <div id="hcharts">
+                                 <img src="${background.bitmap}" alt="">
+                             </div>
+                             <div class="nakedReason">
+                                 ${background.note1}
+                             </div>
+                        </div>
+                    </c:forEach>   
+             </div>
+             <%----------------------------------------------------------------------------项目背景结束-------------------------------------------------------------------------------%>
+         </c:if>
+
+          <c:if test="${fn:length(materialList2) ne 0}">
+         <%--项目特色start 注意：背景小图标动态生成命名格式统一以mantengIcon+由1开始的数字命名--%>
+             <%----------------------------------------------------------------------------项目特色开始-------------------------------------------------------------------------------%>
+             <div class="advantage">
+
+                        <c:forEach items="${materialList2}" var="special">
+                            <c:if test="${not empty special.title}">
+                                <p class="titles">${special.title}</p>
+                                <ul class="clearfix">
+                            </c:if>
+                            <li>
+                             <img src="${special.bitmap}" alt="">
+                             <h4>${special.note}</h4>
+                             <span>${special.note1}</span>
+                         </li>
+                        </c:forEach>
+                     </ul>
+                 </div>
+                 <%----------------------------------------------------------------------------项目特色结束-------------------------------------------------------------------------------%>
+            </c:if>
+
+<%----------------------------------------------------------------------------项目详情开始-------------------------------------------------------------------------------%>
+         <%--项目详情--%>
+         <div class="projectDetail">
+                <p class="titles">项目信息</p>
+                <div class="project_details">
+                    <h2>项目信息</h2>
+                    <div class="contens">
+                        <c:if test="${not empty Item.dt_location}">
+                            <p>
+                                <b>公司地址： </b><span>${Item.dt_location}</span>
+                            </p>
+                        </c:if>
+                        <c:if test="${not empty Item.dt_time}">
+                        <p>
+                            <b>申请期限： </b><span>${Item.dt_time}</span>
+                        </p>
+                        </c:if>
+                        <c:if test="${not empty Item.dt_people}">
+                        <p>
+                            <b>适合人群： </b><span>${Item.dt_people}</span>
+                        </p>
+                        </c:if>
+                        <c:if test="${not empty Item.dt_company}">
+                            <p>
+                                <b>主办单位： </b><span>${Item.dt_company}</span>
+                            </p>
+                        </c:if>
+                        <c:if test="${not empty Item.dt_intro}">
+                        <p>
+                            <b>项目简介： </b>
+                            <span class="metarial">
+                                ${Item.dt_intro}
+                            </span>
+                        </p>
+                        </c:if>
+                    </div>
+             </div>
+        </div>
+<%----------------------------------------------------------------------------项目详情结束-------------------------------------------------------------------------------%>
+
+        
+ <c:if test="${fn:length(materialList3) ne 0}">
+    <%-------------------------------------------------------------------------视频介绍开始----------------------------------------------------------------------------------%>
+     <%--项目介绍视频--%>
+            <div class="videoIntroduce">
+                <c:forEach items="${materialList3}" var="video">
+                        <p class="titles" >${video.title}</p>
+                        <div class="videoWrapper">
+                            <video id="video1" src="${video.videoUrl}"
+                                   type="video/mp4" width="100%" height="100%" controls="controls" poster="${video.bitmap}"
+                                   webkit-playsinline></video>
+                            <%--<i id="play" class="play"></i>--%>
+                        </div>
+                </c:forEach>
+                
+                <c:choose>
+                    <c:when test="${sessionScope.loginUser == null}">
+                        <a href="javascript: loginAlert();" class="videoSignUp">报名申请</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="videoSignUp" href="javascript: toApply();">报名申请</a>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+    <%--------------------------------------------------------------------------视频介绍结束---------------------------------------------------------------------------------------------%>
+</c:if>
+<c:if test="${fn:length(materialList4) ne 0}">
+    <%-------------------------------------------------------------------------项目分类开始----------------------------------------------------------------------------------%>
+         <%--鹰计划开始--%>
+         <div class="yjh">
+            <c:forEach items="${materialList4}" var="material">
+                        <c:if test="${not empty material.title}">
+                            <p class="titles" >${material.title}</p>
+                            <ul class="int_list clearfix">
+                        </c:if>
+
+                        <li>
+                     <div class="yjhCont">
+                         <h6>${material.note}</h6>
+                         <div class="yjhInfo">
+                             ${material.note1}
+                         </div>
+                     </div>
+                 </li>
+            </c:forEach>
+             </ul>
+         </div>
+    <%--------------------------------------------------------------------------项目分类结束---------------------------------------------------------------------------------------------%>
+ <c:if test="${fn:length(materialList5) ne 0}">
+    <%-------------------------------------------------------------------------活动职位开始----------------------------------------------------------------------------------%>
+         <%--项目活动Or实习start--%>
+         <div class="programBox">
+             <div class="summerProgram">
+
+                    <c:forEach items="${materialList5}" var="position">
+                        <c:if test="${not empty position.title}">
+                            <p class="titles" >${position.title}</p>
+                            <ul class="int_list clearfix">
+                        </c:if>
+
+                        <li>
+                         <div class="intBox">
+                             <img src="${position.bitmap}" />
+                             ${position.note}
+                         </div>
+                        </li>
+                    </c:forEach>
+                     
+                     <div class="clear"></div>
+                 </ul>
+             </div>
+         </div>
+    <%--------------------------------------------------------------------------活动职位结束---------------------------------------------------------------------------------------------%>
+</c:if>
+
+
+    </c:if>
+
+<c:if test="${fn:length(materialList6) ne 0}">
+     <%-------------------------------------------------------------------------活动成果开始----------------------------------------------------------------------------------%>
+         <%--活动成果--%>
+         <div class="activityResults">
+            <c:forEach items="${materialList6}" var="material" varStatus="status">
+                <c:if test="${not empty material.title}">
+                            <p class="titles" >${material.title}</p>
+                            <div class="results">
+                                <div class="resultsPart">
+                </c:if>
+                    <div class="results-parts">
+                         <h4>${material.note}</h4>
+                         <span class="results-span">
+                            ${material.note1}
+                        </span>
+                     </div>
+                     <c:if test="${status.index == 2}">
+                            </div>
+                            <div class="resultsPart">
+                        </c:if>
+                     
+            </c:forEach>
+                </div>
+             </div>
+         </div>
+    <%--------------------------------------------------------------------------活动成果结束---------------------------------------------------------------------------------------------%>
+    </c:if>
+         
+
+<c:if test="${fn:length(materialList7) ne 0}">
+     <%-------------------------------------------------------------------------师资介绍开始----------------------------------------------------------------------------------%>
+         <%--师资介绍--%>
+         <div class="teachers">
+                      <c:forEach items="${materialList7}" var="material" varStatus="status">
+                         <c:if test="${not empty material.title}">
+                            <p class="titles" >${material.title}</p>
+                            <div class="teachers-wrapper">
+                             <div class="teachers-loop">
+                                 <ul>
+                        </c:if>
+                        <li>
+                             <img src="/images/keru-teacher1.png" alt="">
+                             <p class="en-name">${material.title}</p>
+                             <p class="ch-name">${material.note}</p>
+                             <span class="teacher-describe">${material.note1}</span> </span>
+
+                         </li>
+                         <c:if test="${(status.count) % 3 == 0}">
+                            </ul>
+                            <ul>
+                        </c:if>
+                    </c:forEach>
+                     </ul>
+                     
+                 </div>
+             </div>
+             <img src="/images/keru-prev.png" width="20px" height="40px" id="prev">
+             <img src="/images/keru-next.png" width="20px" height="40px" id="next">
+         </div>
+    <%--------------------------------------------------------------------------师资介绍结束---------------------------------------------------------------------------------------------%>
+    </c:if>
+
+<c:if test="${fn:length(materialList8) ne 0}">
+     <%-------------------------------------------------------------------------成功案例开始----------------------------------------------------------------------------------%>
+         <%--成功案例--%>
+         <div class="successCase">
+             
+
+                     <c:forEach items="${materialList8}" var="material" varStatus="status">
+                            <c:if test="${not empty material.title}">
+
+                            <p class="titles" style="color: #fff;">${material.title}</p>
+                             <div class="cases">
+                                 <hr style="width: 62%;margin: 0 auto -3rem;">
+                                 <div class="characters">
+                                     <div class="charactersBox">
+                        </c:if>
+                         <c:choose>
+                             <c:when test="${status.index == 0}">
+                                 <span style="display:block;">${material.note}</span>
+                             </c:when>
+                             <c:otherwise>
+                                 <span style="display:none;">${material.note}</span>
+                             </c:otherwise>
+                         </c:choose>
+
+                    </c:forEach>
+                </div>
+
+
+                     <ol class="charactersImg">
+                        <c:forEach items="${materialList8}" var="material" varStatus="status">
+                        <c:choose>
+                            <c:when test="${status.index == 0}">
+                                <li style="border: 2px solid #fff;"><img src="${material.bitmap}" ><span class="imgMask"></span></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li><img src="${material.bitmap}" ><span class="imgMask"></span></li>
+                            </c:otherwise>
+                        </c:choose>
+                             
+                    </c:forEach>
+                     </ol>
+                 </div>
+
+             </div>
+             
+         </div>
+    <%--------------------------------------------------------------------------成功案例结束---------------------------------------------------------------------------------------------%>
+    </c:if>
+    <c:if test="${fn:length(materialList10) ne 0}">
+     <%-------------------------------------------------------------------------项目成功案例开始----------------------------------------------------------------------------------%>
+         <%--项目成功案例start--%>
+         <div class="case">
+            <c:forEach items="${materialList10}" var="material" varStatus="status">
+                <c:if test="${not empty material.title}">
+                    <p class="titles">${material.title}</p>
+                    <ul class="clearfix">
+                </c:if>
+                 <li>
+                     <p>
+                         <img src="${material.bitmap}" alt="">
+                         <span>
+                            <i>0${status.count}</i>
+                        ${material.note}
+                    </span>
+                     </p>
+                 </li>
+            </c:forEach>
+             </ul>
+         </div>
+    <%--------------------------------------------------------------------------项目成功案例结束---------------------------------------------------------------------------------------------%>
+    </c:if>
+    <c:if test="${fn:length(materialList9) ne 0}">
+     <%-------------------------------------------------------------------------学员反馈开始----------------------------------------------------------------------------------%>
+         <%--学员反馈--%>
+         <div class="feedback">
+            <c:forEach items="${materialList9}" var="material">
+                 <c:if test="${not empty material.title}">
+                    <p class="titles" style="color:#fff;">${material.title}</p>
+                 </c:if>
+                 <div class="xyfk">
+                     <img src="${material.bitmap}" alt="">
+                     <div class="feed-content">
+                    <span class="feed-span">
+                            ${material.note}
+                    </span>
+                             ${material.note1}
+                     </div>
+                 </div>
+
+             </c:forEach>
+             
+         </div>
+    <%--------------------------------------------------------------------------学员反馈结束---------------------------------------------------------------------------------------------%>
+    </c:if>
+
+<c:if test="${fn:length(materialList11) ne 0}">
+     <%-------------------------------------------------------------------------录取学校开始----------------------------------------------------------------------------------%>
+         <%--学院录取学校start--%>
+         <div class="admissionSchool ">
+                <c:forEach items="${materialList11}" var="material">
+                        <c:if test="${not empty material.title}">
+                            <p class="titles" >${material.title}</p>
+                            <ul class="admissionList clearfix">
+                        </c:if>
+                            <li><p><img style="display: block; width: 100%" src="${material.bitmap}" alt=""></p></li>
+                </c:forEach>
+                </ul>
+         </div>
+    <%--------------------------------------------------------------------------录取学校结束---------------------------------------------------------------------------------------------%>
+    </c:if>
+
+
+<c:if test="${fn:length(materialList12) ne 0}">
+     <%-------------------------------------------------------------------------更多信息开始----------------------------------------------------------------------------------%>
+         <%--学院录取学校start--%>
+         <div class="moreMessage ">
+                <c:forEach items="${materialList12}" var="material">
+                        <c:if test="${not empty material.title}">
+                            <p class="titles" >${material.title}</p>
+                            <ul>
+                        </c:if>
+                            <li>
+                                 <p>${material.note}</p>
+                                 <img src="${material.bitmap}">
+                                 <a href="${material.videoUrl}">点击下载</a>
+                             </li>
+                </c:forEach>
+                </ul>
+         </div>
+    <%--------------------------------------------------------------------------更多信息结束---------------------------------------------------------------------------------------------%>
+    </c:if>
+
+
+         <%--底部微信联系方式--%>
+         <div class="application">
+             <%--<p class="titles"><a href="">提升你的学术背景，让你的履历在<br />招生官的眼中再升一个等级吧~</a></p>--%>
+             <div class="tel-yw-icon">
+                 <span class="consult_tel">13681039513</span>
+             </div>
+             <div class="consulting">
+                 <div class="erweima">
+                     <img src="/images/gzh.png" alt=""><span>关注看我看我公众号<br/>获得更多留学资讯</span>
+                 </div>
+                 <div class="erweima">
+                     <img src="/images/kefu.png" alt=""><span>独家报名通道<br/>添加看我客服</span>
+                 </div>
+             </div>
+             <c:choose>
+                 <c:when test="${sessionScope.loginUser == null}">
+                     <a class="videoSignUp" href="javascript:loginAlert();" style="color:#fff;">点击报名</a>
+                 </c:when>
+                 <c:otherwise>
+                     <a class="videoSignUp" href="javascript:toApply();" style="color:#fff;">点击报名</a>
+                 </c:otherwise>
+             </c:choose>
+         </div>
+     </div>
+
+
+
+    <!--<%--弹窗效果--%>-->
+    <div class="popup_box" style="display: none">
+        <span class="popup_close"></span>
+        <a href="javascript:toOrder();" style="margin-top: 5.7rem;">请使用已有信息申请</a>
+        <a href="javascript:toApplication();" style="margin-top: 2rem;">修改已有信息</a>
+    </div>
+    <!--<%--弹窗蒙版--%>-->
+    <div class="fe_window_mask"></div>
+    <%@include file="/WEB-INF/views/common/bottom.jsp" %>
+</div>
+<div class="mask"></div>
+
+</body>
+<script type="text/javascript">
+    var wid = $(window).width();
+    var hei = $(window).height();
+    function loginAlert() {
+        if (wid < 769) {
+            $("#signUp,.videoSignUp").on("click", function () {
+                var ban = 0;
+                $(".mask").css("display", "block");
+                $(".leadFrame").show(400);
+                document.addEventListener("touchmove", function (e) {
+                    if (ban == 0) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                }, false);
+            });
+            $(".login-before-close-btn").on("click", function () {
+                $(".mask").css("display", "none");
+                $(".leadFrame").css("display", "none");
+            });
+        } else {
+            $(".login-before").css('display', 'block');
+        }
+    }
+
+    //弹窗事件
+    $(".popup_close").click(function() {
+        $(".popup_box").css("display", "none")
+        $(".fe_window_mask").css("display", "none")
+        $ (window).unbind ('scroll');
+    });
+
+    function closeAlert() {
+        $(".login-before").css('display', 'none');
+        location.reload();
+    }
+    function toApply() {
+        //location.href = "/userItem/applymanteng";
+        //location.href="/order/enroll/"+$("#ItemId").val();
+        $(".popup_box").show();
+        $(".fe_window_mask").show();
+        var scrollH = $(window).scrollTop();
+        $(window).scroll(function() {
+            $(this).scrollTop(scrollH)
+        });
+    }
+
+    function toOrder() {
+        $.post("/specialization/isExistInfo",{"itemId":$("#ItemId").val()},function(data){
+            // 获得到返回的数据:
+            if(data == 1){
+                //跳订单页面
+                location.href="/order/enroll/"+$("#ItemId").val();
+            }else{
+                // 跳保存页面
+                location.href="/specialization/applyInfo?itemId=" + $("#ItemId").val();
+            }
+        });
+
+    }
+    function toApplication() {
+        $.post("/specialization/isExistInfo",{"itemId":$("#ItemId").val()},function(data){
+            // 获得到返回的数据:
+            if(data == 1){
+                //跳编辑页面
+                location.href="/specialization/editApplyInfo?itemId=" + $("#ItemId").val();
+            }else{
+                // 跳保存页面
+                location.href="/specialization/applyInfo?itemId=" + $("#ItemId").val();
+            }
+        });
+
+    }
+
+    $(function () {
+        /*顶部按钮居中显示*/
+        var signupNum=$(".gis_banner_btn a").length;
+        if(signupNum==1){
+            $(".signUp:eq(0)").css({"float":"none","margin-left":"0"})
+            $(".gis_banner_btn").css("text-align","center")
+        }
+        /*观看往期直播*/
+        var videoTop=$(".videoIntroduce").offset().top-80;
+        console.log("高度"+videoTop)
+        $(".signUp02").click(function () {
+            $(window).scrollTop(videoTop)
+        })
+
+        /*顶部banner变为手机端图片更换*/
+        if(wid<=767){
+            $(".gis_banner .bannerIcon").attr("src","/images/indexBanner01.jpg")
+        }
+        /*项目特色不同数量更换不同样式2017-5-18*/
+        var num01=$(".advantage li").length;
+       /* console.log(num01)*/
+        if(num01==4){
+            $(".advantage ul li").css("width","22%")
+            $(".advantage ul li:eq(3)").css("margin-left","1rem")
+        }if(num01==6){
+            /* $(".advantage ul li").css("width","30%")*/
+            $(".advantage ul li:eq(3)").css("margin-left","1rem")
+        }
+        /*项目活动or实习不同数量更换不同样式2017-5-18*/
+        var num02=$(".int_list li").length;
+        console.log(num02)
+        if(num02==2){
+            $(".int_list").css("width","60%")
+            $(".int_list li").css("width","50%")
+        }if(num02==3){
+            $(".int_list li").css("width","33.33%")
+        }if(num02==4){
+            $(".int_list").css("width","85%")
+            $(".int_list li").css("width","25%")
+            $(".int_list li .intBox").css("width","95%")
+            if($(window).width()<= 1024){
+                $(".int_list li").css("width","50%")
+                $(".int_list li").css("margin","1rem 0")
+            }
+        }
+        if(num02==5){
+            $(".int_list li").css("width","33.33%")
+            $(".int_list li").css("margin","1rem 0")
+            $(".int_list li:eq(3)").css("margin-left","12rem")
+        } if(num02==6){
+            $(".int_list li").css("width","33.33%")
+            $(".int_list li").css("margin","1rem 0")
+        }
+        if($(window).width()<= 1024){
+            $(".int_list").css("width","90%")
+        }
+        if($(window).width()<= 768){
+            $(".int_list").css("width","96%")
+        }
+        if($(window).width()<= 414){
+            $(".int_list li").css("width","100%")
+            $(".int_list li").css("margin","1rem 0")
+            $(".int_list li:eq(3)").css("margin-left","0")
+        }
+        /*鹰计划不同数量更换不同样式2017-5-19*/
+        var num03=$(".yjh ul li").length;
+        console.log(num03)
+        if(num03%3==0){
+            $(".yjh ul li").css({
+                "width":"33%",
+                "height":"auto",
+                "margin-bottom":"1rem",
+            });
+            $(".yjh ul li:eq(3)").css("margin-left","0")
+            if($(window).width()<= 1300){
+                $(".yjhInfo").css("height","26rem")
+                $(".yjh").css("height","auto")
+            }
+            if($(window).width()<= 767){
+                $(".yjh ul li").css("width","100%")
+                $(".yjh").css("height","auto")
+
+            }
+        }if(num03==4){
+            $(".yjh ul li").css("width","25%")
+            $(".yjh ul li:eq(3)").css("margin-left","0")
+            if($(window).width()<= 1300){
+                $(".yjh ul li").css("width","50%")
+                $(".yjh").css("height","auto")
+            }
+            if($(window).width()<= 767){
+                $(".yjh ul li").css("width","100%")
+                $(".yjh").css("height","auto")
+
+            }
+        }
+       /* 项目成功案例不同数量更换不同样式*/
+       var num04=$(".case li").length;
+        if(num04==2||num04==4){
+            if($(window).width()> 767){
+                $(".case ul").css("width","80%");
+                $(".case ul li").css("width","25%");
+                $(".case ul li:eq(3)").css("margin-left","0")
+                $(".case li p").css("height","17rem");
+            }
+        }
+        if(num04==6){
+            console.log(num04)
+            $(".case ul li:eq(3)").css("margin-left","0")
+        }
+
+        /*更多信息不同数量切换不同样式*/
+        var num05=$(".moreMessage ul li").length;
+        if(num05==2){
+            if($(window).width()> 767){
+                $(".moreMessage ul li").css("width","36%");
+            }
+        }
+        if(num05==4){
+            if($(window).width()> 767){
+                $(".moreMessage ul li").css("width","20%");
+            }
+        }
+        if(num05==5){
+            if($(window).width()> 767){
+                $(".moreMessage ul li").css({"width":"15%","margin":"0 0.3rem"});
+                $(".moreMessage ul").css("width","80%");
+            }
+            if(767<$(window).width()<1024){
+                $(".moreMessage ul").css("width","100%");
+            }
+        }
+        if(num05==6){
+            if($(window).width()> 1025){
+                $(".moreMessage ul li").css({"width":"12%","margin":"0 0.2rem"});
+                $(".moreMessage ul").css("width","92%");
+            }
+            if(768<$(window).width()<1024){
+                $(".moreMessage ul").css("width","86%");
+            }
+        }
+
+        if (wid < 767) {
+            $(".mid_cont").css({"width": wid, "max-width": "750px", "margin": "0 auto"});
+            $(".advantageTable").css("width", wid);
+            $(".gis_banner").css("width", wid);
+             $(".gis_banner_btn").css({"padding-top": wid* 0.28});
+            $(".project_details").css({"width": wid * 0.98, "margin-left": wid * 0.01});
+            $(".leadFrame").css({"width": wid * 0.8, "left": wid * 0.5});
+            $(".advantage ul li").css("width","90%")
+            $(".user-login").css({
+                "width": wid,
+                /*"height": hei,*/
+                "position": "fixed",
+                "margin-left": wid * 0.1,
+                "top": "0px"
+            });
+
+
+        }
+        //成功案例图像对应内容切换
+        $(".charactersImg li").on("click", function () {
+            var i = $(this).index();
+            var chaSpanList = $(".charactersBox span").eq(i);
+            $(this).css("border", "2px solid #fff").siblings().css("border", "none");
+            $(".charactersbox span").eq(i).css("display", "block").siblings().css("display", "none");
+        });
+
+    })
+    /*师资介绍图片切换*/
+    if(wid > 769){
+        //    师资介绍图片切换事件
+        teacherWrapperWid = wid*0.6;     //轮播显示部分宽度
+        teacherUlWid = wid*0.6*0.9;     //ul宽度
+        teacherLiWid = wid*0.6*0.9*0.33;//li宽度
+        $(".teachers-wrapper").css({"width":teacherLiWid*3,"left":(wid-teacherWrapperWid)*0.5});
+        $(".teachers-wrapper ul").css("width",teacherUlWid);
+        $(".teachers-wrapper ul li").css("width",teacherLiWid);
+        $(".teachers-loop").css({"width":teacherUlWid*2,"height":"24rem"});
+        //为左右箭头添加事件处理
+        //左箭头点击处理
+        $('#prev').on("click", function () {
+            $(".teachers-loop").css('marginLeft', -teacherUlWid);
+            $(".teachers-loop>li").eq(1).prependTo($(".teachers-loop ul"));
+            $(".teachers-loop").animate({marginLeft: "0px"}, 400);
+        });
+        //右箭头点击处理
+        $('#next').on("click", function () {
+            $(".teachers-loop").animate({marginLeft: -teacherUlWid}, 400, function () {
+                $(".teachers-loop>li").eq(0).appendTo($(".teachers-loop ul"));
+                $(".teachers-loop").css('marginLeft', -teacherUlWid);
+            });
+        });
+        //图片切换处理函数
+        function changeTo(num) {
+            $(".teachers-loop").animate({marginLeft: -teacherUlWid}, 400, function () {
+                $(".teachers-loop>li").eq(0).appendTo($(".teachers-loop ul"));
+                $(".teachers-loop").css('marginLeft', '0px');
+            });
+        }
+    }
+
+
+
+    $("#goTopBtn").css("right", "0")
+
+</script>
+</html>

@@ -1,0 +1,504 @@
+package cv.focus.core.interfaces.student.web;
+
+import cv.focus.common.infrastructure.util.paginaction.WebPage;
+import cv.focus.core.domain.school.model.profile.AdmissionProfile;
+import cv.focus.core.domain.school.model.profile.SchoolCountry;
+import cv.focus.core.domain.student.model.Badge;
+import cv.focus.core.domain.student.model.activity.Activity;
+import cv.focus.core.domain.material.MaterialModule;
+import cv.focus.core.domain.material.Video;
+import cv.focus.core.domain.student.model.profile.Biography;
+import cv.focus.core.domain.student.model.profile.GraduationSchool;
+import cv.focus.core.domain.student.model.profile.SchoolType;
+import cv.focus.core.domain.student.model.profile.StudentProfile;
+import cv.focus.core.domain.student.model.profile.exam.ExamRecord;
+import cv.focus.core.domain.student.model.profile.exam.ExamRecordFactory;
+import cv.focus.core.domain.student.model.profile.exam.ExamType;
+import cv.focus.core.domain.user.model.User;
+import cv.focus.core.infrastructure.util.*;
+import cv.focus.core.interfaces.school.dto.*;
+import cv.focus.core.interfaces.school.facade.AdmissionActivityServiceFacade;
+import cv.focus.core.interfaces.school.facade.AdmissionProfileServiceFacade;
+import cv.focus.core.interfaces.student.dto.*;
+import cv.focus.core.interfaces.student.dto.BiographyDTO;
+import cv.focus.core.interfaces.student.facade.ActivityServiceFacade;
+import cv.focus.core.interfaces.student.facade.InterviewServiceFacade;
+import cv.focus.core.interfaces.student.facade.StudentProfileServiceFacade;
+import cv.focus.core.interfaces.user.dto.InformationDTO;
+import cv.focus.core.interfaces.user.dto.UserDTO;
+import cv.focus.core.interfaces.user.facade.InformationServiceFacade;
+import cv.focus.core.interfaces.user.facade.UserServiceFacade;
+import net.sf.json.JSONArray;
+import net.sourceforge.pinyin4j.PinyinHelper;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
+import org.apache.taglibs.standard.lang.jstl.Constants;
+import org.json.JSONObject;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.regex.Pattern;
+
+/**
+ * Created by Administrator on 2016/2/2.
+ */
+
+//TODO 权限控制
+@Controller
+@RequestMapping("/")
+public class ProfileController extends BaseController {
+    private final Logger logger = Logger.getLogger(ProfileController.class);
+    @Resource
+    private StudentProfileServiceFacade studentProfileService;
+    @Resource
+    private ActivityServiceFacade activityService;
+    @Resource
+    private AdmissionProfileServiceFacade admissionProfileServiceFacade;
+    @Resource
+    private AdmissionActivityServiceFacade admissionActivityServiceFacade;
+    @Resource
+    private UserServiceFacade userServiceFacade;
+    @Resource
+    private InterviewServiceFacade interviewService;
+    @Resource
+    private InformationServiceFacade informationServiceFacade;
+    private String phoneReg = "\\b(ip(hone|od)|android|opera m(ob|in)i"
+            +"|windows (phone|ce)|blackberry"
+            +"|s(ymbian|eries60|amsung)|p(laybook|alm|rofile/midp"
+            +"|laystation portable)|nokia|fennec|htc[-_]"
+            +"|mobile|up.browser|[1-4][0-9]{2}x[1-4][0-9]{2})\\b";
+    private String tableReg = "\\b(ipad|tablet|(Nexus 7)|up.browser"
+            +"|[1-4][0-9]{2}x[1-4][0-9]{2})\\b";
+
+    @RequestMapping("/updateDescription")
+    @ResponseBody
+    public Result<String> updateDescription(
+            @RequestParam String description,
+            @RequestParam MaterialModule module,
+            HttpServletRequest request) {
+        Result<String> result = null;
+        try {
+            String email = getLoginEmail(request);
+            description = description.trim();
+            if (StringUtils.isBlank(email)) {
+                return newFaildResult(ResultMessages.NO_LOGIN);
+            }
+            if (module == MaterialModule.HONOR) {
+                studentProfileService.updateHonorDesc(email, description);
+            } else if (module == MaterialModule.MYSTORY) {
+                studentProfileService.updateStoryDesc(email, description);
+            }
+            result = newSuccessResult(ResultMessages.OPERATE_SUCCESS, description);
+        } catch (Exception ex) {
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+            ex.printStackTrace();
+        }
+        return result;
+    }
+
+    @RequestMapping("/updateBiography")
+    @ResponseBody
+    public Result<BiographyDTO> updateBiography(
+            @RequestParam String studentName,
+            @RequestParam String location,
+            @RequestParam String currentSchool,
+            @RequestParam String graduationYear,
+            @RequestParam String hobby,
+            @RequestParam String graSchools,
+            HttpServletRequest request) {
+        Result<BiographyDTO> result = null;
+        try {
+            String studentProfileId = getLoginProfileId(request);
+            BiographyDTO bio = studentProfileService.updateBiography(studentProfileId, studentName, location, currentSchool, graduationYear, hobby, graSchools);
+            // 更新session
+            UserDTO userDTO = getLoginUser(request);
+            userServiceFacade.updateUserName(userDTO.getUserId(), studentName);
+            userDTO.setUserName(studentName);
+            request.getSession().setAttribute("loginUser", userDTO);
+
+            result = newSuccessResult(ResultMessages.OPERATE_SUCCESS, bio);
+        } catch (Exception e) {
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+            logger.error("ProfileController.updateBiography()", e);
+        }
+        return result;
+    }
+
+    @RequestMapping("/updateScores")
+    @ResponseBody
+    public Result<String> updateScores(
+            @RequestParam String scores,
+            HttpServletRequest request) {
+        Result<String> result = null;
+        try {
+            net.sf.json.JSONObject scoresJson = net.sf.json.JSONObject.fromObject(scores);
+            List<ExamRecord> records = new ArrayList<ExamRecord>();
+            if (scoresJson.containsKey("TOEFL")) {
+                ExamRecord record = parseToScore(ExamType.TOEFL, scoresJson.getJSONArray("TOEFL"));
+                records.add(record);
+            }
+            if (scoresJson.containsKey("IELTS")) {
+                ExamRecord record = parseToScore(ExamType.IELTS, scoresJson.getJSONArray("IELTS"));
+                records.add(record);
+            }
+            if (scoresJson.containsKey("GRE")) {
+                ExamRecord record = parseToScore(ExamType.GRE, scoresJson.getJSONArray("GRE"));
+                records.add(record);
+            }
+            if (scoresJson.containsKey("GMAT")) {
+                ExamRecord record = parseToScore(ExamType.GMAT, scoresJson.getJSONArray("GMAT"));
+                records.add(record);
+            }
+            if (scoresJson.containsKey("SAT")) {
+                ExamRecord record = parseToScore(ExamType.SAT, scoresJson.getJSONArray("SAT"));
+                records.add(record);
+            }
+            String email = getLoginEmail(request);
+            studentProfileService.addExamRecords(email, records);
+            result = newSuccessResult(ResultMessages.OPERATE_SUCCESS, null);
+        } catch (Exception e) {
+            logger.error("ProfileController.updateScores()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }
+
+    private ExamRecord parseToScore(ExamType examType, JSONArray array) {
+        ExamRecord record = new ExamRecord();
+        net.sf.json.JSONObject totalJson = (net.sf.json.JSONObject) array.get(0);
+        Double total = totalJson.getDouble("total");
+        switch (examType) {
+            case TOEFL:
+            case IELTS:
+                net.sf.json.JSONObject readingJson = (net.sf.json.JSONObject) array.get(1);
+                Double reading = readingJson.getDouble("Reading");
+                net.sf.json.JSONObject listeningJson = (net.sf.json.JSONObject) array.get(2);
+                Double listening = listeningJson.getDouble("Listening");
+                net.sf.json.JSONObject speakingJson = (net.sf.json.JSONObject) array.get(3);
+                Double speaking = speakingJson.getDouble("Speaking");
+                net.sf.json.JSONObject writingJson = (net.sf.json.JSONObject) array.get(4);
+                Double writing = writingJson.getDouble("Writing");
+                record = ExamRecordFactory.createExamRecord(examType, new Float[]{reading.floatValue(), listening.floatValue(), speaking.floatValue(), writing.floatValue(), total.floatValue()});
+                break;
+            case GRE:
+            case GMAT:
+                net.sf.json.JSONObject verbalJson = (net.sf.json.JSONObject) array.get(1);
+                Double verbal = verbalJson.getDouble("Verbal");
+                net.sf.json.JSONObject quantitativeJson = (net.sf.json.JSONObject) array.get(2);
+                Double quantitative = quantitativeJson.getDouble("Quantitative");
+                net.sf.json.JSONObject writingJson2 = (net.sf.json.JSONObject) array.get(3);
+                Double writing2 = writingJson2.getDouble("Writing");
+                record = ExamRecordFactory.createExamRecord(examType, new Float[]{verbal.floatValue(), quantitative.floatValue(), writing2.floatValue(), total.floatValue()});
+                break;
+            case SAT:
+                net.sf.json.JSONObject readingJson2 = (net.sf.json.JSONObject) array.get(1);
+                Double reading2 = readingJson2.getDouble("Reading");
+                net.sf.json.JSONObject mathematicsJson = (net.sf.json.JSONObject) array.get(2);
+                Double mathematics = mathematicsJson.getDouble("Mathematics");
+                net.sf.json.JSONObject writingJson3 = (net.sf.json.JSONObject) array.get(3);
+                Double writing3 = writingJson3.getDouble("Writing");
+                record = ExamRecordFactory.createExamRecord(examType, new Float[]{reading2.floatValue(), mathematics.floatValue(), writing3.floatValue(), total.floatValue()});
+                break;
+        }
+        return record;
+    }
+
+    @RequestMapping("/{uri}")
+    public ModelAndView viewProfile(
+            @PathVariable String uri,
+            @RequestParam(defaultValue = "") String flag,
+            HttpServletRequest request) {
+        ModelAndView view = new ModelAndView();
+        try {
+            StudentProfile studentProfile = studentProfileService.findStudentProfileByPublicUri(uri);
+            if (studentProfile != null){
+                User checkUser = userServiceFacade.findUserByUserName(studentProfile.getEmail());
+                String school = studentProfile.getBiography().getCurrentSchool();
+                String role = "";
+                Integer tutorId = -1;
+                if(checkUser != null){
+                    role = checkUser.getRoleR();
+                    tutorId = checkUser.getUserId();
+                }
+
+                request.setAttribute("tutorName",uri);
+                request.setAttribute("tutorId",tutorId);
+                request.setAttribute("role",role);
+                request.setAttribute("school",school);
+            }
+
+            AdmissionProfile admissionProfile = null;
+            if (studentProfile == null) {
+                admissionProfile = admissionProfileServiceFacade.findAdmissionProfileByPublicUri(uri);
+                if (admissionProfile == null) {
+                    // 学生和招生官都没有找到
+                    view.setViewName("common/404");
+                    return view;
+                }
+            }
+            if (studentProfile != null) {
+                putStudentProfileData(studentProfile, view, request, flag);
+            }
+            if (admissionProfile != null) {
+                String userAgent = request.getHeader( "USER-AGENT" ).toLowerCase();
+                //移动设备正则匹配：手机端、平板
+                Pattern phonePat = Pattern.compile(phoneReg, Pattern.CASE_INSENSITIVE);
+                Pattern tablePat = Pattern.compile(tableReg, Pattern.CASE_INSENSITIVE);
+                if (phonePat.matcher(userAgent).find() || tablePat.matcher(userAgent).find()) {
+                    view.setViewName("redirect:/school/" + URLEncoder.encode(uri, "utf-8"));
+                    return view;
+                }
+                putAdmissionProfileData(admissionProfile, view, request, flag);
+            }
+        } catch (Exception e) {
+            logger.error("ProfileController.viewProfile()", e);
+        }
+        return view;
+    }
+
+
+    @RequestMapping("/addRemark")
+    @ResponseBody
+    public Result<net.sf.json.JSONObject> addRemark(
+            @RequestParam String fromUser,
+            @RequestParam String toUser,
+            @RequestParam String impression) {
+        Result<net.sf.json.JSONObject> result = null;
+        try {
+            RemarkDTO remark = studentProfileService.addRemark(fromUser, toUser, impression);
+            if (remark != null) {
+                result = newSuccessResult(ResultMessages.OPERATE_SUCCESS, net.sf.json.JSONObject.fromObject(remark));
+            } else {
+                result = newFaildResult(ResultMessages.OPERATE_FAIL);
+            }
+        } catch (Exception ex) {
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+            logger.error("ProfileController.addRemark()", ex);
+        }
+        return result;
+    }
+
+    @RequestMapping("/findRemarkById")
+    @ResponseBody
+    public Result<List<RemarkDTO>> findRemarkById(@RequestParam String studentProfileId) {
+        Result<List<RemarkDTO>> result = null;
+        try {
+            List<RemarkDTO> remarkDTOs = studentProfileService.getRemarkByStudentProfileId(studentProfileId);
+            result = newSuccessResult("success", remarkDTOs);
+        } catch (Exception ex) {
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+            ex.printStackTrace();
+        }
+        return result;
+    }
+
+    private void putStudentProfileData(StudentProfile studentProfile,
+                                       ModelAndView view, HttpServletRequest request, String flag) {
+        List<Activity> activities = activityService.findDomainActivityListByStudentProfileId(studentProfile.getStudentProfileId());
+        List<ActivityDTO> activityList = activityService.transToActivityDtos(activities);
+
+        List<Badge> badges = studentProfileService.getBadges(studentProfile, activities);
+        Integer degree = studentProfileService.calcuBadgesCompletionDegree(badges);
+
+        JSONArray jsonArray = JSONArray.fromObject(activityList);
+        view.addObject("studentProfile", studentProfile);
+        view.addObject("activityList", activityList);
+        request.setAttribute("activityListJson", jsonArray.toString());
+        request.setAttribute("biographyJson", net.sf.json.JSONObject.fromObject(new BiographyDTO(studentProfile.getBiography())));
+
+        JSONArray jsonBadges = JSONArray.fromObject(badges);
+        request.setAttribute("jsonBadges", jsonBadges.toString());
+        request.setAttribute("degree", degree);
+
+        InterviewDTO interviewDTO = interviewService.findByPublicUrl(studentProfile.getPublicUri());
+        request.setAttribute("interviewJson", interviewDTO != null);
+
+        List<ExamRecord> records = studentProfile.getExamRecordList();
+        List<ExamRecordDTO> recordDTOs = new ArrayList<ExamRecordDTO>();
+        for (ExamRecord r : records) {
+            recordDTOs.add(new ExamRecordDTO(r));
+        }
+        JSONArray recordsJson = JSONArray.fromObject(recordDTOs);
+        request.setAttribute("recordsJson", recordsJson);
+
+        Video video = studentProfile.getIntroductionVideo();
+        request.setAttribute("videoJson", net.sf.json.JSONObject.fromObject(video));
+
+        //我的故事、我的作品集、我的奖励
+        MyStoryDTO storyDTO = new MyStoryDTO(studentProfile.getMyStory());
+        request.setAttribute("storyJson", net.sf.json.JSONObject.fromObject(storyDTO));
+        PortfolioDTO portfolioDTO = new PortfolioDTO(studentProfile.getPortfolio());
+        request.setAttribute("portfolioJson", net.sf.json.JSONObject.fromObject(portfolioDTO));
+        HonorDTO honorDTO = new HonorDTO(studentProfile.getHonor());
+        request.setAttribute("honorJson", net.sf.json.JSONObject.fromObject(honorDTO));
+
+        List<RemarkDTO> remarkDTOs = studentProfileService.getRemarkByStudentProfileId(studentProfile.getStudentProfileId().toString());
+        request.setAttribute("remarkJson", JSONArray.fromObject(remarkDTOs));
+
+        User user = userServiceFacade.findUserByEmail(studentProfile.getEmail());
+        if (user != null) {
+            request.setAttribute("referId", user.getUserId());
+        }
+
+        // 跳转url
+        if (studentProfile.getEmail().equalsIgnoreCase(getLoginEmail(request))
+                && !flag.equals("preview")) {
+            // 关注学校的news
+            if (user != null) {
+                request.setAttribute("informationPage", gson.toJson(informationServiceFacade.getFollowSchoolNews(user.getUserId(), 1)));
+            } else {
+                // user is null
+                request.setAttribute("informationPage", gson.toJson(informationServiceFacade.getFollowSchoolNews(0, 1)));
+            }
+            view.setViewName("profile/newMyProfile"); // 查看自己
+            StudentProfileDTO profileDTO = new StudentProfileDTO(studentProfile);
+            JSONObject jsonObj = new JSONObject(profileDTO);
+            request.setAttribute("profileJson", jsonObj);
+        } else {
+            view.setViewName("profile/newViewProfile");
+        }
+    }
+
+    private void putAdmissionProfileData(AdmissionProfile admissionProfile,
+                                         ModelAndView view, HttpServletRequest request, String flag) {
+        Integer loginUserId = null;
+        UserDTO userDTO = getLoginUser(request);
+        if (userDTO != null) {
+            loginUserId = userDTO.getUserId();
+        }
+        // 招生官数据, 先跳转到编辑页面
+        AdmissionProfileDTO admissionProfileDTO = new AdmissionProfileDTO(admissionProfile);
+        // userId
+        User user = userServiceFacade.findUserByEmail(admissionProfileDTO.getEmail());
+        if (user != null) {
+            admissionProfileDTO.setFollowCount(userServiceFacade.getUserFollowCount(user.getUserId()));
+            admissionProfileDTO.setUserId(user.getUserId());
+        } else {
+            admissionProfileDTO.setFollowCount(0);
+        }
+        request.setAttribute("stateArr", DataDictionary.stateArrayEn);
+        request.setAttribute("stateArrCh", DataDictionary.stateArrayCh);
+        request.setAttribute("stateName", admissionProfile.getBiography().getProvince());
+        request.setAttribute("districtArr", DataDictionary.districtArray);
+        request.setAttribute("districtArrCh", DataDictionary.districtArrayCh);
+        request.setAttribute("districtName", admissionProfile.getBiography().getArea());
+        request.setAttribute("settingsArr", DataDictionary.settingsArray);
+        request.setAttribute("settingsArrCh", DataDictionary.settingsArrayCh);
+        request.setAttribute("settingsName", admissionProfile.getBiography().getSettings());
+        request.setAttribute("schoolSexArr", DataDictionary.genderArray);
+        request.setAttribute("schoolSexArrCh", DataDictionary.genderArrayCh);
+        request.setAttribute("schoolTypeName", admissionProfile.getBiography().getLodge());
+        request.setAttribute("schoolTypeArr", DataDictionary.schoolTypeArray);
+        request.setAttribute("schoolTypeArrCh", DataDictionary.schoolTypeArrayCh);
+        request.setAttribute("schoolLevelName", admissionProfile.getBiography().getSchoolLevel());
+        request.setAttribute("createSchoolTime", admissionProfile.getBiography().getCreateSchoolTime());
+
+        request.setAttribute("schoolLevelArr", DataDictionary.schoolLevelArray);
+        request.setAttribute("schoolLevelArrCh", DataDictionary.schoolLevelArrayCh);
+        request.setAttribute("schoolSexName", admissionProfile.getBiography().getSchoolSex());
+        request.setAttribute("profileJson", net.sf.json.JSONObject.fromObject(admissionProfileDTO));
+        request.setAttribute("admissionProfile", admissionProfileDTO);
+
+        List<AdActivityDTO> activityList = admissionActivityServiceFacade.getActivityListByAdProfileId(admissionProfile.getAdmissionProfileId());
+        JSONArray jsonArray = JSONArray.fromObject(activityList);
+        request.setAttribute("activityListJson", jsonArray.toString());
+
+
+        List<AdRemarkDTO> remarkDTOs = admissionProfileServiceFacade.getRemarkByAdProfileId(admissionProfile.getAdmissionProfileId().getAdmissionProfileId());
+        request.setAttribute("remarkJson", JSONArray.fromObject(remarkDTOs));
+        if (user != null) {
+            request.setAttribute("informationPage", gson.toJson(informationServiceFacade.getInformationList(user.getUserId(), 1, loginUserId)));
+        } else {
+            request.setAttribute("informationPage", gson.toJson(informationServiceFacade.getInformationList(0, 1, loginUserId)));
+        }
+        // OUR STUDENTS
+        List<StudentProfile> ourStudents = admissionProfileServiceFacade.getOurStudents(admissionProfile.getBiography().getName(), 7);
+        int ourStudentsCount = admissionProfileServiceFacade.getOurStudentsCount(admissionProfile.getBiography().getName());
+        request.setAttribute("schoolOurStudents", ourStudents);
+        request.setAttribute("schoolOurStudentsCount", ourStudentsCount);
+
+        // 跳转url
+        String viewName = "";
+        //中文国家的跳中文
+        if (admissionProfile.getCountry() == SchoolCountry.CHINA) {
+            viewName = "china/";
+        } else {
+            //英文国家的跳英文，如果浏览的不是自己登陆的页面英文国家也显示中文
+            if ((userDTO != null)&& admissionProfile.getEmail().equalsIgnoreCase(getLoginEmail(request)) )
+            {
+                viewName = "other/";
+            }else
+            {
+                viewName = "china/";
+            }
+
+        }
+        if (admissionProfile.getEmail().equalsIgnoreCase(getLoginEmail(request))
+                && !flag.equals("preview")) {
+            view.setViewName("school/" + viewName + "newMyProfile"); // 查看自己
+            // 徽章
+            List<Badge> badges = admissionProfileServiceFacade.getBadges(admissionProfile, activityList);
+            Integer degree = admissionProfileServiceFacade.calcuBadgesCompletionDegree(badges);
+            JSONArray jsonBadges = JSONArray.fromObject(badges);
+            request.setAttribute("jsonBadges", jsonBadges.toString());
+            request.setAttribute("degree", degree);
+        } else {
+            String visible = request.getParameter("visible");
+            if (StringUtils.isNotBlank(visible) && "timeline".equals(visible)) {
+                request.setAttribute("timeline", true);
+            } else {
+                request.setAttribute("timeline", false);
+            }
+            if (admissionProfile.getMyLinks() != null && admissionProfile.getMyLinks().isShowConnect())  {
+                request.setAttribute("isShowConnect", true);
+            }else{
+                request.setAttribute("isShowConnect", false);
+            }
+            UserDTO loginUser = getLoginUser(request);
+            if (loginUser != null && userServiceFacade.isFollow(loginUser.getUserId(), admissionProfileDTO.getUserId())) {
+                request.setAttribute("isFollow", true);
+            } else {
+                request.setAttribute("isFollow", false);
+            }
+/*            if (admissionProfile.getPublicUri().equals("universityofsanfrancisco")) {
+                // 旧金山大学
+                view.setViewName("school/viewProfile");
+            } else {*/
+                view.setViewName("school/" + viewName + "newViewProfile");
+//            }
+        }
+    }
+
+    @RequestMapping(value = "/description/{id}", method = RequestMethod.PUT)
+    @ResponseBody
+    public Result<ActivityDTO> updateDescription(HttpServletRequest request, @PathVariable String id) {
+        Result<ActivityDTO> result = null;
+        String email = getLoginEmail(request);
+        try {
+            if (StringUtils.isBlank(email)) {
+                return newFaildResult(ResultMessages.NO_LOGIN);
+            }
+            String params = CommonUtil.streamToString(request.getInputStream(), "utf-8");
+            if (params != null && params.length() > 0) {
+                studentProfileService.updateDesc(params,id, email);
+                result = newSuccessResult(ResultMessages.OPERATE_SUCCESS, null);
+            }
+
+        } catch (Exception e) {
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+            logger.error("ActivityController.modifyDescription()", e);
+        }
+
+        return result;
+    }
+
+}

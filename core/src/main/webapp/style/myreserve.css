@@ -1,0 +1,274 @@
+section{
+    position: relative;
+    padding: 70px 0px !important;
+
+}
+
+/*我的订单*/
+.myapplication{
+    position: relative;
+    background: url("/images/background-reserve.jpg") no-repeat center;
+    width:100%;
+    height: 554px;
+    padding-top: 40px;
+
+}
+.myapplication .application-title,.tutors-hot .tutor-title{
+    width:100%;
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 50px;
+    color: #ffffff;
+    font-family: "Microsoft Yahei";
+}
+.myapplication .application-title b,.tutors-hot .tutor-title b{
+    border-bottom: 1px solid #08ba8c;
+}
+.myapplication .application-list{
+    height: 300px;
+}
+.myapplication .application-list h2,.myapplication .application-list h5{
+    color: #000;
+    font-family: "Microsoft Yahei";
+
+}
+.myapplication .application-list h5{
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.myapplication .application-list h3{
+    color: #08ba8c;
+    font-size: 30px;
+}
+.myapplication .application-list h2{
+    font-size: 15px;
+}
+.myapplication .application-list h2 b{
+    font-size: 35px;
+    border-bottom:1px solid #08ba8c;
+}
+.myapplication .non-payment h2 b{
+    border-bottom: 1px solid #ffffff;
+}
+.myapplication .application-list .pay-for{
+    width: 100px;
+    height: 35px;
+    background-color: #fff;
+    line-height: 35px;
+    font-family: "Microsoft Yahei";
+    font-size: 14px;
+    color: #08ba8c;
+    /*margin:0 auto;*/
+    position: absolute;
+    z-index: 100;
+    left: 50%;
+    margin-left: -50px;
+}
+.myapplication .application-list .application-state{
+    color: #ffa324 !important;
+    font-size: 14px !important;
+    height: 35px !important;
+    /*margin-bottom: 0px!important;*/
+    margin-top:20px;
+    position: absolute !important;
+    line-height: 35px !important;
+    padding: 0 !important;
+}
+.myapplication .application-list.non-payment{
+    box-shadow: 0 0 5px 0  #ffffff;
+    background: #08ba8c;
+}
+
+.myapplication .application-list.history{
+    background-color: #f0f0f0;
+}
+.myapplication .application-list time{
+    color: #aeaeae;
+    padding-left: 50px;
+    font-family: "Microsoft Yahei";
+}
+.myapplication .non-payment time{
+    color: #ffffff;
+}
+.alumnus-hot .slides .application-list p{
+    display:block;
+    width: 205px;
+    padding: 10px;
+    font-size: 12px;
+    font-family: "Microsoft Yahei";
+    height: 50px;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #000000;
+    line-height: 20px;
+    position: static;
+}
+.alumnus-hot{
+    padding: 0 !important;
+}
+.li-content a{
+    display: block;
+    width: 205px;
+    height: auto;
+    overflow: hidden;
+    color: #000;
+    font-size:20px;
+}
+.alumnus-hot .slides .js_slide .li-content ,.alumnus-hot .slides .application-list .li-content{
+    display: block;
+    clear: both;
+    white-space: normal;
+    text-align: center;
+    height:300px;
+}
+.alumnus-hot .slides .js_slide img{
+    clear: both;
+    display: block;
+}
+.alumnus-hot .slides .js_slide b{
+    width:100%;
+    display: block;
+    font-size: 16px;
+    font-family: "Microsoft Yahei";
+    color: #000;
+    margin: 36px auto;
+}
+.alumnus-hot .slides .js_slide span{
+    display: block;
+    font-family: "Microsoft Yahei";
+    color: #50a501;
+    padding: 0 18px;
+    text-align: right;
+    height: 30px;
+    line-height: 19px;
+    position: absolute;
+    font-size: 17px;
+    width:100%;
+
+}
+.alumnus-hot .slides .js_slide span img{
+    position: absolute;
+    left: 20px;
+    margin-right: 10px;
+}
+.alumnus-hot .slides .js_slide span i{
+    position: absolute;
+    font-style: normal;
+    font-size: 13px;
+    display: block;
+    width: 150px;
+    right: 20px;
+    padding-left: 20px;
+    text-align: center;
+}
+.alumnus-hot .slides .js_slide p{
+    display:block;
+    width: 205px;
+    padding: 10px;
+    font-size: 12px;
+    font-family: "Microsoft Yahei";
+    color: #000000;
+    line-height: 20px;
+    position: absolute;
+    top: 225px;
+    height: auto;
+    text-overflow: clip;
+}
+.myapplication .application-list.non-payment h3,.myapplication .application-list.non-payment h5,.myapplication .application-list.non-payment p,.myapplication .application-list.non-payment h2{
+    color: #ffffff;
+}
+
+
+
+/*热门导师*/
+
+.tutors-hot{
+    width:100%;
+    height: 500px;
+    padding:50px 0;
+}
+.tutors-hot .tutor-title{
+    color: #000;
+}
+.tutors-hot .alumnus-hot{
+    margin-bottom: 50px;
+}
+.pay-close-btn{
+    color: #aaaaaa;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.pay{
+    display: none;
+    padding: 50px;
+    width: 800px;
+    height: 740px;
+    background: #e1e4e8;
+    position: fixed;
+    z-index:1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+
+}
+.pay h3{
+    font-family: "Microsoft Yahei";
+    text-align: center;
+}
+.pay h2{
+    font-family: "Microsoft Yahei";
+    font-size: 20px;
+    color: #28b38d;
+    text-align: center;
+    margin:60px 0;
+}
+.pay h4{
+    text-align: center;
+    font-family: "Microsoft Yahei";
+}
+.pay h4 em{
+    display: inline-block;
+    width:40%;
+    border-bottom: 1px solid #3d3d3d;
+}
+.pay ul{
+    width:75%;
+    height: 250px;
+    padding: 20px;
+    margin:0 auto;
+
+}
+.pay ul li{
+    width: 200px;
+    height: 220px;
+    background-color: #0cc394;
+    float: left;
+    margin-left: 30px;
+    position: relative;
+    padding: 0;
+}
+
+.pay ul li img{
+    width: 180px;
+    height: 180px;
+    display: block;
+    margin: 10px auto;
+}
+.pay ul li p{
+    position: absolute;
+    bottom:-6px;
+    width:100%;
+    display: block;
+    text-align: center;
+    font-family: "Microsoft Yahei";
+}
+.pay .pay-tip{
+    margin: 20px;
+    font-size: 14px;
+    color: #e09400;
+    font-family: "Microsoft Yahei";
+}

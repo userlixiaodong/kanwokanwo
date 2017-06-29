@@ -1,0 +1,15 @@
+body span{font-size:inherit!important;}
+.my_school{padding:0 .2rem;}
+.my_school h1 {font-size: .4rem;}
+.my_school .activity-item li span{font-size: .3rem;}
+.my_school section,.my_school .flex-video,.my_school .columns-info .bg-gray,.my_school .video-img i.glyphicon-play-circle{margin: 0;}
+.my_school .columns-info .bg-gray  i{font-size:1rem !important;position:absolute; left:50%; top:50%;transform:translate(-50%,-50%); -webkit-transform:translate(-50%,-50%);}
+.my_school .columns-info .r-line{margin: 0 !important;padding:.5rem 0 2rem !important;}
+
+
+
+
+
+
+
+

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.1.xsd
+           http://www.springframework.org/schema/mvc
+           http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--<context:component-scan base-package="cv.focus.core.interfaces" />-->
+
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <!-- 约定优于配置，约定优于配置 -->
+    <mvc:resources mapping="/js/**" location="/js/" />
+    <mvc:resources mapping="/style/**" location="/style/" />
+    <mvc:resources mapping="/images/**" location="/images/" />
+    <mvc:resources mapping="/fonts/**" location="/fonts/" />
+    <mvc:resources mapping="/statics/**" location="/statics/" />
+
+    <context:component-scan base-package="cv.focus.core.interfaces,cv.focus.search.interfaces">
+        <context:include-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix">
+            <value>/WEB-INF/views/</value>
+        </property>
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+    </bean>
+
+    <bean id="stringHttpMessageConverter"
+          class="org.springframework.http.converter.StringHttpMessageConverter">
+        <constructor-arg index="0" value="UTF-8" />
+    </bean>
+    <!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
+    <bean id="mappingJacksonHttpMessageConverter"
+          class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/html;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+    <bean
+            class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+    </bean>
+
+    <!-- 采用SpringMVC自带的JSON转换工具，支持@ResponseBody注解 -->
+    <bean
+            class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="stringHttpMessageConverter" />
+                <ref bean="mappingJacksonHttpMessageConverter" />
+            </list>
+        </property>
+    </bean>
+
+
+    <!-- 全局异常配置 start -->
+    <bean id="exceptionResolver"
+          class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <!-- 异常处理 -->
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.Exception">common/404</prop>
+                <prop key="java.lang.Throwable">common/404</prop>
+                <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">common/fileuploadErr</prop>
+                <prop key="cv.focus.core.infrastructure.util.PermissionDeniedException">/common/403</prop>
+            </props>
+        </property>
+        <!-- 状态码处理 -->
+        <property name="statusCodes">
+            <props>
+                <prop key="common/500">500</prop>
+                <prop key="common/404">404</prop>
+                <prop key="common/405">405</prop>
+                <prop key="common/403">403</prop>
+            </props>
+        </property>
+        <!-- 设置日志输出级别，不定义则默认不输出警告等错误日志信息 -->
+        <property name="warnLogCategory" value="DEBUG"/>
+        <!-- 默认错误页面，当找不到上面mappings中指定的异常对应视图时，使用本默认配置 -->
+        <property name="defaultErrorView" value="common/404"/>
+        <!-- 默认HTTP状态码 -->
+        <property name="defaultStatusCode" value="500"/>
+    </bean>
+    <!-- 全局异常配置 end -->
+
+    <!-- 文件上传配置 start -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8"></property>
+        <property name="maxUploadSize" value="514572800"></property>
+        <property name="maxInMemorySize" value="4096"></property>
+    </bean>
+    <!-- 文件上传配置 end -->
+
+    <!-- 国际化配置 start -->
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" p:defaultLocale="en" />
+    <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>i18n/messages</value>
+            </list>
+        </property>
+        <property name="useCodeAsDefaultMessage" value="true"/>
+    </bean>
+
+    <mvc:interceptors>
+        <!-- 国际化资源切换时，根据请求参数中的locale参数自动切换 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <ref bean="localeChangeInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <!-- 国际化配置 end -->
+    <mvc:interceptors>
+        <ref bean="localeChangeInterceptor"/>
+    </mvc:interceptors>
+</beans>

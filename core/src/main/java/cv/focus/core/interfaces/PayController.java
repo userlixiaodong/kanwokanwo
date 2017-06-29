@@ -1,0 +1,181 @@
+package cv.focus.core.interfaces;
+
+import cv.focus.common.infrastructure.util.AlipaySubmit;
+import cv.focus.core.application.OrderService;
+import cv.focus.core.application.ReservationService;
+import cv.focus.core.application.SpecializationService;
+import cv.focus.core.application.UserItemService;
+import cv.focus.core.domain.activity.UserItemEntity;
+import cv.focus.core.domain.order.Order;
+import cv.focus.core.domain.user.model.Reservation;
+import cv.focus.core.infrastructure.util.BaseController;
+import cv.focus.core.infrastructure.util.Result;
+import cv.focus.core.interfaces.cisactivity.dto.UserItemDTO;
+import cv.focus.core.interfaces.user.dto.UserDTO;
+import net.sf.json.JSONObject;
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+import  cv.focus.common.infrastructure.util.alipay.AlipayConfig;
+import org.springframework.web.bind.annotation.RequestParam;
+
+/**
+ * Created by 晓东 on 2017/4/13.
+ */
+@Controller
+@RequestMapping("/pay")
+public class PayController extends BaseController {
+    private final Logger logger = Logger.getLogger(PayController.class);
+
+    @Resource
+    private ReservationService reservationService;
+    @Resource
+    private SpecializationService specializationService;
+
+
+    @Resource
+    private OrderService orderService;
+    @RequestMapping("/order1")
+    //最后把方法改成add开头的，必须登录才能有订单
+    public String order(){
+        return  "pay/order";
+    }
+
+    @RequestMapping("/orderpreview")
+    //最后把方法改成add开头的，必须登录才能有订单
+    public String orderpreview(HttpServletRequest request){
+        /*UserDTO loginUser = getLoginUser(request);
+        //测试数据
+        Integer userId  = loginUser.getUserId();
+        UserItemEntity userItemEntity=new UserItemEntity();
+        userItemEntity= userItemService.findUserItemByItemIdAndUserId(userId,itemId);
+        String activityType = "1";
+        Order order = new Order(userId,activityType,Integer.parseInt(itemId),userItemEntity.getMoney());*/
+        return  "specialization/orderdetails";
+    }
+
+    @RequestMapping("/payorder")
+    //最后把方法改成add开头的，必须登录才能有订单
+    public String payorder(HttpServletRequest request){
+        int itemId = Integer.parseInt(request.getParameter("item"));
+        String feeStr = request.getParameter("money");
+        String itemName = request.getParameter("itemName");
+        Double fee = 0.0;
+        //if(feeStr != null)
+        // fee = Double.parseDouble(request.getParameter("money"));
+
+        UserDTO loginUser = getLoginUser(request);
+
+        Integer userId  = loginUser.getUserId();
+        //当前所有类型均为一
+        String activityType = "1";
+        Order order = new Order(userId,activityType,itemId,itemName,fee);
+        orderService.createOrder(order);
+        request.setAttribute("order",order);
+        return "redirect:/reservation/myReservation";
+    }
+
+    @RequestMapping("/alipayapi")
+    public String alipayapi(HttpServletRequest request) throws Exception{
+        //商户订单号，商户网站订单系统中唯一订单号，必填
+      // String out_trade_no = new String(request.getParameter("WIDout_trade_no").getBytes("ISO-8859-1"), "UTF-8");
+        //订单名称，必填
+        //String subject = new String(request.getParameter("WIDsubject").getBytes("ISO-8859-1"), "UTF-8");
+        //付款金额，必填
+        //String total_fee = new String(request.getParameter("WIDtotal_fee").getBytes("ISO-8859-1"), "UTF-8");
+        //商品描述，可空
+        //String body = new String(request.getParameter("WIDbody").getBytes("ISO-8859-1"), "UTF-8");
+        String out_trade_no =  request.getParameter("orderno");
+        String subject = request.getParameter("name");
+        String total_fee =request.getParameter("fee");
+        String body = "";//request.getParameter("WIDbody");
+
+        //把请求参数打包成数组
+        Map<String, String> sParaTemp = new HashMap<String, String>();
+        sParaTemp.put("service", AlipayConfig.service);
+        sParaTemp.put("partner", AlipayConfig.partner);
+        sParaTemp.put("seller_id", AlipayConfig.seller_id);
+        sParaTemp.put("_input_charset", AlipayConfig.input_charset);
+        sParaTemp.put("payment_type", AlipayConfig.payment_type);
+        sParaTemp.put("notify_url", AlipayConfig.notify_url);
+        sParaTemp.put("return_url", AlipayConfig.return_url);
+        sParaTemp.put("anti_phishing_key", AlipayConfig.anti_phishing_key);
+        sParaTemp.put("exter_invoke_ip", AlipayConfig.exter_invoke_ip);
+        sParaTemp.put("out_trade_no", out_trade_no);
+        sParaTemp.put("subject", subject);
+        sParaTemp.put("total_fee", total_fee);
+        sParaTemp.put("body", body);
+        //其他业务参数根据在线开发文档，添加参数.文档地址:https://doc.open.alipay.com/doc2/detail.htm?spm=a219a.7629140.0.0.O9yorI&treeId=62&articleId=103740&docType=1
+        //如sParaTemp.put("参数名","参数值");
+
+        //建立请求
+        String sHtmlText = AlipaySubmit.buildRequest(sParaTemp, "get", "确认");
+        request.setAttribute("sHtmlText",sHtmlText);
+        //out.println(sHtmlText);
+        return "pay/alipayapi";
+    }
+
+    @RequestMapping("/notify_url")
+    public String notify_url(){
+        return "pay/notify_url";
+    }
+
+    @RequestMapping("/return_url")
+    public String return_url(HttpServletRequest request){
+        String buyer_email = request.getParameter("buyer_email");
+        String buyer_id = request.getParameter("buyer_id");
+        String is_success = request.getParameter("is_success");
+        String notify_id = request.getParameter("notify_id");
+        String notify_time = request.getParameter("notify_time");
+        String payment_type = request.getParameter("payment_type");
+        String out_trade_no = request.getParameter("out_trade_no");
+        Order order = orderService.findOrderByOrderNo(out_trade_no);
+        order.setBuyeId(buyer_email);
+        order.setBuyerEmail(buyer_id);
+        order.setIsSuccess(is_success);
+        order.setNotifyId(notify_id);
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            Date date = sdf.parse(notify_time);
+            order.setPayTime(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        order.setPaymentType(payment_type);
+        orderService.createOrder(order);
+
+        try {
+            UserDTO loginUser = getLoginUser(request);
+            //测试数据
+            Integer userId  = loginUser.getUserId();
+            List<Reservation> reservationList = new ArrayList<Reservation>();
+            List<Reservation> historyReservationList = new ArrayList<Reservation>();
+            if("1".equals(loginUser.getRoleR())){
+                //reservationList = reservationService.findByTutorId(userId);
+                reservationList = reservationService.findCurrentListByTutorId(userId);
+                historyReservationList = reservationService.findHistoryListByTutorId(userId);
+
+            }else if("0".equals(loginUser.getRoleR())){
+                //reservationList = reservationService.findByUserId(userId);
+                reservationList = reservationService.findCurrentListByUserId(userId);
+                historyReservationList = reservationService.findHistoryListByUserId(userId);
+            }
+            List<UserItemDTO> userItemList = new ArrayList<UserItemDTO>();
+            userItemList = specializationService.findUserItemByUserId(userId);
+            request.setAttribute("userItemList",userItemList);
+            request.setAttribute("reservationList",reservationList);
+            request.setAttribute("historyReservationList",historyReservationList);
+        } catch (Exception e) {
+            logger.error("PayController.return_url()", e);
+        }
+        return "user/myreserve";
+    }
+}

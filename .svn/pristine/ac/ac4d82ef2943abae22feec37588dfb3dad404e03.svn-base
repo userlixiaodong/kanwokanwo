@@ -1,0 +1,53 @@
+package cv.focus.core.infrastructure.util;
+
+/**
+ * ajax 返回的message
+ *
+ * @author liuruichao
+ * Created on 2016-04-01 14:56
+ */
+public interface ResultMessages {
+    String SYSTEM_ERROR = "The system is busy, please try again later!";
+    String OPERATE_FAIL   = "operation failed!";
+    String OPERATE_SUCCESS = "Successful operation!";
+    String NO_LOGIN = "Please login to operate!";
+    String REGISTER_SUCCESS = "registration success!";
+    String LOGIN_NAME_EXISTS = "email already exists!";
+    String LOGIN_NAME_NO_EXISTS = "email can use!";
+    String EMAIL_FORMAT_ERROR = "Please enter a valid email!";
+    String LOGIN_SUCCESS = "login successful!";
+    String LOGIN_FAIL = "Invalid email address or password!";
+    String RESET_PASSWORD_SUCCESS = "Reset Password Success!";
+    String SEND_MAIL_SUCCESS = "Sent! This email may take a little while to arrive. If you don't see it shortly, check your Spam and Junk folders.";
+    String RESET_LINK_FAIL = "Link failure, rebuild!";
+    String UPLOAD_FILE_FAIL = "upload fail";
+    String UPLOAD_FILE_SUCCESS = "upload success";
+    String UPDATE_DESC_SUCCESS = "update description success";
+    String NAME_NOT_BLANK = "Name can't be blank!";
+    String COLLEGE_NOT_BLANK = "College can't be blank!";
+    String VALID_EMAIL_ERROR = "Email address is invalid.";
+    String VALID_TWITTER_ERROR = "Twitter handles should contain only characters, numbers, \".\" or \"_\".";
+    String VALID_FACEBOOK_ERROR = "Facebook handles should contain only characters, numbers, \".\" or \"_\".";
+    String VALID_INSTAGRAM_ERROR = "Instagram handles should contain only characters, numbers, \".\" or \"_\".";
+    String MOBILE_EXISTS = "Mobile Number Already In Use.";
+    String MOBILE_FORMAT_ERROR = "Enter your phone number is incorrect.";
+    String PARAM_ERROR = "Submit parameter error.";
+    String VERIFICATIONCODE_ERROR = "Verification code error.";
+    String SENDER_RECIVER_TYPE_ERROR = "sender reciver type error.";
+    String PROFILE_COMPLETE_DEGREE = "In order to recommend yourself to counselors, you have to complete your kanwo profile to 100% Only a fully contented profile can help counselors learn a better you!";
+    String WECHAT_ALREADY_BIND = "wechat already bound.";
+    String SENDER_RECIVER_SAME = "You can not send a message to yourself.";
+    String MSG_CONTENT_TOO_LONG = "message content too long.";
+    String INTERVIEW_PASSWORD_ERROR = "Password error!";
+    String PUBLICURL_ERROR = "StudentUrl is invalid!";
+    String FOLLOW_FAIL = "You can't follow yourself!";
+    String WECHAT_BIND_ERROR = "Bind error!";
+    String WECHAT_BIND_SUCCESS = "Bind success!";
+    String WECHAT_UNBIND_SUCCESS = "解绑成功!";
+    String WECHAT_UNBIND_ERROR = "解绑失败!";
+    String ACCOUNT_DEACTIVE = "Account is not activated, please activate mailbox!";
+    String RESERVSTION_SUCCESS = "reservation successful!";
+    String RESERVSTION_FAIL = "reservation failed!";
+    String SPECIALIZATION_SUCCESS = "specialization successful!";
+    String SPECIALIZATION_FAIL = "specialization failed!";
+}

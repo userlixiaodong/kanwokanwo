@@ -1,0 +1,79 @@
+package cv.focus.core.application;
+
+import cv.focus.common.infrastructure.util.paginaction.WebPage;
+import cv.focus.core.domain.school.model.profile.*;
+import cv.focus.core.domain.material.Material;
+import cv.focus.core.domain.material.MaterialModule;
+import cv.focus.core.domain.student.model.profile.StudentProfile;
+import cv.focus.core.domain.user.model.User;
+
+import java.util.List;
+
+/**
+ * AdmissionProfileService
+ *
+ * @author liuruichao
+ * Created on 2016-04-02 13:05
+ */
+public interface AdmissionProfileService {
+
+    AdmissionProfile createAdmissionProfile(User user, String school, SchoolCountry country);
+
+    AdmissionProfile getProfileByEmail(String email);
+
+    AdmissionProfile findAdmissionProfileByPublicUri(String uri);
+
+    void addProfileMaterial(String email, MaterialModule module, Material material);
+
+    void updateBiography(AdmissionProfileId admissionProfileId, Biography biography, MyLinks myLinks);
+
+    void deleteMaterial(String email, MaterialModule module, int seq);
+
+    void updateSchoolDesc(String email, String description);
+
+    void changeMaterialLocation(String email, MaterialModule module, int beg, int end);
+
+    void updateMyLinks(String email, String linkEmail, String linkTwitter, String linkFacebook, String linkInstagram);
+
+    List<AdmissionRemark> getRemarkByAdProfileId(AdmissionProfileId admissionProfileId);
+
+    AdmissionRemark addRemark(String fromUser, String toUser, String impression);
+
+    void updateMaterialTitle(String email, String title, Integer index, MaterialModule module);
+
+    List<AdmissionProfile> getSchools(SchoolCountry country);
+
+    void updateMyAssociationDesc(String email, String description);
+
+    void updateMyCurriculumDesc(String email, String description);
+
+    void updateMyFacultyDesc(String email, String description);
+
+    void updateMyHonorDesc(String email, String description);
+
+    void updateMyOurStudentDesc(String email, String description);
+
+    Biography updateSchoolNameAndRank(String admissionProfileId, String name, String rank);
+
+    WebPage<StudentProfile> getSchoolOurStudents(String schoolName, Integer currentPage, Integer pageSize);
+
+    int getSchoolOurStudentsCount(String name);
+
+    void updateMyAcademicDesc(String email, String description);
+
+    void updateApplication(String admissionProfileId, SchoolApplication application);
+
+    List<AdmissionProfile> findSchoolByKeywords(String name);
+
+    /**新增加方法**/
+    List<AdmissionProfile> getUSchools(SchoolCountry country);
+
+    List<AdmissionProfile> getHSchools(SchoolCountry country);
+
+    WebPage<Object> querySchools(String keywords, WebPage<Object> webPage);
+
+    WebPage<Object> getSchoolsList4Page(AdmissionProfile admissionProfile, WebPage<Object> webPage,String strLodge,String schoolLevel,String toeflscore,String ieltsScore);
+
+    WebPage queryUniversity(String schoolLevel, WebPage page);
+
+}

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Student</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="email=no">
+<link rel="stylesheet" type="text/css" href="style/frame.css"/>
+<link rel="stylesheet" type="text/css" href="style/public.css"/>
+<link rel="stylesheet" type="text/css" href="style/video-js.css"/>
+<script src="js/video.js"></script>
+<script src="js/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<!--=====================================top============================================-->
+<div class="fixed-top fixed-top-bar">
+  <nav class="navbar"> <a class="navbar-brand" href="/index.jsp"></a>
+    <ul class="left-side navbar-section">
+      <li> <span> <i class="glyphicon glyphicon-search"></i>
+        <input type="text" class="navbar-search-input" style="width: 289px;">
+        </span> </li>
+    </ul>
+    <ul class="right-side navbar-section">
+      <li> <a href="#"> <i class="glyphicon glyphicon glyphicon-link"></i> <span class="show-for-large-menu">Your link</span> </a> </li>
+      <li></li>
+      <li class="user-dropdown-wrap"> <a href="javascript:void(0);" class="subnav-avatar-down user-dropdown">
+        <div class="subnav-avatar"><img src="images/img.jpg" ></div>
+        <i class="glyphicon glyphicon-menu-down"></i> </a>
+        <ul class="subnav-content">
+          <div class="subnav-content-box clearfix">
+            <div class="subnav-avatar fl"><img src="images/img.jpg" ></div>
+            <div class="profile-menu-top-right fl"> <span>唐诗</span><a href="">编辑个人资料</a></div>
+          </div>
+          <li class="subnav-link-item"><a href=""><i class="glyphicon glyphicon-check"></i><span>打开您的链接</span></a></li>
+          <li class="subnav-link-item"><a href=""><i class="glyphicon glyphicon-eye-open"></i><span>预览</span></a></li>
+          <li class="subnav-link-item"><a href=""><i class="glyphicon glyphicon-cog"></i><span>设置</span></a></li>
+          <li class="subnav-link-item"><a href=""><i class="glyphicon glyphicon-th-large"></i><span>参考样本</span></a></li>
+          <li class="subnav-link-item"></li>
+          <li class="subnav-link-item"><a href=""><i class="glyphicon glyphicon-question-sign"></i><span>帮助&答疑</span></a></li>
+          <li class="subnav-link-item"><a href=""><i class="glyphicon glyphicon-log-out"></i><span>退出</span></a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div class="main-wrapper"> 
+  <!--=====================================left============================================-->
+  <aside class="sidebar-container">
+    <div class="row">
+      <div class="col-xs-12 text-center"> <img width="200" height="200" src="images/img.jpg"> </div>
+      <div class="col-xs-12 text-center">
+        <h2>Lua McGimsey</h2>
+      </div>
+      <ul class="col-xs-12 icon-list">
+        <li> <i class="glyphicon glyphicon-map-marker"></i>
+          <p><span>北京市，海淀区</span></p>
+        </li>
+        <li> <i class="glyphicon glyphicon-bed"></i>
+          <p>人民大学附中</p>
+        </li>
+        <li> <i class="glyphicon glyphicon-education"></i>
+          <p><span>2016年毕业，视觉传达</span></p>
+        </li>
+        <li> <i class="glyphicon glyphicon-tower"></i>
+          <p><span>喜欢旅游、摄影</span></p>
+        </li>
+        <li> <i class="glyphicon glyphicon-tags"></i>
+          <p><span>SAT2100  托福112</span></p>
+        </li>
+      </ul>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <p class="inspiration-line">Need Inspiration?</p>
+        <a href="" target="_blank"> <img alt="Vidya golla desktop" class="inspiration-image" src="images/inspiration-image.png"> </a> </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <h3 class="lead-in">Good friend impression</h3>
+      </div>
+      <ul class="impression-list col-xs-12">
+        <li><span>Artist!</span> 
+          <div class="tooltip">
+        <div class="clearfix">
+        <dl>
+        <dt><a href="#" target="_blank"><img src="images/img.jpg"></a></dt>
+        <dd><p>zhou jie lun</p></dd>
+        </dl>
+        <dl>
+        <dt><a href="#" target="_blank"><img src="images/img.jpg"></a></dt>
+        <dd><p>zhou jie lun</p></dd>
+        </dl>
+        <dl>
+        <dt><a href="#" target="_blank"><img src="images/img.jpg"></a></dt>
+        <dd><p>2zhou jie lun</p></dd>
+        </dl>
+        </div>
+        <strong>This comment on the tang dynasty</strong>
+        </div> 
+        </li>
+        <li>Personality is very cheerful</li>
+        <li>Ha ha!</li>
+        <li>Great leadership!</li>
+        <li>Creativity</li>
+        <li>wave</li>
+        <li>Fly up!</li>
+        <li>Smart</li>
+        <li>High play</li>
+        <li>The fighter jet in the humor</li>
+      </ul>
+    </div>
+  </aside>
+  <!--=====================================right============================================-->
+  <div class="content-container">
+    <div class="my-story-container">
+      <div class="row">
+        <div class="clearfix">
+          <section class="col-xs-12">
+            <h1>我的简介视频</h1>
+          </section>
+        </div>
+        <div class="media-item flex-video">
+          <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" poster="https://cdn-vd.zeemee.com/encoded_videos/4207/full_resolution.jpg" data-setup="{}">
+            <source src="http://www.100sucai.com/img/video/happyfit2.mp4" type='video/mp4' />
+          </video>
+        </div>
+        </section>
+      </div>
+      <div class="row">
+        <div class="clearfix">
+          <div class="col-xs-12">
+            <h1>我的故事</h1>
+          </div>
+        </div>
+        <section class="clearfix">
+          <div class="media-item">
+          <div class="show-height">
+           <div class="show-height-box">
+           <div class="clearfix">
+            <div class="col-lg-8 col-xs-12">
+              <div class="media-item-description">
+                <p> 我是一名热爱艺术和生活的人，这世界充满了未知数，值得我去阅览。我就读于南大附中，平时喜欢听歌、画画、羽毛球、唱歌、摄影，我的生涯一片无悔，想起那天下午夕阳下的奔跑，那是我逝去的青春。</p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-xs-6"> <img src="images/img01.jpg"> </div>
+            <div class="col-lg-4 col-xs-6"> <img src="images/img01.jpg"> </div>
+            <div class="col-lg-4 col-xs-6"> <img src="images/img01.jpg"> </div>
+            <div class="col-lg-4 col-xs-6"> <img src="images/img01.jpg"> </div>
+            <div class="col-lg-4 col-xs-6"> <img src="images/img01.jpg"> </div>
+            <div class="col-lg-4 col-xs-6"> <img src="images/img01.jpg"> </div>
+            <div class="col-lg-4 col-xs-6"> <img src="images/img01.jpg"> </div>
+            </div>
+            </div>
+            </div>
+          </div>
+          <a class="btn-show" href="javascript:void(0);">less</a>
+        </section>
+      </div>
+      <div class="row">
+        <div class="clearfix">
+          <div class="col-xs-12">
+            <h1>我的活动</h1>
+          </div>
+        </div>
+        <div class="activity">
+          <ul class="activity-item">
+            <li class="col-lg-2 col-xs-4 on">
+              <p>全部</p>
+              <span>（10）</span></li>
+            <li class="col-lg-2 col-xs-4">
+              <p>艺术</p>
+              <span>（2）</span></li>
+            <li class="col-lg-2 col-xs-4">
+              <p>体育</p>
+              <span>（3）</span></li>
+            <li class="col-lg-2 col-xs-4">
+              <p>社区服务</p>
+              <span>（1）</span></li>
+            <li class="col-lg-2 col-xs-4">
+              <p>文化</p>
+              <span>（1）</span></li>
+            <li class="col-lg-2 col-xs-4">
+              <p>辩论演讲</p>
+              <span>（1）</span></li>
+            <li class="col-lg-2 col-xs-4">
+              <p>传媒</p>
+              <span>（1）</span></li>
+            <li class="col-lg-2 col-xs-4">
+              <p>科技</p>
+              <span>（1）</span></li>
+            <li class="col-lg-2 col-xs-4">
+              <p>语言</p>
+              <span>（1）</span></li>
+            <li class="col-lg-2 col-xs-4">
+              <p>宗教</p>
+              <span>（0）</span></li>
+            <li class="col-lg-2 col-xs-4">
+              <p>工作经历</p>
+              <span>（0）</span></li>
+            <li class="col-lg-2 col-xs-4">
+              <p>其他</p>
+              <span>（0）</span></li>
+          </ul>
+        </div>
+      </div>
+      <section>
+        <div class="row">
+          <div class="clearfix">
+            <div class="col-xs-12">
+              <header>
+                <div class="portfolio-title">
+                  <h3>佛罗伦萨美术学院一游</h3>
+                  <div class="portfolio-age"> 8 years </div>
+                </div>
+                <ul class="activity-item clearfix">
+                  <li class="col-lg-2 col-xs-4">
+                    <p>艺术</p>
+                  </li>
+                  <li class="col-lg-2 col-xs-4">
+                    <p>工作经历</p>
+                  </li>
+                  <li class="col-lg-2 col-xs-4">
+                    <p>传媒</p>
+                  </li>
+                </ul>
+              </header>
+            </div>
+          </div>
+          <div class="media-item clearfix">
+            <div class="col-lg-8 col-xs-12">
+              <div class="media-item-description">
+                <p> 我是一名热爱艺术和生活的人，这世界充满了未知数，值得我去阅览。我就读于南大附中，平时喜欢听歌、画画、羽毛球、唱歌、摄影，我的生涯一片无悔，想起那天下午夕阳下的奔跑，那是我逝去的青春。</p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-xs-6"> <img src="images/img01.jpg"> </div>
+            <div class="col-lg-4 col-xs-6"> <img src="images/img01.jpg"> </div>
+            <div class="col-lg-4 col-xs-6"> <img src="images/img01.jpg"> </div>
+            <div class="col-lg-4 col-xs-6"> <img src="images/img01.jpg"> </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="row">
+          <div class="clearfix">
+            <div class="col-xs-12">
+              <header>
+                <div class="portfolio-title">
+                  <h3>佛罗伦萨美术学院一游</h3>
+                  <div class="portfolio-age"> 8 years </div>
+                </div>
+                <ul class="activity-item clearfix">
+                  <li class="col-lg-2 col-xs-4">
+                    <p>艺术</p>
+                  </li>
+                  <li class="col-lg-2 col-xs-4">
+                    <p>工作经历</p>
+                  </li>
+                  <li class="col-lg-2 col-xs-4">
+                    <p>传媒</p>
+                  </li>
+                </ul>
+              </header>
+            </div>
+          </div>
+          <div class="media-item clearfix">
+            <div class="col-lg-8 col-xs-12">
+              <div class="media-item-description">
+                <p> 我是一名热爱艺术和生活的人，这世界充满了未知数，值得我去阅览。我就读于南大附中，平时喜欢听歌、画画、羽毛球、唱歌、摄影，我的生涯一片无悔，想起那天下午夕阳下的奔跑，那是我逝去的青春。</p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-xs-6"> <img src="images/img01.jpg"> </div>
+            <div class="col-lg-4 col-xs-6"> <img src="images/img01.jpg"> </div>
+    		<div class="col-lg-4 col-xs-6"> <img src="images/img01.jpg"> </div>
+            <div class="col-lg-4 col-xs-6"> <img src="images/img01.jpg"> </div>
+            <div class="col-lg-4 col-xs-6"> <img src="images/img01.jpg"> </div>
+          </div>
+        </div>
+      </section>
+      <div class="row">
+        <div class="clearfix">
+          <div class="col-xs-12">
+            <h1>个人作品集</h1>
+          </div>
+        </div>
+        <section>
+          <div class="media-item clearfix">
+            <div class="col-lg-4 col-xs-6">
+                  <div class="show-hover">
+                  <div class="show-document-item text-center">
+                  <i class="glyphicon glyphicon-list-alt"></i>
+                  <p class="show-document-item-title">123456789123456789123456789123456789123456789123456789</p>
+                  <small>Document</small>
+                  </div>
+                  </div>
+                </div>
+            <div class="col-lg-4 col-xs-6">
+                  <div class="show-hover"><div class="show-img"><img src="images/img01.jpg"></div></div>
+            </div>
+            <div class="col-lg-4 col-xs-6">
+                  <div class="show-hover">
+                    <div class="video-img"><img src="images/img01.jpg"><i class="glyphicon glyphicon-play-circle"></i>
+                      <div class="masking"></div>
+                    </div>
+                  </div>
+             </div>
+            
+          </div>
+        </section>
+      </div>
+      <div class="row">
+        <div class="clearfix">
+          <div class="col-xs-12">
+            <h1>获奖记录</h1>
+          </div>
+        </div>
+        <section>
+          <div class="media-item clearfix">
+            <div class="col-lg-8 col-xs-12">
+              <div class="media-item-description">
+                <p> 我是一名热爱艺术和生活的人，这世界充满了未知数，值得我去阅览。我就读于南大附中，平时喜欢听歌、画画、羽毛球、唱歌、摄影，我的生涯一片无悔，想起那天下午夕阳下的奔跑，那是我逝去的青春。</p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-xs-6"> <img src="images/img01.jpg"> </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+<!--=====================================bottom============================================-->
+<footer class="clearfix">
+  <p><img class="bottom-logo" src="images/u171.png"></p>
+  <p><img class="bottom-kanwo" src="images/kanwokanwo.png"></p>
+  <p class="pt40">FOCUSEDU brand</p>
+  <p><a href="#" target="_blank">The focus of the team</a> |<a href="#" target="_blank"> cooperative education and the media</a> |<a href="#" target="_blank"> contact us </a>| <a href="#" target="_blank">recruitment site map</a></p>
+  <p>24h national free telephone: 400-8657-088 / 010 - 51627791</p>
+  <p>The Beijing times the focus of International Education Consulting Co. Ltd. www.focusedu.cn</p>
+  <p>Copyright@2010-2015 Focus Education.All Rights Reserved. ICP Beijing No. 11025628</p>
+</footer>
+<script type="text/javascript">
+$(function(){
+       
+    
+
+	
+var sh=$(".show-height-box").height();
+//alert(sh);
+function showHeight(reality, limit){
+	if(reality > limit){	
+		$(".btn-show").html("more");		
+	}else{	
+		$(".btn-show").html("less");
+	}
+	$(".btn-show").click(function(){
+	  if($(".btn-show").html()=="more"){
+		  $(".btn-show").html("less");
+		  $(".show-height").stop().animate({height: sh, overflow: 'auto'}, 500);
+	  }else if($(".btn-show").html()=="less"){
+		  $(".btn-show").html("more");  
+		  $(".show-height").stop().animate({height: '646', overflow: 'hidden'}, 500);
+	  }
+  });
+}
+showHeight(sh, 646);
+
+ $(".user-dropdown").mouseover(function(){
+            $(this).next(".subnav-content").slideDown(100);
+        });
+        $(".user-dropdown-wrap").mouseleave(function(){
+            $(this).children(".subnav-content").slideUp(100);
+        });
+        $(".subnav-content").height($(window).height() - 75);
+});
+</script>
+</body>
+</html>

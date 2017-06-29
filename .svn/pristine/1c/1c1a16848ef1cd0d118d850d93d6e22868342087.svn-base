@@ -1,0 +1,14 @@
+package cv.focus.core.infrastructure.persistence.hibernate.impl;
+
+import cv.focus.core.infrastructure.persistence.hibernate.HibernateRepository;
+import cv.focus.core.infrastructure.persistence.hibernate.OrderRepository;
+import org.springframework.stereotype.Repository;
+
+/**
+ * Created by 晓东 on 2017/5/3.
+ */
+@Repository
+public class OrderRepositoryHibernateImpl extends HibernateRepository implements OrderRepository {
+
+
+}

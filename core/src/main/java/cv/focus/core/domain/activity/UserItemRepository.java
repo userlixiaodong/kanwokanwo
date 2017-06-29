@@ -1,0 +1,18 @@
+package cv.focus.core.domain.activity;
+
+/**
+ * Created by Administrator on 2017/4/5.
+ */
+public interface UserItemRepository {
+    UserItemEntity findUserItemByMoblie(String itemId, String moblie);
+
+    void store(UserItemEntity userItemEntity);
+
+    UserItemEntity findUserItemByItemIdAndUserId(Integer userId, String itemId);
+
+    UserItemEntity findUserItemById(Integer id);
+
+    void updateUserItem(UserItemEntity userItem);
+
+    void storeConsultation(ConsultationEntity consultationEntity);
+}

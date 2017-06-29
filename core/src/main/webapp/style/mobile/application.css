@@ -1,0 +1,5 @@
+.app_box{ width:70%; margin:0 auto .2rem;}
+.app_box dt{ color:#888; font-size:.24rem; font-weight:900;}
+.app_box dt::before{content: '';display: inline-block;background-color: #4d4d4d;width: 10px;height: 10px;border-radius: 5px;margin-right:.1rem;}
+.app_box dd{ font-size:.16rem; margin-left:.3rem;}
+.green{ text-decoration:underline; color:#1bb38c;}

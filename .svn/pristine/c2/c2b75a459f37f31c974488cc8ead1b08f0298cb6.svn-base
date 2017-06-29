@@ -1,0 +1,515 @@
+*{
+    margin:0;
+    padding:0;
+}
+html{
+    font-size:20px;
+    font-family: 微软雅黑;
+}
+@media screen and (max-width: 1920px) {
+    html {
+        font-size: 18px !important;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    html {
+        font-size: 16px !important;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    html {
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    html {
+        font-size: 12px !important;
+    }
+
+    body {
+        max-width: 750px;
+    }
+}
+
+/*针对ipad的css样式*/
+@media only screen and (device-width: 768px) {
+
+}
+
+/*@media only screen and (min-device-width:481px) and (max-device-width:1024px) and (orientation:portrait){*/
+/*!*ipad竖屏的css样式*!*/
+/*}*/
+/*@media only screen and (min-device-width:481px) and (max-device-width:1024px) and (orientation:landscape){*/
+/*!*ipad横屏的css样式*!*/
+/*}*/
+
+/* iphone6 plus */
+@media (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+    html {
+        font-size: 25.875px;
+    }
+}
+
+/* iphone 6 */
+@media (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+    html {
+        font-size: 23.4375px;
+    }
+}
+
+/* 判断iphone5 *//* 横屏竖屏判断方法与ipad一样 */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+    html {
+        font-size: 20px;
+    }
+}
+
+.clear {
+    clear: both;
+}
+.school-list-header h2 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 60px;
+    margin: 0;
+}
+
+/*@media (max-width: 768px) {*/
+    /*.school-list-header h2 {*/
+        /*font-size: 29px;*/
+    /*}*/
+/*}*/
+
+/*@media (max-width: 414px) {*/
+    /*.school-list-header h2 {*/
+        /*font-size: 15px;*/
+    /*}*/
+/*}*/
+
+/*@media (max-width: 320px) {*/
+    /*.school-list-header h2 {*/
+        /*font-size: 12px;*/
+    /*}*/
+/*}*/
+
+.colleges-content dl {
+    bottom: 6%;
+}
+
+/* 搜索栏样式*/
+.content {
+    width: 100%;
+    margin: 0 0 2.5rem;
+    padding: 42rem 0;
+}
+
+.head_banner {
+    width: 100%;
+    height: auto;
+    background: url("/images/BA_search.jpg") no-repeat center;
+    padding-bottom: 3rem;
+}
+
+.banner_box {
+    width: 1200px;
+    margin: 0 auto;
+    padding-top: 190px;
+}
+
+.banner_box img {
+    display: block;
+    width: 692px;
+    margin: 0 auto;
+}
+
+.banner_box span, .banner_box .search_btn, .head_partnership .partnership h4, .partnership li span, .middle .title, .middle .school p, .school_list li span {
+    font-family: arial, "Hiragino Sans GB", "Microsoft Yahei", 微软雅黑, 宋体, Tahoma, Arial, Helvetica, STHeiti;
+}
+
+.banner_box span {
+    font-size: 24px;
+    line-height: 26px;
+    color: #fff;
+    display: block;
+    padding-left: 247px;
+    margin-top: 60px;
+}
+
+.banner_box form {
+    width: 746px;
+    height: 68px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-top: 14px;
+}
+
+.banner_box input {
+    display: block;
+    margin-top: 8px;
+    border: none;
+}
+
+.banner_box .search_box {
+    width: 586px;
+    height: 52px;
+    float: left;
+    margin-left: 8px;
+    font-size: 18px;
+    color: #b9bac0;
+    text-indent: 20px;
+    /* letter-spacing: 4px;*/
+}
+
+.banner_box .search_btn {
+    height: 52px;
+    width: 144px;
+    background-color: #18ad92;
+    border: none;
+    margin-left: -6px;
+    font-size: 30px;
+    color: #ffffff;
+    float: right;
+    margin-right: 8px;
+    letter-spacing: 8px;
+}
+@media (max-width: 769px) {
+    .content {
+        padding: 0;
+    }
+    .head_banner {
+        width: 100%;
+        height: 20rem;
+        background: url("/images/BA_search.jpg") no-repeat center;
+        background-size:cover ;
+        padding-bottom: 0;
+    }
+    .banner_box {
+        width: 100%;
+        margin: 0 auto;
+        padding-top:1.5rem;
+    }
+    .banner_box img {
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+    }
+    .banner_box span {
+        font-size: 1.4rem;
+        line-height: 1.6rem;
+        display: block;
+        padding-left: 1.7rem;
+        margin-top:5rem;
+    }
+
+    .banner_box form {
+        width: 90%;
+        height: 3.5rem;
+        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.3);
+        margin-top: 0.7rem;
+    }
+
+    .banner_box input {
+        display: block;
+        margin-top: 0.3rem;
+        border: none;
+    }
+
+    .banner_box .search_box {
+        width: 97%;
+        height: 2.8rem;
+        float: left;
+        margin-left: 0.4rem;
+        font-size: 0.8rem;
+        color: #b9bac0;
+        text-indent: 1rem;
+    }
+
+    .banner_box .search_btn {
+        width: 5rem;
+        height: 2.4rem;
+        background-color: #18ad92;
+        border: none;
+        text-align: center;
+        line-height:2.4rem;
+        font-size: 1rem;
+        color: #ffffff;
+        float: right;
+        margin:1rem 0.4rem;
+        letter-spacing: 0.5em;
+    }
+}
+
+.head_partnership {
+    width: 100%;
+    height: 670px;
+    background-color: #f5f5f5;
+}
+
+.head_partnership .partnership {
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+.head_partnership .partnership h4 {
+    margin: 0;
+    height: 210px;
+    line-height: 210px;
+    font-size: 40px;
+    color: #333333;
+    font-weight: normal;
+    text-align: center;
+}
+.imgs{
+    width:100%;
+}
+.imgs li {
+    display: inline-block;
+    width: 33%;
+    list-style: none;
+    height: 346px;
+    background-color: white;
+    text-align: center;
+    box-shadow: 0px 3px 20px #999;
+}
+
+.partnership li img {
+    margin-top: 34px;
+}
+
+.clear {
+    clear: both;
+}
+
+.partnership li span {
+    display: block;
+    text-align: center;
+    font-size: 24px;
+    color: #000000;
+    line-height: 56px;
+}
+@media (max-width: 769px) {
+    .head_partnership {
+        width: 100%;
+        height: auto;
+        background-color: #f5f5f5;
+    }
+
+    .head_partnership .partnership {
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .head_partnership .partnership h4 {
+        margin: 0;
+        height: 6rem;
+        line-height: 6rem;
+        font-size: 1.6rem;
+    }
+    .imgs{
+        list-style-type: none;
+        text-align: center;
+    }
+    .partnership li {
+        display: inline-block;
+        width: 90%;
+        height: auto;
+        background-color: white;
+        box-shadow: 0px 3px 20px #999;
+        margin:1rem auto;
+    }
+    .partnership li:nth-of-type(1){
+        margin-top:0;
+    }
+    .partnership li img {
+        width:98%;
+        margin: 0.6rem 0.2rem 0 0;
+    }
+    .partnership li span {
+        display: block;
+        text-align: center;
+        font-size: 1.4rem;
+        line-height: 3.5rem;
+    }
+
+}
+.middle {
+    width: 1200px;
+    margin: 0 auto;
+    color: #333333;
+}
+
+.middle .title {
+    margin-top: 155px;
+    font-size: 40px;
+    text-align: center;
+    font-weight: normal;
+}
+
+.middle .school p {
+    margin-top: 110px;
+    height: 44px;
+    line-height: 44px;
+    letter-spacing: 12px;
+    font-size: 36px;
+    text-indent: 24px;
+    position: relative;
+}
+
+.middle .school p span {
+    display: block;
+    float: left;
+    width: 8px;
+    height: 44px;
+    background-color: #2cb098;
+    border-radius: 10px;
+}
+
+.middle .school p a {
+    position: absolute;
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: 2px;
+    right: 0px;
+    top: 14px
+}
+
+.middle .school p:after {
+    content: "";
+    display: block;
+    width: 1196px;
+    border: 1px solid #bac3c8;
+    float: right;
+    margin-top: 9px;
+}
+
+.school_list li {
+    list-style: none;
+    float: left;
+    width: 280px;
+    height: 350px;
+    text-align: center;
+    margin-left: 16px;
+    margin-top: 20px;
+}
+
+.school_list li img {
+    width: 220px;
+    height: 200px;
+}
+
+.school_list li span {
+    display: block;
+    width: auto;
+    height: 20px;
+    text-align: center;
+    position: relative;
+    top: 40px;
+}
+
+.video-decoretion {
+    text-decoration: none;
+    display: block;
+    color: #333;
+    line-height: 20px;
+    font-size: 14px;
+}
+
+.highSchool-video-a {
+    display: block;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: #f6f6f6;
+}
+@media (max-width: 769px) {
+    .middle {
+        width: 100%;
+        margin: 0 auto;
+        color: #333333;
+    }
+
+    .middle .title {
+        margin-top: 2rem;
+        font-size: 2rem;
+    }
+    .middle .school p {
+        width:90%;
+        height: 2rem;
+        line-height: 2rem;
+        letter-spacing: 0.4rem;
+        font-size: 1.6rem;
+        text-indent: 0.5rem;
+        position: relative;
+        margin: 2rem auto;
+    }
+
+    .middle .school p span {
+        display: block;
+        width: 0;
+        height: 2rem;
+        float: left;
+        background-color: #2cb098;
+        border-radius: 0.5rem;
+    }
+
+    .middle .school p a {
+        position: absolute;
+        display: inline-block;
+        font-size: 0.8rem;
+        letter-spacing: 0.1rem;
+        right: 0;
+        top: 0;
+    }
+    .school_list{
+        width:90%;
+        height:auto;
+        margin:2rem auto 0;
+        text-align: center;
+    }
+    .school_list li {
+        list-style-type: none;
+        display: inline-block;
+        width: 50%;
+        height: auto;
+        text-align: center;
+        margin:0.5rem auto;
+        padding:0.5rem;
+    }
+
+    .school_list li img {
+        width: 100%;
+        height: auto;
+    }
+
+    .school_list li span {
+        display:block;
+        width: 100%;
+        height: 2rem;
+        text-align: center;
+        position: relative;
+        top:1rem;
+    }
+
+    .video-decoretion {
+        text-decoration: none;
+        display: block;
+        color: #333;
+        line-height: 2rem;
+        font-size: 0.7rem;
+    }
+
+    .highSchool-video-a {
+        display: block;
+        padding: 1.6rem;
+        border-radius: 0.8rem;
+        background-color: #f6f6f6;
+    }
+}

@@ -1,0 +1,304 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 20px;
+}
+body{
+    font-family: "微软雅黑";
+}
+@media screen and (max-width: 1920px) {
+    html {
+        font-size: 18px !important;
+    }
+}
+@media screen and (max-width: 1300px) {
+    html {
+        font-size: 16px !important;
+    }
+}
+@media screen and (max-width: 1280px) {
+    html {
+        font-size: 14px !important;
+    }
+}
+@media screen and (max-width: 769px) {
+    html {
+        font-size: 12px !important;
+    }
+    body {
+        max-width: 769px;
+    }
+}
+/* iphone6 plus */
+@media (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+    html {
+        font-size: 25.875px;
+    }
+}
+/* iphone 6 */
+@media (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+    html {
+        font-size: 23.4375px;
+    }
+}
+/* 判断iphone5 *//* 横屏竖屏判断方法与ipad一样 */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+    html {
+        font-size: 20px;
+    }
+}
+.clear {
+    clear: both;
+}
+.mid-content{
+    width:750px;
+    height:auto;
+    background: #efeff4;
+    margin:3.7rem auto 0;
+}
+.headImg{
+    width:100%;
+    height:auto;
+    background: url("/images/phone-headImg-bg.jpg") no-repeat;
+    background-size: cover;
+    margin:0 auto;
+    text-align: center;
+    padding:2rem 0;
+    position: relative;
+}
+.head-portrait{
+    width:10rem;
+    height:10rem;
+    margin:0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.head-portrait img{
+    width:100%;
+}
+.sname{
+    width:100%;
+    height:2.4rem;
+    color: #fff;
+    font-weight:bold;
+    font-size:1.8rem;
+    line-height:2.4rem;
+    margin:0.6rem 0 0;
+    letter-spacing: 1rem;
+}
+.sothers{
+    width:100%;
+    height:2.4rem;
+    color: #fff;
+    font-size:1.4rem;
+    line-height:2.4rem;
+    margin:0;
+    letter-spacing: 0.1rem;
+}
+.headImg i{
+    width:4rem;
+    height:4rem;
+    position: absolute;
+    right:2rem;
+    top:6rem;
+}
+.headImg i img{
+    width:100%;
+}
+.phone-myList{
+    width:100%;
+    height:auto;
+    margin:5rem auto;
+}
+.phone-myList li{
+    width:100%;
+    height:8rem;
+    margin-top:1px;
+    padding-left:7.4rem;
+    position: relative;
+}
+.phone-myList li span{
+    display: block;
+    height:8rem;
+    line-height:8rem;
+    font-size:1.8rem;
+    font-family:"微软雅黑 Light";
+    font-weight:500;
+    color: #333;
+}
+.phone-myList li i{
+    width:3rem;
+    height:3rem;
+    position: absolute;
+    right:1rem;
+    top:1.5rem;
+    padding:0.3rem 0 0;
+}
+.phone-myList li i img{
+    width:76%;
+}
+.toQuit{
+    width:100%;
+    height:6rem;
+    background: #17ac84;
+    margin:2rem auto -3rem;
+    text-align: center;
+}
+.toQuit a{
+    text-decoration: none;
+    font-size:1.8rem;
+    color: #fff;
+    text-space: 0.3rem;
+    line-height:6rem;
+}
+@media (max-width: 769px) {
+    .mid-content{
+        width:100%;
+        height:auto;
+        background: #efeff4;
+        margin:4rem auto 0;
+    }
+    .headImg{
+        width:100%;
+        height:auto;
+        background: url("/images/phone-headImg-bg.jpg") no-repeat;
+        background-size: cover;
+        margin:0 auto;
+        text-align: center;
+        padding:2rem 0;
+        position: relative;
+    }
+    .head-portrait{
+        width:10rem;
+        height:10rem;
+        margin:0 auto;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    .head-portrait img{
+        width:100%;
+    }
+    .sname{
+        width:100%;
+        height:2.4rem;
+        color: #fff;
+        font-weight:bold;
+        font-size:1.8rem;
+        line-height:2.4rem;
+        margin:0.6rem 0 0;
+        letter-spacing: 0.6rem;
+    }
+    .sothers{
+        width:100%;
+        height:2.4rem;
+        color: #fff;
+        font-size:1.4rem;
+        line-height:2.4rem;
+        margin:0;
+        letter-spacing: 0.1rem;
+        /*text-indent:-999;*/
+    }
+    .headImg i{
+        width:4rem;
+        height:4rem;
+        position: absolute;
+        right:2rem;
+        top:8rem;
+    }
+    .headImg i img{
+        width:100%;
+    }
+    .phone-myList{
+        width:100%;
+        height:auto;
+        margin:5rem auto;
+    }
+    .phone-myList li{
+        width:100%;
+        height:8rem;
+        margin-top:1px;
+        padding-left:7.4rem;
+        position: relative;
+    }
+    .phone-myList li span{
+        display: block;
+        height:8rem;
+        line-height:8rem;
+        font-size:1.8rem;
+        font-family:"微软雅黑 Light";
+        font-weight:500;
+        color: #333;
+    }
+    .phone-myList li i{
+        width:3rem;
+        height:3rem;
+        position: absolute;
+        right:1rem;
+        top:2.5rem;
+        padding:0.3rem 0 0;
+    }
+    .phone-myList li i img{
+        width:76%;
+    }
+    .toQuit{
+        width:100%;
+        height:6rem;
+        background: #17ac84;
+        margin:2rem auto 0;
+        text-align: center;
+    }
+    .toQuit a{
+        text-decoration: none;
+        font-size:1.8rem;
+        color: #fff;
+        text-space: 0.3rem;
+        line-height:6rem;
+    }
+    @media (max-width: 640px) {
+        .sname{
+            font-size:1.2rem;
+        }
+        .sothers{
+            font-size:1rem;
+        }
+        .headImg i{
+            width:3rem;
+            height:3rem;
+            position: absolute;
+            right:1rem;
+            top:5rem;
+        }
+        .phone-myList li{
+            padding-left:6rem;
+        }
+        .phone-myList{
+            margin:3rem auto;
+        }
+        .phone-myList li{
+            height:6rem;
+        }
+        .phone-myList li span{
+            height:6rem;
+            line-height:6rem;
+            font-size:1.4rem;
+        }
+        .phone-myList li i{
+            top:1.5rem;
+        }
+        .toQuit{
+            height:5rem;
+        }
+        .toQuit a{
+            font-size:1.6rem;
+            line-height:5rem;
+        }
+        @media (max-width: 320px) {
+            .headImg i{
+                top:4rem;
+            }
+        }
+    }
+}

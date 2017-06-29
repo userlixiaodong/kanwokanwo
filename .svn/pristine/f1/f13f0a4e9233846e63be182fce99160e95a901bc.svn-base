@@ -1,0 +1,596 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2017/5/18
+  Time: 11:38
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<html>
+<head>
+    <title>template</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Touch enabled minimalistic slider written in vanilla JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="/style/public.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/frame.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/app.css">
+    <link rel="stylesheet" href="/style/qdtest.css?20170428">
+</head>
+<body>
+<div class="login-before">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>您还未登录，请在登录之后再进行申请哦！~</p>
+    <a class="login-btn md-trigger" data-modal="modal-12" href="javascript:trackOutboundLink('', 'index_login');">登录</a>
+</div>
+<div class="leadFrame">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>请使用电脑进行登录</p>
+</div>
+<div class="container_box">
+    <%@include file="/WEB-INF/views/common/top.jsp" %>
+    <input type="hidden" id="ItemId" value="${Item.itemId}">
+    <%----------------------------------------------------------------------------项目Banner开始-------------------------------------------------------------------------------%>
+    <div class="gis_banner">
+        <img src="${Item.bannerUrl}" alt="" class="bannerIcon">
+        <div class="gis_banner_btn">
+            <c:choose>
+                <c:when test="${sessionScope.loginUser == null}">
+                    <a href="javascript: loginAlert();;" class="signUp" id="signUp">点击报名</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="javascript:toApply();;" class="signUp" id="signUp">点击报名</a>
+                </c:otherwise>
+            </c:choose>
+            <a href="${Item.videoUrl}" class="signUp">观看往期直播</a>
+        </div>
+    </div>
+    <%----------------------------------------------------------------------------项目Banner开始-------------------------------------------------------------------------------%>
+
+     <div class="mid_cont">
+
+        <c:if test="${fn:length(materialList1) ne 0}">
+             <%--项目背景start--%>
+             <%----------------------------------------------------------------------------项目背景开始-------------------------------------------------------------------------------%>
+             <div class="projectBackground">
+                 <p class="titles">项目背景</p>
+                    <c:forEach items="${materialList1}" var="background">
+                        <div class="projectAnalyse">
+                             <h5>${background.note}
+                             </h5>
+                             <div id="hcharts">
+                                 <img src="${background.bitmap}" alt="">
+                             </div>
+                             <div class="nakedReason">
+                                 ${background.note1}
+                             </div>
+                        </div>
+                    </c:forEach>   
+             </div>
+             <%----------------------------------------------------------------------------项目背景结束-------------------------------------------------------------------------------%>
+         </c:if>
+
+          <c:if test="${fn:length(materialList2) ne 0}">
+         <%--项目特色start 注意：背景小图标动态生成命名格式统一以mantengIcon+由1开始的数字命名--%>
+             <%----------------------------------------------------------------------------项目特色开始-------------------------------------------------------------------------------%>
+             <div class="advantage">
+                     <p class="titles">项目特色</p>
+                     <ul class="clearfix">
+                        <c:forEach items="${materialList2}" var="special">
+                            <li>
+                             <img src="${special.bitmap}" alt="">
+                             <h4>${special.title}</h4>
+                             <span>${special.note}</span>
+                         </li>
+                        </c:forEach>
+                     </ul>
+                 </div>
+                 <%----------------------------------------------------------------------------项目特色结束-------------------------------------------------------------------------------%>
+            </c:if>
+
+<%----------------------------------------------------------------------------项目详情开始-------------------------------------------------------------------------------%>
+         <%--项目详情--%>
+         <div class="projectDetail">
+                <p class="titles">项目信息</p>
+                <div class="project_details">
+                    <h2>项目信息</h2>
+                    <div class="contens">
+                        <c:if test="${not empty Item.dt_location}">
+                            <p>
+                                <b>公司地址： </b><span>${Item.dt_location}</span>
+                            </p>
+                        </c:if>
+                        <c:if test="${not empty Item.dt_time}">
+                        <p>
+                            <b>申请期限： </b><span>${Item.dt_time}</span>
+                        </p>
+                        </c:if>
+                        <c:if test="${not empty Item.dt_people}">
+                        <p>
+                            <b>适合人群： </b><span>${Item.dt_people}</span>
+                        </p>
+                        </c:if>
+                        <c:if test="${not empty Item.dt_company}">
+                            <p>
+                                <b>主办单位： </b><span>${Item.dt_company}</span>
+                            </p>
+                        </c:if>
+                        <c:if test="${not empty Item.dt_intro}">
+                        <p>
+                            <b>项目简介： </b>
+                            <span class="metarial">
+                                ${Item.dt_intro}
+                            </span>
+                        </p>
+                        </c:if>
+                    </div>
+             </div>
+        </div>
+<%----------------------------------------------------------------------------项目详情结束-------------------------------------------------------------------------------%>
+
+        
+ <c:if test="${fn:length(materialList3) ne 0}">
+    <%-------------------------------------------------------------------------视频介绍开始----------------------------------------------------------------------------------%>
+     <%--项目介绍视频--%>
+            <div class="videoIntroduce">
+                <c:forEach items="${materialList3}" var="video">
+                        <p class="titles" >${video.title}</p>
+                        <div class="videoWrapper">
+                            <video id="video1" src="${video.videoUrl}"
+                                   type="video/mp4" width="100%" height="100%" controls="controls" poster="${video.bitmap}"
+                                   webkit-playsinline></video>
+                            <%--<i id="play" class="play"></i>--%>
+                        </div>
+                </c:forEach>
+                
+                <c:choose>
+                    <c:when test="${sessionScope.loginUser == null}">
+                        <a href="javascript: loginAlert();" class="videoSignUp">报名申请</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="videoSignUp" href="javascript: toApply();">报名申请</a>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+    <%--------------------------------------------------------------------------视频介绍结束---------------------------------------------------------------------------------------------%>
+</c:if>
+<c:if test="${fn:length(materialList4) ne 0}">
+    <%-------------------------------------------------------------------------项目分类开始----------------------------------------------------------------------------------%>
+         <%--鹰计划开始--%>
+         <div class="yjh">
+            <c:forEach items="${materialList4}" var="material">
+                        <c:if test="${not empty material.title}">
+                            <p class="titles" >${material.title}</p>
+                            <ul class="int_list clearfix">
+                        </c:if>
+
+                        <li>
+                     <div class="yjhCont">
+                         <h6>${material.note}</h6>
+                         <div class="yjhInfo">
+                             ${material.note1}
+                         </div>
+                     </div>
+                 </li>
+            </c:forEach>
+             </ul>
+         </div>
+    <%--------------------------------------------------------------------------项目分类结束---------------------------------------------------------------------------------------------%>
+ <c:if test="${fn:length(materialList5) ne 0}">
+    <%-------------------------------------------------------------------------活动职位开始----------------------------------------------------------------------------------%>
+         <%--项目活动Or实习start--%>
+         <div class="programBox">
+             <div class="summerProgram">
+
+                    <c:forEach items="${materialList5}" var="position">
+                        <c:if test="${not empty position.title}">
+                            <p class="titles" >${position.title}</p>
+                            <ul class="int_list clearfix">
+                        </c:if>
+
+                        <li>
+                         <div class="intBox">
+                             <img src="${position.bitmap}" />
+                             ${position.note}
+                         </div>
+                        </li>
+                    </c:forEach>
+                     
+                     <div class="clear"></div>
+                 </ul>
+             </div>
+         </div>
+    <%--------------------------------------------------------------------------活动职位结束---------------------------------------------------------------------------------------------%>
+</c:if>
+
+
+    </c:if>
+
+<c:if test="${fn:length(materialList6) ne 0}">
+     <%-------------------------------------------------------------------------活动成果开始----------------------------------------------------------------------------------%>
+         <%--活动成果--%>
+         <div class="activityResults">
+             <p class="titles">活动成果</p>
+             <div class="results">
+                 <div class="resultsPart">
+            <c:forEach items="${materialList6}" var="material" varStatus="status">
+                    <div class="results-parts">
+                         <h4>${material.note}</h4>
+                         <span class="results-span">
+                            ${material.note1}
+                        </span>
+                     </div>
+                     <c:if test="${status.index == 2}">
+                            </div>
+                            <div class="resultsPart">
+                        </c:if>
+                     
+            </c:forEach>
+                </div>
+             </div>
+         </div>
+    <%--------------------------------------------------------------------------活动成果结束---------------------------------------------------------------------------------------------%>
+    </c:if>
+         
+
+
+         <%--师资介绍--%>
+         <div class="teachers">
+             <p class="titles">师资介绍</p>
+             <div class="teachers-wrapper">
+                 <div class="teachers-loop">
+                     <ul>
+                         <li>
+                             <img src="/images/keru-teacher1.png" alt="">
+                             <p class="en-name">Ming Khor</p>
+                             <p class="ch-name">许思明</p>
+                             <span class="teacher-describe">
+                            宾夕法尼亚大学<br/>沃顿商学院工商管理硕士<br/>美丽中国项目主管<br/>苹果公司企业社会责任<br/>（CSR）部门项目经理
+                        </span>
+                         </li>
+                         <li>
+                             <img src="/images/keru-teacher1.png" alt="">
+                             <p class="en-name">Josh Lim</p>
+                             <p class="ch-name">林浩正</p>
+                             <span class="teacher-describe">
+                            工商管理与国际关系双硕士学位<br/>夕法尼亚大学，沃顿商学院 <br/>Inventis投资副总<br/>虎管理基金旗下的对冲基金分析员<br/>UBS瑞银全球资产管理分析员
+                        </span>
+                         </li>
+                         <li>
+                             <img src="/images/keru-teacher1.png" alt="">
+                             <p class="en-name">Xiaochun Ni</p>
+                             <p class="ch-name">倪筱莼</p>
+                             <span class="teacher-describe">
+                            美国宾夕法尼亚大学沃顿商学院金<br/>融专业高等荣誉学士学位<br/>凯雷投资集团亚洲投资基金经理<br/>加入凯雷之前，任职于高盛集团<br/>负责中国消费板块投资研究
+                        </span>
+                         </li>
+                     </ul>
+                     <ul>
+                         <li>
+                             <img src="/images/keru-teacher1.png" alt="">
+                             <p class="en-name">Arthur Tong</p>
+                             <p class="ch-name"></p>
+                             <span class="teacher-describe">
+                             加利福尼亚州立大学<br/>普华永道高级顾问<br/>Sketchers美国区国际财务<br/>分析师<br/>
+                        </span>
+                         </li>
+                         <li>
+                             <img src="/images/keru-teacher1.png" alt="">
+                             <p class="en-name">Yueqiu Gao</p>
+                             <p class="ch-name"></p>
+                             <span class="teacher-describe">
+                            新加坡国立大学<br/>毕马威交易并购咨询部门 <br/>高级顾问 <br/>
+                        </span>
+                         </li>
+                         <li>
+                             <img src="/images/keru-teacher1.png" alt="">
+                             <p class="en-name">Matei Daian</p>
+                             <p class="ch-name"></p>
+                             <span class="teacher-describe">
+                            贝恩咨询顾问<br/>斯坦福本科学士学位<br/>沃顿商学院MBA<br/>
+                        </span>
+                         </li>
+                     </ul>
+                 </div>
+             </div>
+             <img src="/images/keru-prev.png" width="20px" height="40px" id="prev">
+             <img src="/images/keru-next.png" width="20px" height="40px" id="next">
+         </div>
+
+<c:if test="${fn:length(materialList8) ne 0}">
+     <%-------------------------------------------------------------------------成功案例开始----------------------------------------------------------------------------------%>
+         <%--成功案例--%>
+         <div class="successCase">
+             <p class="titles" style="color: #fff;">成功案例</p>
+             <div class="cases">
+                 <hr style="width: 62%;margin: 0 auto -3rem;">
+                 <div class="characters">
+                     <div class="charactersBox">
+
+                     <c:forEach items="${materialList8}" var="material" varStatus="status">
+                         <c:choose>
+                             <c:when test="${status.index == 0}">
+                                 <span style="display:block;">${material.note}</span>
+                             </c:when>
+                             <c:otherwise>
+                                 <span style="display:none;">${material.note}</span>
+                             </c:otherwise>
+                         </c:choose>
+
+                    </c:forEach>
+                </div>
+
+
+                     <ol class="charactersImg">
+                        <c:forEach items="${materialList8}" var="material" varStatus="status">
+                        <c:choose>
+                            <c:when test="${status.index == 0}">
+                                <li style="border: 2px solid #fff;"><img src="${material.bitmap}" ><span class="imgMask"></span></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li><img src="${material.bitmap}" ><span class="imgMask"></span></li>
+                            </c:otherwise>
+                        </c:choose>
+                             
+                    </c:forEach>
+                     </ol>
+                 </div>
+
+             </div>
+             
+         </div>
+    <%--------------------------------------------------------------------------成功案例结束---------------------------------------------------------------------------------------------%>
+    </c:if>
+
+         <%--项目成功案例start--%>
+         <div class="case">
+             <p class="titles">项目成功案例</p>
+             <ul class="clearfix">
+                 <li>
+                     <p>
+                         <img src="/images/keru-case1.jpg" alt="">
+                         <span>
+                            <i>01</i>
+                        2016年暑假，我们的学生来到云南，为思援环保进行水资源筛选进行调研活动。
+                    </span>
+                     </p>
+                 </li>
+                 <li>
+                     <p>
+                         <img src="/images/keru-case2.jpg" alt="">
+                         <span>
+                            <i>02</i>
+                        调研当地水质安全，检测净水指标。安装思援净水器，测量环保当地净水设备系统，普及净水知识。
+                    </span>
+                     </p>
+                 </li>
+                 <li>
+                     <p>
+                         <img src="/images/keru-case3.jpg" alt="">
+                         <span>
+                            <i>03</i>
+                        我们的学生设计了问卷调查表，访问了当地的村民了解真实的情况。
+                    </span>
+                     </p>
+                 </li>
+                 <li>
+                     <p>
+                         <img src="/images/keru-case4.jpg" alt="">
+                         <span>
+                            <i>04</i>
+                        他们策划了新的解决方案，提供给思援环保的创始人。
+                     </span>
+                     </p>
+                 </li>
+                <%-- <li>
+                     <p>
+                         <img src="/images/keru-case5.jpg" alt="">
+                         <span>
+                            <i>05</i>
+                        这个方案运用到了福建项目中，5000名学生受益于我们的学生设计的净水方案。
+                    </span>
+                     </p>
+                 </li>--%>
+             </ul>
+         </div>
+
+         <div style="margin-bottom: 15rem"></div>
+     </div>
+
+
+    <%@include file="/WEB-INF/views/common/bottom.jsp" %>
+</div>
+<div class="mask"></div>
+
+</body>
+<script type="text/javascript">
+    var wid = $(window).width();
+    var hei = $(window).height();
+    function loginAlert() {
+        if (wid < 769) {
+            $("#signUp,.videoSignUp").on("click", function () {
+                var ban = 0;
+                $(".mask").css("display", "block");
+                $(".leadFrame").show(400);
+                document.addEventListener("touchmove", function (e) {
+                    if (ban == 0) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                }, false);
+            });
+            $(".login-before-close-btn").on("click", function () {
+                $(".mask").css("display", "none");
+                $(".leadFrame").css("display", "none");
+            });
+        } else {
+            $(".login-before").css('display', 'block');
+        }
+    }
+    function closeAlert() {
+        $(".login-before").css('display', 'none');
+        location.reload();
+    }
+    function toApply() {
+        location.href = "/userItem/applymanteng";
+    }
+    $(function () {
+        /*顶部banner变为手机端图片更换*/
+        if(wid<=767){
+            $(".gis_banner .bannerIcon").attr("src","/images/indexBanner01.jpg")
+        }
+        /*项目特色不同数量更换不同样式2017-5-18*/
+        var num01=$(".advantage li").length;
+       /* console.log(num01)*/
+        if(num01==4){
+            $(".advantage ul li").css("width","22%")
+            $(".advantage ul li:eq(3)").css("margin-left","1rem")
+        }if(num01==6){
+            /* $(".advantage ul li").css("width","30%")*/
+            $(".advantage ul li:eq(3)").css("margin-left","1rem")
+        }
+        /*项目活动or实习不同数量更换不同样式2017-5-18*/
+        var num02=$(".int_list li").length;
+        console.log(num02)
+        if(num02==2){
+            $(".int_list").css("width","60%")
+            $(".int_list li").css("width","50%")
+        }if(num02==3){
+            $(".int_list li").css("width","33.33%")
+        }if(num02==4){
+            $(".int_list").css("width","85%")
+            $(".int_list li").css("width","25%")
+            $(".int_list li .intBox").css("width","95%")
+            if($(window).width()<= 1024){
+                $(".int_list li").css("width","50%")
+                $(".int_list li").css("margin","1rem 0")
+            }
+        }
+        if(num02==5){
+            $(".int_list li").css("width","33.33%")
+            $(".int_list li").css("margin","1rem 0")
+            $(".int_list li:eq(3)").css("margin-left","12rem")
+        } if(num02==6){
+            $(".int_list li").css("width","33.33%")
+            $(".int_list li").css("margin","1rem 0")
+        }
+        if($(window).width()<= 1024){
+            $(".int_list").css("width","90%")
+        }
+        if($(window).width()<= 768){
+            $(".int_list").css("width","96%")
+        }
+        if($(window).width()<= 414){
+            $(".int_list li").css("width","100%")
+            $(".int_list li").css("margin","1rem 0")
+            $(".int_list li:eq(3)").css("margin-left","0")
+        }
+        /*鹰计划不同数量更换不同样式2017-5-19*/
+        var num03=$(".yjh ul li").length;
+        console.log(num03)
+        if(num03%3==0){
+            $(".yjh ul li").css({
+                "width":"33%",
+                "height":"auto",
+                "margin-bottom":"1rem",
+            });
+            $(".yjh ul li:eq(3)").css("margin-left","0")
+            if($(window).width()<= 1300){
+                $(".yjhInfo").css("height","26rem")
+                $(".yjh").css("height","auto")
+            }
+            if($(window).width()<= 767){
+                $(".yjh ul li").css("width","100%")
+                $(".yjh").css("height","auto")
+
+            }
+        }if(num03==4){
+            $(".yjh ul li").css("width","25%")
+            $(".yjh ul li:eq(3)").css("margin-left","0")
+            if($(window).width()<= 1300){
+                $(".yjh ul li").css("width","50%")
+                $(".yjh").css("height","auto")
+            }
+            if($(window).width()<= 767){
+                $(".yjh ul li").css("width","100%")
+                $(".yjh").css("height","auto")
+
+            }
+        }
+       /* 项目成功案例不同数量更换不同样式*/
+       var num04=$(".case li").length;
+        console.log(num04)
+        if(num04%2==0){
+            if($(window).width()> 767){
+                $(".case ul li").css("width","50%");
+                $(".case ul li:eq(3)").css("margin-left","0")
+                $(".case li p").css("height","23rem");
+            }
+        }
+
+        if (wid < 767) {
+            $(".mid_cont").css({"width": wid, "max-width": "750px", "margin": "0 auto"});
+            $(".advantageTable").css("width", wid);
+            $(".gis_banner").css("width", wid);
+             $(".gis_banner_btn").css({"padding-top": wid* 0.28});
+            $(".project_details").css({"width": wid * 0.98, "margin-left": wid * 0.01});
+            $(".leadFrame").css({"width": wid * 0.8, "left": wid * 0.5});
+            $(".advantage ul li").css("width","90%")
+            $(".user-login").css({
+                "width": wid,
+                /*"height": hei,*/
+                "position": "fixed",
+                "margin-left": wid * 0.1,
+                "top": "0px"
+            });
+
+
+        }
+        //成功案例图像对应内容切换
+        $(".charactersImg li").on("click", function () {
+            var i = $(this).index();
+            var chaSpanList = $(".charactersBox span").eq(i);
+            $(this).css("border", "2px solid #fff").siblings().css("border", "none");
+            $(".charactersbox span").eq(i).css("display", "block").siblings().css("display", "none");
+        });
+
+    })
+    /*师资介绍图片切换*/
+    if(wid > 769){
+        //    师资介绍图片切换事件
+        teacherWrapperWid = wid*0.6;     //轮播显示部分宽度
+        teacherUlWid = wid*0.6*0.9;     //ul宽度
+        teacherLiWid = wid*0.6*0.9*0.33;//li宽度
+        $(".teachers-wrapper").css({"width":teacherLiWid*3,"left":(wid-teacherWrapperWid)*0.5});
+        $(".teachers-wrapper ul").css("width",teacherUlWid);
+        $(".teachers-wrapper ul li").css("width",teacherLiWid);
+        $(".teachers-loop").css({"width":teacherUlWid*2,"height":"24rem"});
+        //为左右箭头添加事件处理
+        //左箭头点击处理
+        $('#prev').on("click", function () {
+            $(".teachers-loop").css('marginLeft', -teacherUlWid);
+            $(".teachers-loop>li").eq(1).prependTo($(".teachers-loop ul"));
+            $(".teachers-loop").animate({marginLeft: "0px"}, 400);
+        });
+        //右箭头点击处理
+        $('#next').on("click", function () {
+            $(".teachers-loop").animate({marginLeft: -teacherUlWid}, 400, function () {
+                $(".teachers-loop>li").eq(0).appendTo($(".teachers-loop ul"));
+                $(".teachers-loop").css('marginLeft', -teacherUlWid);
+            });
+        });
+        //图片切换处理函数
+        function changeTo(num) {
+            $(".teachers-loop").animate({marginLeft: -teacherUlWid}, 400, function () {
+                $(".teachers-loop>li").eq(0).appendTo($(".teachers-loop ul"));
+                $(".teachers-loop").css('marginLeft', '0px');
+            });
+        }
+    }
+
+    $("#goTopBtn").css("right", "0")
+
+</script>
+</html>

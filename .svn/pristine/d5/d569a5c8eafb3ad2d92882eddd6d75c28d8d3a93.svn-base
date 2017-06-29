@@ -1,0 +1,317 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Touch enabled minimalistic slider written in vanilla JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="/style/public.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/frame.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/app.css">
+    <link rel="stylesheet" href="/style/cctv.css?20170402">
+    <link rel="stylesheet" href="/style/mengban.css">
+    <script src="/js/jquery-2.2.1.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+</head>
+<body>
+<div class="login-before">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>您还未登录，请在登录之后再进行申请哦！~</p>
+    <a class="login-btn md-trigger" data-modal="modal-12" href="javascript:trackOutboundLink('', 'index_login');">登录</a>
+</div>
+<div class="leadFrame">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>请使用电脑进行登录</p>
+</div>
+<div class="weixinFrame"></div>
+
+<div class="container_box">
+    <%@include file="/WEB-INF/views/common/top.jsp" %>
+    <input type="hidden" id="ItemId" value="${Item.itemId}">
+    <div class="gis_banner">
+        <div class="gis_banner_btn">
+        <c:choose>
+            <c:when test="${sessionScope.loginUser == null}">
+                <a href="javascript: loginAlert();;" class="signUp" id="signUp">点击报名</a>
+            </c:when>
+            <c:otherwise>
+                <a href="javascript:toApply();;" class="signUp" id="signUp">点击报名</a>
+            </c:otherwise>
+        </c:choose>
+            <%--<a href="//kw-cdn.kanwokanwo.com/videos/cis.mp4" class="signUp">观看往期直播</a>--%>
+        </div>
+    </div>
+
+    <div class="mid_cont">
+
+        <div class="advantage">
+            <p class="titles">项目特色</p>
+                <ul>
+                    <li>
+                        <h4>CCTV导演重磅推荐信</h4>
+                        <span>完成实习并且表现优异的学员，将有机会获得CCTV导演重磅推荐信</span>
+                    </li>
+                    <li>
+                        <h4>高含金量背景提升</h4>
+                        <span>央视资深导演亲自带队，在央视大楼感受国家电视台媒体人的工作氛围</span>
+                    </li>
+                    <li>
+                        <h4>稀缺媒体实习机会</h4>
+                        <span>作为国家电视台，CCTV招聘要求非常严格，本次看我看我为学员独家争取到4个名额</span>
+                    </li>
+                    <li>
+                        <h4>CCTV资深导演带队</h4>
+                        <span>中央电视台从业十年的资深导演，拍摄的记录片曾获新华网、央视网等权威媒体助阵</span>
+                    </li>
+                </ul>
+        </div>
+
+        <div class="projectDetail">
+            <p class="titles">项目信息</p>
+            <div class="project_details">
+                <h2>项目详情</h2>
+                <div class="contens">
+                    <p>
+                        <b>项目时间： </b><span>本项目不定期招生（按剧组节目档期而定），一次名额4人</span>
+                    </p>
+                    <p>
+                        <b>项目费用： </b><span>48000（不包食宿）</span>
+                    </p>
+                    <p>
+                        <b>主办单位：</b><span>CCTV7</span>
+                    </p>
+                    <p>
+                        <b>适合人群：</b><span class="metarial">对社会学，新闻学，传媒，电影、电视剧、影视等专业感兴趣的学生、<br/>
+过往三年参与实习的学生成功获得了包括纽约电影学院，西北大学传媒学院，南加州大学影视学院和文理学院等顶级录取。</span>
+                    </p>
+                    <p>
+                        <b>项目简介： </b>
+                        <span class="metarial">
+                            CCTV 媒体实习计划，由看我看我携手CCTV7联合推出，看我看我平台独家申请机会。
+活动每期仅招收2名学员，实习为期1-2个月，先到先得。
+实习期间内，学生将在第一时间近距离参与CCTV7记实剧的剧本讨论及实地拍摄。在近距离的实地接触中，学生会切身实地的了解现阶段国内基层的社会问题，并了解影视剧的拍摄流程等，增加学员社会经验；还有机会接触到大型晚会的活动策划，讨论。进一步提高学生的策划能力，组织能力。
+实习结束后，只要学员表现优异，有极大的几率获得CCTV官方出具的实习证明，且有可能在中央电视台农业频道亮相。
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <%--CCTV媒体实习岗位start--%>
+        <div class="internship">
+            <p class="titles" >CCTV媒体实习岗位</p>
+            <ul class="int_list clearfix">
+                <li>
+                    <img src="/images/cctv-practice1.jpg" />
+                    <h6>CCTV下基层节目录制<img src="/images/intList_line.png"/></h6>
+                    <p>
+                        <span>
+                            1、近距离参与CCTV记实剧的剧本讨论及实地拍摄，在实地接触中，切身了解现阶段国内基层的社会问题
+                        </span>
+                        <span>
+                           2、亲身参与节目录制的多个环节，了解影视剧的拍摄流程，有机会直接参与剧组拍摄
+                        </span>
+                        <span>
+                            3、学习戏剧影视、电视、美术等方面的基本理论和基本知识
+                        </span>
+                        <span>
+                            4、学习电视剧拍摄、制作、纪实节目制作的基础理论和基本技巧
+                        </span>
+                    </p>
+                </li>
+                <li>
+                    <img src="/images/cctv-practice2.jpg" />
+                    <h6>CCTV大型活动策划<img src="/images/intList_line.png"/></h6>
+                    <p>
+                        <span>
+                            1、接触大型晚会的活动策划，讨论
+                        </span>
+                        <span>
+                           2、全面了解一台专业晚会的制作流程
+                        </span>
+                        <span>
+                            3、训练学生对于大型活动的组织能力，协调能力，以及表达能力
+                        </span>
+                        <span>
+                            4、学习灯光、舞台美术、表演艺术等演出专业知识
+                        </span>
+                    </p>
+                </li>
+                <div class="clear"></div>
+                <span class="practice-time">实习期1-2个月，可根据学生时间和节目档期作调整但必须保证每周不少于10小时</span>
+            </ul>
+        </div>
+        <%--CCTV媒体实习岗位end--%>
+
+        <%--项目必要性--%>
+        <div class="necessity">
+            <p class="titles" style="color: #fff;">项目必要性</p>
+            <p class="nec-message">
+                <b>现有众多活动质量参差不齐：</b><br/>
+                如今美国高校申请难度进入白热化，学生的活动在申请中显得越来越重要。而在众多的活动中，社会实践性活动的含金量格外突出。<br/>
+                在南加州大学的官网上，很明确地表示建议学生从初中开始就参与社会实践活动，但在国内的学校因为体制不同、没有资源等，活动的含金量和价值没有保障。
+            </p>
+            <ul class="cctv-nec">
+                <li>
+                    <p>独家CCTV实习</p>
+                    <span>
+                        作为国家电视台央视在中国高校和社会招聘流程都非常严格，常年锁定的宣讲高校也是北大、北外、复旦等国内一流大学。现在，看我看我携CCTV独家提供中央电视台宝贵的实习机会。
+                    </span>
+                </li>
+                <li>
+                    <p>机会难得，意义重大，重复率低</p>
+                    <span>
+                        作为国家电视台CCTV招聘流程非常严格，本次活动名额仅限4人。由央视资深导演带你进入央视大楼感受国家电视台媒体人的工作氛围，参与CCTV记实剧的剧本讨论及实地拍摄。
+                    </span>
+                </li>
+                <li>
+                    <p>实习成果高含金量</p>
+                    <span>
+                        CCTV导演重磅推荐信、拍摄成果有机会在中央电视台亮相、成果均可直接用于大学申请。
+                    </span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="application">
+            <%--<p class="titles"><a href="">提升你的学术背景，让你的履历在<br />招生官的眼中再升一个等级吧~</a></p>--%>
+            <div class="tel-yw-icon">
+                <span class="consult_tel">010-5292-8288-8018</span>
+            </div>
+            <div class="consulting">
+                <div class="erweima">
+                    <img src="/images/gzh.png" alt=""><span>关注看我看我公众号<br/>获得更多留学资讯</span>
+                </div>
+                <div class="erweima">
+                    <img src="/images/kefu.png" alt=""><span>独家报名通道<br/>添加看我客服</span>
+                </div>
+            </div>
+            <c:choose>
+                <c:when test="${sessionScope.loginUser == null}">
+                    <a class="videoSignUp" href="javascript:loginAlert();" style="color:#fff;">点击报名</a>
+                </c:when>
+                <c:otherwise>
+                    <a class="videoSignUp" href="javascript:toApply();" style="color:#fff;">点击报名</a>
+                </c:otherwise>
+            </c:choose>
+        </div>
+    </div>
+    <!--<%--弹窗效果--%>-->
+    <div class="popup_box" style="display: none">
+        <span class="popup_close"></span>
+        <a href="javascript:toOrder();" style="margin-top: 5.7rem;">请使用已有信息申请</a>
+        <a href="javascript:toApplication();" style="margin-top: 2rem;">修改已有信息</a>
+    </div>
+    <!--<%--弹窗蒙版--%>-->
+    <div class="fe_window_mask"></div>
+    <%@include file="/WEB-INF/views/common/bottom.jsp" %>
+</div>
+<div class="mask"></div>
+</body>
+<script type="text/javascript">
+
+    //弹窗事件
+    $(".popup_close").click(function() {
+        $(".popup_box").css("display", "none")
+        $(".fe_window_mask").css("display", "none")
+        $ (window).unbind ('scroll');
+    });
+
+    var wid = $(window).width();
+    var hei = $(window).height();
+    function loginAlert(){
+        if (wid < 769){
+            $("#signUp,.videoSignUp").on("click",function () {
+                $(".mask").css("display","block").bind("touchmove",function(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                },false);
+                $(".leadFrame").show(400).bind("touchmove",function(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                },false);
+            });
+            $(".login-before-close-btn").on("click",function () {
+                $(".mask").css("display","none");
+                $(".leadFrame").css("display","none");
+            });
+        }else {
+            $(".login-before").css('display','block');
+        }
+    }
+    function closeAlert(){
+        $(".login-before").css('display','none');
+        location.reload();
+    }
+    function toApply(){
+        //location.href = "/userItem/applyCCTV";
+        $(".popup_box").show();
+        $(".fe_window_mask").show();
+        var scrollH = $(window).scrollTop();
+        $(window).scroll(function() {
+            $(this).scrollTop(scrollH)
+        });
+    }
+
+    function toOrder() {
+        $.post("/specialization/isExistInfo",{"itemId":$("#ItemId").val()},function(data){
+            // 获得到返回的数据:
+            if(data == 1){
+                //跳订单页面
+                location.href="/order/enroll/"+$("#ItemId").val();
+            }else{
+                // 跳保存页面
+                location.href="/specialization/applyInfo?itemId=" + $("#ItemId").val();
+            }
+        });
+
+    }
+    function toApplication() {
+        $.post("/specialization/isExistInfo",{"itemId":$("#ItemId").val()},function(data){
+            // 获得到返回的数据:
+            if(data == 1){
+                //跳编辑页面
+                location.href="/specialization/editApplyInfo?itemId=" + $("#ItemId").val();
+            }else{
+                // 跳保存页面
+                location.href="/specialization/applyInfo?itemId=" + $("#ItemId").val();
+            }
+        });
+    }
+    $(function () {
+        //项目特色背景图添加
+        var advList = $(".advantage ul li");
+        for (var i = 0; i < advList.length ; i++) {
+            var advListUrl = '/images/adv'+parseInt(i+1)+'.png';
+            advList.eq(i).css("background","url("+advListUrl+") no-repeat center 30px #f5f8fa");
+        }
+        //项目必要性添加背景图片
+        var cctvList = $(".cctv-nec li");
+        for (var i = 0; i < cctvList.length ; i++) {
+            var listUrl = '/images/cctv-nec'+parseInt(i+1)+'.png';
+            cctvList.eq(i).css({"background":"url("+listUrl+") no-repeat center top","background-size":"25%"});
+        }
+
+        $(".gis_banner_btn").css({"width":wid*0.4,"top":$(".gis_banner").height()*0.8,"left":wid*0.3});
+        if (wid < 769){
+            $(".mid_cont").css({"width":wid,"max-width":"750px","margin":"0 auto"});
+            $(".advantageTable").css("width",wid);
+            $(".gis_banner").css("width",wid);
+            $(".gis_banner_btn").css({"width":wid,"top":$(".gis_banner").height()*0.7,"left":0});
+            $(".project_details").css({"width":wid*0.98,"margin-left":wid*0.01});
+            $(".leadFrame").css({"width":wid*0.8,"left":wid*0.5});
+            $(".user-login").css({"width":wid,"height":hei,"position":"fixed","margin-left":wid*0.1,"top":"0px"});
+
+            if(wid > 640){
+                for (var i = 0; i < list.length ; i++) {
+                    var listUrl = '/images/case'+parseInt(i+1)+'.png';
+                    list.eq(i).css({"background":"url("+listUrl+") no-repeat center top","background-size":"15%"});
+                }
+            }
+        }
+    })
+
+</script>
+
+</html>

@@ -1,0 +1,76 @@
+@charset "utf-8";
+.message{ max-width:980px; margin:0 auto; padding:0 2px;}
+.message h3{ margin:30px 0;}
+.message-return,.message-main h4{ border-bottom:1px solid #f2f2f5; padding-bottom:9px;}
+.message-return a{ color:#ccc; font-size:20px; font-weight:100;}
+.message-info{background:#f9f9f9; padding:20px 0; height:910px;}
+.message-info dl{ max-width:160px; margin:0 auto;}
+.message-info dl dt img,.message-content img.chat-img{ border-radius:4px;}
+.message-info .icon-list p{ font-size:12px; color:#afafaf;}
+.message-info .icon-list li{ margin:10px 0;}
+.message-info .icon-list > li > i{ font-size:16px;}
+.message-main h4{padding-bottom:10px;text-transform: inherit; font-weight:100;}
+.more-message a{color:#1bb38c; font-size:12px; margin:10px 0;}
+.message-date{ margin:10px 0;}
+.message-date span{ display:inline-block; left:0; top:10px; width:90%; margin:0 5%; border-top:1px solid #f2f2f5;}
+.message-date em{ display:inline-block; background:#fff; font-size:14px; color:#c7c7c7; z-index:1; padding:0 10px;}
+dl.message-content{  margin: 20px 0 0;}
+dl.message-content p{white-space: pre-wrap;}
+.message-content img{ margin-top:4px;}
+.message-content img.chat-img{ width:54px; height:54px;}
+/*.message-content dd{ text-align:right;}*/
+.message-content dt,.message-content dd{ float:right !important;}
+.message-content-else dt,.message-content-else dd{ float:left !important;}
+/*.message-content-else dd{ text-align:left;}*/
+.message-chat{ width:90%; margin:10px auto;}
+.message-chat textarea{ padding:5px;}
+.message-icon{ display:inline-block; width:20px; height:17px; margin:10px; background:url(/images/message-icon.png) no-repeat;}
+.message-icon1{ background-position:0 0;}
+.message-icon2{ background-position:-20px 0;}
+.message-icon3{ background-position:-40px 0;}
+.message-reply{ display:inline-block; font-weight:600; background:#1bb38c; padding:8px 40px; color:#fff; margin:10px 0;}
+.message-list{ margin-bottom:20px; padding:10px 10px 6px; cursor:pointer; border-bottom:1px solid #f2f2f5;}
+.message-list:hover{ background:#f2f2f5;}
+.message-list img{ width:54px; height:54px;}
+.message-list dl{ margin:0;}
+.message-list dt strong{ font-size:16px;overflow: hidden;  text-overflow: ellipsis;  white-space: nowrap;  word-wrap: normal;display:block;}
+.message-list dd{ font-size:12px;}
+.message-list p{ padding:0 15px; line-height:2; height: 52px; overflow:hidden;}
+.message-list .message-btn-down{ font-size:20px; color:#434343;margin-top: 16px; display:block;}
+.message-item{min-height: 620px;}
+@media (max-width: 768px){.message-item{height: auto;}}
+.message-btn-down-content{ width:100px; border:1px solid #ccc;background:#fff;position:absolute;right:8px;top:40px;z-index:99;display:none; box-shadow:0 0 8px rgba(0,0,0,.6);}
+.message-btn-down-content button{ color:#555; text-align:center; line-height:2 !important; font-size:16px; border:none; background:none; width:100%;}
+.message-btn-down-content button:hover{ background-color:#eee;}
+.message-already{color:#CACACA;}
+@media (max-width: 768px){
+	.message h3,.message-return{ padding-left:10px;}
+	.message-info{ height:auto !important;}
+	dl.message-content{ width:99%; margin:20px auto 0;}
+	.message-list p{ line-height:1.4; height:40px; margin-top:20px;}
+	}
+/*滚动条*/
+.message-scrollbar { height: 600px; }
+/* message-scrollbar scrollbar */
+.message-scrollbar>.mCustomScrollBox>.mCSB_scrollTools { height: 100%; top: 0; }
+.message-scrollbar .mCSB_scrollTools .mCSB_draggerRail { width: 0; border-right: 1px solid #fff; }
+.message-scrollbar .mCSB_scrollTools .mCSB_dragger { height: 100px; }
+.message-scrollbar .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar { width: 4px; background: #b5b5b5; }
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{  background-color: #b5b5b5;  }
+/* vertical scrollbar */
+.mCSB_container { width: auto; margin-right: 30px; overflow: hidden; }
+.mCSB_container.mCS_no_scrollbar { margin-right: 0; }
+.mCS_disabled>.mCustomScrollBox>.mCSB_container.mCS_no_scrollbar, .mCS_destroyed>.mCustomScrollBox>.mCSB_container.mCS_no_scrollbar { margin-right: 30px; }
+.mCustomScrollBox>.mCSB_scrollTools { width: 16px; height: 100%; top: 0; right: 0; }
+.mCSB_scrollTools .mCSB_draggerContainer { position: absolute; top: 0; left: 0; bottom: 0; right: 0; height: auto; }
+.mCSB_scrollTools a+.mCSB_draggerContainer { margin: 20px 0; }
+.mCSB_scrollTools .mCSB_draggerRail { width: 2px; height: 100%; margin: 0 auto; }
+.mCSB_scrollTools .mCSB_dragger { cursor: pointer; width: 100%; height: 30px; }
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar { width: 4px; height: 100%; margin: 0 auto; text-align: center; }
+.mCSB_scrollTools .mCSB_buttonUp, .mCSB_scrollTools .mCSB_buttonDown { display: block; position: relative; height: 20px; overflow: hidden; margin: 0 auto; cursor: pointer; }
+.mCSB_scrollTools .mCSB_buttonDown { top: 100%; margin-top: -40px; }
+.message-content span {float:right; !important;max-width: 100%;}
+.no-message{ height:620px;position:relative;}
+.unhappy{font-size: 40px;color: #eb4f38;position:absolute;left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%); width: 100%;}
+.unhappy img{ margin-right:20px;}
+@media (max-width: 798px){.no-message{height:500px;}}

@@ -1,0 +1,545 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 微软雅黑;
+}
+
+html {
+    font-size: 20px;
+}
+
+@media screen and (max-width: 1920px) {
+    html {
+        font-size: 18px !important;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    html {
+        font-size: 16px !important;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    html {
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    html {
+        font-size: 12px !important;
+    }
+
+    body {
+        max-width: 750px;
+    }
+}
+
+html{font-family:"微软雅黑 Light";}
+body{background: #fff;}
+ul,li{list-style: none;}
+a{text-decoration: none;}
+.banner-wrapper{position: relative;margin: 70px 0 0 0;width: 100%;height: 453px;}
+.banner{position:relative;width: 100%;height: 453px;overflow: hidden;margin-top: -31px}
+.imgList{position:relative;height:453px;}
+.imgList li{float:left;display: inline-block;padding:0;}
+.imgList li img{width:100%;height:auto;}
+#prev, #next{position: absolute;top:280px;z-index: 1;cursor: pointer;}
+#prev{left: 80px;}
+#next{right: 80px;}
+#prev:hover, #next:hover{opacity: 0.5;filter:alpha(opacity=50);}
+.container {
+    width: 60rem;
+    margin: 2rem auto;
+}
+
+.searchBar {
+    width: 60%;
+    height: 2rem;
+    margin:0 auto 2.5rem auto;
+}
+
+.searchForm {
+    display: block;
+    width: 100%;
+    height: 2rem;
+    margin-top: 0;
+}
+
+.searchGroup {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.searchInput {
+    display: block;
+    font-size: 0.7rem;
+    padding: 0.3rem 1rem;
+    height: 100%;
+    width: 90%;
+    border: 0.05rem solid #000;
+}
+
+.searchButton {
+    width: 10%;
+    height: 100%;
+    background: #18ad92;
+    position: absolute;
+    right: 0;
+    top: 0px;
+    color: #fff;
+    font-size: 0.8rem;
+    font-style: normal;
+    font-family: "微软雅黑 Light";
+    text-align: center;
+    line-height: 1.8rem;
+    cursor: pointer;
+}
+.hotSearch{
+    font-size:0.7rem;
+    font-family:"微软雅黑 Light";
+    margin-top:1rem;
+}
+.searchResults{
+    width:100%;
+    height:auto;
+    margin:4rem auto 0 auto;
+}
+.searchWrapper{
+    width:100%;
+    height:auto;
+    font-family:"yahei";
+}
+.searchWrapper li{
+    display: inline-block;
+}
+.searchWrapper_li{
+    border-bottom:1px solid #cad7dd;
+    width:100%;
+    padding-bottom:20px;
+}
+/*.searchWrapper_li:nth-of-type(1){*/
+    /*background: #f89;*/
+/*}*/
+.benefit{
+    width:5.1rem;
+    height:5rem;
+    background: url("/images/benefit.png") no-repeat;
+    position: relative;
+    top:0;
+    left:24rem;
+}
+.searchItem_li:nth-child(1){
+    width:23%;
+    height:8.4rem;
+    float: left;
+    text-align: left;
+    overflow: hidden;
+    margin:1rem 1rem 0 0;
+    /*cursor: pointer;*/
+}
+.searchItem_li:nth-child(2){
+    float: left;
+    /*cursor: pointer;*/
+    width:70%;
+}
+.searchItem_li:nth-child(3){
+    float: right;
+    text-align: center;
+}
+.search_li_dec{
+    text-decoration: none;
+    color: #666;
+    font-family: "微软雅黑 Light";
+}
+.seeNum{
+    display:block;
+    width:100%;
+    height:1rem;
+    background: url("/images/seeNum.png") no-repeat 0.8rem 0.25rem;
+    background-size: 45%;
+    margin-top:1rem;
+    margin-left:-4.2rem;
+    padding-left:2rem;
+    font-size:0.7rem;
+    line-height:1rem;
+}
+.recNum{
+    background-size: 18%;
+    padding-left:0;
+    margin-left:0.8rem;
+    margin-top:-8.6rem;
+}
+.recorded{
+    display: block;
+    width:5rem;
+    height:1.5rem;
+    border-radius: 0.2rem;
+    background: #00b292;
+    line-height:1.5rem;
+    color: #fff;
+    font-size:0.7rem;
+    font-family:"微软雅黑 Light";
+    text-align: center;
+    margin-top:7rem;
+}
+.recorded a{
+    text-decoration: none;
+    color: #fff;
+}
+.searchItem_li h4{
+    color: #333;
+    font-family:"微软雅黑 Light";
+    margin-top:1rem;
+}
+.searchItem_li p{
+    color: #666;
+    padding-left:0;
+}
+.searchText{
+    font-size:0.7rem;
+    color: #999;
+}
+.bef-aft{
+    width:50px;
+    height:60px;
+    display: block;
+    position: relative;
+    top:-192px;
+    left:0px;
+    padding-top:4px;
+    padding-left:9px;
+    z-index: 1;
+    background: url("/images/bef-aft.png") no-repeat;
+    color: #fff;
+    font-size:0.8rem;
+    font-family:"微软雅黑 Light";
+}
+/*图片上方先到先得按钮在不同分辨率下位置不同*/
+@media (min-width: 1326px){
+    .bef-aft {
+        width: 50px;
+        height: 60px;
+        display: block;
+        position: relative;
+        top: -192px;
+        left: 0px;
+        padding-top: 4px;
+        padding-left: 9px;
+        z-index: 1;
+        background: url("/images/bef-aft.png") no-repeat;
+        color: #fff;
+        font-size: 0.8rem;
+        font-family: "微软雅黑";
+    }
+}
+@media (max-width: 1326px) and (min-width: 900px){
+    .bef-aft {
+        width: 50px;
+        height: 60px;
+        display: block;
+        position: relative;
+        top: -160px;
+        left: 0px;
+        padding-top: 4px;
+        padding-left: 9px;
+        z-index: 1;
+        background: url("/images/bef-aft.png") no-repeat;
+        color: #fff;
+        font-size: 1rem;
+        font-family: "微软雅黑";
+    }
+}
+.describe{
+    display: block;
+    font-size:0.7rem;
+    color: #999;
+    line-height:1.4rem;
+    padding-left:0;
+    /*-o-text-overflow: ellipsis;    !* Opera 9-10 *!*/
+    /*text-overflow:    ellipsis;    !* IE, WebKit (Safari, Chrome), Firefox 7, Opera 11 *!*/
+    /*overflow: hidden;*/
+    /*display: -webkit-box;*/
+    /*-webkit-line-clamp: 3;*/
+    /*-webkit-box-orient: vertical;*/
+}
+.searchItem_li p{
+    font-size:0.6rem;
+    color: #999;
+    margin-top: 0.7rem;
+}
+.tag{
+    font-family: "微软雅黑 Light";
+    font-size: 0.7rem;
+    color: #fff;
+    background: #18ad92;
+    padding: 0.1rem 0.5rem;
+}
+.benefit {
+    left: 49rem;
+    background-size: 96%;
+}
+.pagination-sm > li > a, .pagination-sm > li > span {
+    font-size: 16px;
+}
+.indexBanner{
+    margin-top: 5rem;
+    display: none;
+    position: relative;
+}
+.indexBanner .cont{
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width: 1024px){
+    .searchItem_li:nth-child(1) {
+        width: 30%;
+        height: 13.4rem;
+    }
+    .searchItem_li:nth-child(2) {
+        width: 63%;
+    }
+    .tag {
+        display: inline-block;
+        margin-top: 0.8rem;
+    }
+    .bef-aft {
+        width: 3rem;
+    }
+    .recorded{
+        margin-top: -1.3rem;
+    }
+    .searchItem{
+        position: relative;
+    }
+    .searchItem_li:nth-child(3) {
+        float: none;
+        position: absolute;
+        top:0rem;
+        right:3rem;
+    }
+    .recNum{
+        margin-left: -4.2rem;
+        margin-top: 4rem;
+    }
+    .benefit {
+        left: 12rem;
+    }
+
+    .indexBanner .cont{
+        position: absolute;
+        top: 33%;
+        color: #fff;
+        text-align: center;
+    }
+    .indexBanner .cont h5{
+        font-size:2.2rem;
+        font-family:"Microsoft Yahei";
+        font-weight: normal;
+    }
+    .indexBanner .cont p{
+        font-size: 1.4rem;
+        width: 70%;
+        padding: 1.2rem 0;
+        margin: 0 auto;
+        background: rgba(136, 156, 155, 0.4);
+        border-radius: 3.2rem;
+    }
+    .indexBanner .cont p span{
+        font-size: 1.4rem;
+    }
+    .seeNum{
+        background-position: 0rem 0.25rem;
+    }
+
+}
+@media screen and (max-width: 768px){
+    .indexBanner .cont{
+        top: 18%;
+    }
+    .indexBanner .cont h5{
+        font-size: 1.7rem;
+    }
+    .indexBanner .cont p{
+        height: auto;
+        width: 84%;
+        padding: 1rem;
+        font-size: 1.2rem;
+    }
+    .indexBanner .cont p span{
+        font-size: 1.2rem;
+    }
+    .container {
+        width: 54rem;
+    }
+    .searchItem_li:nth-child(3) {
+        top: 2.2rem;
+        right: 1rem;
+    }
+    .benefit {
+        left: 11rem;
+    }
+    .bef-aft {
+        top: -11.5rem;
+    }
+    .recorded a{
+        font-size: 1rem;
+    }
+}
+@media screen and (max-width: 680px){
+    html,body{overflow:hidden;overflow-y:auto;}
+    .container {
+        width: 96%;
+        padding: 0;
+    }
+    .searchWrapper {
+        width: 94%;
+        height: auto;
+        font-family: "yahei";
+        margin: 0 auto;
+    }
+
+    .searchItem_li:nth-child(1),.searchItem_li:nth-child(2){
+        float: none;
+        width: 100%;
+        padding-left: 0;
+    }
+    .searchItem_li:nth-child(1){
+        position: relative;
+        height: 12rem;
+    }
+    .bef-aft {
+        position: absolute;
+        left: 0rem;
+        top: 0;
+        padding: 0.2rem 0.4rem;
+    }
+    .searchWrapper li {
+        padding-left: 0;
+        position: relative;
+    }
+    .searchItem_li img{
+        width: 100%;
+        margin-top: -5rem;
+    }
+    .searchItem_li h4{
+        font-size: 1.4rem;
+        margin-top: 0;
+    }
+    .tag {
+        height: 1.6rem;
+        line-height: 1.6rem;
+        padding: 0 0.6rem;
+        margin: 0.8rem 0 0 0;
+        font-size: 1rem;
+    }
+    .searchItem_li p {
+        font-size: 1rem;
+    }
+    .searchItem_li:nth-child(3){
+        position: static;
+        float: right;
+        margin-top: -2rem;
+    }
+    .describe{
+        font-size: 0.9rem;
+    }
+    .benefit {
+        left: 26rem;
+        position: absolute;
+        top:1rem;
+    }
+
+    .searchResults {
+        width: 100%;
+        height: auto;
+        margin: 2rem auto 0 auto;
+    }
+
+}
+@media screen and (max-width: 415px) {
+    /*右边浮窗样式start*/
+    .offsideCustomer{
+        width: 4.5rem;
+        right: -2rem;
+    }
+    .sprite_weixin {
+        width: 2.5rem;
+    }
+    .offsideCustomer a span {
+        font-size: 0.6em;
+        margin-left: -1.2rem;
+        display: block;
+        margin-top: -0.4rem;
+        padding-bottom: 0.3rem;
+    }
+    .sprite {
+        margin-right: 1rem;
+        background-size: 90%;
+        margin-top: -0.5rem;
+    }
+    .offsideCustomer li {
+        margin-top: -0.5rem;
+    }
+    .offsideCustomer .color_t span{
+        margin-top: 0.2rem;
+        padding-bottom: 0;
+    }
+    .bgcolorP {
+        left: -155px !important;
+    }
+    .leftScroll{
+        right: 54px;
+    }
+    .ewn_wx {
+        top: -52px;
+    }
+    .leftScroll li{
+        margin-top: 0.5rem;
+    }
+    .bgcolorP .hotTel {
+        display: block;
+        margin-top: -0.9rem;
+    }
+    .bgcolorP .hotTel:nth-child(2){
+        margin-top: -0.5rem;
+    }
+    /*右边浮窗样式end*/
+    .searchItem .recorded {
+        margin-top: -1.3rem;
+        padding: 0.2rem 0.4rem;
+        height: auto;
+    }
+    .indexBanner{
+        margin-top: 6rem;
+    }
+    .indexBanner .cont p {
+        width: 94%;
+        font-size: 0.9rem;
+    }
+    .indexBanner .cont p span{
+        display: block;
+        font-size: 0.9rem;
+    }
+}
+@media screen and (max-width: 375px){
+    .indexBanner .cont {
+        top: 12%;
+    }
+    .benefit {
+        left: 23rem;
+    }
+}
+@media screen and (max-width: 320px){
+    .indexBanner .cont {
+        top: 10%;
+    }
+    .benefit {
+        left: 18rem;
+    }
+}
+

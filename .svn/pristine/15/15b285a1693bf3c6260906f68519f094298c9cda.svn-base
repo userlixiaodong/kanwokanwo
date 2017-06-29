@@ -1,0 +1,498 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>太平洋语言学校</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Touch enabled minimalistic slider written in vanilla JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="/style/public.css"/>
+    <link rel="stylesheet" type="text/css" href="/style/frame.css"/>
+    <link rel="stylesheet" href="/style/pacific.css">
+    <link rel="stylesheet" href="/style/mengban.css">
+</head>
+<body>
+<div class="login-before">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>您还未登录，请在登录之后再进行申请哦！~</p>
+    <a class="login-btn md-trigger" data-modal="modal-12" href="javascript:trackOutboundLink('', 'index_login');">登录</a>
+</div>
+<div class="leadFrame">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>请使用电脑进行登录</p>
+</div>
+<div class="weixinFrame"></div>
+
+<div class="container_box">
+    <%@include file="/WEB-INF/views/common/top.jsp"%>
+    <input type="hidden" id="ItemId" value="${Item.itemId}">
+    <div class="gis_banner">
+        <img src="/images/BA-pacific.jpg" class="ban-pic">
+        <img src="/images/banner-wx.png" class="ban-wx">
+        <div class="gis_banner_btn">
+            <c:choose>
+                <c:when test="${sessionScope.loginUser == null}">
+                    <a href="javascript: loginAlert();;" class="signUp" id="signUp">点击报名</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="javascript:toApply();;" class="signUp" id="signUp">点击报名</a>
+                </c:otherwise>
+            </c:choose>
+            <%--<a href="//kw-cdn.kanwokanwo.com/videos/cis.mp4" class="signUp">观看往期直播</a>--%>
+        </div>
+    </div>
+
+    <div class="mid_cont">
+        <div class="advantage">
+            <p class="titles">学院优势</p>
+            <ul>
+                <li>
+                    <h4>100%升学保证，直通名校</h4>
+                    <span>Lanpa庞大且拥有优先录取权的保读网络，确保每一位学生都能成功转入心仪的学校。</span>
+                </li>
+                <li>
+                    <h4>众多合作大学</h4>
+                    <span>LanPa与八所排名前50的社区大学、十二所四年制大学、5所研究生课程大学合作。</span>
+                </li>
+                <li>
+                    <h4>地理位置优越</h4>
+                    <span>位于世界高科技创新中心“硅谷”的发源地，毗邻斯坦福大学。教育水平高，治安良好。</span>
+                </li>
+                <li>
+                    <h4>I-20签证通过率100%</h4>
+                    <span>首批美国教育部认证，移民局授权可发放I-20的ESL语言学院，且签证通过率100%。</span>
+                </li>
+                <li>
+                    <h4>节约6万美金学费</h4>
+                    <span>完成LanPa ESL-5课程即可转入合作社区大学，完成社区大学课程可直接进入四年制大学。</span>
+                </li>
+                <li>
+                    <h4>优先注册权</h4>
+                    <span>LanPa拥有合作大学优先注册权，开学前30天通过测试也可注册入学，节约大量时间与费用。</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="projectDetail">
+            <p class="titles">学院信息</p>
+            <div class="project_details">
+                <h2>学院信息</h2>
+                <div class="contens">
+                    <p>
+                        <b>学院地址： </b><span>美国加州旧金山湾区南部</span>
+                    </p>
+                    <p>
+                        <b>申请期限： </b><span>滚动申请</span>
+                    </p>
+                    <p>
+                        <b>主办单位：</b><span>太平洋语言学校</span>
+                    </p>
+                    <p>
+                        <b>住宿方式：</b><span>寄宿家庭、公寓</span>
+                    </p>
+                    <p>
+                        <b>适合人群：</b><span>高中毕业、高中未毕业18岁以上</span>
+                    </p>
+                    <p>
+                        <b>学院简介： </b>
+                        <span class="metarial">
+                            美国太平洋国际语言学院（Language Pacifica）创⽴于1979年，是⼀家全⽇制英语学院，从建校⾄今ESL课程教学已有超过37年的历史。是12所美国社区大学的双录取预科语言学校，是直升美国前50名⼤学的最佳捷径。美国太平洋国际语言学院（简称LP）位于斯坦福⼤学所在地，也是世界⾼科技创新中⼼硅⾕的发源地。此区教育⽔平极⾼，环境安全，气候四季如春，被选为北美99个城市中⽣活环境最佳的地区。学校距旧金山约45分钟车程，据旧金山国际机场和圣何塞国际机场都只有25分钟的车程，交通极为⽅便。学校旺季时有世界各地三⼗多个国家的学⽣来此学习。几⼗年来，已有近万名来⾃世界各地的学⽣通过LP实现了他们的美国梦。此外，学⽣在这里不仅可使他们的英语得到迅速提⾼，转⼊他们理想的美国⼤学，交到世界各地的朋友，扩⼤⾃⼰的视野，还可以住在美国家庭，深⼊了解美国的家庭⽣活，为今后在美国的留学⽣活打下良好的⽂化和⼈脉基础。
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <%--<div class="videoIntroduce">--%>
+        <%--<p class="titles" style="color: #fff;">太平洋语言学院详情介绍</p>--%>
+        <%--<div class="videoWrapper">--%>
+        <%--<video id="video1" src="http://focusedu.oss-cn-hangzhou.aliyuncs.com/videos/CIS2.mp4" type="video/mp4" width="100%" height="100%" controls="controls" poster="/images/video2.png" webkit-playsinline></video>--%>
+        <%--&lt;%&ndash;<i id="play" class="play"></i>&ndash;%&gt;--%>
+        <%--</div>--%>
+        <%--<c:choose>--%>
+        <%--<c:when test="${sessionScope.loginUser == null}">--%>
+        <%--<a  href="javascript: loginAlert();" class="videoSignUp" >报名申请</a>--%>
+        <%--</c:when>--%>
+        <%--<c:otherwise>--%>
+        <%--<a class="videoSignUp" href="javascript: toApply();">报名申请</a>--%>
+        <%--</c:otherwise>--%>
+        <%--</c:choose>--%>
+        <%--</div>--%>
+
+        <%--学院特色--%>
+        <div class="feature">
+            <p class="titles">学院特色</p>
+            <ul>
+                <li>
+                    <div class="feature-scroll">
+                        <i class="fa fa-clone"></i>
+                    </div>
+                    <h4>灵活的入学时间</h4>
+                    <div class="separator"></div>
+                    <p class="feature-introduce">无入学门槛 随时申请，随时入读 节省大量时间和费用</p>
+                </li>
+                <li>
+                    <div class="feature-scroll">
+                        <i class="fa fa-heart"></i>
+                    </div>
+                    <h4>学分课程</h4>
+                    <div class="separator"></div>
+                    <p class="feature-introduce">大学学分课程“桥梁课程” 尽快适应大学课程 保证到社区大学后GPA 为四年制大学做准备</p>
+                </li>
+                <li>
+                    <div class="feature-scroll">
+                        <i class="fa fa-lightbulb"></i>
+                    </div>
+                    <h4>持续的学业支持</h4>
+                    <div class="separator"></div>
+                    <p class="feature-introduce">根据入学测试安排班级 对学员定期考察和记录 老师与学员定期会面总结</p>
+                </li>
+                <li>
+                    <div class="feature-scroll">
+                        <i class="fa fa-comments"></i>
+                    </div>
+                    <h4>小班授课</h4>
+                    <div class="separator"></div>
+                    <p class="feature-introduce">每班不超过15人 课堂生动活泼 悉心全面的照顾 英语水平快速提高</p>
+                </li>
+                <li>
+                    <div class="feature-scroll">
+                        <i class="fa fa-people"></i>
+                    </div>
+                    <h4>优秀的教师队伍</h4>
+                    <div class="separator"></div>
+                    <p class="feature-introduce">美国本土且经验丰富 大学以上学历 拥有教师证书</p>
+                </li>
+            </ul>
+        </div>
+
+        <%--从Lanpa到名牌大学--%>
+        <div class="lanpa">
+            <p class="titles">从Lanpa到名牌大学</p>
+            <div class="container-fluids">
+                <div class="lanpa-row">
+                    <div class="lanpa-left no-padding">
+                        <div class="lanpa-text">
+                            <div class="head-title">
+                                <h2>从Lanpa到名牌大学</h2>
+                            </div>
+                            <ul class="lanpa-row">
+                                <li>
+                                    <div class="lanpa-row-inner">
+                                        <h4>进入LanPa</h4>
+                                        <p>凡高中毕业，成绩良好（或沒有⾼中毕业证但年满18岁）</p>
+                                    </div>
+                                    <div class="lanpa-heart">
+                                        <figure class="lanpa-heart-icon">
+                                            <i class="fa"></i>
+                                        </figure>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="lanpa-row-inner">
+                                        <h4>转入社区大学</h4>
+                                        <p>完成Language Pacifica学校ESL-5級（无需托福、雅思、SAT等标准化英语考试）</p>
+                                    </div>
+                                    <div class="lanpa-heart">
+                                        <figure class="lanpa-heart-icon">
+                                            <i class="fa"></i>
+                                        </figure>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="lanpa-row-inner">
+                                        <h4>转入本科大学</h4>
+                                        <p>从LP转入社区大学的同时，可收到选择的保读四年制大学的有条件录取通知书， 达到GPA要求，两年后即可转到心仪大学。</p>
+                                    </div>
+                                    <div class="lanpa-heart">
+                                        <figure class="lanpa-heart-icon">
+                                            <i class="fa"></i>
+                                        </figure>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lanpg-right no-padding">
+                        <img src="/images/pacific-lanpa-bg.jpg">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+
+        <%--转学保障--%>
+        <div class="guarantee">
+            <p class="titles">转学保障——加州教育法TAG项目</p>
+            <div class="guarantee-container">
+                <div class="guarantee-description">
+                    LanPa的学生都享有美国20所著名大学的优先有条件录取保证。该项目是美国太平洋国际语言学院以加州教育法TAG项目（Transfer Admission Guarantee Program）为法律依据，向国际学生提供的一项优先保读项目。在完成2年社区大学课程后，根据学生的GPA，可转入以下TAG保读名校
+                </div>
+                <div class="separator-round"></div>
+                <div class="guarantee-content">
+                    <div class="guarantee-left">
+                        <div class="guarantee-left-wrapper">
+                            <div class="guarantee-left-loop">
+                                <div class="loop">
+                                    <div class="guarantee-icon">
+                                        <i class="fa fa-lightbulb"></i>
+                                    </div>
+                                    <p>部分保读名校名单</p>
+                                    <div class="separator3"></div>
+                                    <ul class="guarantee-list">
+                                        <li><span class="guarantee-text">加州⼤学伯克利分校 UC Berkeley</span></li>
+                                        <li><span class="guarantee-text">加州⼤学戴维斯分校 UC Davis</span></li>
+                                        <li><span class="guarantee-text">加州⼤学尔湾分校 UC Irvine</span></li>
+                                        <li><span class="guarantee-text">加州⼤学洛杉矶分校 UCLA</span></li>
+                                        <li><span class="guarantee-text">加州⼤学美熹德分校 UC Merced</span></li>
+                                        <li><span class="guarantee-text">加州⼤学河滨分校 UC Riverside</span></li>
+                                    </ul>
+                                    <a class="guarantee-btn">*此外还可转入美国其他州100多所大学</a>
+                                </div>
+                                <div class="loop">
+                                    <div class="guarantee-icon">
+                                        <i class="fa fa-lightbulb"></i>
+                                    </div>
+                                    <p>部分保读名校名单</p>
+                                    <div class="separator3"></div>
+                                    <ul class="guarantee-list">
+                                        <li><span class="guarantee-text">加州⼤学圣芭芭拉分校 UC Santa Barbara</span></li>
+                                        <li><span class="guarantee-text">加州⼤学圣塔克鲁兹分校 UC Santa Cruz</span></li>
+                                        <li><span class="guarantee-text">加州⼤学圣地亚哥分校 UC San Diego</span></li>
+                                        <li><span class="guarantee-text">华盛顿⼤学 U of Washington</span></li>
+                                        <li><span class="guarantee-text">华盛顿州⽴⼤学 WSU</span></li>
+                                        <li><span class="guarantee-text">康奈尔⼤学 Cornell University</span></li>
+                                    </ul>
+                                    <a class="guarantee-btn">*此外还可转入美国其他州100多所大学</a>
+                                </div>
+                            </div>
+                            <img src="/images/keru-prev.png" width="14px" height="32px" id="prev">
+                            <img src="/images/keru-next.png" width="14px" height="32px" id="next">
+                        </div>
+                    </div>
+                    <div class="guarantee-right">
+                        <img src="/images/guarantee-bg.jpg">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+
+        <%--成功案例end--%>
+        <div class="successCase">
+            <p class="titles" style="color: #fff;">成功案例</p>
+            <div class="cases">
+
+                <hr style="width: 62%;margin: 0 auto -3rem;">
+                <div class="characters">
+                    <span style="display: block;">
+                        <label style="font-weight: bold;">姓名：</label>Marco Z <br/>
+                        <label style="font-weight: bold;">转学路径：</label><br/>
+2010年⾼中毕业后来到美国太平洋国际语言学院学习英语，2011年转入De Anza College, 两年后升⼊UC Berkeley（加⼤伯克利分校）， 2013年毕业后被电商巨头Ebay 公司录⽤。
+                    </span>
+                    <span>
+                        <label style="font-weight: bold;">姓名：</label>Sylvia T <br/>
+                        <label style="font-weight: bold;">转学路径：</label><br/>
+2013从台湾来到Language Pacifica学习英语，同年转入College of San Mateo进⾏⼤学基础课程的学习，2015年升 ⼊UC San Diego（加⼤圣地亚哥分校）攻读本科学位。
+                    </span>
+                    <span>
+                        <label style="font-weight: bold;">姓名：</label>Olivia C <br/>
+                        <label style="font-weight: bold;">转学路径：</label><br/>
+2013年⾼中毕业后从深圳来到Language Pacifica学习英语，同年转⼊College of San Mateo进⾏⼤学基础可程的学习，2015年升⼊San Jose State University（SJSU，圣何塞州立大学），现在SJSU攻读会计专业。
+                    </span>
+                    <span>
+                        <label style="font-weight: bold;">姓名：</label>Yan H <br/>
+                        <label style="font-weight: bold;">转学路径：</label><br/>
+2013年放弃了国內已修1年的⼤学本科课程来到Language Pacifica学习英语，同年转⼊College of San Mateo 进⾏两年的基础课程学习，后升⼊UCLA（加⼤洛杉矶分校）学习英语文学专业，将于2017年从UCLA毕业。
+                    </span>
+                </div>
+                <ol class="charactersImg">
+                    <li style="border: 2px solid #fff;">
+                        <img src="/images/pacific-case1.png" title="Marco Z"><span class="imgMask" style="display: none"></span>
+                    </li>
+                    <li>
+                        <img src="/images/pacific-case2.png" title="Sylvia T"><span class="imgMask"></span>
+                    </li>
+                    <li>
+                        <img src="/images/pacific-case3.png" title="Olivia C"><span class="imgMask"></span>
+                    </li>
+                    <li>
+                        <img src="/images/pacific-case4.png" title="Yan H"><span class="imgMask"></span>
+                    </li>
+                </ol>
+            </div>
+            <%--<a href="#" class="videoSignUp">点击报名</a>--%>
+        </div>
+
+        <div class="application">
+            <%--<p class="titles"><a href="">提升你的学术背景，让你的履历在<br />招生官的眼中再升一个等级吧~</a></p>--%>
+            <div class="tel-yw-icon">
+                <span class="consult_tel">13681039513</span>
+            </div>
+            <div class="consulting">
+                <div class="erweima">
+                    <img src="/images/gzh.png" alt=""><span>关注看我看我公众号<br/>获得更多留学资讯</span>
+                </div>
+                <div class="erweima">
+                    <img src="/images/kefu.png" alt=""><span>独家报名通道<br/>添加看我客服</span>
+                </div>
+            </div>
+            <c:choose>
+                <c:when test="${sessionScope.loginUser == null}">
+                    <a class="videoSignUp" href="javascript:loginAlert();" style="color:#fff;">点击报名</a>
+                </c:when>
+                <c:otherwise>
+                    <a class="videoSignUp" href="javascript:toApply();" style="color:#fff;">点击报名</a>
+                </c:otherwise>
+            </c:choose>
+        </div>
+    </div>
+
+    <!--<%--弹窗效果--%>-->
+    <div class="popup_box" style="display: none">
+        <span class="popup_close"></span>
+        <a href="javascript:toOrder();" style="margin-top: 5.7rem;">请使用已有信息申请</a>
+        <a href="javascript:toApplication();" style="margin-top: 2rem;">修改已有信息</a>
+    </div>
+    <!--<%--弹窗蒙版--%>-->
+    <div class="fe_window_mask"></div>
+    <%@include file="/WEB-INF/views/common/bottom.jsp" %>
+</div>
+<div class="mask"></div>
+</body>
+<script type="text/javascript">
+    var wid = $(window).width();
+    var hei = $(window).height();
+    $(function () {
+        $(window).load(function () {
+            $(".loaded").fadeOut();
+            $(".preloader").delay(1000).fadeOut("slow");
+        });
+        //转学保障部分切换控制
+        var guaranteeLoopLen = $(".guarantee-list").length; //轮播图总数
+        console.log(guaranteeLoopLen);
+        var loopWid = $(".loop").width();
+        console.log(loopWid);
+        var step = 1; 	//每一步移动的图片数 ul个数
+        //左箭头点击处理
+        $("#prev").click(function(){
+            //首先，获得当前ul的marginLeft
+            console.log(currentPos);
+            var currentPos = parseFloat($(".guarantee-left-loop").css('marginLeft'));
+            //计算出前一页ul的marginLeft
+            var prevPos = (currentPos+loopWid)>0?0:(currentPos+loopWid);
+            console.log(prevPos);
+            $(".guarantee-left-loop").animate({marginLeft: prevPos}, 600);
+            // $(".guarantee-list").eq(1).prependTo($(".guarantee-left-loop"));
+            $(".guarantee-left-loop").css('marginLeft',prevPos);
+        });
+        //右箭头点击处理
+        $("#next").click(function(){
+            var currentPos = parseFloat($(".guarantee-left-loop").css('marginLeft'));
+            console.log(currentPos);
+            var nextPos = (currentPos-loopWid)<(guaranteeLoopLen-step)/step*(-loopWid)?(guaranteeLoopLen-step)/step*(-loopWid):(currentPos-loopWid);
+            console.log(nextPos);
+            console.log((guaranteeLoopLen-step)/step*(-loopWid));
+            $(".guarantee-left-loop").animate({marginLeft:nextPos}, 600, function () {
+                // $(".guarantee-list").eq(0).appendTo($(".guarantee-left-loop"));
+                $(".guarantee-left-loop").css('marginLeft', nextPos);
+            });
+        });
+        //成功案例添加背景图片
+        var advList = $(".advantage ul li");
+        for (var i = 0; i < advList.length ; i++) {
+            var advListUrl = '/images/adv'+parseInt(i+1)+'.png';
+            advList.eq(i).css("background","url("+advListUrl+") no-repeat center 30px #f5f8fa");
+        }
+        //成功案例图像对应内容切换
+        $(".charactersImg li").on("click",function(){
+            var i = $(this).index();
+            var chaSpanList = $(".characters span").eq(i);
+            $(this).css("border","2px solid #fff").children("span").css("display","none");
+            $(this).siblings("li").css("border","none").children("span").css("display","block");
+            chaSpanList.css("display","block").siblings().css("display","none");
+        });
+
+        $(".gis_banner_btn").css({"width":wid*0.4,"top":$(".gis_banner").height()*0.8,"left":wid*0.3});
+        if (wid < 769){
+            $(".mid_cont").css({"width":wid,"max-width":"750px","margin":"0 auto"});
+            $(".gis_banner").css("width",wid);
+            $(".gis_banner_btn").css({"width":wid,"top":$(".gis_banner").height()*0.7,"left":0});
+            $(".project_details").css({"width":wid*0.98,"margin-left":wid*0.01});
+            $(".leadFrame").css({"width":wid*0.8,"left":wid*0.5});
+            $(".user-login").css({"width":wid,"height":hei,"position":"fixed","margin-left":wid*0.1,"top":"0px"});
+            $(".loop").css("width",wid*0.9);
+            $(".guarantee-left-loop").css("width",wid*0.9*2);
+            console.log($(".loop").width());
+            console.log($(".guarantee-left-loop").width());
+        }
+    })
+
+    function loginAlert(){
+        if (wid < 769){
+            $("#signUp,.videoSignUp").on("click",function () {
+                $(".mask").css("display","block").bind("touchmove",function(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                },false);
+                $(".leadFrame").show(400).bind("touchmove",function(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                },false);
+            });
+            $(".login-before-close-btn").on("click",function () {
+                $(".mask").css("display","none");
+                $(".leadFrame").css("display","none");
+            });
+        }else {
+            $(".login-before").css('display','block');
+        }
+    }
+    function closeAlert(){
+        $(".login-before").css('display','none');
+        location.reload();
+    }
+    function toApply1(){
+        location.href = "/userItem/applyPacific";
+    }
+     function toApply() {
+        //location.href = "/userItem/applymanteng";
+        //location.href="/order/enroll/"+$("#ItemId").val();
+        $(".popup_box").show();
+        $(".fe_window_mask").show();
+        var scrollH = $(window).scrollTop();
+        $(window).scroll(function() {
+            $(this).scrollTop(scrollH)
+        });
+    }
+
+    function toOrder() {
+        $.post("/specialization/isExistInfo",{"itemId":$("#ItemId").val()},function(data){
+            // 获得到返回的数据:
+            if(data == 1){
+                //跳订单页面
+                location.href="/order/enroll/"+$("#ItemId").val();
+            }else{
+                // 跳保存页面
+                location.href="/specialization/applyInfo?itemId=" + $("#ItemId").val();
+            }
+        });
+
+    }
+    function toApplication() {
+        $.post("/specialization/isExistInfo",{"itemId":$("#ItemId").val()},function(data){
+            // 获得到返回的数据:
+            if(data == 1){
+                //跳编辑页面
+                location.href="/specialization/editApplyInfo?itemId=" + $("#ItemId").val();
+            }else{
+                // 跳保存页面
+                location.href="/specialization/applyInfo?itemId=" + $("#ItemId").val();
+            }
+        });
+
+    }
+
+</script>
+
+</html>

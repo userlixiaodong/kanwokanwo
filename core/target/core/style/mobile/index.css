@@ -1,0 +1,10 @@
+.school_main,body{background-color:#e4e4e4;}
+.item_tit{padding:0 0 .2rem; margin:0;}
+.student_box{background-color:#fff; padding:.2rem .4rem; margin-bottom:.2rem;}
+.student_box dt{color:#888; font-size:.2rem;word-break: break-all;}
+.student_box dd time{color:3cecdcd; font-size:.14rem; height:.4rem; line-height:.4rem; display:block;}
+/*.student_box dd a img{width:100%;}
+.student_box dd a.more_img img{width:31.33333% !important; margin:0 .5% .5%;}*/
+.student_box dd .zan{font-size:.16rem; color:#8b8b8b;}
+.icon_dianzan_shi{color:#1bb38c;}
+.student_box a{color: #1bb38c;}

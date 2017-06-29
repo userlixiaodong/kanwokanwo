@@ -1,0 +1,6 @@
+footer{text-align:center;padding:44px;background:#243039;color:#fff;font-size:20px !important;}
+footer a{ color:#1BB38C;}
+footer a:hover{ color:#1DC79B;}
+footer em{ font-size:13px;color:#1B866B;}
+footer span{font-size: 20px;}
+#KFLOGO img{position: fixed;top:50%;margin-top: -45px}

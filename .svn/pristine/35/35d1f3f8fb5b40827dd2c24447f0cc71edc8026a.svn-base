@@ -1,0 +1,2 @@
+.index-main {width: 80%;padding-top: 75px;margin: 0 auto;white-space: pre-wrap;font-family: inherit;  font-weight: 300;  font-size: 2rem;  line-height: 2;  margin-bottom: 1.25rem;  text-rendering: optimizeLegibility;}
+.bottom_links {float:right;}

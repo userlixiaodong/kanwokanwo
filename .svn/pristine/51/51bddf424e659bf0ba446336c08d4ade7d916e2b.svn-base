@@ -1,0 +1,326 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2017/5/18
+  Time: 11:38
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<html>
+<head>
+    <title>template</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Touch enabled minimalistic slider written in vanilla JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="/style/public.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/frame.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/app.css">
+    <link rel="stylesheet" href="/style/qdtest.css?20170428">
+</head>
+<body>
+<div class="login-before">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>您还未登录，请在登录之后再进行申请哦！~</p>
+    <a class="login-btn md-trigger" data-modal="modal-12" href="javascript:trackOutboundLink('', 'index_login');">登录</a>
+</div>
+<div class="leadFrame">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>请使用电脑进行登录</p>
+</div>
+<div class="container_box">
+    <%@include file="/WEB-INF/views/common/top.jsp" %>
+    <input type="hidden" id="ItemId" value="${Item.itemId}">
+    <div class="gis_banner">
+        <img src="/images/BA-manteng.jpg" alt="" class="bannerIcon">
+        <div class="gis_banner_btn">
+            <c:choose>
+                <c:when test="${sessionScope.loginUser == null}">
+                    <a href="javascript: loginAlert();;" class="signUp" id="signUp">点击报名</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="javascript:toApply();;" class="signUp" id="signUp">点击报名</a>
+                </c:otherwise>
+            </c:choose>
+            <a href="//focusedu.oss-cn-hangzhou.aliyuncs.com/videos/manteng.mp4" class="signUp">观看往期直播</a>
+        </div>
+    </div>
+
+     <div class="mid_cont">
+
+        <c:if test="${fn:length(backgroundMaterialList) ne 0}">
+             <%--项目背景start--%>
+             <%----------------------------------------------------------------------------项目背景开始-------------------------------------------------------------------------------%>
+             <div class="projectBackground">
+                 <p class="titles">项目背景</p>
+                    <c:forEach items="${backgroundMaterialList}" var="background">
+                        <div class="projectAnalyse">
+                             <h5>${background.note}
+                             </h5>
+                             <div id="hcharts">
+                                 <img src="${background.bitmap}" alt="">
+                             </div>
+                             <div class="nakedReason">
+                                 ${background.note1}
+                             </div>
+                        </div>
+                    </c:forEach>   
+             </div>
+             <%----------------------------------------------------------------------------项目背景结束-------------------------------------------------------------------------------%>
+         </c:if>
+
+         <%--项目特色start 注意：背景小图标动态生成命名格式统一以mantengIcon+由1开始的数字命名--%>
+         <div class="advantage">
+                 <p class="titles">项目特色</p>
+                 <ul class="clearfix">
+                     <li>
+                         <img src="/images/mantengIcon1.png" alt="">
+                         <h4>职场大数据</h4>
+                         <span>基于智能大数据<br/>伴随式成长引擎<br/>完善的职场引擎</span>
+                     </li>
+                     <li>
+                         <img src="/images/mantengIcon2.png" alt="">
+                         <h4>名企直通车</h4>
+                         <span>数百美名企资源<br/>美名企推荐机会<br/>实习+正式工作</span>
+                     </li>
+                     <li>
+                         <img src="/images/mantengIcon3.png" alt="">
+                         <h4>精英导师</h4>
+                         <span>“千人计划”专家<br/>全球500强高管<br/>“独角兽”创业精英</span>
+                     </li>
+                     <li>
+                         <img src="/images/mantengIcon4.png" alt="">
+                         <h4>全面的职业规划</h4>
+                         <span>科学职业测评<br/>全面简历提升<br/>专业面试培训</span>
+                     </li>
+                     <li>
+                         <img src="/images/mantengIcon5.png" alt="">
+                         <h4>VIP专享订制</h4>
+                         <span>蔓藤鹰计划<br/>个性化定制服务<br/>针对性职业路径</span>
+                     </li>
+                    <%-- <li>
+                         <h4>VIP专享订制</h4>
+                         <span>蔓藤鹰计划<br/>个性化定制服务<br/>针对性职业路径</span>
+                     </li>--%>
+                 </ul>
+             </div>
+
+<%----------------------------------------------------------------------------项目详情开始-------------------------------------------------------------------------------%>
+         <%--项目详情--%>
+         <div class="projectDetail">
+                <p class="titles">项目信息</p>
+                <div class="project_details">
+                    <h2>项目信息</h2>
+                    <div class="contens">
+                        <c:if test="${not empty Item.dt_location}">
+                            <p>
+                                <b>公司地址： </b><span>${Item.dt_location}</span>
+                            </p>
+                        </c:if>
+                        <c:if test="${not empty Item.dt_time}">
+                        <p>
+                            <b>申请期限： </b><span>${Item.dt_time}</span>
+                        </p>
+                        </c:if>
+                        <c:if test="${not empty Item.dt_people}">
+                        <p>
+                            <b>适合人群： </b><span>${Item.dt_people}</span>
+                        </p>
+                        </c:if>
+                        <c:if test="${not empty Item.dt_company}">
+                            <p>
+                                <b>主办单位： </b><span>${Item.dt_company}</span>
+                            </p>
+                        </c:if>
+                        <c:if test="${not empty Item.dt_intro}">
+                        <p>
+                            <b>项目简介： </b>
+                            <span class="metarial">
+                                ${Item.dt_intro}
+                            </span>
+                        </p>
+                        </c:if>
+                    </div>
+             </div>
+        </div>
+<%----------------------------------------------------------------------------项目详情结束-------------------------------------------------------------------------------%>
+
+        
+ <c:if test="${fn:length(videoMaterialList) ne 0}">
+    <%-------------------------------------------------------------------------视频介绍开始----------------------------------------------------------------------------------%>
+     <%--项目介绍视频--%>
+            <div class="videoIntroduce">
+                <c:forEach items="${videoMaterialList}" var="video">
+                        <p class="titles" >${video.title}</p>
+                        <div class="videoWrapper">
+                            <video id="video1" src="${video.videoUrl}"
+                                   type="video/mp4" width="100%" height="100%" controls="controls" poster="${video.bitmap}"
+                                   webkit-playsinline></video>
+                            <%--<i id="play" class="play"></i>--%>
+                        </div>
+                </c:forEach>
+                
+                <c:choose>
+                    <c:when test="${sessionScope.loginUser == null}">
+                        <a href="javascript: loginAlert();" class="videoSignUp">报名申请</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="videoSignUp" href="javascript: toApply();">报名申请</a>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+    <%--------------------------------------------------------------------------视频介绍结束---------------------------------------------------------------------------------------------%>
+</c:if>
+
+ <c:if test="${fn:length(positionMaterialList) ne 0}">
+    <%-------------------------------------------------------------------------活动职位开始----------------------------------------------------------------------------------%>
+         <%--项目活动Or实习start--%>
+         <div class="programBox">
+             <div class="summerProgram">
+
+                    <c:forEach items="${positionMaterialList}" var="position">
+                        <c:if test="${not empty position.title}">
+                            <p class="titles" >${position.title}</p>
+                            <ul class="int_list clearfix">
+                        </c:if>
+
+                        <li>
+                         <div class="intBox">
+                             <img src="${position.bitmap}" />
+                             ${position.note}
+                         </div>
+                        </li>
+                    </c:forEach>
+                     
+                     <div class="clear"></div>
+                 </ul>
+             </div>
+         </div>
+    <%--------------------------------------------------------------------------活动职位结束---------------------------------------------------------------------------------------------%>
+</c:if>
+
+         <div style="margin-bottom: 15rem"></div>
+     </div>
+
+
+    <%@include file="/WEB-INF/views/common/bottom.jsp" %>
+</div>
+<div class="mask"></div>
+
+</body>
+<script type="text/javascript">
+    var wid = $(window).width();
+    function loginAlert() {
+        if (wid < 769) {
+            $("#signUp,.videoSignUp").on("click", function () {
+                var ban = 0;
+                $(".mask").css("display", "block");
+                $(".leadFrame").show(400);
+                document.addEventListener("touchmove", function (e) {
+                    if (ban == 0) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                }, false);
+            });
+            $(".login-before-close-btn").on("click", function () {
+                $(".mask").css("display", "none");
+                $(".leadFrame").css("display", "none");
+            });
+        } else {
+            $(".login-before").css('display', 'block');
+        }
+    }
+    function closeAlert() {
+        $(".login-before").css('display', 'none');
+        location.reload();
+    }
+    function toApply() {
+        location.href = "/userItem/applymanteng";
+    }
+    $(function () {
+        if(wid<=767){
+            $(".gis_banner .bannerIcon").attr("src","/images/indexBanner01.jpg")
+        }
+        /*项目特色不同数量更换不同样式2017-5-18*/
+        var num01=$(".advantage li").length;
+       /* console.log(num01)*/
+        if(num01==4){
+            $(".advantage ul li").css("width","22%")
+            $(".advantage ul li:eq(3)").css("margin-left","1rem")
+        }if(num01==6){
+            /* $(".advantage ul li").css("width","30%")*/
+            $(".advantage ul li:eq(3)").css("margin-left","1rem")
+        }
+        /*项目活动or实习不同数量更换不同样式2017-5-18*/
+        var num02=$(".int_list li").length;
+        console.log(num02)
+        if(num02==2){
+            $(".int_list").css("width","60%")
+            $(".int_list li").css("width","50%")
+        }if(num02==3){
+            $(".int_list li").css("width","33.33%")
+        }if(num02==4){
+            $(".int_list").css("width","85%")
+            $(".int_list li").css("width","25%")
+            $(".int_list li .intBox").css("width","95%")
+            if($(window).width()<= 1024){
+                $(".int_list li").css("width","50%")
+                $(".int_list li").css("margin","1rem 0")
+            }
+        }
+        if(num02==5){
+            $(".int_list li").css("width","33.33%")
+            $(".int_list li").css("margin","1rem 0")
+            $(".int_list li:eq(3)").css("margin-left","12rem")
+        } if(num02==6){
+            $(".int_list li").css("width","33.33%")
+            $(".int_list li").css("margin","1rem 0")
+        }
+        if($(window).width()<= 1024){
+            $(".int_list").css("width","90%")
+        }
+        if($(window).width()<= 768){
+            $(".int_list").css("width","96%")
+        }
+        if($(window).width()<= 414){
+            $(".int_list li").css("width","100%")
+            $(".int_list li").css("margin","1rem 0")
+            $(".int_list li:eq(3)").css("margin-left","0")
+        }
+
+        if (wid < 767) {
+            $(".mid_cont").css({"width": wid, "max-width": "750px", "margin": "0 auto"});
+            $(".advantageTable").css("width", wid);
+            $(".gis_banner").css("width", wid);
+             $(".gis_banner_btn").css({"padding-top": wid* 0.28});
+            $(".project_details").css({"width": wid * 0.98, "margin-left": wid * 0.01});
+            $(".leadFrame").css({"width": wid * 0.8, "left": wid * 0.5});
+            $(".advantage ul li").css("width","90%")
+            $(".user-login").css({
+                "width": wid,
+                /*"height": hei,*/
+                "position": "fixed",
+                "margin-left": wid * 0.1,
+                "top": "0px"
+            });
+            if (wid > 640) {
+                for (var i = 0; i < list.length; i++) {
+                    var listUrl = '/images/case' + parseInt(i + 1) + '.png';
+                    list.eq(i).css({
+                        "background": "url(" + listUrl + ") no-repeat center top",
+                        "background-size": "15%"
+                    });
+                }
+            }
+
+        }
+
+    })
+
+
+    $("#goTopBtn").css("right", "0")
+
+</script>
+</html>

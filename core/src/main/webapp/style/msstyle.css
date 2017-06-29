@@ -1,0 +1,280 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+ul{
+    list-style: none;
+}
+a:hover{
+    text-decoration: none !important;
+}
+section .first-part{
+    background: url("../images/bg.jpg");
+    width:100%;
+    background-size: cover;
+    height: 655px;
+    padding-top: 200px;
+}
+section .first-part .first-left{
+    margin-top: 100px;
+}
+section .first-part h2{
+    margin:0px;
+    color: #fff;
+    display: inline;
+    border-bottom: 2px solid #fff;
+    border-top: 2px solid #fff;
+    padding: 5px 0;
+    margin:0 auto;
+    display: block;
+    font-size: 48px;
+    width: 735px;
+    font-family: "Microsoft Yahei";
+
+}
+section .first-part .register{
+    display: block;
+    width: 150px;
+    height:50px;
+    line-height: 50px;
+    text-align: center;
+    color: #ffffff;
+    margin:0 auto;
+    font-size: 18px;
+    margin-top: 90px;
+    font-family: "Microsoft Yahei";
+    border: 1px solid #ffffff;
+}
+section .first-part .login h4{
+    width:100%;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    font-size: 24px;
+    color: #ffffff;
+    font-weight: bold;
+    font-family: "Microsoft Yahei";
+}
+section .first-part .login span{
+    display: block;
+    height: 35px;
+    background-color: #ffffff;
+    opacity:0.6;
+    margin:2% 0%;
+    font-size: 14px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;;
+    padding:2.5% 6%;
+    border: 1px solid #000;
+    font-family: "Microsoft Yahei";
+
+}
+section .first-part .login span input{
+    float: right;
+    border:none;
+    width: auto!important;
+    font-family: "Microsoft Yahei";
+}
+section .first-part .login b{
+    height: 40px;
+    display: block;
+    line-height: 40px;
+    font-family: "Microsoft Yahei";
+
+}
+section .first-part .login{
+    width: 340px;
+    height: 280px;
+    padding:0 7%;
+    background: url("../images/login-bg.png");
+}
+section .first-part .login .btn{
+    display: block;
+    margin:0% auto;
+    width:100%;
+    border: none;
+    height: 35px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 18px;
+    opacity: 1 !important;
+    background-color: #04bc8e;
+    font-family: "Microsoft Yahei";
+
+}
+section .first-part a:hover{
+    background-color: #ffffff;
+    color: #000;
+}
+
+
+section .tutorial{
+    width:100%;
+    padding: 70px 0;
+    /*text-align: center;*/
+}
+section .tutorial h2{
+    font-size: 36px;
+    text-align: center;
+    padding:0 39%;
+    margin-bottom: 30px;
+    font-family: "Microsoft Yahei";
+    font-weight: lighter;
+}
+section .tutorial .u-center{
+    margin:0 auto;
+    width: 850px;
+    height: 460px;
+}
+section .tutorial .lable-img{
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+}
+section .tutorial .lable-img li{
+    margin-top: 1px;
+    background-color: #797f86;
+}
+section .tutorial .lable-img li a{
+    display: inline-block;
+    width: 160px;
+    height: 90px;
+    line-height: 25px;
+    text-align: center;
+    font-size: 16px;
+    color: #ffffff;
+    padding-top: 20px;
+    padding: 10px;
+    position: relative;
+    font-family: "Microsoft Yahei";
+}
+section .active{
+    padding: 1px;
+    position: relative;
+    background-color: #0cc394 !important;
+}
+#img2,#img3,#img4,#img5{
+    display: none;
+}
+section .tutorial .lable-img .active::before{
+    content: '';
+    display: block;
+    width:0;
+    height:0;
+    border-width:10px;
+    border-style:solid;
+    border-color:transparent  transparent  transparent #0cc394 ;
+    /*margin-left:100%;*/
+    position: absolute;
+    left:100%;
+    top:50%;
+    margin-top:-5px;
+}
+/*section .tutorial .lable-img li :hover{*/
+    /*background-color: #0cc394;*/
+/*}*/
+/*section .tutorial .lable-img li :hover:before {*/
+    /*display: block;*/
+/*}*/
+section .tutorial .lable-img li a span{
+    display: inline-block;
+    font-size: 12px;
+    border-top: 1px solid #ffffff;
+    line-height:15px;
+    padding-top: 10px;
+    font-family: "Microsoft Yahei";
+
+}
+section .tutorial .img-list{
+    display: inline-block;
+    position: absolute;
+    z-index:0;
+}
+section .tutorial .img-list li{
+    position: absolute;
+    padding-left:0;
+}
+section .tutorial .img-list li img{
+    max-width: none;
+
+}
+
+section .second-part{
+    clear: both;
+    padding-top: 90px;
+    padding-bottom: 90px;
+    background-color:#efefef;
+    width:100%;
+}
+section .second-part h2{
+    text-align: center;
+    margin-bottom:100px;
+    font-size: 36px;
+}
+section .second-part ul li{
+    text-align: center;
+}
+section .second-part ul{
+    min-height: 350px;
+}
+section .second-part ul li img{
+    margin:0 auto;
+    width: 201px;
+}
+section .third-part{
+    clear: both;
+    padding-top: 90px;
+    padding-bottom: 90px;
+    width:100%;
+}
+section .third-part h2{
+    font-family: "Microsoft Yahei";
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+
+}
+section .third-part .movie-s{
+    text-align: center;
+    padding:0 30%;
+    font-size: 16px;
+    margin-bottom: 50px;
+    font-family: "Microsoft Yahei";
+
+}
+section .third-part ul{
+    min-height: 250px;
+}
+section .third-part ul li{
+    text-align: center;
+}
+section .third-part ul li h5{
+    font-size: 20px;
+    font-family: "Microsoft Yahei";
+}
+section .third-part ul li p{
+    margin-top: 10px;
+    font-size: 14px;
+    font-family: "Microsoft Yahei";
+}
+section .third-part ul li img{
+    margin:0 auto;
+}
+
+@media screen and (max-width: 1199px) {
+    section .second-part ul li{
+        border:none !important;
+    }
+    section .first-part{
+        height:auto;
+        padding-bottom: 10px;
+    }
+    section .first-part .login{
+        padding:0 1%;
+        margin: 30px auto;
+    }
+    section .tutorial h2{
+        padding:0 10%;
+    }
+}

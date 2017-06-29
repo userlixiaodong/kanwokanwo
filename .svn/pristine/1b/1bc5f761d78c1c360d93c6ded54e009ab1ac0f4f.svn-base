@@ -1,0 +1,565 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 微软雅黑;
+}
+
+html {
+    font-size: 20px;
+}
+
+@media screen and (max-width: 1920px) {
+    html {
+        font-size: 18px !important;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    html {
+        font-size: 16px !important;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    html {
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    html {
+        font-size: 12px !important;
+    }
+}
+
+.clear {
+    clear: both;
+}
+.gis_banner {
+    height: 25rem;
+  /*  background: url(/images/BA-manteng.jpg) no-repeat center top;*/
+/*    background-size: 100%;*/
+    margin-top: 3.7rem;
+    position: relative;
+}
+.gis_banner .bannerIcon{
+    height: 100%;
+}
+.gis_banner_btn {
+    height: 3rem;
+    width: 40%;
+    margin: 0 auto;
+    padding-top: -3rem;
+    position: absolute;
+    left: 30%;
+    bottom: 10%;
+}
+
+.signUp {
+    display: inline-block;
+    width: 8rem;
+    height: 2.4rem;
+    margin-top:1rem;
+    background: #018b9b;
+    border-radius: 0.2rem;
+    text-align: center;
+    line-height: 2.4rem;
+    color: #fff;
+    font-family: "微软雅黑 Light";
+    font-weight:bold;
+    font-size:0.9rem;
+    letter-spacing: 0.1em;
+}
+
+.signUp:nth-of-type(1) {
+    float: left;
+    margin-left: 3rem;
+}
+
+.signUp:nth-of-type(2) {
+    float: right;
+    margin-right: 3rem;
+}
+
+.login-before {
+    width: 35rem;
+    height: 17rem;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 1000;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    background: #e1e4e8;
+    display: none;
+}
+
+.login-before .login-before-close-btn {
+    color: #aaaaaa;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+}
+
+.login-before p {
+    font-family: "Microsoft Yahei";
+    font-size: 0.9rem;
+    margin-top: 4.5rem;
+    width: 100%;
+    text-align: center;
+}
+
+.login-before .login-btn {
+    display: block;
+    width: 7rem;
+    height: 2.75rem;
+    font-size: 1.2rem;
+    line-height: 2.75rem;
+    color: #fff;
+    text-align: center;
+    margin: 3.5rem auto;
+    background-color: #28b38d;
+}
+.leadFrame{
+    display: none;
+}
+/*标题样式*/
+.titles{
+    width:100%;
+    height:2rem;
+    text-align: center;
+    line-height:2rem;
+    font-size:1.8rem;
+    font-weight:400;
+    color: #333;
+    letter-spacing: 1px;
+    margin-bottom: 2.5rem;
+}
+/*项目背景start*/
+.projectBackground{
+    margin: 4rem 0;
+    background: url(/images/manteng_xmbjBA.jpg) no-repeat 0rem 32rem;
+}
+.projectAnalyse{
+    width: 60%;
+    margin: 0 auto;
+}
+.projectAnalyse h5{
+    font-size: 1rem;
+    font-weight: normal;
+    width: 96%;
+    line-height: 1.6rem;
+    border: 0.1rem solid #66ab3d;
+    padding: 1rem 3rem;
+    color: #333333;
+    font-family: "Microsoft Yahei";
+    font-size: 0.96rem;
+    margin: 0 auto 2rem;
+}
+.projectAnalyse h5 b{
+    display: block;
+    height: 4rem;
+    float: left;
+    margin-right: 1rem;
+    font-size: 1rem;
+}
+.projectAnalyse h6{
+    font-size: 1.2rem;
+    text-align: left;
+    font-weight: normal;
+    color: #1d8866;
+    font-family:"Microsoft Yahei";
+}
+#hcharts{
+    width: 100%;
+}
+#hcharts img{
+    width: 100%;
+}
+.nakedReason{
+    padding: 1rem 1rem 4rem 8rem;
+    color: #fff;
+
+}
+.nakedReason p{
+    font-size: 0.99rem;
+}
+.nakedReason b{
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+/*项目特色*/
+.advantage{
+    width:100%;
+    height:auto;
+    position: relative;
+    margin:3rem auto;
+}
+.advantage ul{
+    width:66%;
+    height:auto;
+    margin:2rem auto;
+}
+.advantage ul li{
+    list-style-type: none;
+    width:30%;
+    height:12rem;
+    float: left;
+    margin:1rem 0 0 1rem;
+    text-align: center;
+    overflow: hidden;
+    background-color:rgb(245, 248, 250) ;
+}
+.advantage ul li img{
+    display: block;
+    margin: 1rem auto 0 auto;
+}
+.advantage ul li:nth-child(4){
+    margin-left: 11.5rem;
+}
+.advantage ul li h4{
+    font-family:"微软雅黑 Light";
+    color: #333;
+    margin-top:1rem;
+}
+.advantage ul li span{
+    display: block;
+    width:80%;
+    height:4rem;
+    margin:1rem auto;
+    font-size:0.8rem;
+    font-family:"微软雅黑 Light";
+    color: #7d7e7e;
+    line-height:1.2rem;
+}
+/*项目详情*/
+.projectDetail{
+    width:100%;
+    height:auto;
+    background: url(/images/keru-detail.jpg) no-repeat ;
+    padding: 3rem 0;
+    margin-top: 4rem;
+    /* background-size: 107%;*/
+}
+.project_details {
+    width: 60rem;
+    height: auto;
+    background-color: #f3f6f9;
+    border-right: 0.45rem solid #16a2b2;
+    border-radius: 1rem;
+    margin: 3rem auto 1.5rem auto;
+    padding:0 0 4rem 0;
+}
+
+.project_details h2 {
+    padding: 2rem 0 2.5rem 5.5rem;
+    color: #018c9c;
+    font-size: 1.8rem;
+}
+
+.project_details .contens {
+    width: 48.7rem;
+    margin-left: 5.45rem;
+    margin-bottom: 1rem;
+    background: url(/images/CIS_05.png) no-repeat 0.1rem 0.05rem;
+    padding-bottom: 0.5rem;
+}
+
+.project_details .contens p {
+    padding-left: 4.2rem;
+    /*padding-top: 1.15rem;*/
+    font-family: "Microsoft Yahei";
+}
+
+.project_details .contens b {
+    font-size: 0.9rem;
+    color: #333333;
+    font-weight: normal;
+    display: block;
+    float: left;
+    ont-family:"Microsoft Yahei";
+}
+
+.project_details .contens span {
+    font-size: 0.9rem;
+    color: #666666;
+    display: inline-block;
+    padding-left: 1.1rem;
+    ont-family:"Microsoft Yahei";
+    letter-spacing: 0.05rem;
+}
+.metarial{
+    display: block;
+    width:80%;
+    height:auto;
+}
+/*项目介绍视频*/
+.videoIntroduce{
+    width:100%;
+    height:auto;
+    position: relative;
+    margin:4rem auto;
+    padding:2rem 0 6rem 0;
+    overflow: hidden;
+    /* background: url(/images/CIS-video.jpg) no-repeat;*/
+}
+.videoWrapper{
+    width: 44.3rem;
+    height: 51%;
+    margin: 2rem auto;
+    background-color: rgb(0,0,0);
+    cursor: pointer;
+    padding: 1rem;
+}
+.videoSignUp{
+    display: block;
+    width:8rem;
+    height:2.4rem;
+    background: #0085a7;
+    border-radius:0.2rem;
+    margin:1rem auto;
+    text-align: center;
+    line-height:2.4rem;
+    color: #fff;
+    font-family:"微软雅黑 Light";
+    font-size:1.2rem;
+    font-weight:bold;
+    letter-spacing: 0.1em;
+}
+/*项目活动or实习样式start*/
+.programBox{
+    width: 100%;
+    background-color: #eeefee;
+    padding: 3rem 0;
+}
+.summerProgram{
+    margin: 0 auto;
+    height: auto;
+
+}
+.summerProgram .titles{
+    margin-bottom: 2rem;
+}
+.int_list {
+    width: 70%;
+    margin: 0 auto;
+    list-style: none;
+}
+
+.int_list li {
+    float: left;
+    list-style: none;
+    width: 33%;
+    height:auto;
+    text-align: center;
+    padding-left: 0;
+
+}
+.int_list li .intBox{
+    width: 92%;
+    margin: 0 auto;
+    background-color: #f4f7fa;
+    border-bottom: 0.3rem solid #20abbb;
+    border-radius: 1rem;
+}
+.int_list li img{
+    display: block;
+    width: 100%;
+}
+
+.int_list li h6 {
+    color: #1e919e;
+    font-size: 1.4rem;
+    font-weight: normal;
+    margin-top: 2rem;
+    font-family: 微软雅黑;
+}
+
+.int_list li p {
+    margin: 0 auto;
+    text-align: left;
+    padding:1rem 1rem 2rem 1rem;
+    line-height: 2rem;
+    font-size: 0.9rem;
+    color: #666666;
+    text-align: justify;
+    font-family: 微软雅黑;
+}
+/*.int_list li:nth-child(2){
+    margin: 0 0.6rem;
+}*/
+
+
+@media (max-width: 1300px){
+    /*顶部banner*/
+    .gis_banner {
+        background-size: 110rem;
+        background-position: center;
+    }
+   /* 项目背景*/
+    .projectBackground {
+        margin: 4rem 0;
+        background: url(/images/manteng_xmbjBA.jpg) no-repeat 0rem 27rem;
+    }
+}
+
+
+@media (max-width: 1024px){
+    /*顶部banner*/
+    .gis_banner{
+        height: 21rem;
+    }
+    .gis_banner_btn{
+        width: 55%;
+        background-size: 93rem;
+        background-position: -16rem;
+        left: 26%;
+    }
+    /* 项目背景*/
+    .projectBackground{
+        background: url(/images/manteng_xmbjBA.jpg) no-repeat 0rem 24rem;
+    }
+    .projectAnalyse{
+        width: 84%;
+    }
+    /*项目特色*/
+    .advantage ul{
+        width: 94%;
+    }
+    .advantage ul li{
+        height: 13rem;
+    }
+    .videoWrapper{
+        height: 29%;
+    }
+    /*项目详情*/
+    .project_details{
+        width: 80%;
+    }
+    .project_details .contens{
+        width: auto;
+        margin-left: 1.45rem;
+    }
+}
+
+@media (max-width: 768px){
+    /*顶部banner*/
+    .gis_banner {
+        height: 17rem;
+        background-size: 87rem;
+        background-position: -27rem;
+    }
+    .gis_banner_btn {
+        width: 80%;
+        padding-top: 17rem;
+        left: 11%;
+        bottom: 22%;
+        margin-bottom: 1rem;
+    }
+    .gis_banner{
+        margin-top: 3rem;
+    }
+    /* 项目背景*/
+    .projectBackground{
+        background: url(/images/manteng_xmbjBA.jpg) no-repeat 0rem 16rem;
+    }
+    .videoWrapper {
+        height: 39%;
+    }
+    /*项目特色*/
+    .advantage ul{
+        height: auto;
+    }
+
+}
+@media (max-width: 767px){
+    /*顶部banner*/
+    .gis_banner {
+        height: 17rem;
+       /* background: url(/images/indexBanner01.jpg) no-repeat center top;*/
+        background-size: 100%;
+        margin-top: 5rem;
+        height: auto;
+        margin-bottom: 5rem;
+    }
+    .gis_banner .bannerIcon{
+        height: auto;
+        width: 100%;
+    }
+    /* 项目背景*/
+    .projectAnalyse{
+        width: 90%;
+    }
+    .projectAnalyse h5 b{
+        height: auto;
+    }
+    .nakedReason{
+        padding: 1rem 1rem 4rem 1rem;
+    }
+    .projectBackground{
+        margin: 0 auto;
+    }
+   /* 项目特色*/
+    .advantage ul{
+        width: 94%;
+    }
+    .advantage ul li{
+        width: 80%;
+        float: none;
+        margin: 2rem auto;
+        height: auto;
+        padding-bottom: 1rem;
+    }
+    .advantage ul li:nth-child(4) {
+        margin: 2rem auto;
+    }
+    /*项目详情*/
+    .project_details .contens p{
+        padding-left: 2.2rem;
+    }
+}
+@media (max-width: 414px){
+    /*顶部banner*/
+    .signUp{
+        width: 7rem;
+        font-weight: normal;
+        font-size: 0.8rem;
+        height: auto;
+        line-height: 2rem;
+    }
+    /* 项目背景*/
+    .projectAnalyse h5{
+        padding: 1rem;
+    }
+    /*项目特色*/
+    .advantage ul li{
+        width: 90%;
+    }
+    /*项目详情视频*/
+    .videoIntroduce{
+        margin: 0 auto;
+    }
+    .videoWrapper{
+        width: 27.3rem;
+        height: 17.5rem;
+    }
+    /*项目活动or实习*/
+
+}
+@media (max-width: 320px){
+    /*顶部banner*/
+    .gis_banner{
+        /*height: 15rem;*/
+    }
+   /* 项目详情视频*/
+    .videoWrapper{
+        width: 24.3rem;
+        height: 15.5rem;
+    }
+    .advantage ul li{
+        padding-bottom: 0.6rem;
+    }
+}

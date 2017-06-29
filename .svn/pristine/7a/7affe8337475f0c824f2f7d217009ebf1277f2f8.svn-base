@@ -1,0 +1,511 @@
+package cv.focus.core.application.impl;
+
+import cv.focus.common.infrastructure.services.StorageService;
+import cv.focus.common.infrastructure.services.impl.VideoTransCodeDTO;
+import cv.focus.core.application.StudentProfileService;
+import cv.focus.core.domain.material.*;
+import cv.focus.core.domain.school.model.profile.AdmissionProfile;
+import cv.focus.core.domain.school.model.profile.AdmissionProfileRepository;
+import cv.focus.core.domain.student.model.profile.*;
+import cv.focus.core.domain.student.model.profile.exam.ExamRecord;
+import cv.focus.core.domain.student.model.profile.exam.ExamRecordFactory;
+import cv.focus.core.domain.student.model.profile.exam.ExamType;
+import cv.focus.core.domain.user.model.User;
+import org.apache.log4j.Logger;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.io.InputStream;
+import java.util.Iterator;
+import java.util.List;
+
+/**
+ * Created by song on 16/1/26.
+ */
+@Service
+public class StudentProfileServiceImpl implements StudentProfileService {
+    private Logger logger = Logger.getLogger(StudentProfileServiceImpl.class);
+    @Resource
+    private StudentProfileRepository studentProfileRepository;
+    @Resource(name="aliyunOSSStorageService")
+    private StorageService storageService;
+    @Resource
+    private AdmissionProfileRepository admissionProfileRepository;
+
+    @Override
+    public StudentProfile createStudentProfile(User user) {
+        StudentProfile studentProfile = null;
+        try{
+            studentProfile = user.createStudentProfile(studentProfileRepository.nextId());
+            studentProfile.setPublicUri(genStudentProfileUri(studentProfile));
+            studentProfileRepository.store(studentProfile);
+            return studentProfile;
+        }catch (DataIntegrityViolationException e){
+//            e.printStackTrace();
+            //TODO
+            return createStudentProfile(user);
+        }
+    }
+
+    //需要补货Unique产生的异常
+    @Override
+    public String genStudentProfileUri(StudentProfile studentProfile){
+        String origUri = studentProfile.getOrigPublicUri();
+        List<StudentProfile> studentProfileList = studentProfileRepository.findByOrigPublicUri(studentProfile.getOrigPublicUri());
+        List<AdmissionProfile> admissionProfileList = admissionProfileRepository.findByOrigPublicUri(studentProfile.getOrigPublicUri());
+        int size = studentProfileList.size();
+        int admissionSize = admissionProfileList.size();
+        if(size == 0 && admissionSize == 0){
+            if(studentProfileRepository.findByPublicUri(origUri).size() == 0
+                    && admissionProfileRepository.findByPublicUri(origUri) == null) {
+                return origUri;
+            }
+        }
+        if (size == 0) {
+            size = 1;
+        }
+        while (true){
+            List list = studentProfileRepository.findByPublicUri(origUri + size);
+            if(list.size() == 0 && admissionProfileRepository.findByPublicUri(origUri + size) == null)
+                break;
+            size++;
+        }
+        origUri = origUri + "" + size;
+        return origUri;
+    }
+
+    @Override
+    public Biography updateBiography(Biography biography, StudentProfileId studentProfileId) {
+        StudentProfile studentProfile = studentProfileRepository.findById(studentProfileId);
+        if (studentProfile.getBiography() != null) {
+            biography.setAvatar(studentProfile.getBiography().getAvatar());
+        }
+
+        for (GraduationSchool graduationSchool : biography.getGraduationSchoolList()) {
+            graduationSchool.setStudentProfile(studentProfile);
+        }
+        studentProfile.getBiography().getGraduationSchoolList().clear();
+        studentProfile.getBiography().getGraduationSchoolList().addAll(biography.getGraduationSchoolList());
+        studentProfile.setBiography(biography);
+        studentProfileRepository.store(studentProfile);
+        return studentProfile.getBiography();
+    }
+
+    @Override
+    public StudentProfile findStudentProfileById(StudentProfileId studentProfileId) {
+        return studentProfileRepository.findById(studentProfileId);
+    }
+
+    @Override
+    public StudentProfile findStudentProfileByPublicUri(String uri) {
+        List<StudentProfile> studentProfileList = studentProfileRepository.findByPublicUri(uri);
+        if (studentProfileList.size() == 0)
+            return null;
+        else
+            return studentProfileList.get(0);
+    }
+
+    @Override
+    public StudentProfile findByEmail(String email) {
+        return studentProfileRepository.findByEmail(email);
+    }
+
+
+    @Override
+    public void updateAndSynchronizeProfile(String email, String school) {
+        StudentProfile studentProfile = findByEmail(email);
+        studentProfile.getBiography().setCurrentSchool(school);
+        studentProfileRepository.store(studentProfile);
+    }
+
+    @Override
+    public void updateStoryDesc(String email, String storyDesc) {
+        StudentProfile studentProfile = findByEmail(email);
+        studentProfile.getMyStory().setDescription(storyDesc);
+        studentProfileRepository.store(studentProfile);
+    }
+    @Override
+    public void updateHonorDesc(String email, String honorDesc) {
+        StudentProfile studentProfile = findByEmail(email);
+        studentProfile.getHonor().setDescription(honorDesc);
+        studentProfileRepository.store(studentProfile);
+    }
+
+    @Override
+    public String addVideo(String email, String fileName, InputStream videoInputStream, MaterialModule module) {
+        String url = "";
+        try {
+            StudentProfile studentProfile = studentProfileRepository.findByEmail(email);
+            // 上传视频,并加入转码队列
+            VideoTransCodeDTO uploadResult = storageService.putVideo(fileName, videoInputStream, false);
+            switch (module) {
+                case PROFILE:
+                    // 介绍视频
+                    addMaterialToProfile(studentProfile, uploadResult.getUrl(), uploadResult.getPreviewImgUrl(),
+                            MaterialStatus.TRANSCODE, MaterialType.VIDEO, uploadResult.getTransCodeJobId());
+                    break;
+                case MYSTORY:
+                    // 添加到"我的故事"
+                    addMaterialToMyStory(studentProfile, uploadResult.getUrl(), uploadResult.getPreviewImgUrl(),
+                            MaterialStatus.TRANSCODE, MaterialType.VIDEO, uploadResult.getTransCodeJobId());
+                    break;
+                case PORTFOLIO:
+                    // 添加到"作品集"
+                    addMaterialToPortfolio(studentProfile, uploadResult.getUrl(), uploadResult.getPreviewImgUrl(),
+                            MaterialStatus.TRANSCODE, MaterialType.VIDEO, uploadResult.getTransCodeJobId());
+                    break;
+                case REWARD:
+                    addMaterialToReward(studentProfile, uploadResult.getUrl(), uploadResult.getPreviewImgUrl(),
+                            MaterialStatus.TRANSCODE, MaterialType.VIDEO, uploadResult.getTransCodeJobId());
+                    break;
+            }
+            studentProfileRepository.store(studentProfile);
+            url = uploadResult.getUrl();
+        } catch (Exception e) {
+            logger.error("StudentProfileServiceImpl.addVideo", e);
+            throw new RuntimeException(e);
+        }
+        return url;
+    }
+
+    @Override
+    public String addImg(String email, String fileName, InputStream imgInputStream, MaterialModule module) {
+        String url = "";
+
+        try {
+            StudentProfile studentProfile = studentProfileRepository.findByEmail(email);
+            url =  storageService.putImage(fileName, imgInputStream, false);
+            switch (module) {
+                case PROFILE:
+                    addMaterialToProfile(studentProfile, url, null, MaterialStatus.NORMAL, MaterialType.IMG, null);
+                    break;
+                case MYSTORY:
+                    // 添加到"我的故事"
+                    addMaterialToMyStory(studentProfile, url, null, MaterialStatus.NORMAL, MaterialType.IMG, null);
+                    break;
+                case PORTFOLIO:
+                    addMaterialToPortfolio(studentProfile, url, null, MaterialStatus.NORMAL, MaterialType.IMG, null);
+                    break;
+                case REWARD:
+                    addMaterialToReward(studentProfile, url, null, MaterialStatus.NORMAL, MaterialType.IMG, null);
+                    break;
+                case AVATAR:
+                    addMaterialToProfile(studentProfile, url, null, MaterialStatus.NORMAL, MaterialType.IMG, null);
+                    break;
+            }
+            studentProfileRepository.store(studentProfile);
+        } catch (Exception e) {
+            logger.error("StudentProfileServiceImpl.addImg()", e);
+            throw new RuntimeException(e);
+        }
+
+        return url;
+    }
+
+    @Override
+    public String addDoc(String email, String fileName, InputStream docInputStream, MaterialModule module) {
+        String url = "";
+
+        try {
+            StudentProfile studentProfile = studentProfileRepository.findByEmail(email);
+            url = storageService.putFile(fileName, docInputStream, false);
+            switch (module) {
+                case MYSTORY:
+                    addMaterialToMyStory(studentProfile, url, null, MaterialStatus.NORMAL, MaterialType.DOC, null);
+                    break;
+                case PORTFOLIO:
+                    addMaterialToPortfolio(studentProfile, url, null, MaterialStatus.NORMAL, MaterialType.DOC, null);
+                    break;
+                case REWARD:
+                    addMaterialToReward(studentProfile, url, null, MaterialStatus.NORMAL, MaterialType.DOC, null);
+                    break;
+            }
+            studentProfileRepository.store(studentProfile);
+        } catch (Exception e) {
+            logger.error("StudentProfileServiceImpl.addDoc()", e);
+            throw new RuntimeException();
+        }
+
+        return url;
+    }
+
+    @Override
+    public void updateRewardDesc(String email, String rewardDesc) {
+        StudentProfile studentProfile = studentProfileRepository.findByEmail(email);
+        studentProfile.getHonor().setDescription(rewardDesc);
+        studentProfileRepository.store(studentProfile);
+    }
+
+    @Override
+    public void addOrUpdateExamRecord(String email, ExamType type, Float[] scores) {
+        StudentProfile studentProfile = studentProfileRepository.findByEmail(email);
+
+        if (studentProfile.getExamRecordList() != null && studentProfile.getExamRecordList().size() > 0) {
+            Iterator<ExamRecord> iterator = studentProfile.getExamRecordList().iterator();
+            while (iterator.hasNext()) {
+                ExamRecord record = iterator.next();
+                if (record.getExamType() == type) {
+                    iterator.remove();
+                    studentProfileRepository.del(record);
+                }
+            }
+        }
+        ExamRecord examRecord = ExamRecordFactory.createExamRecord(type, scores);
+        examRecord.setStudentProfile(studentProfile);
+        studentProfile.getExamRecordList().add(examRecord);
+
+        studentProfileRepository.store(studentProfile);
+    }
+
+    @Override
+    public void addOrUpdateExamRecords(String email, List<ExamRecord> examRecords ) {
+        StudentProfile studentProfile = studentProfileRepository.findByEmail(email);
+//        if (studentProfile.getExamRecordList() != null && studentProfile.getExamRecordList().size() > 0) {
+//            Iterator<ExamRecord> iterator = studentProfile.getExamRecordList().iterator();
+//            while (iterator.hasNext()) {
+//                ExamRecord record = iterator.next();
+//                iterator.remove();
+//                studentProfileRepository.del(record);
+//            }
+//        }
+        for(ExamRecord er : examRecords){
+            er.setStudentProfile(studentProfile);
+        }
+        studentProfile.getExamRecordList().clear();
+        studentProfile.getExamRecordList().addAll(examRecords);
+        studentProfileRepository.store(studentProfile);
+
+    }
+
+    /**
+     * 获取历史考试记录
+     * @return
+     */
+    private ExamRecord getExamRecordByHistory(List<ExamRecord> records, ExamType type) {
+        for (ExamRecord record : records) {
+            if (type == record.getExamType()) {
+                return record;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * "我的故事" 添加素材
+     * @param studentProfile
+     * @param url
+     */
+    private void addMaterialToMyStory(StudentProfile studentProfile, String url,
+                                      String previewImgUrl, MaterialStatus status, MaterialType type, String transCodeJobId) {
+        MyStory myStory = studentProfile.getMyStory();
+        Material material = MaterialFactory.createMaterial(previewImgUrl, url, status, type, transCodeJobId);
+        myStory.setMaterials(MaterialListUtil.addMaterial(myStory.getMaterials(), material));
+        studentProfile.setMyStory(myStory);
+    }
+
+    /**
+     * "文档" 添加素材
+     * @param studentProfile
+     * @param url
+     * @param previewImgUrl
+     * @param status
+     * @param type
+     * @param transCodeJobId
+     */
+    private void addMaterialToProfile(StudentProfile studentProfile, String url,
+                                      String previewImgUrl, MaterialStatus status, MaterialType type, String transCodeJobId) {
+        switch (type) {
+            case VIDEO:
+                // 档案视频 -> 介绍视频
+                Video introVideo = new Video(previewImgUrl, url, status, transCodeJobId);
+
+                studentProfile.setIntroductionVideo(introVideo);
+                break;
+            case IMG:
+                // 档案图片 -> 头像
+                studentProfile.getBiography().setAvatar(url);
+                break;
+        }
+    }
+
+    /**
+     * "作品集"添加素材
+     * @param studentProfile
+     * @param url
+     * @param previewImgUrl
+     * @param status
+     * @param type
+     * @param transCodeJobId
+     */
+    private void addMaterialToPortfolio(StudentProfile studentProfile, String url,
+                                        String previewImgUrl, MaterialStatus status, MaterialType type, String transCodeJobId) {
+        Portfolio portfolio = studentProfile.getPortfolio();
+        Material material = MaterialFactory.createMaterial(previewImgUrl, url, status, type, transCodeJobId);
+        portfolio.setMaterials(MaterialListUtil.addMaterial(portfolio.getMaterials(), material));
+        studentProfile.setPortfolio(portfolio);
+    }
+
+    /**
+     * "获奖记录"添加素材
+     * @param studentProfile
+     * @param url
+     * @param previewImgUrl
+     * @param status
+     * @param type
+     * @param transCodeJobId
+     */
+    private void addMaterialToReward(StudentProfile studentProfile, String url,
+                                     String previewImgUrl, MaterialStatus status, MaterialType type, String transCodeJobId) {
+        Honor honor = studentProfile.getHonor();
+        Material material = MaterialFactory.createMaterial(previewImgUrl, url, status, type, transCodeJobId);
+        honor.setMaterials(MaterialListUtil.addMaterial(honor.getMaterials(), material));
+        studentProfile.setHonor(honor);
+    }
+
+    @Override
+    public Remark addRemark(StudentProfile fromStudentProfile,StudentProfile toStudentProfile,String content){
+        if(content == null || (content != null && content.trim().equals(""))){
+            return null;
+        }
+        if(fromStudentProfile.getStudentProfileId().getStudentProfileId().trim().equals(toStudentProfile.getStudentProfileId().getStudentProfileId().trim())){
+            return null;
+        }
+        StudentProfile from = findStudentProfileById(fromStudentProfile.getStudentProfileId());
+        if(from == null){
+            return null;
+        }
+        StudentProfile to = findStudentProfileById(toStudentProfile.getStudentProfileId());
+        if(to == null){
+            return null;
+        }
+
+        Remark remark = new Remark(content,fromStudentProfile,toStudentProfile);
+        List<Remark> remarkList = to.getRemarkList();
+        remarkList.add(remark);
+        studentProfileRepository.store(to);
+        return remark;
+    }
+
+    @Override
+    public List<Remark> getRemarkByStudentProfileId(String studentProfileId) {
+        return studentProfileRepository.findRemarksById(studentProfileId);
+    }
+
+    @Override
+    public void addProfileMaterial(String email, MaterialModule module, Material material) {
+        StudentProfile studentProfile = studentProfileRepository.findByEmail(email);
+        switch (module){
+            case MYSTORY:
+                MyStory myStory = studentProfile.getMyStory();
+                MaterialListUtil.addMaterial(myStory.getMaterials(), material);
+                studentProfile.setMyStory(myStory);
+                break;
+            case AVATAR:
+            case PROFILE:
+                switch (material.getType()) {
+                    case VIDEO:
+                        // 档案视频 -> 介绍视频
+                        Video introVideo = (Video) material;
+                        studentProfile.setIntroductionVideo(introVideo);
+                        break;
+                    case IMG:
+                        // 档案图片 -> 头像
+                        studentProfile.getBiography().setAvatar(material.getMaterialSrc());
+                        break;
+                }
+                break;
+            case PORTFOLIO:
+                Portfolio portfolio = studentProfile.getPortfolio();
+                MaterialListUtil.addMaterial(portfolio.getMaterials(), material);
+                studentProfile.setPortfolio(portfolio);
+                break;
+            case HONOR:
+                Honor honor = studentProfile.getHonor();
+                honor.setMaterials(MaterialListUtil.addMaterial(honor.getMaterials(),material));
+                studentProfile.setHonor(honor);
+                break;
+        }
+
+        studentProfileRepository.store(studentProfile);
+    }
+
+    @Override
+    public void changeMaterialLocation(String email, MaterialModule module, int beg, int end) {
+        StudentProfile studentProfile = studentProfileRepository.findByEmail(email);
+        switch (module){
+            case MYSTORY:
+                MyStory myStory = studentProfile.getMyStory();
+                MaterialListUtil.exchangeMaterialLocation(myStory.getMaterials(), beg, end);
+                studentProfile.setMyStory(myStory);
+                break;
+            case HONOR:
+                Honor honor = studentProfile.getHonor();
+                MaterialListUtil.exchangeMaterialLocation(honor.getMaterials(), beg, end);
+                studentProfile.setHonor(honor);
+                break;
+            case PORTFOLIO:
+                Portfolio portfolio = studentProfile.getPortfolio();
+                MaterialListUtil.exchangeMaterialLocation(portfolio.getMaterials(), beg, end);
+                studentProfile.setPortfolio(portfolio);
+        }
+        studentProfileRepository.store(studentProfile);
+    }
+
+    @Override
+    public void deleteMaterial(String email, MaterialModule module, int seq) {
+        StudentProfile studentProfile = studentProfileRepository.findByEmail(email);
+        switch (module){
+            case MYSTORY:
+                MyStory myStory = studentProfile.getMyStory();
+                MaterialListUtil.delMaterialByLocation(myStory.getMaterials(), seq);
+                studentProfile.setMyStory(myStory);
+                break;
+            case AVATAR:
+                studentProfile.getBiography().setAvatar(null);
+                break;
+            case PROFILE:
+                studentProfile.setIntroductionVideo(null);
+                break;
+            case HONOR:
+                Honor honor = studentProfile.getHonor();
+                MaterialListUtil.delMaterialByLocation(honor.getMaterials(), seq);
+                studentProfile.setHonor(honor);
+                break;
+            case PORTFOLIO:
+                Portfolio portfolio = studentProfile.getPortfolio();
+                MaterialListUtil.delMaterialByLocation(portfolio.getMaterials(), seq);
+                studentProfile.setPortfolio(portfolio);
+        }
+        studentProfileRepository.store(studentProfile);
+    }
+
+    @Override
+    public void updateMaterialTitle(String email, String title, Integer index, MaterialModule module) {
+        StudentProfile studentProfile = studentProfileRepository.findByEmail(email);
+        switch (module){
+            case MYSTORY:
+                MyStory myStory = studentProfile.getMyStory();
+                myStory.getMaterials().get(index).setTitle(title);
+                studentProfile.setMyStory(myStory);
+                break;
+            case AVATAR:
+                studentProfile.getBiography().setAvatar(title);
+                break;
+            case PROFILE:
+                studentProfile.getIntroductionVideo().setTitle(title);
+                break;
+            case HONOR:
+                Honor honor = studentProfile.getHonor();
+                honor.getMaterials().get(index).setTitle(title);
+                studentProfile.setHonor(honor);
+                break;
+            case PORTFOLIO:
+                Portfolio portfolio = studentProfile.getPortfolio();
+                portfolio.getMaterials().get(index).setTitle(title);
+                studentProfile.setPortfolio(portfolio);
+        }
+        studentProfileRepository.store(studentProfile);
+
+    }
+}

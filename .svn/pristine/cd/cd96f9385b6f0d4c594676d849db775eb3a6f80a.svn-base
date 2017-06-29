@@ -1,0 +1,372 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2017/5/18
+  Time: 11:38
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>template</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Touch enabled minimalistic slider written in vanilla JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="/style/public.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/frame.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/app.css">
+    <link rel="stylesheet" href="/style/qdtest.css?20170428">
+</head>
+<body>
+<div class="login-before">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>您还未登录，请在登录之后再进行申请哦！~</p>
+    <a class="login-btn md-trigger" data-modal="modal-12" href="javascript:trackOutboundLink('', 'index_login');">登录</a>
+</div>
+<div class="leadFrame">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>请使用电脑进行登录</p>
+</div>
+<div class="container_box">
+    <%@include file="/WEB-INF/views/common/top.jsp" %>
+    <input type="hidden" id="ItemId" value="${Item.itemId}">
+    <div class="gis_banner">
+        <img src="/images/BA-manteng.jpg" alt="" class="bannerIcon">
+        <div class="gis_banner_btn">
+            <c:choose>
+                <c:when test="${sessionScope.loginUser == null}">
+                    <a href="javascript: loginAlert();;" class="signUp" id="signUp">点击报名</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="javascript:toApply();;" class="signUp" id="signUp">点击报名</a>
+                </c:otherwise>
+            </c:choose>
+            <a href="//focusedu.oss-cn-hangzhou.aliyuncs.com/videos/manteng.mp4" class="signUp">观看往期直播</a>
+        </div>
+    </div>
+
+     <div class="mid_cont">
+
+         <%--项目背景start--%>
+         <div class="projectBackground">
+             <p class="titles">项目背景</p>
+             <div class="projectAnalyse">
+                 <h5><b>裸归：</b>美国留学成本最高，少则四五十万多则上百万，然而毕业后“裸归”却成为一个普遍现象。按近三年的统计数据，没有任何职场经历只是完成海外学业的“裸归”群体，回国后平均月薪不到一万元。高投入却换不来高回报。
+                 </h5>
+                 <%--<h6>2011~2016中国出国留学、裸归人数对比（万）</h6>--%>
+                 <div id="hcharts">
+                     <img src="/images/manteng_chart.png" alt="">
+                 </div>
+                 <div class="nakedReason">
+                     <b>裸归原因：</b>
+                     <p>1.&nbsp;&nbsp;美国大学无法满足中国留学生对就业、职场和专业辅导的需求</p>
+                     <p> 2.&nbsp;&nbsp;中国留学生并非美国社会主体，残酷地被隔绝在实习和工作机会之外</p>
+                     <p> 3.&nbsp;&nbsp;85%中国留学生不了解美国就业市场，没有清晰的职业目标和规划，缺乏竞争力</p>
+                     <p>4.&nbsp;&nbsp;90%裸归月薪不足1万元，包括博士毕业生</p>
+                     <p>5.&nbsp;&nbsp;培养一个留学生，家长四年里平均投入150万元，怎么计算投资回报？</p>
+                 </div>
+             </div>
+         </div>
+
+         <%--项目特色start 注意：背景小图标动态生成命名格式统一以mantengIcon+由1开始的数字命名--%>
+         <div class="advantage">
+                 <p class="titles">项目特色</p>
+                 <ul class="clearfix">
+                     <li>
+                         <img src="/images/mantengIcon1.png" alt="">
+                         <h4>职场大数据</h4>
+                         <span>基于智能大数据<br/>伴随式成长引擎<br/>完善的职场引擎</span>
+                     </li>
+                     <li>
+                         <img src="/images/mantengIcon2.png" alt="">
+                         <h4>名企直通车</h4>
+                         <span>数百美名企资源<br/>美名企推荐机会<br/>实习+正式工作</span>
+                     </li>
+                     <li>
+                         <img src="/images/mantengIcon3.png" alt="">
+                         <h4>精英导师</h4>
+                         <span>“千人计划”专家<br/>全球500强高管<br/>“独角兽”创业精英</span>
+                     </li>
+                     <li>
+                         <img src="/images/mantengIcon4.png" alt="">
+                         <h4>全面的职业规划</h4>
+                         <span>科学职业测评<br/>全面简历提升<br/>专业面试培训</span>
+                     </li>
+                     <li>
+                         <img src="/images/mantengIcon5.png" alt="">
+                         <h4>VIP专享订制</h4>
+                         <span>蔓藤鹰计划<br/>个性化定制服务<br/>针对性职业路径</span>
+                     </li>
+                    <%-- <li>
+                         <h4>VIP专享订制</h4>
+                         <span>蔓藤鹰计划<br/>个性化定制服务<br/>针对性职业路径</span>
+                     </li>--%>
+                 </ul>
+             </div>
+
+         <%--项目详情--%>
+         <div class="projectDetail">
+                 <p class="titles">项目信息</p>
+                 <div class="project_details">
+                     <h2>项目信息</h2>
+                     <div class="contens">
+                         <p>
+                             <b>公司地址： </b><span>中国——北京市朝阳区三里屯、美国——Walnut Avenue</span>
+                         </p>
+                         <p>
+                             <b>申请期限： </b><span>滚动申请</span>
+                         </p>
+                         <p>
+                             <b>适合人群： </b><span>有意向申请美国大学的学生、美国大学在读生</span>
+                         </p>
+                         <p>
+                             <b>项目简介： </b>
+                             <span class="metarial">
+                            精鹰计划：<br/>
+蔓藤教育的精英导师与蔓藤教育独家开发的成长引擎高效配合，帮助每名赴美读书的学生制定科学的、个性化的职业规划。同时，蔓藤教育的资深职业规划顾问将配合蔓藤智能引擎，记录、推动、评估学生职业规划中的每个细节，帮助每名学生实现从留学生到职场精“鹰”的蜕变。
+<br/>雄鹰计划：<br/>
+蔓藤教育雄鹰计划根据学生不同背景，针对性匹配最适合的顶级精英导师，深度挖掘学员潜能，最大力度全面提升学生能力。蔓藤教育确保每名参与雄鹰计划的学生100%在美国拿到工作offer，实现美国就业梦想。
+<br/>飞鹰计划：<br/>
+利用蔓藤教育涵盖全美各行业的强大资深导师资源库，飞鹰计划保证每一位优秀的留学生获得美国专业实习经历，帮助学生开拓国际视野、增强专业素养、提升个人综合竞争力，为将来的美国求职铺平道路。
+                        </span>
+                         </p>
+                     </div>
+                 </div>
+         </div>
+
+         <%--项目介绍视频--%>
+         <div class="videoIntroduce">
+                 <p class="titles" >蔓藤教育项目介绍</p>
+                 <div class="videoWrapper">
+                     <video id="video1" src="http://focusedu.oss-cn-hangzhou.aliyuncs.com/videos/manteng.mp4"
+                            type="video/mp4" width="100%" height="100%" controls="controls" poster="/images/mantengv.jpg"
+                            webkit-playsinline></video>
+                     <%--<i id="play" class="play"></i>--%>
+                 </div>
+                 <c:choose>
+                     <c:when test="${sessionScope.loginUser == null}">
+                         <a href="javascript: loginAlert();" class="videoSignUp">报名申请</a>
+                     </c:when>
+                     <c:otherwise>
+                         <a class="videoSignUp" href="javascript: toApply();">报名申请</a>
+                     </c:otherwise>
+                 </c:choose>
+         </div>
+
+         <%--项目活动Or实习start--%>
+         <div class="programBox">
+             <div class="summerProgram">
+                 <p class="titles" >创造社会影响力的暑期项目</p>
+                 <ul class="int_list clearfix">
+                     <li>
+                         <div class="intBox">
+                             <img src="/images/keru-pro1.jpg" />
+                             <h6>生存技能教育<img src="/images/intList_line.png"/></h6>
+                             <p>
+                                 <b>活动地点：</b>广东汕头<br />
+                                 <b>活动时间：</b>2017/6/27——2017/7/11<br />
+                                 <b>合作社会企业：</b>Hello Project <br />
+                                 <b>关键问题：</b>教育真的能解决贫困地区孩子的心理和社会健康问题吗？<br />
+                                 <b>学生感兴趣的领域：</b>心理学与教育<br />
+                             </p>
+                         </div>
+                     </li>
+                     <li>
+                         <div class="intBox">
+                             <img src="/images/keru-pro2.jpg" />
+                             <h6>饮用水安全<img src="/images/intList_line.png"/></h6>
+                             <p>
+                                 <b>活动地点：</b>福建武平<br />
+                                 <b>活动时间：</b>2017/7/15——2017/7/30<br />
+                                 <b>合作社会企业：</b>思援环保<br />
+                                 <b>关键问题：</b>社会企业项目真的能帮 助中国解决饮水安全问题吗？<br />
+                                 <b>学生感兴趣的领域：</b>环境与社会责<br />
+                             </p>
+                         </div>
+                     </li>
+                     <li>
+                         <div class="intBox">
+                             <img src="/images/keru-pro3.jpg" />
+                             <h6>农村经济发展<img src="/images/intList_line.png"/></h6>
+                             <p>
+                                 <b>活动地点：</b>云南腾冲<br />
+                                 <b>活动时间：</b>2017/8/5——2017/8/20<br />
+                                 <b>合作社会企业：</b>小蜜人<br />
+                                 <b>关键问题：</b>长期被忽视的农产品真 的能助推中国农村的经济增长吗？<br />
+                                 <b>学生感兴趣的领域：</b>商业与经济<br />
+                             </p>
+
+                         </div>
+                     </li>
+                   <%--  <li>
+                         <div class="intBox">
+                             <img src="/images/keru-pro3.jpg" />
+                             <h6>农村经济发展<img src="/images/intList_line.png"/></h6>
+                             <p>
+                                 <b>活动地点：</b>云南腾冲<br />
+                                 <b>活动时间：</b>2017/8/5——2017/8/20<br />
+                                 <b>合作社会企业：</b>小蜜人<br />
+                                 <b>关键问题：</b>长期被忽视的农产品真 的能助推中国农村的经济增长吗？<br />
+                                 <b>学生感兴趣的领域：</b>商业与经济<br />
+                             </p>
+
+                         </div>
+                     </li>
+                     <li>
+                         <div class="intBox">
+                             <img src="/images/keru-pro3.jpg" />
+                             <h6>农村经济发展<img src="/images/intList_line.png"/></h6>
+                             <p>
+                                 <b>活动地点：</b>云南腾冲<br />
+                                 <b>活动时间：</b>2017/8/5——2017/8/20<br />
+                                 <b>合作社会企业：</b>小蜜人<br />
+                                 <b>关键问题：</b>长期被忽视的农产品真 的能助推中国农村的经济增长吗？<br />
+                                 <b>学生感兴趣的领域：</b>商业与经济<br />
+                             </p>
+
+                         </div>
+                     </li>
+                     <li>
+                         <div class="intBox">
+                             <img src="/images/keru-pro3.jpg" />
+                             <h6>农村经济发展<img src="/images/intList_line.png"/></h6>
+                             <p>
+                                 <b>活动地点：</b>云南腾冲<br />
+                                 <b>活动时间：</b>2017/8/5——2017/8/20<br />
+                                 <b>合作社会企业：</b>小蜜人<br />
+                                 <b>关键问题：</b>长期被忽视的农产品真 的能助推中国农村的经济增长吗？<br />
+                                 <b>学生感兴趣的领域：</b>商业与经济<br />
+                             </p>
+
+                         </div>
+                     </li>--%>
+                     <div class="clear"></div>
+                 </ul>
+             </div>
+         </div>
+
+         <div style="margin-bottom: 15rem"></div>
+     </div>
+
+
+    <%@include file="/WEB-INF/views/common/bottom.jsp" %>
+</div>
+<div class="mask"></div>
+
+</body>
+<script type="text/javascript">
+    var wid = $(window).width();
+    function loginAlert() {
+        if (wid < 769) {
+            $("#signUp,.videoSignUp").on("click", function () {
+                var ban = 0;
+                $(".mask").css("display", "block");
+                $(".leadFrame").show(400);
+                document.addEventListener("touchmove", function (e) {
+                    if (ban == 0) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                }, false);
+            });
+            $(".login-before-close-btn").on("click", function () {
+                $(".mask").css("display", "none");
+                $(".leadFrame").css("display", "none");
+            });
+        } else {
+            $(".login-before").css('display', 'block');
+        }
+    }
+    function closeAlert() {
+        $(".login-before").css('display', 'none');
+        location.reload();
+    }
+    function toApply() {
+        location.href = "/userItem/applymanteng";
+    }
+    $(function () {
+        if(wid<=767){
+            $(".gis_banner .bannerIcon").attr("src","/images/indexBanner01.jpg")
+        }
+        /*项目特色不同数量更换不同样式2017-5-18*/
+        var num01=$(".advantage li").length;
+       /* console.log(num01)*/
+        if(num01==4){
+            $(".advantage ul li").css("width","22%")
+            $(".advantage ul li:eq(3)").css("margin-left","1rem")
+        }if(num01==6){
+            /* $(".advantage ul li").css("width","30%")*/
+            $(".advantage ul li:eq(3)").css("margin-left","1rem")
+        }
+        /*项目活动or实习不同数量更换不同样式2017-5-18*/
+        var num02=$(".int_list li").length;
+        console.log(num02)
+        if(num02==2){
+            $(".int_list").css("width","60%")
+            $(".int_list li").css("width","50%")
+        }if(num02==3){
+            $(".int_list li").css("width","33.33%")
+        }if(num02==4){
+            $(".int_list").css("width","85%")
+            $(".int_list li").css("width","25%")
+            $(".int_list li .intBox").css("width","95%")
+            if($(window).width()<= 1024){
+                $(".int_list li").css("width","50%")
+                $(".int_list li").css("margin","1rem 0")
+            }
+        }
+        if(num02==5){
+            $(".int_list li").css("width","33.33%")
+            $(".int_list li").css("margin","1rem 0")
+            $(".int_list li:eq(3)").css("margin-left","12rem")
+        } if(num02==6){
+            $(".int_list li").css("width","33.33%")
+            $(".int_list li").css("margin","1rem 0")
+        }
+        if($(window).width()<= 1024){
+            $(".int_list").css("width","90%")
+        }
+        if($(window).width()<= 768){
+            $(".int_list").css("width","96%")
+        }
+        if($(window).width()<= 414){
+            $(".int_list li").css("width","100%")
+            $(".int_list li").css("margin","1rem 0")
+            $(".int_list li:eq(3)").css("margin-left","0")
+        }
+
+        if (wid < 767) {
+            $(".mid_cont").css({"width": wid, "max-width": "750px", "margin": "0 auto"});
+            $(".advantageTable").css("width", wid);
+            $(".gis_banner").css("width", wid);
+             $(".gis_banner_btn").css({"padding-top": wid* 0.28});
+            $(".project_details").css({"width": wid * 0.98, "margin-left": wid * 0.01});
+            $(".leadFrame").css({"width": wid * 0.8, "left": wid * 0.5});
+            $(".advantage ul li").css("width","90%")
+            $(".user-login").css({
+                "width": wid,
+                /*"height": hei,*/
+                "position": "fixed",
+                "margin-left": wid * 0.1,
+                "top": "0px"
+            });
+            if (wid > 640) {
+                for (var i = 0; i < list.length; i++) {
+                    var listUrl = '/images/case' + parseInt(i + 1) + '.png';
+                    list.eq(i).css({
+                        "background": "url(" + listUrl + ") no-repeat center top",
+                        "background-size": "15%"
+                    });
+                }
+            }
+
+        }
+
+    })
+
+
+    $("#goTopBtn").css("right", "0")
+
+</script>
+</html>

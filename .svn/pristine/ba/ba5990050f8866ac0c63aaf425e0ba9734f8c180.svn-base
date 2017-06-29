@@ -1,0 +1,52 @@
+package cv.focus.core.interfaces.student.web;
+
+import cv.focus.core.domain.student.model.profile.StudentProfile;
+import cv.focus.core.domain.user.model.User;
+import cv.focus.core.infrastructure.util.BaseController;
+import cv.focus.core.interfaces.student.facade.StudentProfileServiceFacade;
+import cv.focus.core.interfaces.user.facade.UserServiceFacade;
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+/**
+ * Created by Administrator on 2017/6/15.
+ */
+@Controller
+@RequestMapping("/home")
+public class HomeController extends BaseController {
+    private final Logger logger = Logger.getLogger(HomeController.class);
+    @Resource
+    private StudentProfileServiceFacade studentProfileService;
+    @Resource
+    private UserServiceFacade userServiceFacade;
+
+
+    @RequestMapping("/{uri}")
+    public ModelAndView viewProfile(
+            @PathVariable String uri,
+            HttpServletRequest request){
+        ModelAndView view = new ModelAndView();
+        try {
+            StudentProfile studentProfile = studentProfileService.findStudentProfileByPublicUri(uri);
+            if (studentProfile != null) {
+                //User checkUser = userServiceFacade.findUserByUserName(studentProfile.getEmail());
+                String school = studentProfile.getBiography().getCurrentSchool();
+                request.setAttribute(school,"school");
+                view.addObject("studentProfile", studentProfile);
+                view.setViewName("home/homepage");
+            }
+        }
+            catch (Exception e) {
+            logger.error("ProfileController.viewProfile()", e);
+        }
+
+        return view;
+    }
+}

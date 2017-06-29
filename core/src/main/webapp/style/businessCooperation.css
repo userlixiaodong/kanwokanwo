@@ -1,0 +1,580 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 微软雅黑;
+}
+
+html {
+    font-size: 20px;
+}
+
+@media screen and (max-width: 1920px) {
+    html {
+        font-size: 18px !important;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    html {
+        font-size: 16px !important;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    html {
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    html {
+        font-size: 12px !important;
+    }
+
+    body {
+        max-width: 750px;
+    }
+}
+
+
+/* iphone6 plus */
+@media (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+    html {
+        font-size: 25.875px;
+    }
+}
+
+/* iphone 6 */
+@media (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+    html {
+        font-size: 23.4375px;
+    }
+}
+
+/* 判断iphone5 *//* 横屏竖屏判断方法与ipad一样 */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+    html {
+        font-size: 20px;
+    }
+}
+
+
+body {
+    background: #dce2e5;
+}
+
+.container {
+    /* width: 1200px;*/
+    height: auto;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* 顶部banner*/
+.topBanner{
+    width: 100%;
+    height: 7rem;
+    background: url(/images/hezuoBA.png) no-repeat center;
+    margin-top: 70px;
+    text-align: center;
+    font-size: 2rem;
+    color: #fff;
+    line-height: 6.6rem;
+    font-family: "Microsoft Yahei";
+}
+.topBanner span{
+    font-size: 2.4rem;
+    display: inline-block;
+    height: 5.8rem;
+    border-bottom: 0.2rem solid #fff;
+    padding: 0;
+    text-align: center;
+}
+/* 顶部banner end*/
+.letterTitle {
+    height: 4rem;
+    font-weight: bold;
+    background-color: #fff;
+    margin: 0 auto 0 auto;
+    text-align: left;
+    width: 86%;
+    float: left;
+    border-bottom: 0.4rem solid #f7f8f9;
+    border-left: 0.2rem solid #f7f8f9;
+}
+
+.levelHeader {
+    display: inline-block;
+    /*border-left: 0.4rem solid #04bc8e;*/
+    height: 2.5rem;
+    line-height: 2.5rem;
+    padding-left: 1rem;
+    margin-top: 0.8rem;
+    /* margin-left: -7rem; */
+    font-family: "Microsoft YaHei";
+    font-weight: normal;
+    position: relative;
+    font-size: 1.5rem;
+}
+.levelHeader:before{
+    display: block;
+    content: "";
+    width: 0.4rem;
+    height: 2.5rem;
+    background-color: #04bc8e;
+    float: left;
+    margin-right: 1rem;
+}
+
+.toStudent,.toParent {
+    width: 86%;
+    float: left;
+    background-color: #fff;
+    margin-top: -0.3em;
+    border-left: 0.2rem solid #f7f8f9;
+    height: 60rem;
+    padding: 0 2.5rem 7rem 2.5rem;
+    height: auto;
+
+}
+
+.toFlowChart img{
+    width:120%;
+    height:auto;
+}
+.wrapper-parents{
+    display: block;
+    background-color: #f7f8f9;
+}
+.wrapper-students{
+    display: none;
+    background-color: #f7f8f9;
+}
+
+.navFor{
+    width: 13.6%;
+    height: 68.5rem;
+    background: #f7f8f9;
+    float: left;
+    padding: 3.8rem 0 0;
+}
+.navFor a{
+    display: block;
+    line-height: 3rem;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+    font-family: "Microsoft YaHei";
+    text-decoration: none;
+    height: 3rem;
+    /* border-bottom: 1px dashed #ccc;*/
+    color: #333333; ;
+    background-color: #fff;
+}
+
+.subnav-avatar-down > i {
+    font-size: 0.2rem;
+}
+.navFor a.active{
+    background-color:#04bc8e;
+}
+.aboutUs .title, .business .title{
+    color: #069d74;
+    font-size: 1.1rem;
+    text-align: left;
+    margin-top: 1.5rem;
+    margin-left: -0.2rem;
+}
+hr{
+    position: relative;
+}
+hr:before{
+    display: block;
+    content:"";
+    width: 3rem;
+    height: 0.2rem;
+    background-color: #0aaa82;
+    position: absolute;
+    top: -0.2rem;
+}
+.aboutcont{
+    padding:2rem 3.4rem;
+
+}
+.aboutcont span{
+    display: block;
+    width: 20rem;
+    float: right;
+    height: 12rem;
+    text-align: left;
+    font-size: 0.89rem;
+    color: #666666;
+    padding-top: 2rem;
+    position: relative;
+    line-height: 1.7rem;
+    text-align: justify;
+    width: 48%;
+}
+.aboutcont img{
+    display: block;
+    float: left;
+    margin-left: -3rem;
+    width: 48%;
+}
+.aboutcont span:before{
+    display: block;
+    content: "";
+    width: 5rem;
+    height: 3rem;
+    background: url("/images/douhaoLeft.png") no-repeat center;
+    position: absolute;
+    left: -4rem;
+    top: 0;
+    background-size: 2.7rem;
+}
+.aboutcont span:after{
+    display: block;
+    content: "";
+    width: 5rem;
+    height: 3rem;
+    background: url("/images/douhaoRight.png") no-repeat center;
+    position: absolute;
+    right: -4rem;
+    bottom: 0;
+    background-size: 2.7rem;
+}
+.solution p{
+    text-align: left;
+    padding: 0.4rem 0.5rem;
+}
+.solution i{
+    font-style: normal;
+    font-size: 0.95rem;
+    color: #12aa81;
+}
+.solution i b{
+    font-weight: normal;
+    font-family: "华文琥珀";
+    font-size: 1rem;
+}
+.solution span{
+    display: block;
+    text-align: left;
+    color: #666666;
+    font-size: 0.85rem;
+    text-align: justify;
+}
+
+/* 商务合作样式*/
+.ProvideYou ul{
+    margin-top: 3.5rem;
+}
+.ProvideYou .context{
+    padding: 2rem 4rem;
+    background-color: #17ac95;
+    text-align: center;
+    color: #fff;
+    border-radius: 1rem;
+    line-height: 1.7rem;
+    position: relative;
+    margin-top: 8rem;
+}
+.ProvideYou .context:before{
+    display: block;
+    content: "";
+    width: 5rem;
+    height: 3rem;
+    background: url(/images/douhaoLeft.png) no-repeat center;
+    position: absolute;
+    left: 3rem;
+    top: 1rem;
+    background-size: 2.5rem;
+}
+.ProvideYou .context:after{
+    display: block;
+    content: "";
+    width: 5rem;
+    height: 3rem;
+    background: url(/images/douhaoRight.png) no-repeat center;
+    position: absolute;
+    right: 3rem;
+    top: 1rem;
+    background-size:2.5rem;
+}
+
+.manager{
+    margin-top: 5rem;
+    background: url("/images/partner_BA01.png") no-repeat center;
+    padding: 2rem;
+    background-size: 84%;
+}
+.manager p{
+    height:10rem;
+}
+/*.manager p:nth-child(1){
+    float: left ;
+    padding-left: 9rem;
+}*/
+.manager p:nth-child(2){
+    float:right ;
+    padding-right:7rem;
+    padding-top: 0.5rem;
+}
+.manager p:nth-child(2) b{
+    display: block;
+    margin: 1rem 0 0;
+    color: #999;
+    position: relative;
+}
+.manager p:nth-child(2) b:before{
+    display: block;
+    content: "";
+    position: absolute;
+    width: 8rem;
+    height: 1rem;
+    /*background: url("/images/partnert_icon1.png") no-repeat center;*/
+    left: -6rem;
+    top: 0.2rem;
+}
+.manager p .icon1:before{
+    background: url("/images/partnert_icon1.png") no-repeat center;
+}
+.manager p .icon2:before{
+    background: url("/images/partnert_icon2.png") no-repeat left;
+}
+.manager p .icon3:before{
+    background: url("/images/partnert_icon3.png") no-repeat center;
+}
+
+.manager p:nth-child(2) span:nth-child(1){
+
+}
+.manager p span{
+    display: block;
+    text-align: left;
+    font-family: "Microsoft Yahei";
+
+}
+
+.ProvideYou li{
+    float: left;
+    width: 25%;
+
+}
+.ProvideYou li p{
+    width: 98%;
+    margin: 0 auto;
+    height:6rem;
+    padding: 0;
+}
+.ProvideYou li span{
+    display: block;
+    padding: 1rem 0.8rem;
+}
+.manager p:nth-child(1){
+    float: left;
+    box-shadow: 0 0 1rem #e8e6e6;
+    height: 13rem;
+    width: 15rem;
+    /* margin-top: 1rem; */
+    padding-top: 2.6rem;
+    position: relative;
+    margin-left: 7rem;
+}
+.manager p:nth-child(1) span{
+    padding: 0.4rem 0.3rem 0.4rem 0.5rem;
+    font-size: 0.88rem;
+    line-height: 1rem;
+    margin-right: 1rem;
+    position: absolute;
+    top: 0.4rem;
+    left: -3rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ccc;
+}
+.provideIMG{
+    margin: 2rem 0 2rem -4rem;
+}
+@media (max-width:1023px){
+    .manager{
+        background: none;
+        width: 100%;
+        margin-top: 1rem;
+    }
+    .manager p:nth-child(1){
+        box-shadow: none;
+        width: 100%;
+        margin-left: 0;
+
+    }
+
+    .manager p:nth-child(1) span{
+        left: 11rem;
+    }
+    .manager p:nth-child(2) b:before{
+        background: none;
+    }
+    .manager p:nth-child(2) b{
+        display: inline;
+    }
+    .manager p:nth-child(2) {
+       /* float: none;*/
+         padding-right: 0;
+       /* padding-top: 18rem;*/
+      /*  padding-left: 7rem;*/
+        margin-top: 2rem;
+        width: 100%;
+    }
+    .manager p:nth-child(2) span{
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+}
+@media (max-width:991px){
+    .aboutcont span:after{
+        bottom: -4rem;
+    }
+    .aboutcont {
+        padding: 2rem 3.4rem 5rem;
+    }
+    .ProvideYou .context{
+        padding: 2rem 1rem;
+        font-size: 0.96rem;
+        margin: 12rem auto 0 auto;
+        width:96%;
+    }
+    .ProvideYou .context:after{
+        right: 0;
+    }
+    .ProvideYou .context:before{
+        left: 0;
+    }
+
+}
+
+@media (max-width:765px){
+
+    .navFor{
+        width:100%;
+        height: auto;
+        float:none;
+        padding:0;
+    }
+
+    .navFor a{
+        width: 50%;
+        float: left;
+    }
+    .toParent,.toStudent{
+        width: 100%;
+    }
+
+    .letterTitle{
+        width: 100%;
+        margin-top: 0.4rem;
+    }
+    .aboutcont img{
+        float: none;
+        margin: 0 auto;
+        width: 70%;
+    }
+    .aboutcont span{
+        float: none;
+        width: 70%;
+        margin: 3rem auto 0 auto;
+    }
+    .aboutUs .title, .business .title{
+        text-align: center;
+        padding: 0 2rem;
+    }
+    .levelHeader{
+        width: 100%;
+        text-align: center;
+    }
+    hr:before,.levelHeader:before{
+        display: none;
+    }
+    .solution p{
+        width: 90%;
+        margin: 0 auto;
+    }
+    .provideIMG{
+        margin: 2rem 0;
+        width: 80%;
+    }
+    .ProvideYou img{
+        width: 72%;
+    }
+    .ProvideYou .context{
+        margin-top: 11rem;
+        font-size: 0.88rem;
+        padding: 1rem 4rem;
+        text-align: left;
+    }
+
+    .ProvideYou .context:after{
+        right: 0;
+    }
+    .ProvideYou .context:before{
+        left: 0;
+    }
+    .toStudent, .toParent{
+        padding: 0 0rem 1rem 0rem;
+    }
+}
+@media (max-width:415px){
+    .container{
+        padding:0;
+    }
+    .provideIMG{
+        width: 92%;
+    }
+    .aboutcont img,.aboutcont span{
+        width: 73%;
+    }
+    .ProvideYou .context:before,.ProvideYou .context:after{
+        background-size: 1.6rem;
+    }
+    .ProvideYou li{
+        width: 50%;
+    }
+    .ProvideYou img{
+        width: 55%;
+    }
+    .ProvideYou li:nth-child(3),.ProvideYou li:nth-child(4){
+        margin-top: 6rem;
+    }
+    .ProvideYou li span{
+        font-size: 1.2rem;
+    }
+    .aboutcont{
+        padding: 0rem 0.1rem 4rem 0.1rem;
+    }
+    .aboutcont span:after{
+        bottom: -1rem;
+    }
+    .manager p:nth-child(1) span {
+        left: 8rem;
+    }
+    .topBanner{
+        font-size: 1.6rem;
+    }
+
+}
+@media (max-width:375px){
+    .aboutcont{
+        /*padding: 0rem 3.4rem 6rem 3.4rem;*/
+    }
+    .topBanner{
+        font-size: 1.3rem;
+    }
+
+}
+@media (max-width:320px){
+    .aboutcont span:after{
+        bottom: -1rem;
+    }
+}

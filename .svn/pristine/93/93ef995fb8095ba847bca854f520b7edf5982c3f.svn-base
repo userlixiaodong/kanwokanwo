@@ -1,0 +1,202 @@
+*{margin:0;padding:0;}
+html{font-size:20px;font-family:"微软雅黑 Light";}
+body{background: #fff;}
+ul,li{list-style: none;}
+a{text-decoration: none;}
+.banner-wrapper{position: relative;margin: 70px 0 0 0;width: 100%;height: 453px;}
+.banner{position:relative;width: 100%;height: 453px;overflow: hidden;}
+.imgList{position:relative;height:453px;}
+.imgList li{float:left;display: inline-block;padding:0;}
+.imgList li img{width:100%;height:auto;}
+#prev, #next{position: absolute;top:280px;z-index: 1;cursor: pointer;}
+#prev{left: 80px;}
+#next{right: 80px;}
+#prev:hover, #next:hover{opacity: 0.5;filter:alpha(opacity=50);}
+.container {
+    width: 60rem;
+    margin: 2rem auto;
+}
+
+.searchBar {
+    width: 60%;
+    height: 2rem;
+    margin:0 auto 2.5rem auto;
+}
+
+.searchForm {
+    display: block;
+    width: 100%;
+    height: 2rem;
+    margin-top: 0;
+}
+
+.searchGroup {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.searchInput {
+    display: block;
+    font-size: 0.7rem;
+    padding: 0.3rem 1rem;
+    height: 100%;
+    width: 90%;
+    border: 0.05rem solid #000;
+}
+
+.searchButton {
+    width: 10%;
+    height: 100%;
+    background: #18ad92;
+    position: absolute;
+    right: 0;
+    top: 0px;
+    color: #fff;
+    font-size: 0.8rem;
+    font-style: normal;
+    font-family: "微软雅黑 Light";
+    text-align: center;
+    line-height: 1.8rem;
+    cursor: pointer;
+}
+.hotSearch{
+    font-size:0.7rem;
+    font-family:"微软雅黑 Light";
+    margin-top:1rem;
+}
+.searchResults{
+    width:100%;
+    height:auto;
+    margin:4rem auto 0 auto;
+}
+.searchWrapper{
+    width:100%;
+    height:auto;
+    font-family:"yahei";
+}
+.searchWrapper li{
+    display: inline-block;
+}
+.searchWrapper_li{
+    border-bottom:1px solid #cad7dd;
+    width:100%;
+    padding-bottom:20px;
+}
+/*.searchWrapper_li:nth-of-type(1){*/
+    /*background: #f89;*/
+/*}*/
+.benefit{
+    width:5.1rem;
+    height:5rem;
+    background: url("/images/benefit.png") no-repeat;
+    position: relative;
+    top:0;
+    left:24rem;
+}
+.searchItem_li:nth-child(1){
+    width:12rem;
+    height:8.4rem;
+    float: left;
+    text-align: left;
+    overflow: hidden;
+    margin:1rem 1rem 0 0;
+    /*cursor: pointer;*/
+}
+.searchItem_li:nth-child(2){
+    float: left;
+    /*cursor: pointer;*/
+    width:70%;
+}
+.searchItem_li:nth-child(3){
+    float: right;
+    text-align: center;
+}
+.search_li_dec{
+    text-decoration: none;
+    color: #666;
+    font-family: "微软雅黑 Light";
+}
+.seeNum{
+    display:block;
+    width:100%;
+    height:1rem;
+    background: url("/images/seeNum.png") no-repeat 0.8rem 0.25rem;
+    background-size: 45%;
+    margin-top:1rem;
+    margin-left:-4.2rem;
+    padding-left:2rem;
+    font-size:0.7rem;
+    line-height:1rem;
+}
+.recNum{
+    background-size: 18%;
+    padding-left:0;
+    margin-left:0.8rem;
+    margin-top:-8.6rem;
+}
+.recorded{
+    display: block;
+    width:5rem;
+    height:1.5rem;
+    border-radius: 0.2rem;
+    background: #00b292;
+    line-height:1.5rem;
+    color: #fff;
+    font-size:0.7rem;
+    font-family:"微软雅黑 Light";
+    text-align: center;
+    margin-top:7rem;
+}
+.recorded a{
+    text-decoration: none;
+    color: #fff;
+}
+.searchItem_li h4{
+    color: #333;
+    font-family:"微软雅黑 Light";
+    margin-top:1rem;
+}
+.searchItem_li p{
+    color: #666;
+    padding-left:0;
+}
+.searchText{
+    font-size:0.7rem;
+    color: #999;
+}
+.bef-aft{
+    width:50px;
+    height:60px;
+    display: block;
+    position: relative;
+    top:-180px;
+    left:0px;
+    padding-top:4px;
+    padding-left:9px;
+    z-index: 1;
+    background: url("/images/bef-aft.png") no-repeat;
+    color: #fff;
+    font-size:0.8rem;
+    font-family:"微软雅黑 Light";
+}
+.describe{
+    display: block;
+    font-size:0.7rem;
+    color: #999;
+    line-height:1.4rem;
+    padding-left:0;
+    /*-o-text-overflow: ellipsis;    !* Opera 9-10 *!*/
+    /*text-overflow:    ellipsis;    !* IE, WebKit (Safari, Chrome), Firefox 7, Opera 11 *!*/
+    /*overflow: hidden;*/
+    /*display: -webkit-box;*/
+    /*-webkit-line-clamp: 3;*/
+    /*-webkit-box-orient: vertical;*/
+}
+.searchItem_li p{
+    font-size:0.6rem;
+    color: #999;
+    margin-top: 0.7rem;
+}
+
+

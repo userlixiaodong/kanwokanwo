@@ -1,0 +1,272 @@
+@charset "utf-8";
+
+/*公共样式start*/
+.application_box{
+    width: 1340px;
+    height: 830px;
+    background-color: #f4f8fa;
+    margin: 97px auto;
+    border: 1px solid #c4c7c8;
+    text-align: center;
+}
+.application_box .title{
+    font-size: 42px;
+    color: #333333;
+    padding: 56px;
+    font-family: 黑体;
+    letter-spacing: 7px;
+    font-weight: normal;
+}
+.application_box ul{
+    width: 1200px;
+    margin: 0 auto;
+    height: 88px;
+    padding: 0px;
+}
+.application_box ul li{
+    list-style: none;
+    float: left;
+    font-size: 24px;
+    color: #333333;
+    font-family: 微软雅黑;
+    width: 25%;
+}
+.application_box ul li span{
+    font-family: Arial;
+    font-size: 42px;
+    color: #17ac84;
+    padding-right: 10px;
+}
+.application_box .line{
+    width: 1200px;
+    height: 20px;
+    background-color: #dddddd;
+    border-radius: 20px;
+    margin: 0 auto;
+}
+
+.application_box .line .line_speed{
+    display: block;
+    width: 300px;
+    height: 20px;
+    background-color: #1fc296;
+    border-radius: 20px;
+}
+.application1 .line .line_speed{
+    width: 300px;
+}
+.application_box .text{
+    margin: 0 auto;
+    height: 140px;
+    line-height: 140px;
+    color: #666666;
+    font-size: 20px;
+    font-family: 微软雅黑;
+}
+/*公共部分end*/
+
+.application_box .self_info input{
+    width: 248px;
+    height: 40px;
+    text-indent: 10px;
+    font-size: 16px;
+    font-family: 微软雅黑;
+    color: #999;
+}
+.application_box .self_info p span{
+    margin-bottom: 19px;
+    font-size: 18px;
+    color: #333333;
+    font-family: 微软雅黑;
+}
+.application_box .self_info p{
+    position: relative;
+}
+.application_box .self_info p b{
+    display: block;
+    position: absolute;
+    right: 375px;
+    top: 7px;
+    font-weight: normal;
+    font-family: 微软雅黑;
+    font-size: 14px;
+    color: red;
+    display: none;
+}
+.application_box .self_info p:nth-child(2) b{
+    right: 347px;
+}
+.application_box .self_info span i,.application_box .text i{
+    display: inline-block;
+    width: 26px;
+    height: 24px;
+    background: url(/images/asterisk_icon.png)no-repeat center;
+}
+
+.btn_down,.btn{
+    width: 100px;
+    height: 42px;
+    background-color: #1bb38c;
+    font-size: 18px;
+    color: #FFFFFF;
+    font-family: "微软雅黑";
+    margin: 50px 0 0 120px;
+    border: none;
+    border-radius: 4px;
+}
+.btn:hover{
+    background-color: #39cea8;
+}
+
+/*step-02*/
+.application2 .line .line_speed{
+    width: 600px;
+}
+.application_box .cis_word{
+    margin-top: 14px;
+}
+.application_box .cis_word a{
+    display: block;
+    width: 212px;
+    height: 46px;
+    line-height: 46px;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-family: "微软雅黑";
+    margin: 28px auto 0 auto;
+    border-radius: 4px;
+    background: #2688ea url(/images/downIcon.png) no-repeat 13px 9px;
+    text-indent: 35px;
+}
+.application_box .step_box{
+    width: 306px;
+    margin: 80px auto;
+}
+.application_box .step_box a{
+    display: block;
+    line-height: 42px;
+    text-decoration: none;
+    margin: 0;
+}
+.application_box .step_box a:nth-child(1){
+    float: left;
+}
+.application_box .step_box a:nth-child(2){
+    float: right;
+}
+
+/*step03开始*/
+.application3 .line .line_speed{
+    width: 900px;
+}
+.cis_word .fileText,.cis_word .fileUp{
+    display: block;
+    font-family: 微软雅黑;
+    color: #0e9fcc;
+}
+.cis_word .fileUp{
+    color: red;
+    display: none;
+}
+/*step04开始*/
+.application4 .line .line_speed{
+    width:1200px;
+}
+.application4 b{
+    text-align: left;
+    display: block;
+    margin: -44px 0 54px 268px;
+    font-size: 16px;
+    color: #999999;]
+font-family: "微软雅黑";
+    font-weight: normal;
+}
+.application4 .ewm_box{
+    width: 385px;
+    margin: 0 auto;
+}
+.application4 .ewm_box span{
+    display: block;
+    font-size: 18px;
+    color: #666666;
+    font-family: "微软雅黑";
+    padding: 18px 0 54px 0;
+}
+.application4 .ewm_box p:nth-child(1){
+    float: left;
+}
+.application4 .ewm_box p:nth-child(2){
+    float: right;
+}
+
+/*弹窗样式*/
+.popup_box{
+    width: 600px;
+    height: 420px;
+    background-color: #f3f7ff;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -300px;
+    margin-top: -210px;
+    z-index:999;
+    display: none;
+}
+.popup_box img{
+    display: block;
+    margin: 0 auto;
+    padding: 62px 0 40px 0;
+
+}
+.popup_box p{
+    text-align: center;
+    font-size: 18px;
+    font-family: "微软雅黑";
+    color: #666666;
+    padding: 0;
+    margin: 0;
+    line-height:30px;
+}
+.popup_box .popup_btn{
+    display: block;
+    width: 100px;
+    height: 42px;
+    background-color: #1bb38c;
+    font-size: 18px;
+    color: #FFFFFF;
+    font-family: "微软雅黑";
+    border-radius: 4px;
+    text-decoration: none;
+    line-height: 42px;
+    text-align: center;
+    margin: 40px auto;
+}
+.popup_box .popup_btn:hover{
+    background-color: #39cea8;
+}
+.popup_box .popup_close{
+    display: block;
+    cursor: pointer;
+    width: 23px;
+    height: 23px;
+    background: url(/images/cisformclose.png)no-repeat center;
+    position: absolute;
+    right: 13px;
+    top:13px
+}
+
+
+.fe_window_mask{
+    display: none;
+    position:fixed;
+    left:0;
+    top:0;
+    z-index:699;
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+    background:#000 none repeat scroll 0 0;
+    opacity:0.3;
+}

@@ -1,0 +1,73 @@
+package cv.focus.core.application.impl;
+
+import cv.focus.core.application.SpecializationService;
+import cv.focus.core.application.UserItemService;
+import cv.focus.core.domain.activity.ItemEntity;
+import cv.focus.core.domain.activity.UserItemEntity;
+import cv.focus.core.domain.activity.UserItemRepository;
+import cv.focus.core.infrastructure.persistence.hibernate.impl.UserItemRepositoryHibernateImpl;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.Date;
+
+/**
+ * Created by Administrator on 2017/4/5.
+ */
+@Service
+public class UserItemServiceImpl implements UserItemService{
+
+    @Resource
+    private SpecializationService specializationService;
+    @Resource
+    private UserItemRepository userItemRepositoryHibernateImpl;
+
+    @Override
+    public UserItemEntity createUserItem(String userName, String moblie, String email,Integer id,String itemId,String fileUrl) {
+        UserItemEntity userItemEntity = new UserItemEntity(userName, moblie, email);
+        try{
+        }catch (Exception ignored) { }
+        if(null == userItemRepositoryHibernateImpl.findUserItemByMoblie(userItemEntity.getMoblie())){
+
+            //获取活动id
+            Integer ItemID = Integer.parseInt(itemId);
+            ItemEntity Item=specializationService.findItemById(ItemID);
+            userItemEntity.setItemId(ItemID);
+            //获取登录id
+            userItemEntity.setUserId(id);
+            //创建时间
+            Date date=new Date();
+            //设置状态
+            userItemEntity.setStatus("1");
+            userItemEntity.setIsFree(Item.getIsFree());
+            userItemEntity.setMoney(Item.getMoney());
+            userItemEntity.setCreateDate(date);
+            userItemEntity.setFileUrl(fileUrl);
+            userItemRepositoryHibernateImpl.store(userItemEntity);
+            return userItemEntity;
+        }
+        return null;
+    }
+
+    @Override
+    public UserItemEntity findUserItemByMoblie(String moblie) {
+        return userItemRepositoryHibernateImpl.findUserItemByMoblie(moblie);
+    }
+
+    @Override
+    public UserItemEntity findUserItemByItemIdAndUserId(Integer userId, String itemId) {
+        return userItemRepositoryHibernateImpl.findUserItemByItemIdAndUserId(userId,itemId);
+    }
+
+    @Override
+    public UserItemEntity findUserItemById(Integer id) {
+        return userItemRepositoryHibernateImpl.findUserItemById(id);
+    }
+
+    @Override
+    public void updateUserItem(UserItemEntity userItem) {
+        userItemRepositoryHibernateImpl.updateUserItem(userItem);
+    }
+
+}

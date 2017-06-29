@@ -1,0 +1,50 @@
+package cv.focus.core.domain.user.model;
+
+import cv.focus.core.domain.activity.*;
+
+import cv.focus.core.interfaces.cisactivity.dto.UserItemDTO;
+
+import java.util.List;
+
+/**
+ * Created by Administrator on 2016/9/12.
+ */
+public interface SpecializationRepository {
+    void store(Specialization Specialization);
+
+    List<Specialization> findByTutorName(String tutorName);
+
+    List<Specialization> findByTutorId(Integer tutorId);
+
+    List<Specialization> findByUserId(Integer userId);
+
+    List<Specialization> findCurrentListByUserId(Integer userId);
+
+    List<Specialization> findHistoryListByUserId(Integer userId);
+
+    List<Specialization> findCurrentListByTutorId(Integer tutorId);
+
+    List<Specialization> findHistoryListByTutorId(Integer tutorId);
+
+    List<Specialization> findAll();
+
+    List<ItemEntity> findItemList();
+
+    ItemEntity findItemById(Integer itemId);
+
+    void addPageviews(Integer itemId, Integer afterClickNum);
+
+    List<ItemEntity> findBannerList();
+
+    List<UserItemDTO> findUserItemByUserId(Integer userId);
+
+    List<CourseEntity> findCourseByType(String courseType);
+
+    void saveApplyInfo(ApplyActivity applyActivity);
+
+    void saveApplyActivity(UserApplyActivity userApplyActivity);
+
+    CourseEntity findExamInfoById(String id);
+
+    void saveUserScore(UserScore userScore);
+}

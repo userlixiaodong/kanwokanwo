@@ -1,0 +1,1247 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body,html{
+    width:100%;
+}
+section,.row{
+    margin: 0px!important;
+    padding: 0px!important;
+
+}
+.container-fluid-2{
+    padding:0!important;
+    background-color: #f0f0f0;
+}
+.appointment{
+    width: 150px;
+    height: 70px;
+    position: fixed;
+    z-index: 10000;
+    background-color: #0cc394;
+    -webkit-border-radius: 75px;
+    -moz-border-radius: 75px;
+    border-radius: 11px;
+    right: 0;
+    top: 50%;
+    margin-top: -75px;
+    box-shadow: 0 0 10px 0 #3d3d3d;
+}
+.appointment a{
+    display: block;
+    width:100%;
+    height:100%;
+    line-height: 70px;
+    text-align: center;
+    font-size: 25px;
+    color: #fff;
+    font-family: "Microsoft Yahei";
+}
+/*.appointment:hover{*/
+    /*animation: change 2s infinite;*/
+/*}*/
+/*@keyframes change {*/
+    /*100%{*/
+        /*transform: rotate3d(0,1,0,360deg);*/
+    /*}*/
+/*}*/
+.login-before{
+    width: 700px;
+    height: 340px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index:1000;
+    text-align: center;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    background: #e1e4e8;
+    display: none;
+}
+.consult-fail{
+    width: 700px;
+    height: 340px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index:1000;
+    text-align: center;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    background: #e1e4e8;
+    display: none;
+}
+.login-before .login-before-close-btn,.pay-close-btn,.consult-fail .consult-fail-close-btn{
+    color: #aaaaaa;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.login-before p,.consult-fail p{
+    font-family: "Microsoft Yahei";
+    font-size: 18px;
+    margin-top: 90px;
+    width:100%;
+    text-align: center;
+}
+.login-before .login-btn{
+    display: block;
+    width: 140px;
+    height: 55px;
+    font-size: 24px;
+    line-height: 55px;
+    color: #fff;
+    text-align: center;
+    margin: 70px auto;
+    background-color: #28b38d;
+}
+.consult{
+    display: none;
+    padding: 30px;
+    width: 800px;
+    height: 800px;
+    background: #e1e4e8;
+    position: fixed;
+    z-index:1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+}
+.consult .consult-close-btn{
+    color: #aaaaaa;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.byte-count{
+    position: absolute;
+    right: 30px;
+}
+.consult input,.consult select{
+    width: 240px;
+    height: 30px;
+}
+.consult .cost{
+    margin-left: 5px;
+    font-weight: bold;
+}
+.consult .consult-time{
+    font-size: 16px;
+    font-family: "Microsoft Yahei";
+    margin-right: 30px;
+}
+/*.consult .consult-time .consult-time-name{*/
+    /*display: block;*/
+/*}*/
+.consult .consult-time b{
+    font-size: 16px;
+    color: red;
+    margin:0 2px;
+}
+.consult ul{
+    font-family: "Microsoft Yahei";
+    padding:0 50px;
+    font-size: 14px;
+    color: #e09400;
+}
+.name-input,.phone-input,.email-input{
+    margin-top: 16px;
+}
+.consult ul li,.consult .tip,.tip-bottom ,.pay-tip{
+    font-size: 14px;
+    color: #e09400;
+    font-family: "Microsoft Yahei";
+}
+.another{
+    line-height: 60px;
+}
+.a-quesiton{
+    width:100%;
+    display: block;
+    height: 150px;
+    font-size: 14px;
+    resize: none;
+}
+.tip-bottom{
+    display: none;
+    margin-top: 30px;
+    width:100%;
+    text-align: center;
+}
+.consult-btn{
+    display: block;
+    width: 170px;
+    height: 55px !important;
+    background-color: #28b38d;
+    border:none;
+    line-height: 55px;
+    font-size: 24px;
+    margin:0 auto;
+    color: #fff;
+}
+
+.pay{
+    display: none;
+    padding: 50px;
+    width: 800px;
+    height: 740px;
+    background: #e1e4e8;
+    position: fixed;
+    z-index:1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+
+}
+.pay h3{
+    font-family: "Microsoft Yahei";
+    text-align: center;
+}
+.pay h2{
+    font-family: "Microsoft Yahei";
+    font-size: 20px;
+    color: #28b38d;
+    text-align: center;
+    margin:60px 0;
+}
+.pay h4{
+    text-align: center;
+    font-family: "Microsoft Yahei";
+}
+.pay h4 em{
+    display: inline-block;
+    width:40%;
+    border-bottom: 1px solid #3d3d3d;
+}
+.pay ul{
+    width:75%;
+    height: 250px;
+    padding: 20px;
+    margin:0 auto;
+
+}
+.pay ul li{
+    width: 200px;
+    height: 220px;
+    background-color: #0cc394;
+    float: left;
+    margin-left: 30px;
+    position: relative;
+    padding: 0;
+}
+
+.pay ul li img{
+    width: 180px;
+    height: 180px;
+    display: block;
+    margin: 10px auto;
+}
+
+.pay ul li p{
+    position: absolute;
+    bottom:-6px;
+    width:100%;
+    display: block;
+    text-align: center;
+    font-family: "Microsoft Yahei";
+}
+.pay .pay-tip{
+    margin: 20px;
+}
+section{
+    position: relative;
+    top: 75px;
+}
+.navbar-section{
+    height: 75px;
+}
+.activity-container section{
+    top: 0px;
+}
+section .main-content,.content-2{
+    padding:0 10% ;
+}
+.content-2{
+    background: #f0f0f0;
+    margin: 0px !important;
+}
+section .main-content .my-story-container .row h1{
+    border-left: 15px solid #1bb38c;
+    border-bottom: none;
+    margin-left: -3%;
+    padding-left:2%;
+}
+.my-video-section{
+    margin-top: -6%!important;
+    margin-bottom: 10%!important;
+}
+section .main-content .student-photo{
+    overflow: hidden;
+    height: 380px;
+    position: relative;
+
+}
+section .main-content .student-photo .photo-after{
+    visibility: hidden;
+}
+section .main-content .student-photo img{
+    max-width:360px;
+    max-height:380px;
+
+}
+section .main-content .information{
+    position: relative;
+    margin-bottom:4%;
+}
+section .main-content .information .content-container{
+    width:100% !important;
+}
+section .main-content .information .student-name{
+    color: #333;
+    height: 100px;
+    font-size:50px;
+    margin-top: 0%;
+    padding-left: 5%;
+    line-height: 100px;
+    /*position: relative;*/
+    font-family:"Open Sans Condensed", sans-serif;
+}
+section .main-content .information .student-name .tutor-flag{
+    display:inline-block;
+    width: 70px;
+    height: 100px;
+    margin-left: 30px;
+    position: absolute;
+    right: 0;
+}
+section .main-content .information .student-name .tutor-flag b{
+    line-height: 10px;
+    display: block;
+    font-size: 18px;
+    color: #04bc8e;
+    top:100%;
+}
+section .main-content .information .student-name .tutor-flag b::before{
+    content: '';
+    display: block;
+    background: url("/images/mentor.png") no-repeat center ;
+    width: 70px;
+    height: 70px;
+    background-size: cover;
+    margin: 10px 0;
+
+}
+section .main-content .information_btn, section .main-content .student_btn{
+    float: left;
+    height: 50px;
+    width:50%;
+    font-size:25px;
+    margin-top: 0%;
+    line-height: 50px;
+    text-align: center;
+    background-color: #F9F9F9;
+    font-family:"Open Sans Condensed", sans-serif;
+}
+.tab-show {
+    background-color: #1bb38c !important;
+    color: #ffffff!important;
+}
+.tab-show a {
+    color: #ffffff !important;
+}
+.tab-hide a {
+    color: #898989 !important;
+}
+section .main-content .information .information-list{
+    width:100%;
+    margin-top:7%;
+    margin-left:5%;
+}
+section .main-content .information .information-list li{
+    width:90%;
+    min-height: 43px;
+    position: relative;
+}
+section .main-content .information .information-list .school-name a strong{
+    display:block;
+    margin-left: 85px;
+    margin-top: -50px;
+}
+section .main-content .information .information-list li a p{
+    margin:0 !important;
+}
+
+section .main-content .information .information-list .hobby a strong{
+    display:block;
+    margin-left: 175px;
+    margin-top: -50px;
+}
+section .main-content .information .information-list li i{
+    color: #888888;
+    line-height: 50px;
+    position: absolute;
+    top:0%;
+}
+
+section .main-content .information .information-list li a{
+    color: #888888;
+    width: 100%;
+    display: block;
+    font-size: 16px;
+    line-height: 50px;
+    word-break: break-all;
+    text-align: left;
+    margin-left: 5%;
+}
+section .main-content .information .information-list li a strong{
+    font-weight: bold;
+    font-size: 16px;
+}
+section .main-content .information .information-list li a p div{
+    width:100%;
+}
+section .main-content .information .information-list li a div{
+    color: #888888;
+    width: 18%;
+    display: block;
+    font-size: 16px;
+    line-height: 50px;
+    text-align: left;
+    float: left;
+}
+section .main-content .information .information-list li a div div{
+    width: 20%;
+    float: left;
+}
+section .main-content .information .information-list li a div strong{
+    font-weight: bold;
+    font-size: 16px;
+}
+section .main-content .button-tag{
+    margin-bottom: 0px;
+    margin-top: 5%;
+    width: 100%;
+}
+section .main-content .button-tag li{
+    float: left;
+    width:20%;
+    height: 126px;
+    background-color: #f9f9f9;
+}
+section .main-content .button-tag li:hover{
+    background-color: #1bb38c;
+    color: #fff;
+}
+section .main-content .button-tag li a:hover{
+    color: #fff !important;
+}
+section .main-content .button-tag li i{
+    display: block;
+    font-size: 30px;
+}
+section .main-content .button-tag li a{
+    display: block;
+    padding-top: 19%;
+    height:100%;
+    width:100%;
+    text-align: center;
+}
+
+
+
+section .main-content .button-tag2{
+    margin-bottom: 0px;
+    margin-top: 5%;
+    width: 100%;
+}
+section .main-content .button-tag2 li{
+    float: left;
+    width:50%;
+    height: 126px;
+    background-color: #f9f9f9;
+}
+section .main-content .button-tag2 li:hover{
+    background-color: #1bb38c;
+    color: #fff;
+}
+section .main-content .button-tag2 li a:hover{
+    color: #fff !important;
+}
+section .main-content .button-tag2 li i{
+    display: block;
+    font-size: 30px;
+    margin-bottom: 1%;
+}
+section .main-content .button-tag2 li a{
+    display: block;
+    padding-top: 6%;
+    height:100%;
+    width:100%;
+    color: #333;
+    text-align: center;
+}
+
+
+
+
+
+
+
+section .main-content .information-page{
+
+    display: none;
+}
+section .main-content .information-page .school-name{
+    font-weight: bold;
+    color: #333;
+    position: absolute;
+    margin-left: 2%;
+    font-size: 25px;
+}
+section .main-content .information-page .schoolnews-list{
+    margin-left: 15.52%;
+    margin-top: -7%;
+    line-height: 25px;
+    width: 100%;
+    display: block;
+    color: #333;
+}
+section .main-content .student-page{
+    width:100%;
+}
+section .right-sidebar .mylink{
+    padding:8%;
+    background-color: #1bb38c;
+}
+section .right-sidebar .mylink h3{
+    font-size: 40px;
+    color: #fff;
+    margin: 0;
+}
+section .right-sidebar .mylink p{
+    font-size: 21px;
+    color: #fff;
+    margin:1% auto;
+}
+section .right-sidebar .mylink input{
+    width:90%;
+    height: 40px;
+    font-size: 16px;
+    margin-top:7%;
+    border-radius: 5px;
+}
+section .right-sidebar .mylink a {
+    display: block;
+    width: 120px;
+    height: 40px;
+    background-color: #1bb38c;
+    border: 1px solid #fff;
+    border-radius: 7px;
+    margin-top: 5%;
+    position: relative;
+    left:50%;
+    margin-left: -80px;
+    line-height: 35px;
+    text-align: center;
+    color: #fff;
+    font-size: 17px;
+}
+section .right-sidebar .mylink a:hover{
+    background-color: #fff;
+    color: #1bb38c;
+    border-color: #1bb38c;
+}
+section .right-sidebar .badges{
+    width:80%;
+}
+section .right-sidebar .badges h3{
+    padding-left: 6%;
+    width:100%;
+    height: 30px;
+    font-size: 25px;
+    color: #888888;
+    border-left: 15px solid #1bb38c;
+}
+section .right-sidebar .badges .badges-list{
+    width:100%;
+    height: auto;
+    margin-left: 8%;
+}
+section .right-sidebar .badges .badges-list li{
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    margin-left:19px;
+    margin-top: 5px;
+    float: left;
+}
+
+section .right-sidebar .kanwo-interview{
+    clear: both;
+    padding:1% 8%;
+}
+section .right-sidebar .kanwo-interview h3{
+    font-size: 30px;
+    font-family: "Open Sans Condensed", sans-serif;
+    color: #1bb38c;
+}
+section .right-sidebar .kanwo-interview .my-video{
+    background-size: cover;
+    width:100%;
+    height: 227px;;
+    margin:0 auto;
+
+}
+section .right-sidebar .kanwo-interview .learn-more{
+    background-color: #0e9fcc;
+    color: #fff;
+    display: inline-block;
+    width:35%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin-top: 3%;
+}
+section .right-sidebar .kanwo-interview .reserve-interview{
+    float: right;
+    display: inline-block;
+    color: #fff;
+    background-color: #FF9900;
+    width:55%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin-top: 3%;
+}
+
+section .right-sidebar .inspiration{
+    clear: both;
+    padding:0% 8%;
+}
+section .right-sidebar .inspiration h3{
+    font-size: 30px;
+    font-family: "Open Sans Condensed", sans-serif;
+    color: #1bb38c;
+    margin-bottom: 3%;
+}
+section .right-sidebar .inspiration a{
+    margin-left:22%;
+}
+section .right-sidebar .inspiration img{
+    border-radius: 10px;
+}
+footer{
+    margin-top: 75px;
+}
+.cursor-pointer{cursor: pointer !important;}
+.information-page .information_record{
+    background-color: transparent;
+    margin-top:3%;
+    width:100%;
+    height:auto;
+}
+.information-page .information_record li{
+    width:100%;
+    height:auto;
+    padding: 2% 4%;
+    position: relative;
+    border-radius: 0.5em;
+    margin-bottom: 17px;
+}
+.information-page .information_record li .record-con{
+    width:80%;
+    margin-bottom: 2%;
+}
+/*.information-page .information_record li .record-con div a img {*/
+    /*width: 250px;*/
+/*}*/
+.information-page .information_record li p{
+    display: block;
+    font-size: 1.2em;
+    font-family: 'Lato';
+    color: #888888;
+    font-weight:400;
+    width:100%;
+    line-height: 1.25em;
+}
+.information-page .information_record li time{
+    display: block;
+    font-size:12px;
+    font-family: 'Lato';
+    color: #cecdcd;
+    margin-bottom: 10px;
+    margin-top: 4%
+}
+.information-page .information_record li hr{
+    width:100%;
+    margin: 0;
+}
+.information-page .information_record li .feel-good{
+    width:14%;
+    display: block;
+    font-size:12px;
+    font-family: 'Lato';
+    color: #cecdcd;
+}
+.information-page .information_record li  a em{
+    font-size: 2.5em;
+}
+.information-page .information_record li .feel-good .glyphicon{
+    font-size: 2em;!important;
+    top: 0.3em;
+    margin-right:0.1em;
+}
+.video-container strong,.rebox-contents .video-container strong{width: 100%;  display: inline-block;  position: absolute;  z-index: 9;  top: 50%;  left: 0;  margin-top: -32px;  color: #fff;  font-size: 50px;text-align: center;}
+.message-btn-down-content {
+    width: 100px;
+    border: 1px solid #ccc;
+    background: #fff;
+    position: absolute;
+    right: 8px;
+    top: 40px;
+    z-index: 99;
+    display: none;
+    box-shadow: 0 0 8px rgba(0,0,0,.6);
+}
+.message-btn-down {
+    color: #434343;
+}
+.message-btn-down-content button {
+    color: #555;
+    text-align: center;
+    line-height: 2 !important;
+    font-size: 16px;
+    border: none;
+    background: none;
+    width: 100%;
+}
+.msg-delete{
+    width: 4%;
+    margin-left: 15%;
+}
+.pagination {
+    margin-left: 35%;
+}
+.activityDetail div section{
+    position: static;
+}
+.mentor,.comment{
+    padding: 30px;
+    background: #ffffff;
+}
+.mentor .mentor-t{
+    font-size: 44px;
+    font-family: "Microsoft Yahei";
+    border-left: 15px solid #1bb38c;
+    /*margin-left: -3%;*/
+    padding-left:2%;
+}
+.mentor h4{
+    font-size: 24px;
+    font-family: "Microsoft Yahei";
+    padding-left: 1%;
+    margin: 30px 0;
+    border-left: 2px solid #1bb38c;
+}
+.mentor textarea{
+    height: 170px;
+    resize: none;
+    overflow-x: hidden;
+    padding:10px;
+}
+.mentor .guidance{
+    border-top: 2px solid #1bb38c;
+    padding-top: 10px;
+}
+.mentor .guidance li{
+    height: 50px;
+    line-height: 50px;
+}
+.mentor .guidance li:nth-child(2n+1){
+    background: #f0f0f0;
+}
+.mentor .guidance li a p{
+    display: inline-block;
+}
+.mentor .guidance li p{
+    display: inline-block;
+    width: 300px;
+    color: #000;
+    overflow: hidden;
+    font-size: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0!important;
+
+}
+
+.mentor .guidance li time{
+    color: #000;
+    font-size: 16px;
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+}
+.mentor .guidance .guidance-tip p,.mentor .guidance .guidance-tip time{
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "Microsoft Yahei";
+    display: inline-block;
+}
+
+
+.comment .comment-t{
+    font-size: 44px;
+    font-family: "Microsoft Yahei";
+    border-left: 15px solid #1bb38c;
+    padding-left:2%;
+}
+.comment .comment-list{
+    padding: 10px;
+}
+.comment .comment-list li a{
+    position: relative;
+    display: block;
+    height: 70px;
+}
+.comment .comment-list li a span{
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    overflow: hidden;
+    padding: 0 !important;
+}
+.comment .comment-list li a span img{
+    max-width: none!important;
+}
+.comment .comment-list li a  b{
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    margin-left: 10px;
+    font-size: 18px;
+    color: #3d3d3d;
+    font-family: "Microsoft Yahei";
+    height: 70px;
+    line-height: 70px;
+}
+.comment .comment-list li .comment-student{
+    margin-left: 80px;
+    color: #b8b8b8;
+    font-size: 14px;
+}
+.comment .comment-list li .reply-teacher{
+    margin-left: 80px;
+    color: #1bb38c;
+    font-size: 14px;
+    background-color: #f0f0f0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.comment-content{
+    padding-right: 200px;
+}
+/*响应式适配样式*/
+@media screen and (max-width: 1800px){
+    section .main-content .information .information-list li a{
+        margin-left: 6%;
+    }
+    section .main-content .information .information-list{
+        margin-top: 8%;
+    }
+    section .main-content .information-page .schoolnews-list {
+        margin-left: 16.52%;
+    }
+}
+@media screen and (max-width: 1700px){
+    section .main-content .information .information-list li a {
+        margin-left: 6%;
+    }
+    section .main-content .information .information-list {
+        margin-top: 9%;
+    }
+}
+@media screen and (max-width: 1600px){
+    section .main-content .information-page .schoolnews-list {
+        margin-left: 18.52%;
+    }
+    section .main-content .information {
+        margin-bottom: 6%;
+    }
+}
+@media screen and (max-width: 1500px){
+    .information-list li i {
+        line-height: 50px !important;
+    }
+    section .main-content .information .student-name{
+        font-size: 40px;
+    }
+    section .main-content .information-page .schoolnews-list {
+        margin-left: 19.52%;
+    }
+}
+@media screen and (max-width: 1400px){
+    section .main-content .information-page .schoolnews-list {
+        margin-left: 21.52%;
+    }
+    section .main-content .information .information-list li a div div {
+        width: 24%;
+        float: left;
+    }
+    section .main-content .information .information-list li a div{
+        width:24%;
+    }
+}
+@media screen and (max-width: 1300px){
+    section .main-content .information .information-list li a{
+        margin-left: 8%;
+    }
+    section .main-content .information .student-name{
+        font-size: 35px;
+        height:70px;
+    }
+    section .main-content .information .button-tag li a{
+        font-size: 15px;
+    }
+    section .main-content .information .button-tag li i{
+        margin-top: 27%;
+    }
+
+}
+@media screen and (max-width: 1199px){
+    .content-container{
+        padding:1% 10%;
+    }
+    section .main-content {
+        padding: 0;
+    }
+    section .main-content .information .information-list {
+        width: 95%;
+    }
+    .main-content .navbar_is{
+        position:relative;
+        z-index:100;
+        width:100%;
+        margin-bottom: 0%;
+    }
+
+    section .main-content .information-page {
+        width: 80%;
+         margin: 0% 10%;
+        display: none;
+        padding-top: 12%;
+    }
+    .information-page .information_record {
+        margin-top: 0%;
+    }
+    section .right-sidebar .kanwo-interview{
+        padding:0% 8%;
+    }
+    section .right-sidebar{
+        height: auto;
+    }
+    section .right-sidebar .kanwo-interview .my-video{
+        height: auto;
+    }
+    section .right-sidebar .inspiration {
+        padding: 1% 8%;
+    }
+    section .right-sidebar .badges h3{
+        padding-left:8%;
+    }
+    section .main-content .information-page .schoolnews-list {
+        margin-left: 17.52%;
+    }
+    section .main-content .student-photo{
+        overflow: hidden;
+        height: 380px;
+        width: 100%;
+    }
+    section .main-content .student-photo .photo-before{
+        position: absolute;
+        z-index: 100;
+        width: 200px;
+        bottom: 27%;
+        left: 50%;
+        margin-left: -100px;
+        border-radius: 33px;
+        box-shadow: 0 0 15px 0px #fff;
+    }
+    section .main-content .information .student-name {
+        font-size: 60px;
+        position: absolute;
+        bottom: 112%;
+        width:100%;
+        text-align: center;
+        padding-left: 0% !important ;
+         color: #fff;
+        z-index: 100;
+    }
+    section .main-content .student-photo .photo-after{
+        width:100%;
+        visibility: visible;
+        max-width: none;
+        max-height:none;
+        position: relative;
+        -webkit-filter: blur(15px); /* Chrome, Opera */
+        -moz-filter: blur(15px);
+        -ms-filter: blur(15px);
+        filter: blur(15px);
+    }
+    section .main-content .information .information-list{
+        margin-top:0%;
+    }
+    section .main-content .information .information-list li a {
+        margin-left: 3%;
+    }
+    section .main-content .information .button-tag li i {
+        margin-top: 17%;
+    }
+    section .main-content .button-tag{
+        margin-bottom: 0px;
+        margin-top: 0% ;
+        position: relative;
+        z-index: 100;
+    }
+    section .right-sidebar .inspiration a {
+        margin-left: 40%;
+    }
+
+    section .main-content .information .information-list li a div div {
+        width: 18%;
+    }
+    section .main-content .information .student-name .tutor-flag{
+        right: 50px;
+    }
+}
+@media screen and (max-width: 1000px){
+    section .main-content .information .information-list li a {
+        margin-left: 5%;
+    }
+    section .main-content .information-page .schoolnews-list {
+        margin-left: 20.52%;
+    }
+    section .main-content .information-page {
+        padding-top: 14%;
+    }
+}
+@media screen and (max-width: 900px) {
+    section .main-content .information-page .schoolnews-list {
+        margin-left: 22.52%;
+    }
+    .right-side {
+        height: 75px;
+    }
+    section .right-sidebar .inspiration a {
+        margin-left: 36%;
+    }
+}
+@media screen and (max-width: 800px){
+    section .main-content .information-page .schoolnews-list {
+        margin-left: 24.52%;
+        margin-top: -9%;
+    }
+    section .main-content .information-page {
+        padding-top: 16%;
+    }
+    section .main-content .information .information-list li a div div {
+        width: 20%;
+    }
+    section .main-content .information {
+        margin-bottom: 8%;
+    }
+}
+@media screen and (max-width: 700px){
+    section .main-content .information .information-list li a {
+        margin-left: 5%;
+        line-height: 45px;
+    }
+    section .main-content .information-page .schoolnews-list {
+        margin-left: 28.52%;
+        margin-top: -10%;
+    }
+    .add-video-description p{
+        line-height: 1.5;
+    }
+    section .main-content .information-page {
+        padding-top: 18%;
+    }
+    section .main-content .information .button-tag li i {
+        margin-top: 28%;
+    }
+    section .main-content .information .information-list .school-name a strong {
+        margin-top: -45px;
+    }
+    section .main-content .information .information-list .hobby a strong {
+        margin-top: -45px;
+    }
+    section .main-content .information {
+        margin-bottom: 10%;
+    }
+}
+@media screen and (max-width: 600px){
+    section .main-content .information .button-tag li a {
+        font-size: 13px;
+    }
+    section .main-content .information-page .schoolnews-list {
+        margin-left: 32.52%;
+        margin-top: -16%;
+    }
+    #myStory{
+        margin-top: 5%!important;
+    }
+    section .main-content .information-page {
+        padding-top: 21%;
+    }
+    section .right-sidebar .inspiration a {
+        margin-left: 28%;
+    }
+    .pagination {
+        margin-left: 25%;
+    }
+    section .main-content .information .information-list li a div div {
+        width: 26%;
+    }
+}
+
+@media screen and (max-width: 500px){
+    body{
+        overflow-x: hidden;
+    }
+    .information-page .information_record li p img{
+        width:25%;
+    }
+    section .main-content .information .information-list li a {
+            margin-left: 6%;
+    }
+    section .main-content .button-tag li a{
+        visibility: hidden;
+        padding-top: 35%;
+    }
+    section .main-content .button-tag li a i{
+        visibility: visible;
+    }
+    section .main-content .information-page .schoolnews-list {
+        margin-left: 28.52%;
+        margin-top: -16%;
+    }
+    .my-video-section {
+        margin-top: -19%!important;
+    }
+    section .main-content .information-page {
+        padding-top: 24%;
+    }
+    section .main-content .button-tag li{
+        height: 100px;
+    }
+    section .main-content .information .information-list .school-name a strong {
+        margin-top: 0;
+        margin-left: 0;
+    }
+    section .main-content .information .information-list .hobby a strong {
+        margin-left:0;
+        margin-top: 0;
+    }
+    section .main-content .information .information-list li a div div {
+        width: 30%;
+    }
+    section .main-content .information {
+        margin-bottom: 14%;
+    }
+}
+@media screen and (max-width: 414px){
+    section .main-content .information .information-list li a {
+        margin-left: 8%;
+    }
+    #myStory {
+        margin-top: 10%!important;
+    }
+    section .main-content .information .button-tag li a{
+        visibility: hidden;
+    }
+    section .main-content .information .button-tag li a i{
+        visibility: visible;
+        margin-top:50%;
+    }
+    section .main-content .my-story-container .row h1 {
+        font-size: 4rem;
+    }
+    section .main-content .information-page {
+        margin-top: 8%;
+    }
+    section .right-sidebar .inspiration a {
+        margin-left: 19%;
+    }
+    section .main-content .information {
+        margin-bottom: 30%;
+    }
+    section .main-content .information .information-list li a div {
+        width: 30%;
+    }
+}
+@media screen and (max-width: 320px){
+    section .main-content .information .information-list li a {
+        margin-left: 14%;
+    }
+    section .main-content .information-page .schoolnews-list {
+        margin-left: 31.52%;
+        margin-top: -32%;
+        line-height: 18px;
+    }
+    section .right-sidebar .badges .badges-list li {
+        width: 70px;
+        margin-left: 24px;
+    }
+    #myStory {
+        margin-top: 20%!important;
+    }
+    section .main-content .information .button-tag li a i {
+        margin-top: 65%;
+    }
+}
+@media (max-width: 1200px){.columns-info .r-line{margin:6rem !important;}}
+.columns-info i.glyphicon-cloud-upload{padding-top: 70px !important;}
+@media (max-width: 1500px){.columns-info .bg-gray  i,.columns-info a.add-activity i{font-size:3rem !important;}}
+@media (max-width: 768px){
+    .columns-info i.glyphicon-cloud-upload{padding-top: 36% !important;}
+    .columns-info .bg-gray strong, .add-activity-mb strong{font-size: 20px !important;}
+}
+/*.informationReboxImg a img {width:30%;}*/
+.informationReboxImg a {position: relative;}
+/*.media-item-description p {font-size: 18px;}*/
+@media screen and (max-width: 1784px) and (min-width: 1622px) {
+    .media-item-description p{
+        font-size: 19px;!important;
+    }
+}
+@media screen and (max-width: 1621px) and (min-width: 1458px) {
+    .media-item-description p{
+        font-size: 17px;!important;
+    }
+}
+@media screen and (max-width: 1457px) and (min-width: 1400px) {
+    .media-item-description p{
+        font-size: 16px;!important;
+    }
+}
+@media screen and (max-width: 1399px) and (min-width: 1280px) {
+    .media-item-description p{
+        font-size: 14px;!important;
+    }
+}
+@media screen and (max-width: 1279px) and (min-width: 1200px) {
+    .media-item-description p{
+        font-size: 13px;!important;
+    }
+}
+@media screen and (max-width: 1024px) and (min-width: 800px) {
+    .media-item-description p{
+        font-size: 21px;!important;
+    }
+}

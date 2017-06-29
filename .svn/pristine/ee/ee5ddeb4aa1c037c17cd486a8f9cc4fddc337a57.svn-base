@@ -1,0 +1,1047 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 微软雅黑;
+}
+
+html {
+    font-size: 20px;
+}
+li{
+    list-style-type: none;
+}
+
+@media screen and (max-width: 1920px) {
+    html {
+        font-size: 18px !important;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    html {
+        font-size: 16px !important;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    html {
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    html {
+        font-size: 12px !important;
+    }
+
+    body {
+        max-width: 750px;
+    }
+}
+/* iphone6 plus */
+@media (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+    html {
+        font-size: 25.875px;
+    }
+}
+/* iphone 6 */
+@media (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+    html {
+        font-size: 23.4375px;
+    }
+}
+/* 判断iphone5 *//* 横屏竖屏判断方法与ipad一样 */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+    html {
+        font-size: 20px;
+    }
+}
+
+.clear {
+    clear: both;
+}
+/*标题*/
+.titles{
+    width:100%;
+    height:2rem;
+    text-align: center;
+    line-height:2rem;
+    font-size:1.8rem;
+    font-weight:400;
+    color: #333;
+    letter-spacing: 1px;
+}
+/*banner图start*/
+.gis_banner {
+    height: 25rem;
+    margin-top: 3.7rem;
+}
+.ban-pic{
+    width:100%;
+    height:100%;
+}
+.ban-wx{
+    position: absolute;
+    top:5rem;
+    right:8rem;
+}
+.gis_banner_btn {
+    height: 3rem;
+    position: absolute;
+    text-align: center;
+}
+
+.signUp {
+    display: inline-block;
+    width: 8rem;
+    height: 2.4rem;
+    margin-top:1rem;
+    background: #0cbc9d;
+    border-radius: 0.2rem;
+    text-align: center;
+    line-height: 2.4rem;
+    color: #fff;
+    font-family: "微软雅黑 Light";
+    font-weight:bold;
+    font-size:0.9rem;
+    letter-spacing: 0.1em;
+}
+
+.signUp:nth-of-type(1) {
+    /*float: left;*/
+    /*margin-left: 6rem;*/
+}
+
+.signUp:nth-of-type(2) {
+    float: right;
+    margin-right: 6rem;
+}
+@media (max-device-width: 769px){
+    .gis_banner {
+        height: 15rem;
+        margin-top: 5rem;
+    }
+    .ban-pic{
+        width:100%;
+        height:100%;
+    }
+    .ban-wx{
+        width:6rem;
+        height:auto;
+        position: absolute;
+        top:3rem;
+        right:5rem;
+    }
+    .gis_banner_btn {
+        height: 3rem;
+        position: absolute;
+    }
+
+    .signUp {
+        display: inline-block;
+        width: 6.4rem;
+        height: 2.4rem;
+        margin-top:-0.5rem;
+        background: #018b9b;
+        border-radius: 0.2rem;
+        text-align: center;
+        line-height: 2.4rem;
+        color: #fff;
+        font-family: "微软雅黑 Light";
+        font-weight:bold;
+        font-size:0.8rem;
+        letter-spacing: 0;
+    }
+
+    .signUp:nth-of-type(1) {
+        /*float: left;*/
+        margin-top: 0.5rem;
+    }
+
+    .signUp:nth-of-type(2) {
+        float: right;
+        margin-right: 3rem;
+    }
+    @media (max-device-width: 640px) {
+        .gis_banner {
+            height: 10rem;
+            margin-top: 6rem;
+        }
+        .ban-wx{
+            width:6rem;
+            height:auto;
+            position: absolute;
+            top:1rem;
+            right:1.2rem;
+        }
+    }
+}
+/*优势&特色*/
+.advantage{
+    width:100%;
+    height:auto;
+    position: relative;
+    margin:3rem auto;
+}
+.advantage ul{
+    width:60%;
+    height:auto;
+    margin:2rem auto;
+    overflow: hidden;
+}
+.advantage ul li{
+    list-style-type: none;
+    width:30%;
+    height:auto;
+    float: left;
+    margin:1rem 0 0 1rem;
+    text-align: center;
+}
+.advantage ul li h4{
+    font-family:"微软雅黑 Light";
+    color: #333;
+    margin-top:6rem;
+    font-size:1rem;
+}
+.advantage ul li span{
+    display: block;
+    width:80%;
+    height:auto;
+    margin:1rem auto;
+    font-size:0.8rem;
+    font-family:"微软雅黑 Light";
+    color: #7d7e7e;
+    line-height:1.6rem;
+}
+@media (max-width: 1688px) {
+    .advantage ul{
+        width:80%;
+        height:auto;
+        margin:2rem auto;
+    }
+    .advantage ul li span{
+        font-size:0.9rem;
+        line-height:1.6rem;
+    }
+}
+@media (max-width: 769px) {
+    .advantage ul{
+        width:100%;
+        height:auto;
+        margin:2rem auto;
+        overflow: hidden;
+    }
+    .advantage ul li{
+        list-style-type: none;
+        width:45%;
+        height:auto;
+        float: left;
+        margin:1rem 0 0 1rem;
+        text-align: center;
+        overflow: hidden;
+    }
+    .advantage ul li h4{
+        font-size:1.2rem;
+        font-family:"微软雅黑 Light";
+        color: #333;
+        margin-top:7rem;
+    }
+    .advantage ul li span{
+        display: block;
+        width:80%;
+        height:auto;
+        margin:1rem auto;
+        font-size:1rem;
+        font-family:"微软雅黑 Light";
+        color: #7d7e7e;
+        line-height:1.6rem;
+    }
+}
+
+/*活动信息*/
+.projectDetail{
+    width:100%;
+    height:auto;
+}
+.project_details {
+    width: 60rem;
+    height: auto;
+    background-color: #f3f6f9;
+    border-right: 0.45rem solid #16a2b2;
+    border-radius: 1rem;
+    margin: 3rem auto 1.5rem auto;
+    padding:0 0 4rem 0;
+}
+
+.project_details h2 {
+    padding: 4rem 0 2.5rem 5.5rem;
+    color: #018c9c;
+    font-size: 2rem;
+}
+
+.project_details .contens {
+    width: 48.7rem;
+    margin-left: 5.45rem;
+    margin-bottom: 1rem;
+    background: url(/images/CIS_05.png) no-repeat 0.1rem 0.05rem;
+    padding-bottom: 0.5rem;
+}
+
+.project_details .contens p {
+    padding-left: 4.2rem;
+    padding-top: 1.15rem;
+    font-family: 微软雅黑;
+}
+
+.project_details .contens b {
+    font-size: 0.9rem;
+    color: #333333;
+    font-weight: normal;
+    display: block;
+    float: left;
+    font-family: 微软雅黑;
+}
+
+.project_details .contens span {
+    font-size: 0.9rem;
+    color: #666666;
+    display: inline-block;
+    padding-left: 1.1rem;
+    font-family: "微软雅黑";
+    letter-spacing: 0.05rem;
+}
+.metarial{
+    display: block;
+    width:80%;
+    height:auto;
+}
+
+@media (max-width: 769px) {
+    .project_details {
+        width: 60rem;
+        height: auto;
+        background-color: #f3f6f9;
+        border-right: 0.45rem solid #16a2b2;
+        border-radius: 1rem;
+        margin: 3rem auto;
+    }
+
+    .project_details .contens {
+        width: 90%;
+        height: auto;
+        margin-left: 2rem;
+        background: url(/images/CIS_05.png) no-repeat 0rem 0.05rem;
+    }
+
+    .project_details h2 {
+        padding: 4rem 0 2.5rem 2rem;
+        color: #018c9c;
+        font-size: 2rem;
+    }
+
+    .project_details .contens p {
+        padding-left: 2.2rem;
+        padding-top: 1.15rem;
+        font-family: "微软雅黑";
+    }
+
+    .project_details .contens span {
+        font-size: 0.9rem;
+        color: #666666;
+        display: inline-block;
+        padding-left: 0;
+        font-family: "微软雅黑";
+        letter-spacing: 0.05rem;
+    }
+}
+
+/*师资阵容*/
+.teachers{
+    width:100%;
+    height:auto;
+    background: #f1f6f8;
+    padding:3rem 0;
+    margin:4rem auto;
+}
+.teachers-wrapper{
+    height:24rem;
+    margin:4rem auto 0;
+    overflow: hidden;
+}
+.teachers ul{
+    height:24rem;
+    margin-left:0;
+}
+.teachers ul li{
+    height:24rem;
+    text-align: center;
+    float: left;
+}
+.en-name{
+    color: #005f6a;
+    font-style: italic;
+    font-weight: bold;
+    font-family:"Arial";
+    font-size:0.8rem;
+    margin-top:14rem;
+}
+.ch-name{
+    color: #018b9b;
+    font-family:"Adobe 黑体 Std";
+    font-size:0.7rem;
+}
+.teacher-describe{
+    display: block;
+    width:90%;
+    height:6rem;
+    font-family:"微软雅黑";
+    color: #333;
+    font-size:0.7rem;
+    line-height:1.2rem;
+    overflow: hidden;
+}
+#prev, #next{
+    position: relative;
+    top:-18rem;
+    z-index: 3;
+    cursor: pointer;}
+#prev{
+    float: left;
+    margin-left:15rem;
+}
+#next{
+    float: right;
+    margin-right:15rem;
+}
+#prev:hover, #next:hover{opacity: 0.5;filter:alpha(opacity=50);}
+
+@media (max-width: 769px) {
+    .teachers{
+        width:100%;
+        height:auto;
+        background: #f1f6f8;
+        padding:3rem 0;
+    }
+    .teachers-wrapper{
+        width:90%;
+        height:auto;
+        margin:1rem auto 0;
+    }
+    .teachers ul{
+        width:100%;
+        height:auto;
+        margin-left:0;
+        text-align: center;
+    }
+    .teachers ul li{
+        display: inline-block;
+        width:50%;
+        height:auto;
+        text-align: center;
+        margin:2rem auto;
+    }
+    .en-name{
+        color: #005f6a;
+        font-style: italic;
+        font-weight: bold;
+        font-family:"Arial";
+        font-size:1rem;
+        margin-top:16rem;
+    }
+    .ch-name{
+        color: #018b9b;
+        font-family:"Adobe 黑体 Std";
+        font-size:0.9rem;
+    }
+    .teacher-describe{
+        display: block;
+        width:100%;
+        height:7rem;
+        font-family:"微软雅黑";
+        color: #333;
+        font-size:0.9rem;
+        line-height:1.4rem;
+    }
+    #prev, #next{
+        display: none;
+    }
+    @media (max-width:640px) {
+        .teachers ul li{
+            display: inline-block;
+            width:100%;
+            height:auto;
+            text-align: center;
+            margin:0 auto;
+        }
+        .en-name{
+            color: #005f6a;
+            font-style: italic;
+            font-weight: bold;
+            font-family:"Arial";
+            font-size:0.8rem;
+            margin-top:19rem;
+        }
+        .teacher-describe{
+            display: block;
+            width:100%;
+            height:auto;
+            font-family:"微软雅黑";
+            color: #333;
+            font-size:1rem;
+            line-height:1.6rem;
+        }
+    }
+}
+
+/*地图*/
+.map {
+    width: 100%;
+    height: auto;
+    background: url(/images/int_map.png) no-repeat center;
+    margin-top: 6rem;
+    padding: 5rem 0;
+}
+
+.map_box {
+    width: 67rem;
+    height: 32rem;
+    margin: 0 auto;
+}
+
+.map_left {
+    height: 31rem;
+    width: 60%;
+    float: left;
+}
+.map_right{
+    float: left;
+    margin: 0.6rem 0 0 2rem;
+    width: 36.7%;
+}
+.map_right p {
+    color: #333333;
+    font-family: "微软雅黑";
+
+}
+.map_right p i{
+    display: block;
+    float: left;
+    width: 3rem;
+    height: 3rem;
+    background: url(/images/map_icon.png) no-repeat 0 -0.9rem;
+}
+.map_right :nth-child(2) i{
+    background: url(/images/map_icon.png) no-repeat 0 -114px;
+}
+.map_right :nth-child(3) i{
+    background: url(/images/map_icon.png) no-repeat 0 -232px;
+}
+.map_right p span{
+    font-size: 1.2rem;
+    display: block;
+    padding-top: 0.7rem;
+    font-family: 微软雅黑;
+}
+.map_right p span small{
+    font-size: 1.1rem;
+}
+.map_right p b{
+    display: block;
+    font-weight: normal;
+    font-size: 1.1rem;
+    margin: -0.8rem 0px 1rem 6rem;
+    font-family: "微软雅黑";
+}
+@media (max-width: 769px) {
+    .map {
+        padding: 3rem 0;
+        margin-top:4rem;
+    }
+    .map_box {
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        overflow: auto;
+        position: relative;
+    }
+    .map_left {
+        height: 24rem;
+        width: 60%;
+        float: none;
+        position: absolute;
+        top:2rem;
+        left:20%;
+    }
+    .map_right{
+        float: none;
+        margin: 28rem auto 0;
+        width: 60%;
+        position: relative;
+    }
+    @media (max-width: 640px) {
+        .map_left {
+            height: 16rem;
+            width: 90%;
+            position: absolute;
+            top:2rem;
+            left:5%;
+        }
+        .map_right{
+            margin: 20rem auto 0;
+            width: 80%;
+            position: relative;
+        }
+    }
+    @media (max-width: 640px) {
+        .map_right p i{
+            background: url(/images/map_icon.png) no-repeat -0.7rem -0.9rem;
+        }
+        .map_right :nth-child(2) i{
+            background: url(/images/map_icon.png) no-repeat -0.7rem -114px;
+        }
+        .map_right :nth-child(3) i{
+            background: url(/images/map_icon.png) no-repeat -0.7rem -232px;
+        }
+    }
+}
+
+/*课程表*/
+.course_box{
+    width: 67rem;
+    margin: 0 auto;
+    text-align: center;
+    padding: 5rem 0 5rem 0;
+}
+.course-describe{
+    font-size: 1rem;
+    color: #666666;
+    padding: 1rem 0 2rem 0;
+    font-family: "微软雅黑";
+}
+.course_list{
+    width: 100%;
+    text-align: center;
+}
+.course_list th{
+    font-weight: normal;
+    color: white;
+    background-color: #0e8f9e;
+    height: 56px;
+    border-right: 1px solid;
+    letter-spacing: 5px;
+    font-family: "微软雅黑";
+}
+.course_list th:hover{
+    background-color: #0ac599;
+}
+
+.course_list td{
+    height: 100px;
+    border-right:1px solid #e8eff4;
+    font-size: 17px;
+    color: #666666;
+    font-family: "微软雅黑";
+}
+.course_list td:last-child{
+    border-right:1px solid white;
+    background: url(/images/int_down.png) no-repeat center;
+}
+.course_list td:last-child a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.course_list tr:nth-child(2n+1){background:#e2e9ef;}
+.course_list tr:nth-child(n+1):hover{
+    background-color: #8CD2E5;
+}
+
+.course_list tr:nth-child(2n){background:#f3f7fa;}
+
+.course_list td:nth-child(5),.course_list td:nth-child(6){
+    padding: 0 20px;
+    text-align: left;
+}
+#ath{
+    width:5%;
+}
+#bth{
+    width:6%;
+}
+#cth{
+    width:4%;
+}
+#dth{
+    width:12%;
+}
+#eth{
+    width:20%;
+}
+#fth{
+    width:26%;
+}
+#gth{
+    width:14%;
+}
+#hth{
+    width:18%;
+}
+@media (max-width: 769px) {
+    .course_box {
+        width: 100%;
+    }
+    .course_list td {
+        height: 6rem;
+        font-size: 0.8rem;
+    }
+    .course_list th{
+        font-size:1rem;
+        letter-spacing:0;
+    }
+    @media (max-width: 640px) {
+        .course-describe {
+            font-size: 0.8rem;
+            line-height: 1.4rem;
+            padding: 0;
+        }
+        .course_list {
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            table-layout: fixed;
+        }
+        .course_list td {
+            border:1px solid #fff;
+            height: auto;
+            font-size: 0.7rem;
+            padding:0.1rem;
+        }
+        .course_list td:nth-child(5){
+            padding:0 0.2rem;
+        }
+        .course_list td:nth-child(6){
+            padding:0 0.2rem;
+        }
+        #ath{
+            width:3%;
+        }
+        #bth{
+            width:12%;
+        }
+        #cth{
+            width:3%;
+        }
+        #fth{
+            width:20%;
+            padding:0;
+        }
+        #eth{
+            width:16%;
+        }
+        #gth{
+            width:7%;
+        }
+
+        #hth{
+            width:5%;
+        }
+        .course_list td:last-child {
+            background: url(/images/int_down.png) no-repeat center;
+            background-size: 85%;
+        }
+    }
+}
+/*底部联系方式*/
+.application{
+    width: 100%;
+    height: 30rem;
+    position: relative;
+    background: url("/images/BA-application.jpg") no-repeat;
+    background-size:100% ;
+    margin:4rem auto 0;
+    padding:2rem 0 3rem;
+}
+.application a{
+    text-decoration: none;
+    color: #333;
+}
+
+.consulting {
+    width: 23rem;
+    height: 12rem;
+    margin: 2rem auto 2rem;
+    text-align: center;
+    border-bottom:0.2rem solid #26baa0;
+}
+.erweima{
+    width:11.5rem;
+    height:11.8rem;
+    text-align: center;
+    padding-top:1.5rem;
+}
+.erweima:nth-of-type(1){
+    float: left;
+    background: #fff;
+}
+.erweima:nth-of-type(2){
+    float: right;
+    background: #f8fafc;
+}
+.erweima span{
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: #111;
+    font-family: 微软雅黑;
+    font-weight:normal;
+    position: relative;
+}
+.erweima img{
+    width:50%;
+    height:auto;
+}
+.tel-yw-icon{
+    width:20%;
+    height:7.6rem;
+    background:url("/images/yw_icon.png") no-repeat left bottom;
+    background-size:28%;
+    margin:0.6rem auto 0;
+}
+.consult_tel {
+    display: inline-block;
+    width: 70%;
+    height: 2rem;
+    background: url(/images/tel-keru.png) no-repeat left center;
+    background-size:11%;
+    float: right;
+    margin: 3rem auto;
+    padding-left:2rem;
+    line-height:2rem;
+    font-size:1rem;
+    font-weight:bold;
+}
+
+@media (max-width: 769px) {
+    .application{
+        width: 100%;
+        height: 30rem;
+        position: relative;
+        background: url("/images/BA-application.jpg") no-repeat center;
+        background-size:cover;
+        margin:4rem auto 0;
+        padding:2rem 0 3rem;
+    }
+    .application a{
+        text-decoration: none;
+        color: #333;
+    }
+
+    .consulting {
+        width: 23rem;
+        height: 12rem;
+        margin: 2rem auto 2rem;
+        text-align: center;
+        border-bottom:0.2rem solid #26baa0;
+    }
+    .erweima{
+        width:11.5rem;
+        height:11.8rem;
+        text-align: center;
+        padding-top:1.5rem;
+    }
+    .erweima:nth-of-type(1){
+        float: left;
+        background: #fff;
+    }
+    .erweima:nth-of-type(2){
+        float: right;
+        background: #f8fafc;
+    }
+    .erweima span{
+        display: block;
+        margin-top: 1rem;
+        font-size: 0.8rem;
+        color: #111;
+        font-family: 微软雅黑;
+        font-weight:normal;
+        position: relative;
+    }
+    .erweima img{
+        width:50%;
+        height:auto;
+    }
+    .tel-yw-icon{
+        width:66%;
+        height:5.6rem;
+        background:url("/images/yw_icon.png") no-repeat left center;
+        background-size:contain;
+        margin:0.6rem auto 0;
+    }
+    .consult_tel {
+        display: inline-block;
+        width: 72%;
+        height: 2rem;
+        background: url(/images/tel-keru.png) no-repeat left center;
+        background-size:contain;
+        float: right;
+        margin-top: 1.8rem;
+        padding-left:2rem;
+        line-height:2rem;
+        font-size:1.2rem;
+        font-weight:bold;
+    }
+}
+
+/*登录等弹框*/
+.login-before {
+    width: 35rem;
+    height: 17rem;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 1000;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    background: #e1e4e8;
+    display: none;
+}
+
+.login-before .login-before-close-btn {
+    color: #aaaaaa;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+}
+
+.login-before p {
+    font-family: "Microsoft Yahei";
+    font-size: 0.9rem;
+    margin-top: 4.5rem;
+    width: 100%;
+    text-align: center;
+}
+
+.login-before .login-btn {
+    display: block;
+    width: 7rem;
+    height: 2.75rem;
+    font-size: 1.2rem;
+    line-height: 2.75rem;
+    color: #fff;
+    text-align: center;
+    margin: 3.5rem auto;
+    background-color: #28b38d;
+}
+.leadFrame{
+    display: none;
+}
+
+@media (max-width: 750px) {
+    .login-before {
+        height: 15rem;
+        position: fixed;
+        top: 30%;
+        z-index: -99999;
+        text-align: center;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        background: #e1e4e8;
+        display: none;
+    }
+
+    .login-before p {
+        font-family: "Microsoft Yahei";
+        font-size: 0.8rem;
+        margin-top: 4.5rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .login-before .login-btn {
+        display: block;
+        width: 7rem;
+        height: 2.75rem;
+        font-size: 1.2rem;
+        line-height: 2.75rem;
+        color: #fff;
+        text-align: center;
+        margin: 3rem auto;
+        background-color: #28b38d;
+    }
+    .glyphicon {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        display: inline-block;
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        color: #fff;
+    }
+    .glyphicon-remove {
+        font-size: 25px !important;
+        display: block;
+    }
+
+    .mask {
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 999;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+    }
+    .leadFrame{
+        height: 15rem;
+        position: fixed;
+        top: 55%;
+        z-index: 1000;
+        text-align: center;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        background: #1bb38c;
+        display: none;
+    }
+    .leadFrame p{
+        font-family: "Microsoft Yahei";
+        font-size: 0.8rem;
+        margin-top: 6.5rem;
+        width: 100%;
+        text-align: center;
+        font-weight:bold;
+        font-size:1.4rem;
+        color:#fff;
+        letter-spacing: 0.1em;
+    }
+}
+.weixinFrame{
+    width:8rem;
+    height:14rem;
+    background: url("/images/weixinFrame.png") no-repeat;
+    background-size: contain;
+    position: fixed;
+    left:0;
+    top:30%;
+    z-index: 999;
+}
+.videoSignUp{
+    display: block;
+    width:8rem;
+    height:2.4rem;
+    background: #26baa0;
+    border-radius:0.2rem;
+    margin:1rem auto;
+    text-align: center;
+    line-height:2.4rem;
+    color: #fff;
+    font-family:"微软雅黑 Light";
+    font-size:1.2rem;
+    font-weight:bold;
+    letter-spacing: 0.1em;
+}

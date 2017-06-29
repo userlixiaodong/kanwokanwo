@@ -1,0 +1,94 @@
+@charset "utf-8";
+
+/*图标*/
+@font-face{font-family: "interview-iconfont";src: url('../fonts/interview-icon/iconfont.eot?t=1459995331');/* IE9*/src: url('../fonts/interview-icon/iconfont.eot?t=1459995331#iefix') format('embedded-opentype'),
+/* IE6-IE8*/url('../fonts/interview-icon/iconfont.woff?t=1459995331') format('woff'),
+/* chrome, firefox*/url('../fonts/interview-icon/iconfont.ttf?t=1459995331') format('truetype'),
+/* chrome, firefox, opera, Safari, Android, iOS 4.2+*/url('../fonts/interview-icon/iconfont.svg?t=1459995331#iconfont') format('svg');/* iOS 4.1-*/}
+.interview-icon{font-style:normal;font-weight:900;color:#464646;font-size:70px;}
+@media (max-width: 798px){.interview-icon{font-size:40px;line-height:1;}
+.interview-icon.icon-duihao{font-size:18px;}}
+.interview-iconfont{font-family:"interview-iconfont" !important;}
+.icon-renqun:before{content: "\e600";}
+.icon-chengbao:before{content: "\e602";}
+.icon-duihuakuang:before{content: "\e607";}
+.icon-tv:before{content: "\e608";}
+.icon-qianbi:before{content: "\e609";}
+.icon-duihao:before{content: "\e60b";color:#24b68d;font-size:18px !important;}
+.icon-dui-copy:before{content: "\e60d";}
+.interview{line-height:1.4;margin-top: 75px;}
+.interview .row{padding:70px 0;position:relative;}
+@media (max-width: 798px){.interview .row{padding:10px 0 0;}}
+.interview p{font-size:16px;}
+@media (max-width: 798px){.interview p{font-size:14px;}}
+.interview p.text-justify{text-align:justify;}
+.interview strong {font-family: inherit;  font-size: inherit;}
+.interview .w1200{max-width:1200px;width:1200px;margin:0 auto;}
+@media (max-width: 798px){.interview .w1200{width:auto;}}
+.applicants-banner p{position:absolute;top:14%;color:#383838;font-size:64px;}
+@media (max-width: 798px){.applicants-banner p{font-size:21px;top:6%;}}
+.interview p.applicants-tit-top{font-size:20px;}
+@media (max-width: 798px){.interview p.applicants-tit-top{font-size:14px;padding:10px 20px;}}
+.interview a.btn{ display:inline-block; width:200px; height:52px; line-height:52px; text-align:center; background:#1BB38C; color:#fff; font-size:18px; font-weight:100;}
+@media (max-width: 798px){.interview a.btn{ width:130px; height:32px; line-height:32px; font-size:14px;}}
+.interview .applicants-banner p.pTwo{ top:70%;}
+@media (max-width: 798px){.interview .applicants-banner p.pTwo{ top:60%;}}
+.applicants-model{margin-top:10px;font-weight:100;}
+@media (max-width: 798px){.applicants-model{padding:0 20px;}.applicants-model img{margin-bottom:20px; text-align:center !important;}}
+.interview p.applicants-model-tit{color:#1bb38c;font-size:36px;line-height:2;}
+@media (max-width: 798px){.interview p.applicants-model-tit{font-size:20px;line-height:1;margin-bottom:20px;}}
+.applicants-model-p{margin-bottom:30px;}
+.applicants-btn-model{ width:800px; margin:50px auto 0;}
+.applicants-btn-model a.btn{ margin-bottom:10px;}
+.applicants-btn-model a.btnA{ background:none; border:1px solid #1BB38C; color:#1BB38C;}
+@media (max-width: 798px){.applicants-btn-model{ width:auto; margin:20px auto 0;}}
+.applicants-three-columns i{display: inline-block;text-align:center;width:10%;}
+.applicants-three-columns p{display:inline-block;width:82%;vertical-align:text-top;}
+.applicants-four-columns{ width: 80%;margin:0 auto;}
+@media (max-width: 798px){.applicants-four-columns{ width: 100%;}}
+.interview-em-text1{display:inline-block;font-size:26px;color:#a5a5a5;width:90%;padding:30px 0;border-bottom:1px solid #a5a5a5;}
+.interview-em-text2{color:#1dab87;font-size:48px;letter-spacing: -.6px;}
+.interview-em-text2.text-right{width:100%;display:inline-block;}
+.interview-em-text3{color:#222222;font-size:24px;}
+.interview-span-text1{width:100%;display:inline-block;font-family:inherit !important;padding:15px 0;}
+.interview-span-text2{color:#969696;padding-top:10px;}
+@media (max-width: 798px){.interview-em-text1{font-size:20px;padding:10px 0;}
+.interview-em-text2{font-size:14px;}
+.interview-em-text3{font-size:14px;}}
+.admission-officer{color:#434343;}
+.bgcolorOne{background:#ebebeb;}
+.interview .pos_r{position:relative;}
+@media (max-width: 798px){.admission-officer .pos_r{width: 100%;height: 0;padding-bottom: 75%;}}
+.admission-officer .pos_r img{position:absolute;top:0;left:0;height: 100%;width: 100%;}
+@media (max-width: 798px){.admission-officer .pos_r img{height:100%;}}
+.admission-officer-banner{color:#fff;height:568px;}
+@media (max-width: 798px){.admission-officer-banner{height:auto;}}
+.admission-officer-top-tit{position:absolute;left:0;top:0;width:100%;padding-top:100px;font-size:18px;font-weight:100;}
+.admission-officer-top-tit em{font-size:60px;display:inline-block;margin-bottom:10px;}
+@media (max-width: 798px){.admission-officer-top-tit{padding-top:80px;}
+.admission-officer-top-tit em{font-size:24px;}}
+.admission-officer h2{font-size:72px;font-weight:100;color:#434343;margin-bottom:30px;font-family: inherit;}
+@media (max-width: 798px){.admission-officer h2{font-size:30px;margin-bottom:10px;}}
+.admission-officer-modelVideo img{margin-top:40px;}
+@media (max-width: 798px){.admission-officer-modelVideo img{margin-top:20px;width:80%;}}
+.admission-officer-modelVideo dl{width:50%;margin:0 auto;}
+.admission-officer-modelVideo dt{font-size:36px;font-weight:100;text-align:center;margin-bottom:10px;}
+@media (max-width: 798px){.admission-officer-modelVideo dl{margin-top:20px;}
+.admission-officer-modelVideo dt{font-size:20px;}}
+.admission-officer-modelVideo dd{background:url(../images/interview-dot.png) left 6px no-repeat;padding-left:16px;margin-bottom:10px;}
+.admission-officer-modelOne dl{margin:10px;font-weight:100;color:#434343;padding:0 0 20px;}
+@media (max-width: 798px){.admission-officer-modelOne dl{padding:0;}}
+.admission-officer-modelOne dd h3{font-size:24px;font-weight:100;color:#434343;padding:10px 0;}
+.admission-officer-modelTwo,.admission-officer-modelTwo h2,.admission-officer-modelFour,.admission-officer-modelFour em,.admission-officer-modelFour span{color:#fff;}
+.admission-officer-modelTwo p{padding:10px 0;font-size:18px;width:90%;margin:0 auto;}
+.admission-officer-modelTwo p i.interview-icon{display:inline-block;width:4%;vertical-align:top;font-size:18px !important;}
+.admission-officer-modelTwo p em{display:inline-block;width:96%;font-weight:100;}
+@media (max-width: 798px){.admission-officer-modelTwo .row{padding:1px 0 0;}}
+@media (max-width: 798px){.admission-officer-modelTwo.pos_r{padding-bottom: 80%;}
+.admission-officer-modelTwo p{padding:2px 0;}
+.admission-officer-modelTwo p i.interview-icon{width:9%;}
+.admission-officer-modelTwo p em{font-size:14px;width:91%;}}
+.admission-officer-modelThree dl{margin:10px;font-size:18px;width:80%;margin:0 auto;}
+.admission-officer-modelThree dt{color:#1bb38c;padding-bottom:30px;}
+.admission-officer-modelThree dd{color:#262626;}
+@media (max-width: 798px){.admission-officer-modelFour{padding:30px 20px 0;}}

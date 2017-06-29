@@ -1,0 +1,312 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>ASR科研项目</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Touch enabled minimalistic slider written in vanilla JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="/style/public.css"/>
+    <link rel="stylesheet" type="text/css" href="/style/frame.css"/>
+    <link rel="stylesheet" href="/style/asr.css">
+</head>
+<body>
+<div class="login-before">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>您还未登录，请在登录之后再进行申请哦！~</p>
+    <a class="login-btn md-trigger" data-modal="modal-12" href="javascript:trackOutboundLink('', 'index_login');">登录</a>
+</div>
+<div class="leadFrame">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>请使用电脑进行登录</p>
+</div>
+<div class="weixinFrame"></div>
+
+<div class="container_box">
+    <%@include file="/WEB-INF/views/common/top.jsp" %>
+    <input type="hidden" id="ItemId" value="${Item.itemId}">
+    <div class="gis_banner">
+        <div class="gis_banner_btn">
+            <c:choose>
+                <c:when test="${sessionScope.loginUser == null}">
+                    <a href="javascript: loginAlert();;" class="signUp" id="signUp">点击报名</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="javascript:toApply();;" class="signUp" id="signUp">点击报名</a>
+                </c:otherwise>
+            </c:choose>
+            <%--<a href="//kw-cdn.kanwokanwo.com/videos/cis.mp4" class="signUp">观看往期直播</a>--%>
+        </div>
+    </div>
+
+    <div class="mid_cont">
+        <div class="project-bg">
+            <p class="titles">项目背景</p>
+            <div class="enroll_box">
+                <div class="enroll_top">
+                    <%--<img src="/images/asr-bg-img1.png" alt="" />--%>
+                    <p><span>ASR项目是什么？</span><br /><br />
+                        <i style="font-style: normal;">ASR项目是由中国顶级国家实验室和“看我看我”联合举办科研项目，研究课题与带队导师均源自国家自然科学最高学术机构。</i><br/><br/>
+                        <i style="font-style: normal;">ASR往期只招收中国重点大学（清华，北大）本科生，在中国最顶级的国家级实验室内跟随老师进行地球遥感大气颗粒物治理，地理，空气质量遥感监测等交叉学科的研究主要探讨大气污染与环境污染现状监测。</i>
+                    </p>
+                </div>
+                <div class="enroll_bottom">
+                    <%--<img src="/images/asr-bg-img2.png" />--%>
+                    <p>
+                        为什么参加ASR？<br /><br />
+                        <i style="font-style: normal;font-size: 0.9rem;line-height: 1.5rem;">个性化背景一直以来都是美国大学最为重视的录取标准之一，其中与未来学生专业性相关的活动更是重中之重。现在很多活动都并非真正的学术研究项目，为学生带来的申请不能带来显著的优势。</i><br/><br/>
+                        <i style="font-style: normal;font-size: 0.9rem;line-height: 1.5rem;">ASR项目由国家顶级实验室博士研究员带领学员展开课题研究，含金量不言而喻。<br/>全国仅招收3名学员，项目结束后将得到中科院导师根据学员实际表现出具的推荐信。</i>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="advantage">
+            <p class="titles">项目优势</p>
+            <ul>
+                <li>
+                    <h4>学术价值高</h4>
+                    <span>国家级实验室内进行科研<br/>环境污染方向科研项目<br/>交叉学科培养综合能力</span>
+                </li>
+                <li>
+                    <h4>顶级研究员导师</h4>
+                    <span>国家级实验室博士研究员<br/>负责多项国家级科研项目<br/>多次国际会议发表论文</span>
+                </li>
+                <li>
+                    <h4>高含金量提升申请背景</h4>
+                    <span>研究员导师出具推荐信<br/>导师1对3高精度指导<br/>首次招募高中生</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="projectMessage">
+            <p class="titles">项目信息</p>
+            <div class="project_message">
+                <h2>项目信息</h2>
+                <div class="project-contens">
+                    <p>
+                        <b>活动地点： </b><span>北京</span>
+                    </p>
+                    <p>
+                        <b>项目期限： </b><span>2017-07-03——2017-07-31（暂定）</span>
+                    </p>
+                    <p>
+                        <b>申请截止日期： </b><span>仅招收3位学员，名额一满即刻停止报名</span>
+                    </p>
+                    <p>
+                        <b>项目费用：</b><span>27800元</span>
+                    </p>
+                    <p>
+                        <b>适合人群：</b><span>高中生、大学生</span>
+                    </p>
+                    <p>
+                        <b>申请要求： </b>
+                        <span class="metarial">
+                         英语流利，托福100分以上；对物理、地理、农业、环境科学、大气、遥感、分子工程学感兴趣，综合能力高</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="doctor">
+            <p class="titles">国家级博士研究员</p>
+            <div class="doctor-content">
+                <img src="/images/asr-doctor.jpg">
+                <div class="img-decoration">
+                    <h4>张博士</h4>
+                    <hr>
+                    <p>副研究员</p>
+                    <span>
+                        张博士承担多项国际合作和国家级科研项目，与国外科研机构保持着良好的合作关系，他的相关论文多次在国际会议中得到其他与会专家学者的青睐。张博士在国内外均发表过多篇论文，对大气颗粒物，大气复合污染天空地一体化监测，空气质量卫星遥感监测，PM2.5等课题都有着深入研究。
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="projectDetail">
+            <p class="titles" style="color: #fff;">项目详情</p>
+            <div class="projectContainer">
+                <div class="project_details">
+                    <div class="pro-border">
+                        <h3>项目详情</h3>
+                        <div class="contents">
+                            <p>
+                                <b>项目时间： </b><span>7月3日——7月31日（暂定）</span>
+                            </p>
+                            <p>
+                                <b>招募人数：</b><span>仅招募3名优秀学员</span>
+                            </p>
+                            <p>
+                                <b>课时安排： </b><span>每周一、三、五，下午13：00~18:00</span>
+                            </p>
+                            <p>
+                                <b>审核流程：</b><span class="pro-description">学员在看我看我网站报名<br/>提交基本资料和标化成绩<br/>项目导师审核并安排面试</span>
+                            </p>
+                            <p>
+                                <b>课程内容： </b>
+                                <span class="pro-description">
+                                    项目由博士研究员带领学员进行地球遥感大气颗粒物治理，地理，空气质量遥感监测等交叉学科的研究，主要探讨大气污染与环境污染现状监测。
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-arrange">
+                    <div class="pro-border">
+                        <h3>内容安排</h3>
+                        <ul>
+                            <li>博士导师亲自指导课题 </li>
+                            <li>实验方法解析</li>
+                            <li>最新的科研方法讲解 </li>
+                            <li>前沿学术知识分析指导 </li>
+                            <li>试验与数据分析 </li>
+                            <li>学员研究报告指导 </li>
+                            <li>学员数据分析图表生成 </li>
+                            <li>博士研究员出具推荐信 </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="application">
+            <%--<p class="titles"><a href="">提升你的学术背景，让你的履历在<br />招生官的眼中再升一个等级吧~</a></p>--%>
+            <div class="tel-yw-icon">
+                <span class="consult_tel">010-5292-8288-8018</span>
+            </div>
+            <div class="consulting">
+                <div class="erweima">
+                    <img src="/images/gzh.png" alt=""><span>关注看我看我公众号<br/>获得更多留学资讯</span>
+                </div>
+                <div class="erweima">
+                    <img src="/images/kefu.png" alt=""><span>独家报名通道<br/>添加看我客服</span>
+                </div>
+            </div>
+            <c:choose>
+                <c:when test="${sessionScope.loginUser == null}">
+                    <a class="videoSignUp" href="javascript:loginAlert();" style="color:#fff;">点击报名</a>
+                </c:when>
+                <c:otherwise>
+                    <a class="videoSignUp" href="javascript:toApply();" style="color:#fff;">点击报名</a>
+                </c:otherwise>
+            </c:choose>
+        </div>
+    </div>
+    <%@include file="/WEB-INF/views/common/bottom.jsp" %>
+</div>
+<div class="mask"></div>
+</body>
+<script type="text/javascript">
+    var wid = $(window).width();
+    var hei = $(window).height();
+    console.log(wid);
+
+    function loginAlert(){
+        if (wid < 769){
+            $("#signUp,.videoSignUp").on("click",function () {
+                var ban=0;
+                $(".mask").css("display","block");
+                $(".leadFrame").show(400).bind("touchmove",function(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                },false);
+            });
+            $(".login-before-close-btn").on("click",function () {
+                $(".mask").css("display","none");
+                $(".leadFrame").css("display","none");
+            });
+        }else {
+            $(".login-before").css('display','block');
+        }
+    }
+    function closeAlert(){
+        $(".login-before").css('display','none');
+        location.reload();
+    }
+    function toApply(){
+        location.href = "/userItem/applyAsr";
+        /*location.href="/order/enroll/"+$("#ItemId").val();*/
+        $(".popup_box").show();
+        $(".fe_window_mask").show();
+        var scrollH = $(window).scrollTop();
+        $(window).scroll(function() {
+            $(this).scrollTop(scrollH)
+        });
+    }
+
+    function toOrder() {
+        $.post("/specialization/isExistInfo",{"itemId":$("#ItemId").val()},function(data){
+            // 获得到返回的数据:
+            if(data == 1){
+                //跳订单页面
+                location.href="/order/enroll/"+$("#ItemId").val();
+            }else{
+                // 跳保存页面
+                location.href="/specialization/applyInfo?itemId=" + $("#ItemId").val();
+            }
+        });
+
+    }
+    function toApplication() {
+        $.post("/specialization/isExistInfo",{"itemId":$("#ItemId").val()},function(data){
+            // 获得到返回的数据:
+            if(data == 1){
+                //跳编辑页面
+                location.href="/specialization/editApplyInfo?itemId=" + $("#ItemId").val();
+            }else{
+                // 跳保存页面
+                location.href="/specialization/applyInfo?itemId=" + $("#ItemId").val();
+            }
+        });
+
+
+    }
+    $(function () {
+        var advList = $(".advantage ul li");
+        for (var i = 0; i < advList.length ; i++) {
+            var featureListUrl = '/images/asr-adv' + parseInt(i + 1) + '.png';
+            advList.eq(i).css({"background": "url(" + featureListUrl + ") no-repeat center 30px #f5f8fa","background-size":"15%"});
+        }
+
+        $(".gis_banner_btn").css({"width":wid*0.4,"top":$(".gis_banner").height()*0.8,"left":wid*0.3});
+        if (wid < 769){
+            $(".mid_cont").css({"width":wid,"max-width":"750px","margin":"0 auto"});
+            $(".gis_banner").css("width",wid);
+            $(".gis_banner_btn").css({"width":wid,"top":$(".gis_banner").height()*0.7,"left":0});
+            $(".leadFrame").css({"width":wid*0.8,"left":wid*0.5});
+            $(".user-login").css({"width":wid,"height":hei,"position":"fixed","margin-left":wid*0.1,"top":"0px"});
+            $(".application").css("width",wid);
+            if(wid > 640){
+                for (var i = 0; i < list.length ; i++) {
+//            console.log(list[i]);
+                    var listUrl = '/images/case'+parseInt(i+1)+'.png';
+//            console.log(listUrl);
+                    list.eq(i).css({"background":"url("+listUrl+") no-repeat center top","background-size":"15%"});
+                }
+            }
+            //    项目背景部分文字在移动端超出字数用省略号代替
+//            var strs = "";
+//            for (var i=0;i<$(".enroll_top p").length;i++){
+//                var str = $(".enroll_top p").eq(i).html();
+//                var s = str.length;
+////                    console.log(str);
+////                    console.log(s);
+//                if(s > 20){
+//                    strs = strs + $(".enroll_top p").eq(i).html(str.substr(0,40)+"......");
+//                }
+//            }
+//            for (var i=0;i<$(".enroll_bottom p span").length;i++){
+//                var str = $(".enroll_bottom p span").eq(i).html();
+//                var s = str.length;
+//                if(s > 20){
+//                    strs = strs + $(".enroll_bottom p span").eq(i).html(str.substr(0,20)+"...");
+//                }
+//            }
+
+        }
+
+    })
+
+</script>
+
+</html>

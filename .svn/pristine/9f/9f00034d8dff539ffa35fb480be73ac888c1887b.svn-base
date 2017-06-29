@@ -1,0 +1,65 @@
+package cv.focus.core.application;
+
+import cv.focus.core.domain.material.Material;
+import cv.focus.core.domain.material.MaterialModule;
+import cv.focus.core.domain.student.model.profile.Biography;
+import cv.focus.core.domain.student.model.profile.Remark;
+import cv.focus.core.domain.student.model.profile.StudentProfile;
+import cv.focus.core.domain.student.model.profile.StudentProfileId;
+import cv.focus.core.domain.student.model.profile.exam.ExamRecord;
+import cv.focus.core.domain.student.model.profile.exam.ExamType;
+import cv.focus.core.domain.user.model.User;
+
+import java.io.InputStream;
+import java.util.List;
+
+/**
+ * Created by song on 16/1/23.
+ */
+public interface StudentProfileService {
+    StudentProfile createStudentProfile(User user);
+
+    //需要补货Unique产生的异常
+    String genStudentProfileUri(StudentProfile studentProfile);
+
+    Biography updateBiography(Biography biography, StudentProfileId studentProfileId);
+
+    StudentProfile findStudentProfileById(StudentProfileId studentProfileId);
+
+    StudentProfile findStudentProfileByPublicUri(String uri);
+
+    StudentProfile findByEmail(String email);
+
+    void updateAndSynchronizeProfile(String email, String school);
+
+    void updateStoryDesc(String email, String storyDesc);
+
+    @Deprecated
+    String addVideo(String email, String fileName, InputStream videoInputStream, MaterialModule module);
+
+    @Deprecated
+    String addImg(String email, String fileName, InputStream imgInputStream, MaterialModule module);
+
+    @Deprecated
+    String addDoc(String email, String fileName, InputStream docInputStream, MaterialModule module);
+
+    void updateRewardDesc(String email, String rewardDesc);
+
+    void addOrUpdateExamRecord(String email, ExamType type, Float[] scores);
+
+    void addOrUpdateExamRecords(String email, List<ExamRecord> examRecords);
+
+    Remark addRemark(StudentProfile fromStudentProfile, StudentProfile toStudentProfile, String content);
+
+    List<Remark> getRemarkByStudentProfileId(String studentProfileId);
+
+    void addProfileMaterial(String email, MaterialModule module, Material material);
+
+    void changeMaterialLocation(String email, MaterialModule module, int beg, int end);
+
+    void deleteMaterial(String activityId, MaterialModule seq, int i);
+
+    void updateMaterialTitle(String email, String title, Integer index, MaterialModule module);
+
+    void updateHonorDesc(String email, String honorDesc);
+}

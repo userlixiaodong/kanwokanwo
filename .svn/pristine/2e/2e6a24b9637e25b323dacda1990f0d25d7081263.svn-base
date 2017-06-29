@@ -1,0 +1,413 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Touch enabled minimalistic slider written in vanilla JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="/style/public.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/frame.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/app.css">
+    <link rel="stylesheet" href="/style/africa.css">
+    <script src="/js/bootstrap.js"></script>
+</head>
+<body>
+<div class="login-before">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>您还未登录，请在登录之后再进行申请哦！~</p>
+    <a class="login-btn md-trigger" data-modal="modal-12" href="javascript:trackOutboundLink('', 'index_login');">登录</a>
+</div>
+<div class="leadFrame">
+    <a class="login-before-close-btn" href="javascript:closeAlert();"><i class="glyphicon glyphicon-remove"></i></a>
+    <p>请使用电脑进行登录</p>
+</div>
+<div class="weixinFrame"></div>
+
+<div class="container_box">
+    <%@include file="/WEB-INF/views/common/top.jsp" %>
+    <input type="hidden" id="ItemId" value="${Item.itemId}">
+    <div class="gis_banner">
+        <img src="/images/BA-africa.jpg" class="ban-pic">
+        <img src="/images/banner-wx.png" class="ban-wx">
+        <div class="gis_banner_btn">
+            <c:choose>
+                <c:when test="${sessionScope.loginUser == null}">
+                    <a href="javascript: loginAlert();;" class="signUp" id="signUp">点击报名</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="javascript:toApply();;" class="signUp" id="signUp">点击报名</a>
+                </c:otherwise>
+            </c:choose>
+            <%--<a href="//kw-cdn.kanwokanwo.com/videos/cis.mp4" class="signUp">观看往期直播</a>--%>
+        </div>
+    </div>
+
+    <div class="mid_cont">
+
+        <%--项目特色--%>
+        <div class="advantage feature">
+            <p class="titles">项目特色</p>
+            <ul>
+                <li>
+                    <h4>成果丰厚</h4>
+                    <span>国际认可的英文项目结业证书国际学术会议及项目实践机会优秀学员推荐信等</span>
+                </li>
+                <li>
+                    <h4>意义重大</h4>
+                    <span>成为首次肯尼亚项目野保大使专家指导下学习相关知识国际野保组织参访学习</span>
+                </li>
+                <li>
+                    <h4>能力提升</h4>
+                    <span>信息搜索能力/自主学习的能力国际视野、学术思辩能力项目策划与管理</span>
+                </li>
+                <li>
+                    <h4>参与社区发展</h4>
+                    <span>真正深入田野和项目点调研亲手参与部分社区发展项目不仅理解动物，也理解人</span>
+                </li>
+            </ul>
+        </div>
+
+        <%--项目背景 --%>
+        <div class="programBg">
+            <p class="titles">项目背景</p>
+            <div class="programContent">
+                <h4>背景介绍</h4>
+                <span class="programText">
+                    近几年，在美国，不论是像Facebook，Google大型公司，还是各大初创公司如Airbnb已将实习招募扩展到高中生群体。美国的教育专家指出，参加过实习的美国高中生，不管未来最终从事的职业是否和所实习的工作有关，但是实习之后，他们往往在学业上会更有动力取得好成绩，在进入大学之后也会在职业规划上更有优势。因为实习可以帮助学生早一些了解他们的所长和兴趣，也为他们就业时加分。
+                </span>
+                <div class="programImg">
+                    <img src="/images/seven-pro.png">
+                    <p class="programImg_describe">图为Facebook CEO小札举行隆重的欢迎仪式，欢迎17岁的Michael Sayman加入Facebook实习。</p>
+                </div>
+                <h4>项目必要性</h4>
+                <span class="programText">
+                    在美国感兴趣的学生一般都来自于高中的老师推荐，在中国由于教育体制的不同，高中生这样的机会很少。 本次【看我看我】为高中生们争取到国内顶级音乐剧团队【七幕人生】独家实习机会，给学生的申请背景增加一个重量级筹码。
+实习时间4—6周，学生可以和中国顶级音乐剧组工作人员亲密接触，获得第一手理念和知识。并有行业内顶尖导师带队，为学员进行音乐剧产业、运营等相关专业培训，边实习，边学习。
+                </span>
+            </div>
+        </div>
+
+        <%--项目详情--%>
+        <div class="projectDetail">
+            <p class="titles">项目详情</p>
+            <div class="project_details">
+                <h2>项目详情</h2>
+                <div class="contens">
+                    <p>
+                        <b>项目地点：</b><span>中国——杭州市、日本——伊东市</span>
+                    </p>
+                    <p>
+                        <b>项目时间：</b><span>2017-08-07——2017-08-18</span>
+                    </p>
+                    <p>
+                        <b>项目费用：</b><span>45800元（培训课程费、签证、日本往返机票和当地交通食宿）</span>
+                    </p>
+                    <p>
+                        <b>适合人群：</b><span>高中生、大学低年级生</span>
+                    </p>
+                    <p>
+                        <b>申请要求：</b><span
+                            class="metarial">托福90分以上，对社会学，经济学，城市规划等专业感兴趣；英语水平优秀，有团队精神，沟通协作能力强，善于观察，乐于解决问题</span>
+                    </p>
+                    <p>
+                        <b>主办单位：</b><span>竞希教育</span>
+                    </p>
+                    <p>
+                        <b>项目简介： </b>
+                        <span class="metarial">
+                         伊东（Ito）是一个位于日本伊豆半岛的小城镇。如今，以温泉、渔业闻名全国的伊东受严重老龄化和交通不便影响，旅游业每况愈下，年轻人大量流失。这使得伊东成了研究地方再生社区营造的天然试验基地。无数社会创新话题等待被发现和探索。
+在来自哈佛、耶鲁、斯坦福、东京大学的导师亲自教学和引导下，入选的竞希学生将在杭州和日本伊豆地区完成为期两周的“地方振兴实践”和“设计研发课程”。所有参与的竞希学生将获得来自哈佛大学导师和世界顶级设计所One Design Lab的联合推荐信，直通世界名校录取。
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <%--项目介绍--%>
+        <%--<div class="videoIntroduce">--%>
+            <%--<p class="titles" style="color: #fff;">Ito Up项目介绍</p>--%>
+            <%--<div class="videoWrapper">--%>
+                <%--<video id="video1" src="http://focusedu.oss-cn-hangzhou.aliyuncs.com/videos/CIS2.mp4" type="video/mp4"--%>
+                       <%--width="100%" height="100%" controls="controls" poster="/images/video2.png"--%>
+                       <%--webkit-playsinline></video>--%>
+                <%--&lt;%&ndash;<i id="play" class="play"></i>&ndash;%&gt;--%>
+            <%--</div>--%>
+            <%--<c:choose>--%>
+                <%--<c:when test="${sessionScope.loginUser == null}">--%>
+                    <%--<a href="javascript: loginAlert();" class="videoSignUp">报名申请</a>--%>
+                <%--</c:when>--%>
+                <%--<c:otherwise>--%>
+                    <%--<a class="videoSignUp" href="javascript: toApply();">报名申请</a>--%>
+                <%--</c:otherwise>--%>
+            <%--</c:choose>--%>
+        <%--</div>--%>
+
+        <%--名师阵容--%>
+        <div class="teachers">
+            <p class="titles">名师阵容</p>
+            <div class="teachers-wrapper">
+                <div class="teachers-loop">
+                    <ul>
+                        <li>
+                            <p class="en-name">Andrew Walder</p>
+                            <p class="ch-name"></p>
+                            <span class="teacher-describe">
+                                斯坦福大学社会学系教授
+                            </span>
+                        </li>
+                        <li>
+                            <p class="en-name">Angus Deaton</p>
+                            <p class="ch-name"></p>
+                            <span class="teacher-describe">
+                                林斯顿大学经济学系教授
+                            </span>
+                        </li>
+                        <li>
+                            <p class="en-name">Shelley Kaga</p>
+                            <p class="ch-name"></p>
+                            <span class="teacher-describe">
+                                耶鲁大学哲学系教授
+                            </span>
+                        </li>
+                        <li>
+                            <p class="en-name">Shelley Sandusky</p>
+                            <p class="ch-name"></p>
+                            <span class="teacher-describe">
+                                加州大学伯克利分校法学博士
+                            </span>
+                        </li>
+                        <li>
+                            <p class="en-name">市仓隆平</p>
+                            <p class="ch-name"></p>
+                            <span class="teacher-describe">
+                                京大学硕士、工作坊导师
+                            </span>
+                        </li>
+                        <li>
+                            <p class="en-name">许伟舜</p>
+                            <p class="ch-name"></p>
+                            <span class="teacher-describe">
+                                哈弗大学硕士、课程研发
+                            </span>
+                        </li>
+                        <li>
+                            <p class="en-name">赖尊恒</p>
+                            <p class="ch-name"></p>
+                            <span class="teacher-describe">
+                                哈佛大学硕士、课程研发
+                            </span>
+                        </li>
+                        <li>
+                            <p class="en-name">市仓隆平</p>
+                            <p class="ch-name"></p>
+                            <span class="teacher-describe">
+                                耶鲁大学硕士、特约评委
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <img src="/images/keru-prev.png" width="20px" height="40px" id="prev">
+            <img src="/images/keru-next.png" width="20px" height="40px" id="next">
+        </div>
+
+        <%--项目安排--%>
+        <div class="activityResults">
+            <p class="titles">项目安排</p>
+            <div class="results">
+                <div class="resultsPart">
+                    <div class="results-parts">
+                        <h4>体系入门课</h4>
+                        <span class="results-span">
+                            <b>杭州站   8/7—8/11</b><br/> 哈佛导师亲临杭州竞希课堂授课，<br/>开展学术和语言特训
+                        </span>
+                    </div>
+                    <div class="results-parts">
+                        <h4>创造力升级</h4>
+                        <span class="results-span">
+                            <b>伊豆站   8/11—8/15</b><br/> 团队抵达日本深入社会调研，<br/>根据调研结果研发振兴方案
+                        </span>
+                    </div>
+                </div>
+                <div class="resultsPart">
+                    <div class="results-parts">
+                        <h4>执行力突破</h4>
+                        <span class="results-span">
+                            <b>伊豆站   8/15—8/18</b><br/> 名师联动评估研发成果，<br/>耶鲁导师项目总结
+                        </span>
+                    </div>
+                    <div class="results-parts">
+                        <h4>自我提升总结</h4>
+                        <span class="results-span">
+                            <b>杭州站   8/19—未来</b><br/> 哈佛大学导师和世界顶级设计所<br/>One Design Lab的联合推荐信
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="application">
+            <%--<p class="titles"><a href="">提升你的学术背景，让你的履历在<br />招生官的眼中再升一个等级吧~</a></p>--%>
+            <div class="tel-yw-icon">
+                <span class="consult_tel">010-5292-8288-8018</span>
+            </div>
+            <div class="consulting">
+                <div class="erweima">
+                    <img src="/images/gzh.png" alt=""><span>关注看我看我公众号<br/>获得更多留学资讯</span>
+                </div>
+                <div class="erweima">
+                    <img src="/images/kefu.png" alt=""><span>独家报名通道<br/>添加看我客服</span>
+                </div>
+            </div>
+            <c:choose>
+                <c:when test="${sessionScope.loginUser == null}">
+                    <a class="videoSignUp" href="javascript:loginAlert();" style="color:#fff;">点击报名</a>
+                </c:when>
+                <c:otherwise>
+                    <a class="videoSignUp" href="javascript:toApply();" style="color:#fff;">点击报名</a>
+                </c:otherwise>
+            </c:choose>
+        </div>
+        <div id="goTopBtn"></div>
+    </div>
+    <%@include file="/WEB-INF/views/common/bottom.jsp" %>
+</div>
+<div class="mask"></div>
+</body>
+<script type="text/javascript">
+    var wid = $(window).width();
+    var hei = $(window).height();
+
+    if (wid > 769) {
+        imgLen = $(".teachers-loop li").length; //轮播图总数
+        var step = 3; 	//每一步移动的图片数 li个数
+       teacherWrapperWid = wid * 0.6;     //轮播显示部分宽度
+       teacherUlWid = wid * 0.6;     //ul宽度
+       teacherLiWid = wid * 0.6 * 0.3333333;//li宽度
+       $(".teachers-wrapper").css({"width":teacherWrapperWid,"margin-left":wid*0.2});
+       $(".teachers-loop li").css({"width":teacherLiWid});
+       $(".teachers-loop").css("width", teacherLiWid * imgLen);
+        //名师阵容图片切换事件
+        //左箭头点击处理
+        $("#prev").click(function(){
+            //首先，获得当前ul的marginLeft
+            var currentPos = parseFloat($(".teachers-loop").css('marginLeft'));
+            //计算出前一页ul的marginLeft
+            var prevPos = (currentPos+teacherUlWid)>0?0:(currentPos+teacherUlWid);
+            $(".teachers-loop").animate({marginLeft: prevPos}, 600);
+            $(".teachers-loop>li").eq(7).prependTo($(".teachers-loop"));
+            $(".teachers-loop").css('marginLeft',prevPos);
+        });
+        //右箭头点击处理
+        $("#next").click(function(){
+            var currentPos = parseFloat($(".teachers-loop").css('marginLeft'));
+            var nextPos = (currentPos-teacherUlWid)<(imgLen-step)/step*(-teacherUlWid)?(imgLen-step)/step*(-teacherUlWid):(currentPos-teacherUlWid);
+            console.log((imgLen-step)/step*(-teacherUlWid));
+            $(".teachers-loop").animate({marginLeft:nextPos}, 600, function () {
+                $(".teachers-loop>li").eq(0).appendTo($(".teachers-loop"));
+                $(".teachers-loop").css('marginLeft', nextPos);
+            });
+        });
+    }
+
+    function loginAlert() {
+        if (wid < 769) {
+            $("#signUp,.videoSignUp").on("click", function () {
+                var ban = 0;
+                $(".mask").css("display", "block");
+                $(".leadFrame").show(400);
+                document.addEventListener("touchmove", function (e) {
+                    if (ban == 0) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                }, false);
+            });
+            $(".login-before-close-btn").on("click", function () {
+                $(".mask").css("display", "none");
+                $(".leadFrame").css("display", "none");
+            });
+        } else {
+            $(".login-before").css('display', 'block');
+        }
+    }
+    function closeAlert() {
+        $(".login-before").css('display', 'none');
+        location.reload();
+    }
+    function toApply() {
+        location.href = "/userItem/applyAfrica";
+    }
+    $(function () {
+        //成功案例添加背景图片
+        var list = $(".cases ul li");
+        var advList = $(".adv ul li");
+        var resList = $(".results-parts");
+        var chaImgList = $(".charactersImg li");
+        var teachersList = $(".teachers ul li");
+        var featureList = $(".feature ul li");
+        //名师阵容背景图片添加
+        for (var i = 0; i < teachersList.length; i++) {
+            var listUrl = '/images/ITO_0' + parseInt(i + 1) + '.png';
+            teachersList.eq(i).css({
+                "background": "url(" + listUrl + ") no-repeat center 30px",
+                "background-size": "55%"
+            });
+        }
+        for (var i = 0; i < list.length; i++) {
+            var listUrl = '/images/case' + parseInt(i + 1) + '.png';
+            list.eq(i).css({"background": "url(" + listUrl + ") no-repeat center top", "background-size": "25%"});
+        }
+        for (var i = 0; i < advList.length; i++) {
+            var advListUrl = '/images/adv' + parseInt(i + 1) + '.png';
+            advList.eq(i).css("background", "url(" + advListUrl + ") no-repeat center 30px #f5f8fa");
+        }
+        for (var i = 0; i < featureList.length; i++) {
+            var featureListUrl = '/images/adv' + parseInt(i + 1) + '.png';
+            featureList.eq(i).css("background", "url(" + featureListUrl + ") no-repeat center 30px #f5f8fa");
+        }
+        for (var i = 0; i < resList.length; i++) {
+            var resListUrl = '/images/results' + parseInt(i + 1) + '.png';
+            resList.eq(i).css({
+                "background": "url(" + resListUrl + ") no-repeat top left #fff",
+                "background-size": "14%"
+            });
+            if (i < 2) {
+                resList.eq(i).css("background-position", "top right");
+            }
+        }
+
+        $(".gis_banner_btn").css({"width": wid * 0.4, "top": $(".gis_banner").height() * 0.8, "left": wid * 0.3});
+        if (wid < 769) {
+            $(".mid_cont").css({"width": wid, "max-width": "750px", "margin": "0 auto"});
+            $(".advantageTable").css("width", wid);
+            $(".gis_banner").css("width", wid);
+            $(".gis_banner_btn").css({"width": wid, "top": $(".gis_banner").height() * 0.7, "left": 0});
+            $(".project_details").css({"width": wid * 0.98, "margin-left": wid * 0.01});
+            $(".leadFrame").css({"width": wid * 0.8, "left": wid * 0.5});
+            $(".user-login").css({
+                "width": wid,
+                "height": hei,
+                "position": "fixed",
+                "margin-left": wid * 0.1,
+                "top": "0px"
+            });
+
+            if (wid > 640) {
+                for (var i = 0; i < list.length; i++) {
+//            console.log(list[i]);
+                    var listUrl = '/images/case' + parseInt(i + 1) + '.png';
+//            console.log(listUrl);
+                    list.eq(i).css({
+                        "background": "url(" + listUrl + ") no-repeat center top",
+                        "background-size": "15%"
+                    });
+                }
+            }
+        }
+    })
+
+</script>
+
+</html>

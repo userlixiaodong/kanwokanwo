@@ -1,0 +1,496 @@
+package cv.focus.core.interfaces.student.web;
+
+import com.google.gson.Gson;
+import cv.focus.common.infrastructure.util.paginaction.WebPage;
+import cv.focus.core.application.SpecializationService;
+import cv.focus.core.domain.activity.*;
+import cv.focus.core.domain.user.model.Specialization;
+import cv.focus.core.infrastructure.util.BaseController;
+import cv.focus.core.infrastructure.util.Result;
+import cv.focus.core.infrastructure.util.ResultMessages;
+import cv.focus.core.interfaces.user.dto.UserDTO;
+import org.apache.commons.collections.map.HashedMap;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.*;
+import java.text.SimpleDateFormat;
+
+/**
+ * Created by Administrator on 2016/8/31.
+ */
+@Controller
+@RequestMapping("/specialization")
+public class SpecializationController  extends BaseController {
+
+    private final Logger logger = Logger.getLogger(SpecializationController.class);
+    @Resource
+    private SpecializationService specializationService;
+    //导师跳转页面
+    @RequestMapping("/list")
+    public String specializaionList(HttpServletRequest request,@ModelAttribute("page") WebPage page, Model model) {
+        //滚动图标显示
+        /*List<ItemEntity> bannerList=specializationService.findBannerList();
+        //活动显示
+        List<ItemEntity> itemList=specializationService.findItemList();
+        model.addAttribute("bannerList",bannerList);
+        model.addAttribute("itemList",itemList);*/
+       try{
+            if(page == null){
+                page = new WebPage();
+            }
+            List<ItemEntity> bannerList=specializationService.findBannerList();
+            model.addAttribute("bannerList",bannerList);
+            page=specializationService.findItemListByPage(page);
+            if(null!=page&&page.getPageSize()>0)
+            {
+                List dataList = page.getData();
+                Gson gson = new Gson();
+                model.addAttribute("itemList",gson.toJson(dataList));
+                model.addAttribute("page",page);
+            }
+
+        }catch (Exception ex){
+            logger.error("SpecializationController.inBox2()", ex);
+        }
+        //return "school/pagelisth";
+        return "specialization/schoolList";
+    }
+
+    //根据关键字搜索
+    @RequestMapping("/search")
+    public String searchList(HttpServletRequest request, @ModelAttribute("page") WebPage page, Model model) {
+        try {
+            if (page == null) {
+                page = new WebPage();
+            }
+            List<ItemEntity> bannerList=specializationService.findBannerList();
+            model.addAttribute("bannerList",bannerList);
+            String keywords = request.getParameter("keyWords");
+            if ("".equals(keywords)) {
+
+            } else {
+                page = specializationService.queryActivityList(keywords, page);
+            }
+            if (null != page && page.getPageSize() > 0) {
+                List dataList = page.getData();
+                Gson gson = new Gson();
+                // model.addAttribute("schools", gson.toJson(dataList));
+                model.addAttribute("page", page);
+                model.addAttribute("keyWords", keywords);
+            }
+        } catch (Exception ex) {
+            logger.error("SpecializationController.searchList()", ex);
+        }
+        return "specialization/schoolList";
+    }
+
+    //
+    @RequestMapping("/{ItemId}")
+    public String uirUrl( @PathVariable Integer ItemId,HttpServletRequest request,Model model) {
+        String itemUrl="";
+        try{
+            ItemEntity Item=specializationService.findItemById(ItemId);
+            //增加浏览量方法
+            specializationService.addPageviews(Item);
+            model.addAttribute("Item",Item);
+            itemUrl = Item.getItemUrl();
+
+        }catch (Exception e){
+            logger.error("SpecializationController.{ItemId}()", e);
+        }
+
+        return "specialization/"+itemUrl;
+    }
+
+    @RequestMapping("/isExistInfo")
+    public String isExistInfo(HttpServletRequest request,HttpServletResponse resp) throws Exception{
+        UserDTO loginUser = getLoginUser(request);
+        Integer userId  = loginUser.getUserId();
+        ApplyActivity applyActivity=specializationService.findApplyActivityByUserId(userId);
+        if(applyActivity!=null){
+            resp.getWriter().println(1);
+        }else {
+            resp.getWriter().println(0);
+        }
+        return  null;
+
+    }
+
+    @RequestMapping("/itoUp")
+    public String toItoUp(){
+        return  "specialization/ito_up";
+    }
+
+    //七募人生
+    @RequestMapping("/sevenAges")
+    public String sevenAges(){
+        return  "specialization/sevenAges";
+    }
+
+    @RequestMapping("/applicationIndex")
+    public  String applicationIndex(HttpServletRequest request){
+
+        try{
+            UserDTO loginUser = getLoginUser(request);
+            Integer userId  = loginUser.getUserId();
+            ApplyActivity applyActivity=specializationService.findApplyActivityByUserId(userId);
+            request.setAttribute("applyActivity",applyActivity);
+
+            List<UserScore> scoreListSAT=specializationService.findUserScoreByType(userId,"1");
+            List<UserScore> scoreListAP=specializationService.findUserScoreByType(userId,"2");
+            List<UserApplyActivity> applyActivityList=specializationService.findAllUserApplyActivity(userId);
+
+            request.setAttribute("scoreListSAT",scoreListSAT);
+            request.setAttribute("scoreListAP",scoreListAP);
+            request.setAttribute("applyActivityList",applyActivityList);
+        }catch (Exception e){
+            logger.error("SpecializationController.applicationIndex()", e);
+        }
+
+
+        return "specialization/applicationIndex";
+    }
+
+    @RequestMapping("/applyInfo")
+    public String appInfo(HttpServletRequest request){
+
+        try{
+            UserDTO loginUser = getLoginUser(request);
+            Integer userId  = loginUser.getUserId();
+            ApplyActivity applyActivity=specializationService.findApplyActivityByUserId(userId);
+            if (applyActivity!=null){
+                return "redirect:/specialization/applicationIndex ";
+            }
+            List<CourseEntity> list1=specializationService.findCourseByType("1");
+            List<CourseEntity> list2=specializationService.findCourseByType("2");
+            String itemId = request.getParameter("itemId");
+            request.setAttribute("itemId",itemId);
+            request.setAttribute("list1",list1);
+            request.setAttribute("list2",list2);
+        }catch (Exception e){
+            logger.error("SpecializationController.applyInfo()", e);
+        }
+
+        return "specialization/applicationActivity";
+    }
+
+    @RequestMapping("/saveApplyInfo")
+    public String saveApplyInfo(@RequestParam String itemId,ApplyActivity applyActivity,HttpServletRequest request){
+
+        try {
+            UserDTO loginUser = getLoginUser(request);
+            Integer userId  = loginUser.getUserId();
+
+            String[] activityNames = request.getParameterValues("activityName");
+            String[] activityIntro = request.getParameterValues("activityIntro");
+            String[] courseArr = request.getParameterValues("course");
+            String[] score = request.getParameterValues("score");
+
+            if(activityNames.length>0){
+                for(int i=0;i<activityNames.length;i++){
+                    if("".equals(activityNames[i])){
+
+                    }else {
+                        UserApplyActivity userApplyActivity=new UserApplyActivity();
+                        userApplyActivity.setActivityName(activityNames[i]);
+                        userApplyActivity.setActivityIntro(activityIntro[i]);
+                        userApplyActivity.setUserId(userId);
+                        specializationService.saveApplyActivity(userApplyActivity);
+                    }
+                }
+            }
+            if(courseArr.length>0){
+                for(int i=0;i<courseArr.length;i++){
+                    if("".equals(courseArr[i])){
+
+                    }else {
+                        UserScore userScore=new UserScore();
+                        CourseEntity course=specializationService.findExamInfoById(courseArr[i]);
+                        userScore.setExamID(courseArr[i]);
+                        userScore.setExam_type(course.getCourseType());
+                        userScore.setExamName(course.getCourseName());
+                        userScore.setUserId(userId);
+                        userScore.setScore(Integer.parseInt(score[i]));
+                        specializationService.saveUserScore(userScore);
+                    }
+                }
+            }
+
+            applyActivity.setUserId(userId);
+
+            specializationService.saveApplyInfo(applyActivity);
+        }catch (Exception e){
+            logger.error("SpecializationController.saveApplyInfo()", e);
+        }
+        String param = "";
+        if(itemId != null && !"".equals(itemId)){
+            param = "?itemId="+itemId;
+        }
+        return "redirect:/specialization/applicationIndex"+param;
+    }
+
+    @RequestMapping("/updateApplyInfo")
+    public String updateApplyInfo(@RequestParam String itemId,HttpServletRequest request, ApplyActivity applyActivity){
+
+        try {
+            UserDTO loginUser = getLoginUser(request);
+            Integer userId  = loginUser.getUserId();
+
+            String[] activityNames = request.getParameterValues("activityName");
+            String[] activityIntro = request.getParameterValues("activityIntro");
+            String[] courseArr = request.getParameterValues("course");
+            String[] score = request.getParameterValues("score");
+
+            if(courseArr.length>0){
+                for(int i=0;i<courseArr.length;i++){
+                    if("".equals(courseArr[i])){
+
+                    }else {
+                        UserScore existUserScore=specializationService.findUserScoreByExamId(courseArr[i],userId);
+                        if (existUserScore!=null){
+                            //更新
+                            specializationService.saveUserScore(existUserScore);
+                        }else {
+                            UserScore userScore=new UserScore();
+                            CourseEntity course=specializationService.findExamInfoById(courseArr[i]);
+                            userScore.setExamID(courseArr[i]);
+                            userScore.setExam_type(course.getCourseType());
+                            userScore.setExamName(course.getCourseName());
+                            userScore.setUserId(userId);
+                            userScore.setScore(Integer.parseInt(score[i]));
+                            specializationService.saveUserScore(userScore);
+                        }
+
+                    }
+                }
+            }
+            //活动的更新
+            if(activityNames.length>0){
+                for(int i=0;i<activityNames.length;i++){
+                    if("".equals(activityNames[i])){
+
+                    }else {
+
+                        UserApplyActivity existUserApplyActivity=specializationService.findUserActivityByUserId(userId,activityNames[i]);
+                        if (existUserApplyActivity!=null){
+                            //更新
+                            specializationService.saveApplyActivity(existUserApplyActivity);
+                        }else {
+                            UserApplyActivity userApplyActivity=new UserApplyActivity();
+                            userApplyActivity.setActivityName(activityNames[i]);
+                            userApplyActivity.setActivityIntro(activityIntro[i]);
+                            userApplyActivity.setUserId(userId);
+                            specializationService.saveApplyActivity(userApplyActivity);
+                        }
+
+                    }
+                }
+            }
+            //申请信息的更新
+            ApplyActivity existApplyActivity=specializationService.findApplyActivityByUserId(userId);
+            if (existApplyActivity!=null){
+                specializationService.deleteApplyActivity(existApplyActivity);
+                applyActivity.setUserId(userId);
+                specializationService.saveApplyInfo(applyActivity);
+            }
+        }catch (Exception e){
+            logger.error("SpecializationController.updateApplyInfo()", e);
+        }
+
+        String param = "";
+        if(itemId != null && !"".equals(itemId)){
+            param = "?itemId="+itemId;
+        }
+        return "redirect:/specialization/applicationIndex"+param;
+    }
+
+    @RequestMapping("/editApplyInfo")
+    public String editApplyInfo(HttpServletRequest request){
+
+        try{
+        UserDTO loginUser = getLoginUser(request);
+        Integer userId  = loginUser.getUserId();
+        ApplyActivity applyActivity=specializationService.findApplyActivityByUserId(userId);
+        if(applyActivity!=null){
+            String strBirthday = applyActivity.getBirthday();
+            String strHighSchoolStartDate = applyActivity.getHighSchoolStartDate();
+            String strHighSchoolEndDate = applyActivity.getHighSchoolEndDate();
+
+            request.setAttribute("strBirthday",strBirthday);
+            request.setAttribute("strHighSchoolStartDate",strHighSchoolStartDate);
+            request.setAttribute("strHighSchoolEndDate",strHighSchoolEndDate);
+
+            request.setAttribute("applyActivity",applyActivity);
+        }
+
+        List<UserScore> scoreListSAT=specializationService.findUserScoreByType(userId,"1");
+        List<UserScore> scoreListAP=specializationService.findUserScoreByType(userId,"2");
+        List<UserApplyActivity> applyActivityList=specializationService.findAllUserApplyActivity(userId);
+        List<CourseEntity> listSAT=specializationService.findCourseByType("1");
+        List<CourseEntity> listAP=specializationService.findCourseByType("2");
+
+        request.setAttribute("listSAT",listSAT);
+        request.setAttribute("listAP",listAP);
+        request.setAttribute("scoreListSAT",scoreListSAT);
+        request.setAttribute("scoreListAP",scoreListAP);
+        request.setAttribute("applyActivityList",applyActivityList);
+        }catch (Exception e){
+            logger.error("SpecializationController.editApplyInfo()", e);
+        }
+        return "specialization/editapplicationActivity";
+    }
+
+    @RequestMapping("/deleteActivity")
+    public  void deleteActivity(String id,HttpServletRequest request){
+
+        try{
+            UserApplyActivity userApplyActivity=specializationService.findUserActivityById(id);
+            if(userApplyActivity!=null){
+                specializationService.deleteUserActivity(userApplyActivity);
+            }
+        }catch (Exception e){
+            logger.error("SpecializationController.deleteActivity()", e);
+        }
+
+    }
+
+    @RequestMapping("/deleteUserScore")
+    public  void deleteUserScore(String id,HttpServletRequest request){
+
+        try {
+            UserScore userScore=specializationService.findUserScoreById(id);
+            if(userScore!=null){
+                specializationService.deleteUserScore(userScore);
+            }
+        }catch (Exception e){
+            logger.error("SpecializationController.deleteUserScore()", e);
+        }
+
+    }
+
+
+    //以后备用
+    @RequestMapping("/activitiesInfo/{itemId}")
+    public String activitiesInfo(@PathVariable Integer itemId,Model model){
+
+       ItemEntity Item=specializationService.findItemById(itemId);
+        //增加浏览量方法
+        specializationService.addPageviews(Item);
+        model.addAttribute("Item",Item);
+        return null;
+    }
+
+
+    @RequestMapping("/intro8")
+    public String specializaionShowIntro8( HttpServletRequest request) {
+        return "specialization/intro8";
+    }
+    @RequestMapping("/guoyujiao")
+    public String specializaionShowGyj( HttpServletRequest request) {
+        return "specialization/guoyujiao";
+    }
+    @RequestMapping("/baolei")
+    public String specializaionShowBl( HttpServletRequest request) {
+        return "specialization/baolei";
+    }
+
+
+    @RequestMapping("/submit")
+    @ResponseBody
+    public Result SpecializationSubmit( HttpServletRequest request) {
+        Result result = null;
+        try {
+            UserDTO loginUser = getLoginUser(request);
+            //测试数据
+            Integer userId  = loginUser.getUserId();
+            String userName  = loginUser.getUserName();
+            Integer tutorId = Integer.parseInt(request.getParameter("tutorId"));
+            String tutorName = (String) request.getParameter("tutorName");
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");//小写的mm表示的是分钟
+            String dstr=(String)request.getParameter("specializationTime") +  ":00";
+            Date specializationTime=sdf.parse(dstr);
+            Date insertTime = new Date();
+            int specializationPeriod = Integer.parseInt(request.getParameter("specializationPeriod"));
+            String nickname = StringUtils.trimToEmpty((String) request.getParameter("nickname"));
+            String mobile = StringUtils.trimToEmpty((String) request.getParameter("mobile"));
+            String email = StringUtils.trimToEmpty((String) request.getParameter("email"));
+            String comments = StringUtils.trimToEmpty((String) request.getParameter("comments"));
+            float cost  = Float.parseFloat(request.getParameter("cost"));
+            //int state = Integer.parseInt(request.getParameter("state"));
+            //系统支付功能完善前，所有系统表单默认提交状态都为未付款，即state为0.
+            int state = 0;
+            specializationService.createSpecialization(userId,userName,tutorId,tutorName,specializationTime,specializationPeriod,nickname,mobile,email,comments,state,insertTime,cost);
+            result = newSuccessResult(ResultMessages.SPECIALIZATION_SUCCESS, null);
+        } catch (Exception e) {
+            logger.error("SpecializationController.SpecializationSubmit()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }
+
+
+    @RequestMapping("/mySpecialization")
+    public String inBox( HttpServletRequest request) {
+
+        try {
+            UserDTO loginUser = getLoginUser(request);
+            //测试数据
+            Integer userId  = loginUser.getUserId();
+            List<Specialization> SpecializationList = new ArrayList<Specialization>();
+            if("1".equals(loginUser.getRoleR())){
+                SpecializationList = specializationService.findByTutorId(userId);
+            }else if("0".equals(loginUser.getRoleR())){
+                SpecializationList = specializationService.findByUserId(userId);
+            }
+
+            request.setAttribute("specializationList",SpecializationList);
+        } catch (Exception e) {
+            logger.error("MessageController.inBox()", e);
+        }
+        return "user/mySpecialization";
+    }
+
+    @RequestMapping("/allSpecialization")
+    public String inBox2( HttpServletRequest request) {
+
+        try {
+            UserDTO loginUser = getLoginUser(request);
+            if(loginUser == null){
+                return "specialization/intro8";
+            }
+            //测试数据
+            Integer userId  = loginUser.getUserId();
+            List<Specialization> SpecializationList = new ArrayList<Specialization>();
+            if(checkAdmin(userId)){
+                SpecializationList = specializationService.findAll();
+            }
+            request.setAttribute("specializationList",SpecializationList);
+            if(SpecializationList.size() == 0){
+                return "specialization/intro8";
+            }
+        } catch (Exception e) {
+            logger.error("SpecializationController.inBox2()", e);
+        }
+        return "specialization/specializaitionAll";
+    }
+
+    private boolean checkAdmin(int id){
+        boolean check = false;
+        int[] adminArray = {415,342,456,451,457,422,411,450};
+        for(int i = 0; i < adminArray.length; i++){
+            if(id == adminArray[i]){
+                check = true;
+                break;
+            }
+        }
+        return  check;
+    }
+
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>学校列表</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="email=no">
+<link rel="stylesheet" type="text/css" href="style/frame.css"/>
+<link rel="stylesheet" type="text/css" href="style/public.css"/>
+<link rel="stylesheet" type="text/css" href="style/school-list.css"/>
+</head>
+<body>
+<div class="school-list">
+  <div class="school-list-header clearfix">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2 class="no-leading">WE LOVE ALL OUR COLLEGE PARTNERS</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="w1200 school-list-item text-center clearfix">
+      <div class="col-lg-3 col-xs-12"><a href="https://www.kanwokanwo.com/pitzercollege" target="_blank"><img src="images/school-img1.png"></a></div>
+      <div class="col-lg-3 col-xs-12"><a href="https://www.kanwokanwo.com/universityofsanfrancisco" target="_blank"><img src="images/school-img2.png"></a></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

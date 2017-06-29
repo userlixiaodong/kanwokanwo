@@ -1,0 +1,197 @@
+package cv.focus.core.interfaces.user.mobile;
+
+import com.focusedu.utils.sms.SmsManager;
+import com.focusedu.utils.sms.SmsResult;
+import cv.focus.core.domain.school.model.profile.AdmissionProfile;
+import cv.focus.core.domain.student.model.profile.StudentProfile;
+import cv.focus.core.domain.user.model.User;
+import cv.focus.core.infrastructure.util.BaseController;
+import cv.focus.core.infrastructure.util.CreateKey;
+import cv.focus.core.infrastructure.util.Result;
+import cv.focus.core.infrastructure.util.ResultMessages;
+import cv.focus.core.interfaces.school.facade.AdmissionProfileServiceFacade;
+import cv.focus.core.interfaces.student.facade.StudentProfileServiceFacade;
+import cv.focus.core.interfaces.user.facade.UserServiceFacade;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.net.URLEncoder;
+import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * UserMobileController
+ * 
+ * @author liuruichao
+ * Created on 2016-06-18 16:55
+ */
+@Controller
+@RequestMapping("/mobile")
+public class UserMobileController extends BaseController {
+    private final Logger logger = Logger.getLogger(UserMobileController.class);
+    @Resource
+    private StudentProfileServiceFacade studentProfileServiceFacade;
+    @Resource
+    private UserServiceFacade userServiceFacade;
+    @Resource
+    private AdmissionProfileServiceFacade admissionProfileServiceFacade;
+    @RequestMapping("/login")
+    public String toLogin() {
+        return "/mobile/common/login";
+    }
+
+    @RequestMapping("/register")
+    public String toRegister() {
+        return "/mobile/common/register";
+    }
+
+
+    @RequestMapping("/quickLogin")
+    public String toQuickLogin() {
+        return "/mobile/common/quickLogin";
+    }
+
+    @RequestMapping("/login-submit")
+    @ResponseBody
+    public Result userLogin(
+            @RequestParam String loginName,
+            @RequestParam String userPwd,
+            HttpServletRequest request) {
+        Result<String> result = null;
+        try {
+            if (userServiceFacade.checkLogin(loginName, userPwd)) {
+                String mobile = null;
+                String email = null;
+                if (loginName.contains("@")) {
+                    email = loginName;
+                } else {
+                    email = userServiceFacade.findUserByMobile(loginName).getEmail();
+                }
+                StudentProfile studentProfile = studentProfileServiceFacade.getProfileByEmail(email);
+                AdmissionProfile admissionProfile = admissionProfileServiceFacade.getProfileByEmail(email);
+                HttpSession session = request.getSession();
+                User user = userServiceFacade.findUserByEmail(email);
+                if (studentProfile != null) {
+                    setSession(user.getUserId(), mobile, email,user.getRoleR(), studentProfile, session);
+                    //登录成功后跳转到主页
+                    result = newSuccessResult(ResultMessages.LOGIN_SUCCESS, URLEncoder.encode(studentProfile.getPublicUri(), "UTF-8"));
+                }
+                if (admissionProfile != null) {
+                    setSession(user.getUserId(), loginName, admissionProfile, session);
+                    result = newSuccessResult(ResultMessages.LOGIN_SUCCESS, URLEncoder.encode(admissionProfile.getPublicUri(), "UTF-8"));
+                }
+            } else {
+                result = newFaildResult(ResultMessages.LOGIN_FAIL);
+            }
+        } catch (Exception e) {
+            logger.error("UserMobileController.userLogin()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }
+    @RequestMapping("/checkMobileAvail")
+    @ResponseBody
+    public Result<String> checkMobileAvail(@RequestParam String mobile) {
+        Result<String> result = null;
+        try {
+            if (StringUtils.isBlank(mobile)) {
+                return newFaildResult(ResultMessages.PARAM_ERROR);
+            }
+            User user = userServiceFacade.findUserByMobile(mobile);
+            if (user == null) {
+                result = newFaildResult(ResultMessages.THE_MOBILE_NUMBER_IS_NOT_REGISTERED);
+            } else {
+                result = newSuccessResult(ResultMessages.OPERATE_SUCCESS, null);
+            }
+        } catch (Exception e) {
+            logger.error("UserController.checkMobileAvail()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }
+
+
+    @RequestMapping("/sendPhoneVerificationCode")
+    @ResponseBody
+    public Result<String> sendPhoneVerificationCode(
+            @RequestParam String mobile,HttpServletRequest request) {
+        Result<String> result = null;
+        try {
+            HttpSession session = request.getSession();
+            if (!isValidMobile(mobile)) {
+                return newFaildResult(ResultMessages.MOBILE_FORMAT_ERROR);
+            }
+            Date oldDate = (Date) session.getAttribute("sendCodeTime_" + mobile);
+            if (oldDate != null) {
+                long second = (new Date().getTime() - oldDate.getTime()) / 1000;
+                if (second <= 180) {
+                    return newFaildResult("Can not continuously send a verification code within three minutes.");
+                }
+            }
+            User user = userServiceFacade.findUserByMobile(mobile);
+            if (user == null) {
+                return newFaildResult(ResultMessages.MOBILE_EXISTS);
+            }
+            String randomNum = CreateKey.createRandomKey();
+            session.setAttribute("sendCodeTime_" + mobile, new Date());
+            session.setAttribute("code_" + mobile, randomNum);
+            String content = "您的验证码是:" + randomNum + "，最好的出国考试在线学习平台。";
+            SmsResult smsResult = SmsManager.sendMessage(mobile, content);
+            logger.info("verification code: " + randomNum);
+            logger.info("mobile : " + mobile + ", smsResult : " + smsResult.getMsg());
+            result = newSuccessResult(ResultMessages.OPERATE_SUCCESS, null);
+        } catch (Exception e) {
+            logger.error("UserController.sendPhoneVerificationCode()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }
+
+    //重置密码
+    @RequestMapping("/resetPassword")
+    @ResponseBody
+    public Result resetPassword(
+            @RequestParam String pwd,
+            @RequestParam String mobile,
+            @RequestParam String identifyCode,
+            HttpServletRequest request) {
+        Result result = null;
+        try {
+            if (StringUtils.isBlank(mobile) || StringUtils.isBlank(pwd)
+                    || StringUtils.isBlank(identifyCode)) {
+                return newFaildResult(ResultMessages.PARAM_ERROR);
+            }
+            HttpSession session = request.getSession();
+            String vCode = (String) session.getAttribute("code_" + mobile);
+            if (StringUtils.isBlank(vCode) || !vCode.equals(identifyCode)) {
+                return newFaildResult(ResultMessages.VERIFICATIONCODE_ERROR);
+            }
+            User user = userServiceFacade.findUserByMobile(mobile);
+            if(user !=null){
+                userServiceFacade.resetPasswordByMobile(mobile,pwd);
+                result = newSuccessResult(ResultMessages.RESET_PASSWORD_SUCCESS, null);
+            }else {
+                result = newFaildResult(ResultMessages.OPERATE_FAIL);
+            }
+        } catch (Exception e) {
+            logger.error("UserController.resetPassword()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }
+
+    private boolean isValidMobile(String mobile) {
+        String phonePattern = "^((13[0-9])|(15[^4,\\D])|(18[0,5-9])|(17[0-9]))\\d{8}$";
+        Pattern p = Pattern.compile(phonePattern);
+        Matcher m = p.matcher(mobile);
+        return m.matches();
+    }
+}

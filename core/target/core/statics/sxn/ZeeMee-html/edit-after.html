@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>edit-after</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="email=no">
+<link rel="stylesheet" type="text/css" href="style/frame.css"/>
+<link rel="stylesheet" type="text/css" href="style/public.css"/>
+<link rel="stylesheet" type="text/css" href="style/video-js.css"/>
+<script src="js/video.js"></script>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/modernizr.custom.js"></script>
+</head>
+<body>
+<!--=====================================top============================================-->
+<div class="fixed-top fixed-top-bar">
+  <nav class="navbar"> <a class="navbar-brand" href="/index.jsp"></a>
+    <ul class="left-side navbar-section">
+      <li> <span> <i class="glyphicon glyphicon-search"></i>
+        <input type="text" class="navbar-search-input" style="width: 289px;">
+        </span> </li>
+    </ul>
+    <ul class="right-side navbar-section">
+      <li> <a href="#"> <i class="glyphicon glyphicon glyphicon-link"></i> <span class="show-for-large-menu">Your link</span> </a> </li>
+      <li></li>
+      <li class="user-dropdown-wrap"> <a href="javascript:void(0);" class="subnav-avatar-down user-dropdown">
+        <div class="subnav-avatar"><img src="images/img.jpg" ></div>
+        <i class="glyphicon glyphicon-menu-down"></i> </a>
+        <ul class="subnav-content">
+          <div class="subnav-content-box clearfix">
+            <div class="subnav-avatar fl"><img src="images/img.jpg" ></div>
+            <div class="profile-menu-top-right fl"> <span>唐诗</span><a href="">编辑个人资料</a></div>
+          </div>
+          <li class="subnav-link-item"><a href=""><i class="glyphicon glyphicon-check"></i><span>打开您的链接</span></a></li>
+          <li class="subnav-link-item"><a href=""><i class="glyphicon glyphicon-eye-open"></i><span>预览</span></a></li>
+          <li class="subnav-link-item"><a href=""><i class="glyphicon glyphicon-cog"></i><span>设置</span></a></li>
+          <li class="subnav-link-item"><a href=""><i class="glyphicon glyphicon-th-large"></i><span>参考样本</span></a></li>
+          <li class="subnav-link-item"></li>
+          <li class="subnav-link-item"><a href=""><i class="glyphicon glyphicon-question-sign"></i><span>帮助&答疑</span></a></li>
+          <li class="subnav-link-item"><a href=""><i class="glyphicon glyphicon-log-out"></i><span>退出</span></a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div class="main-wrapper"> 
+  <!--=====================================left============================================-->
+  <aside class="sidebar-container">
+    <div class="row">
+      <div class="col-xs-12 text-center"><a class="md-trigger" data-modal="modal-8" href="javascript:void(0);"><img width="200" height="200" src="images/img.jpg"></a></div>
+      <div class="col-xs-12 text-center">
+        <h2><a class="md-trigger" data-modal="modal-6" href="javascript:void(0);">Lua McGimsey</a></h2>
+      </div>
+      <ul class="col-xs-12 icon-list">
+        <li> <i class="glyphicon glyphicon-map-marker"></i>
+          <a class="md-trigger" data-modal="modal-6" href="javascript:void(0);"><p><span>北京市，海淀区</span></p></a>
+        </li>
+        <li> <i class="glyphicon glyphicon-bed"></i>
+         <a class="md-trigger" data-modal="modal-6" href="javascript:void(0);"> <p>人民大学附中</p></a>
+        </li>
+        <li> <i class="glyphicon glyphicon-education"></i>
+          <a class="md-trigger" data-modal="modal-6" href="javascript:void(0);"><p><span>2016年毕业，视觉传达</span></p></a>
+        </li>
+        <li> <i class="glyphicon glyphicon-tower"></i>
+          <a class="md-trigger" data-modal="modal-6" href="javascript:void(0);"><p><span>喜欢旅游、摄影</span></p></a>
+        </li>
+        <li> <i class="glyphicon glyphicon-tags"></i>
+          <a class="md-trigger" data-modal="modal-11" href="javascript:void(0);"><p><span>SAT2100</span></p></a>
+        </li>
+      </ul>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 text-center"> <a class="add-impression" href="">Personal Resume</a>
+        <p class="inspiration-line">Need Inspiration?</p>
+        <a href="" target="_blank"> <img alt="Vidya golla desktop" class="inspiration-image" src="images/inspiration-image.png"> </a> </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <h3 class="lead-in">Good friend impression</h3>
+        <ul class="friend-impression-list clearfix">
+          <li>Artist!<span>（100）</span>
+          <div class="tips text-center">
+             <div class="clearfix">
+               <dl>
+                <dt><a href="" target="_blank"><img src="images/img.jpg"></a></dt>
+                <dd><a href="" target="_blank">0</a></dd>
+               </dl>
+               <dl>
+                <dt><a href="" target="_blank"><img src="images/img.jpg"></a></dt>
+                <dd><a href="" target="_blank">zhou jie</a></dd>
+               </dl>
+               <dl>
+                <dt><a href="" target="_blank"><img src="images/img.jpg"></a></dt>
+                <dd><a href="" target="_blank">zhous ji</a></dd>
+               </dl>
+             </div>
+           <p>I am a love of art and life（45）</p>
+           </div>
+          </li>
+          <li>Ha ha!（867）<div class="tips text-center">
+             <div class="clearfix">
+               <dl>
+                <dt><a href="" target="_blank"><img src="images/img.jpg"></a></dt>
+                <dd><a href="" target="_blank">1</a></dd>
+               </dl>
+               <dl>
+                <dt><a href="" target="_blank"><img src="images/img.jpg"></a></dt>
+                <dd><a href="" target="_blank">zhou jie</a></dd>
+               </dl>
+               <dl>
+                <dt><a href="" target="_blank"><img src="images/img.jpg"></a></dt>
+                <dd><a href="" target="_blank">zhous ji</a></dd>
+               </dl>
+             </div>
+           <p>I am a love of art and life（45）</p>
+           </div></li>
+          <li>Great leadership!（14）<div class="tips text-center">
+             <div class="clearfix">
+               <dl>
+                <dt><a href="" target="_blank"><img src="images/img.jpg"></a></dt>
+                <dd><a href="" target="_blank">2</a></dd>
+               </dl>
+               <dl>
+                <dt><a href="" target="_blank"><img src="images/img.jpg"></a></dt>
+                <dd><a href="" target="_blank">zhou jie</a></dd>
+               </dl>
+               <dl>
+                <dt><a href="" target="_blank"><img src="images/img.jpg"></a></dt>
+                <dd><a href="" target="_blank">zhous ji</a></dd>
+               </dl>
+             </div>
+           <p>I am a love of art and life（45）</p>
+           </div></li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+  <!--=====================================right============================================-->
+  <div class="content-container">
+    <div class="my-story-container">
+      <div class="row">
+        <div class="progress-section clearfix">
+          <div class="col-xs-12">
+            <h3>YOUR PAGE</h3>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"> <span class="sr-only">60% Complete</span> </div>
+            </div>
+            <p class="progress-description">60% complete</p>
+            <h3>BADGES</h3>
+            <ul class="add-badges">
+              <li><a class="md-trigger" data-modal="modal-1" href="javascript:void(0);"><img src="images/11.png"></a></li>
+              <li><a class="md-trigger" data-modal="modal-1" href="javascript:void(0);"><img src="images/22.png"></a></li>
+              <li><a class="md-trigger" data-modal="modal-1" href="javascript:void(0);"><img src="images/33.png"></a></li>
+              <li><a class="md-trigger" data-modal="modal-1" href="javascript:void(0);"><img src="images/44.png"></a></li>
+              <li><a class="md-trigger" data-modal="modal-1" href="javascript:void(0);"><img src="images/55.png"></a></li>
+              <li><a class="md-trigger" data-modal="modal-1" href="javascript:void(0);"><img src="images/66.png"></a></li>
+              <li><a class="md-trigger" data-modal="modal-1" href="javascript:void(0);"><img src="images/77.png"></a></li>
+            </ul>           
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="clearfix">
+          <div class="col-xs-12">
+            <h1>MEET ME VIDEO
+            <div class="edit-my-video-info fr">
+            <a class="edit-my-video-info-btn"><i class="glyphicon glyphicon-option-vertical my-video-tips"></i></a>
+            
+            <div class="edit-my-video-info-content">
+                <button class="md-trigger" data-modal="modal-1">Replace</button>
+                <button class="md-trigger" data-modal="modal-1">Delete</button>
+                <button class="md-trigger" data-modal="modal-1">Suggestions</button>
+              </div>
+            </div>
+              
+             </h1>
+          </div>
+        </div>
+        <div class="edit-my-video">
+          <div class="clearfix">
+            <div class="col-xs-12"><img src="images/student-video.jpg"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="clearfix">
+          <div class="col-xs-12">
+            <h1>MY STORY</h1>
+          </div>
+        </div>
+        <div class="columns-info clearfix">
+          <div class="col-xs-12">
+            <h6><i class="glyphicon glyphicon-star"></i><em>This is where you give others a glimpse of your family, friends and community. Help them learn about your background.</em></h6>
+          </div>
+          <div class="bg-gray">
+            <div class="clearfix">
+              <div class="media-item clearfix">
+                <div class="col-lg-8 col-xs-12 disabled">
+                  <div class="media-item-description">
+                  <a class="md-trigger" data-modal="modal-1" href="javascript:void(0);">
+                    <p>我是一名热爱艺术和生活的人，这世界充满了未知数，值得我去阅览。我就读于南大附中，平时喜欢听歌、画画、羽毛球、唱歌、摄影，我的生涯一片无悔，想起那天下午夕阳下的奔跑，那是我逝去的青春。</p>
+                 </a>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="edit-hover">
+                  <div class="edit-document-item text-center">
+                  <i class="glyphicon glyphicon-list-alt"></i>
+                  <p class="edit-document-item-title">123456789123456789123456789123456789123456789123456789</p>
+                  <small>Document</small>
+                  </div>
+                    <div class="controls clearfix">
+                    <div class="fl">
+                    <a class="controls-move"><i class="glyphicon glyphicon-move"></i></a>
+                    </div>
+                    <div class="fr">
+                    <a class="md-trigger add-upload controls-delete" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-trash"></i></a>
+                    <a class="md-trigger add-upload controls-edit" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="edit-hover"> <img src="images/img01.jpg">
+                    <div class="controls clearfix">
+                    <div class="fl">
+                    <a class="controls-move"><i class="glyphicon glyphicon-move"></i></a>
+                    </div>
+                    <div class="fr">
+                    <a class="md-trigger add-upload controls-delete" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-trash"></i></a>
+                    <a class="md-trigger add-upload controls-edit" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="edit-hover"> <img src="images/img01.jpg">
+                    <div class="controls clearfix">
+                    <div class="fl">
+                    <a class="controls-move"><i class="glyphicon glyphicon-move"></i></a>
+                    </div>
+                    <div class="fr">
+                    <a class="md-trigger add-upload controls-delete" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-trash"></i></a>
+                    <a class="md-trigger add-upload controls-edit" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="edit-hover">
+                    <div class="video-img"><img src="images/img01.jpg"><i class="glyphicon glyphicon-play-circle"></i>
+                      <div class="masking"></div>
+                    </div>
+                    <div class="controls clearfix">
+                    <div class="fl">
+                    <a class="controls-move"><i class="glyphicon glyphicon-move"></i></a>
+                    </div>
+                    <div class="fr">
+                    <a class="md-trigger add-upload controls-delete" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-trash"></i></a>
+                    <a class="md-trigger add-upload controls-edit" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="r-upload"><a class="md-trigger add-upload" data-modal="modal-3" href="javascript:void(0);"><i class="glyphicon glyphicon-cloud-upload"></i><strong>Upload</strong></a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="clearfix">
+          <div class="col-xs-12">
+            <h1>MY ACTIVITIES</h1>
+          </div>
+        </div>
+        <div class="columns-info clearfix">
+          <div class="clearfix">
+            <div class="col-xs-12">
+              <h6><i class="glyphicon glyphicon-star"></i><em>This is where you give others a glimpse of your family, friends and community. Help them learn about your background.</em></h6>
+            </div>
+          </div>
+          <div class="clearfix">
+            <div class="activity">
+              <ul class="activity-item">
+                <li class="col-lg-2 col-xs-4 on">
+                  <p>全部</p>
+                  <span>（10）</span></li>
+                <li class="col-lg-2 col-xs-4">
+                  <p>艺术</p>
+                  <span>（2）</span></li>
+                <li class="col-lg-2 col-xs-4">
+                  <p>体育</p>
+                  <span>（3）</span></li>
+                <li class="col-lg-2 col-xs-4">
+                  <p>社区服务</p>
+                  <span>（1）</span></li>
+                <li class="col-lg-2 col-xs-4">
+                  <p>文化</p>
+                  <span>（1）</span></li>
+                <li class="col-lg-2 col-xs-4">
+                  <p>辩论演讲</p>
+                  <span>（1）</span></li>
+                <li class="col-lg-2 col-xs-4">
+                  <p>传媒</p>
+                  <span>（1）</span></li>
+                <li class="col-lg-2 col-xs-4">
+                  <p>科技</p>
+                  <span>（1）</span></li>
+                <li class="col-lg-2 col-xs-4">
+                  <p>语言</p>
+                  <span>（1）</span></li>
+                <li class="col-lg-2 col-xs-4">
+                  <p>宗教</p>
+                  <span>（0）</span></li>
+                <li class="col-lg-2 col-xs-4">
+                  <p>工作经历</p>
+                  <span>（0）</span></li>
+                <li class="col-lg-2 col-xs-4">
+                  <p>其他</p>
+                  <span>（0）</span></li>
+              </ul>
+            </div>
+          </div>
+         <div class="activity-list">
+          <div class="clearfix add-activity-tit">
+            <div class="col-xs-8 text-left">2016 regiment built!</div>
+            <div class="col-xs-4 text-right">4 years 5 months</div>
+          </div>
+          <div class="clearfix add-activity-tit-edit">
+            <div class="col-xs-1">
+            <a href="javascript:void(0);"><i class="glyphicon glyphicon-triangle-top"></i></a>
+            <a href="javascript:void(0);"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
+            </div>
+            <div class="col-xs-11"><a class="md-trigger" data-modal="modal-4" href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a><span>Academic</span><span>Art</span><span>Culture</span></div>
+          </div>
+          <div class="bg-gray">
+            <div class="clearfix">
+              <div class="media-item clearfix">
+                <div class="col-lg-8 col-xs-12 disabled">
+                  <div class="media-item-description">
+                  <a class="md-trigger" data-modal="modal-1" href="javascript:void(0);">
+                    <p> 我是一名热爱艺术和生活的人，这世界充满了未知数，值得我去阅览。我就读于南大附中，平时喜欢听歌、画画、羽毛球、唱歌、摄影，我的生涯一片无悔，想起那天下午夕阳下的奔跑，那是我逝去的青春。</p>
+                  </a>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="edit-hover"> <img src="images/img01.jpg">
+                    <div class="controls clearfix">
+                    <div class="fl">
+                    <a class="controls-move"><i class="glyphicon glyphicon-move"></i></a>
+                    </div>
+                    <div class="fr">
+                    <a class="md-trigger add-upload controls-delete" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-trash"></i></a>
+                    <a class="md-trigger add-upload controls-edit" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="edit-hover"> <img src="images/img01.jpg">
+                    <div class="controls clearfix">
+                    <div class="fl">
+                    <a class="controls-move"><i class="glyphicon glyphicon-move"></i></a>
+                    </div>
+                    <div class="fr">
+                    <a class="md-trigger add-upload controls-delete" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-trash"></i></a>
+                    <a class="md-trigger add-upload controls-edit" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="edit-hover"> <img src="images/img01.jpg">
+                    <div class="controls clearfix">
+                    <div class="fl">
+                    <a class="controls-move"><i class="glyphicon glyphicon-move"></i></a>
+                    </div>
+                    <div class="fr">
+                    <a class="md-trigger add-upload controls-delete" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-trash"></i></a>
+                    <a class="md-trigger add-upload controls-edit" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="edit-hover">
+                    <div class="video-img"><img src="images/img01.jpg"><i class="glyphicon glyphicon-play-circle"></i>
+                      <div class="masking"></div>
+                    </div>
+                    <div class="controls clearfix">
+                    <div class="fl">
+                    <a class="controls-move"><i class="glyphicon glyphicon-move"></i></a>
+                    </div>
+                    <div class="fr">
+                    <a class="md-trigger add-upload controls-delete" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-trash"></i></a>
+                    <a class="md-trigger add-upload controls-edit" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="r-upload"><a class="md-trigger add-upload" data-modal="modal-3" href="javascript:void(0);"><i class="glyphicon glyphicon-cloud-upload"></i><strong>Upload</strong></a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+         </div>  
+         <div class="activity-list">
+          <div class="clearfix add-activity-tit">
+            <div class="col-xs-8 text-left">"Focus cup" contest</div>
+            <div class="col-xs-4 text-right">2015 years 8 months</div>
+          </div>
+          <div class="clearfix add-activity-tit-edit">
+            <div class="col-xs-1">
+            <a href="javascript:void(0);"><i class="glyphicon glyphicon-triangle-top"></i></a>
+            <a href="javascript:void(0);"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
+            </div>
+            <div class="col-xs-11"><a class="md-trigger" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a><span>Academic</span><span>Art</span><span>Culture</span></div>
+          </div>
+          <div class="bg-gray">
+            <div class="clearfix">
+              <div class="media-item clearfix">
+                <div class="col-lg-8 col-xs-12 disabled">
+                  <div class="media-item-description">
+                  <a class="md-trigger" data-modal="modal-1" href="javascript:void(0);">
+                    <p>
+This "focus cup" contest theme does not limit, so I took many good at filming of the characters, scenery, I was a glorious won best scenery pictures and best characters of second prize, very happy, met many masters and common interest friends.</p>
+                  </a>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="edit-hover"> <img src="images/img01.jpg">
+                    <div class="controls clearfix">
+                    <div class="fl">
+                    <a class="controls-move"><i class="glyphicon glyphicon-move"></i></a>
+                    </div>
+                    <div class="fr">
+                    <a class="md-trigger add-upload controls-delete" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-trash"></i></a>
+                    <a class="md-trigger add-upload controls-edit" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="edit-hover"> <img src="images/img01.jpg">
+                    <div class="controls clearfix">
+                    <div class="fl">
+                    <a class="controls-move"><i class="glyphicon glyphicon-move"></i></a>
+                    </div>
+                    <div class="fr">
+                    <a class="md-trigger add-upload controls-delete" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-trash"></i></a>
+                    <a class="md-trigger add-upload controls-edit" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="edit-hover"> <img src="images/img01.jpg">
+                    <div class="controls clearfix">
+                    <div class="fl">
+                    <a class="controls-move"><i class="glyphicon glyphicon-move"></i></a>
+                    </div>
+                    <div class="fr">
+                    <a class="md-trigger add-upload controls-delete" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-trash"></i></a>
+                    <a class="md-trigger add-upload controls-edit" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="edit-hover">
+                    <div class="video-img"><img src="images/img01.jpg"><i class="glyphicon glyphicon-play-circle"></i>
+                      <div class="masking"></div>
+                    </div>
+                    <div class="controls"><a class="md-trigger add-upload controls-delete" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-trash"></i></a><a class="md-trigger add-upload controls-edit" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a></div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="r-upload"><a class="md-trigger add-upload" data-modal="modal-3" href="javascript:void(0);"><i class="glyphicon glyphicon-cloud-upload"></i><strong>Upload</strong></a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+         </div>        
+        </div>
+      </div>
+      <div class="row">
+        <div class="clearfix">
+          <div class="col-xs-12">
+            <h1>My Portfolio</h1>
+          </div>
+        </div>
+        <div class="columns-info clearfix">
+          <div class="col-xs-12">
+            <h6><i class="glyphicon glyphicon-star"></i><em>Show your talents here!</em></h6>
+          </div>
+          <div class="bg-gray">
+            <div class="clearfix">
+              <div class="media-item clearfix">
+                <div class="col-lg-4 col-xs-6">
+                  <div class="edit-hover"> <img src="images/img01.jpg">
+                    <div class="controls clearfix">
+                    <div class="fl">
+                    <a class="controls-move"><i class="glyphicon glyphicon-move"></i></a>
+                    </div>
+                    <div class="fr">
+                    <a class="md-trigger add-upload controls-delete" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-trash"></i></a>
+                    <a class="md-trigger add-upload controls-edit" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="edit-hover"> <img src="images/img01.jpg">
+                    <div class="controls clearfix">
+                    <div class="fl">
+                    <a class="controls-move"><i class="glyphicon glyphicon-move"></i></a>
+                    </div>
+                    <div class="fr">
+                    <a class="md-trigger add-upload controls-delete" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-trash"></i></a>
+                    <a class="md-trigger add-upload controls-edit" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="edit-hover">
+                    <div class="video-img"><img src="images/img01.jpg"><i class="glyphicon glyphicon-play-circle"></i>
+                      <div class="masking"></div>
+                    </div>
+                    <div class="controls clearfix">
+                    <div class="fl">
+                    <a class="controls-move"><i class="glyphicon glyphicon-move"></i></a>
+                    </div>
+                    <div class="fr">
+                    <a class="md-trigger add-upload controls-delete" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-trash"></i></a>
+                    <a class="md-trigger add-upload controls-edit" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="r-upload"><a class="md-trigger add-upload" data-modal="modal-3" href="javascript:void(0);"><i class="glyphicon glyphicon-cloud-upload"></i><strong>Upload</strong></a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="clearfix">
+          <div class="col-xs-12">
+            <h1>Honors</h1>
+          </div>
+        </div>
+        <div class="columns-info clearfix">
+          <div class="bg-gray">
+            <div class="clearfix">
+              <div class="media-item clearfix">
+                <div class="col-lg-8 col-xs-12 disabled">
+                  <div class="media-item-description">
+                  <a class="md-trigger" data-modal="modal-1" href="javascript:void(0);">
+                    <p>This time, can be rated as the honorary title of miyoshi students in our school, I feel very happy and honored, thank the school for my love and trust, thanks to the teacher in charge to my care, thank the students for my approval.</p>
+                 </a>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="edit-hover"> <img src="images/img01.jpg">
+                    <div class="controls clearfix">
+                    <div class="fl">
+                    <a class="controls-move"><i class="glyphicon glyphicon-move"></i></a>
+                    </div>
+                    <div class="fr">
+                    <a class="md-trigger add-upload controls-delete" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-trash"></i></a>
+                    <a class="md-trigger add-upload controls-edit" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="edit-hover"> <img src="images/img01.jpg">
+                    <div class="controls clearfix">
+                    <div class="fl">
+                    <a class="controls-move"><i class="glyphicon glyphicon-move"></i></a>
+                    </div>
+                    <div class="fr">
+                    <a class="md-trigger add-upload controls-delete" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-trash"></i></a>
+                    <a class="md-trigger add-upload controls-edit" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="edit-hover"> <img src="images/img01.jpg">
+                    <div class="controls clearfix">
+                    <div class="fl">
+                    <a class="controls-move"><i class="glyphicon glyphicon-move"></i></a>
+                    </div>
+                    <div class="fr">
+                    <a class="md-trigger add-upload controls-delete" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-trash"></i></a>
+                    <a class="md-trigger add-upload controls-edit" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="edit-hover">
+                    <div class="video-img"><img src="images/img01.jpg"><i class="glyphicon glyphicon-play-circle"></i>
+                      <div class="masking"></div>
+                    </div>
+                    <div class="controls clearfix">
+                    <div class="fl">
+                    <a class="controls-move"><i class="glyphicon glyphicon-move"></i></a>
+                    </div>
+                    <div class="fr">
+                    <a class="md-trigger add-upload controls-delete" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-trash"></i></a>
+                    <a class="md-trigger add-upload controls-edit" data-modal="modal-1" href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <div class="r-upload"><a class="md-trigger add-upload" data-modal="modal-3" href="javascript:void(0);"><i class="glyphicon glyphicon-cloud-upload"></i><strong>Upload</strong></a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="columns-info">
+      <div class="clearfix add-activity-mb">
+            <div class="col-xs-12 text-center"> <a class="md-trigger add-activity" data-modal="modal-5" href="javascript:void(0);"><i class="glyphicon glyphicon-plus-sign"></i><strong>Add Activity</strong></a></div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--弹出层-->
+<div class="md-effect-1 reveal-modal" id="modal-1">
+			<div class="md-content">
+				<h4 class="lead-in">Modal Dialog11</h4>
+				<form>
+                  <textarea rows="4"></textarea>
+                  <div class="text-right">
+                    <span>300</span>
+                  </div>
+                  <input type="submit" value="Update" class="reveal-button">
+                </form>
+				  <button class="md-close"><i class="glyphicon glyphicon-remove"></i></button>
+			</div>
+		</div>
+<div class="md-effect-1 reveal-modal activity-item-sort" id="modal-4">
+			<div class="md-content">
+				<h4 class="lead-in">New Activity</h4>
+                <p>Activities are the things that you love doing. Think sports, clubs, hobbies, etc. Bring them to life with images.<strong class="dis-bolck">Tagged to your activities</strong></p>
+                <ul class="activity-item-tips clearfix">
+                <li class="on">
+                  <p>Academic<span>（10）</span></p>
+                  </li>
+                <li>
+                  <p>Art<span>（2）</span></p>
+                  </li>
+                <li>
+                  <p>Sports<span>（3）</span></p>
+                  </li>
+                <li>
+                  <p>Community service<span>（1）</span></p>
+                  </li>
+                <li>
+                  <p>Culture<span>（1）</span></p>
+                  </li>
+                <li>
+                  <p>Speech<span>（1）</span></p>
+                  </li>
+                <li>
+                  <p>Media<span>（1）</span></p>
+                  </li>
+                <li>
+                  <p>Religious<span>（1）</span></p>
+                  </li>
+                <li>
+                  <p>Work Experience<span>（1）</span></p>
+                  </li>
+                <li>
+                  <p>Science and technology<span>（0）</span></p>
+                  </li>
+                <li>
+                  <p>Language<span>（0）</span></p>
+                  </li>
+                <li>
+                  <p>Other<span>（0）</span></p>
+                  </li>
+              </ul>
+				<form>
+                 <label>Title</label>
+                 <input type="text" value="">
+                 <label>How long have you been doing this?</label>
+                 <p class="clearfix"><input type="text" value="" class="fl"><input type="text" value="" class="fr"></p>
+                  <input type="submit" value="Save" class="reveal-button">
+                </form>
+				  <button class="md-close"><i class="glyphicon glyphicon-remove"></i></button>
+			</div>
+		</div>
+<div class="md-effect-1 reveal-modal activity-item-sort" id="modal-5">
+			<div class="md-content">
+				<h4 class="lead-in">New Activity</h4>
+                <p>Activities are the things that you love doing. Think sports, clubs, hobbies, etc. Bring them to life with images.</p>
+				<form>
+                 <label>Title</label>
+                 <input type="text" value="">
+                 <label>How long have you been doing this?</label>
+                 <p class="clearfix"><input type="text" value="" class="fl"><input type="text" value="" class="fr"></p>
+                  <input type="submit" value="Create" class="reveal-button">
+                </form>
+				  <button class="md-close"><i class="glyphicon glyphicon-remove"></i></button>
+			</div>
+		</div>        
+<div class="md-effect-1 reveal-modal file-upload" id="modal-3">
+			<div class="md-content">
+				<h4 class="lead-in">NEW DOCUMENT</h4>
+				<form>
+                <div class="file-upload-btn">
+                  <span><i class="glyphicon glyphicon-folder-open"></i>Choose File</span>
+                  <input type="file" value="">
+                </div>
+                <label for="title">Document Title</label>
+                  <textarea rows="3"></textarea>
+                  <div class="text-right">
+                    <span>150</span>
+                  </div>
+                  <input type="submit" value="Save" class="reveal-button">
+                </form>
+				  <button class="md-close"><i class="glyphicon glyphicon-remove"></i></button>
+			</div>
+		</div>
+<div class="md-effect-1 reveal-modal edit-user-info" id="modal-6">
+			<div class="md-content">
+				<h4 class="lead-in">EDIT BIO</h4>
+				<form>
+                 <label>Name</label>
+                 <input type="text" value="">
+                 <div class="clearfix">
+                 <dl class="fl"><dt><i class="glyphicon glyphicon-map-marker"></i>Location</dt><dd><input type="text" value=""></dd></dl>
+                 <dl class="fr"><dt><i class="glyphicon glyphicon-bed"></i>Current School</dt><dd><input type="text" value=""></dd></dl>
+                 </div>
+                 <div class="clearfix">
+                <dl class="fl"><dt><i class="glyphicon glyphicon-education"></i>Graduation Year</dt><dd><input type="text" value=""></dd></dl>
+                 <dl class="fr"><dt><i class="glyphicon glyphicon-tower"></i>Major of Interest</dt><dd><input type="text" value=""></dd></dl>
+                 </div>
+                  <input type="submit" value="Save" class="reveal-button">
+                </form>
+				  <button class="md-close"><i class="glyphicon glyphicon-remove"></i></button>
+			</div>
+		</div>
+<div class="md-effect-1 reveal-modal file-upload" id="modal-8">
+			<div class="md-content">
+				<h4 class="lead-in">YOUR PROFILE PHOTO</h4>
+				<form>
+                <div>
+                <div class="file-upload-btn">
+                  <span><i class="glyphicon glyphicon-folder-open"></i>Choose File</span>
+                  <input type="file" value="">
+                </div>
+                </div>
+                  <input type="submit" value="Save" class="reveal-button">
+                </form>
+				  <button class="md-close"><i class="glyphicon glyphicon-remove"></i></button>
+			</div>
+		</div>
+<div class="md-effect-1 reveal-modal add-score" id="modal-11">
+			<div class="md-content">
+				<h4 class="lead-in">YOUR SCORE</h4>
+                <label>Your score is the most worthy of reference</label>
+                <form>
+                 <div class="scrollbar">
+                  <div class="add-score-content">
+                    <p> <select>
+                     <option value="">请输入您的分数</option>
+                     <option value="">TOEFL</option>
+                     <option value="">SAT</option>
+                     <option value="">GRE</option>
+                     <option value="">GAMT</option>
+                     <option value="">IELTS</option>
+                    </select><a href="javascript:void(0);" class="add-score-sort-delete"><i class="glyphicon glyphicon-trash"></i></a></p>
+                    <div class="score-list">
+                     <dl><dt>总分</dt><dd><input type="text" value=""></dd></dl>
+                     <dl><dt>听力</dt><dd><input type="text" value=""></dd></dl>
+                     <dl><dt>口语</dt><dd><input type="text" value=""></dd></dl>
+                     <dl><dt>写作</dt><dd><input type="text" value=""></dd></dl>
+                     <dl><dt>阅读</dt><dd><input type="text" value=""></dd></dl>
+                    </div>
+                  </div>
+                  <div class="add-score-content">
+                    <p> <select>
+                     <option value="">请输入您的分数</option>
+                     <option value="">TOEFL</option>
+                     <option value="">SAT</option>
+                     <option value="">GRE</option>
+                     <option value="">GAMT</option>
+                     <option value="">IELTS</option>
+                    </select><a href="javascript:void(0);" class="add-score-sort-delete"><i class="glyphicon glyphicon-trash"></i></a></p>
+                    <div class="score-list">
+                     <dl><dt>总分</dt><dd><input type="text" value=""></dd></dl>
+                     <dl><dt>听力</dt><dd><input type="text" value=""></dd></dl>
+                     <dl><dt>口语</dt><dd><input type="text" value=""></dd></dl>
+                     <dl><dt>写作</dt><dd><input type="text" value=""></dd></dl>
+                     <dl><dt>阅读</dt><dd><input type="text" value=""></dd></dl>
+                    </div>
+                  </div>
+                 </div> 
+                <div class="text-center mt20">
+				  <a href="javascript:void(0);"><i class="glyphicon glyphicon-plus-sign"></i></a>
+                </div>
+                <div class="text-center"><input type="submit" value="Save" class="reveal-button"></div>
+				</form>
+               <button class="md-close"><i class="glyphicon glyphicon-remove"></i></button>
+			</div>
+		</div>
+<div class="md-overlay"></div>
+<!--=====================================bottom============================================-->
+<footer class="clearfix">
+  <p><img class="bottom-logo" src="images/u171.png"></p>
+  <p><img class="bottom-kanwo" src="images/kanwokanwo.png"></p>
+  <p class="pt40">FOCUSEDU brand</p>
+  <p><a href="#" target="_blank">The focus of the team</a> |<a href="#" target="_blank"> cooperative education and the media</a> |<a href="#" target="_blank"> contact us </a>| <a href="#" target="_blank">recruitment site map</a></p>
+  <p>24h national free telephone: 400-8657-088 / 010 - 51627791</p>
+  <p>The Beijing times the focus of International Education Consulting Co. Ltd. www.focusedu.cn</p>
+  <p>Copyright@2010-2015 Focus Education.All Rights Reserved. ICP Beijing No. 11025628</p>
+</footer>
+<script src="js/classie.js"></script> 
+<script src="js/modalEffects.js"></script> 
+<script>var polyfilter_scriptpath = '/js/';</script> 
+<script src="js/cssParser.js"></script> 
+<script src="js/jquery.sortable.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $(".user-dropdown").mouseover(function(){
+            $(this).next(".subnav-content").slideDown(100);
+        });
+        $(".user-dropdown-wrap").mouseleave(function(){
+            $(this).children(".subnav-content").slideUp(100);
+        });
+
+        $(".subnav-content").height($(window).height() - 75);
+	
+        $('.edit-hover').hover(function(){
+              $(this).find('.controls').animate({'opacity':'1'},200);
+            },function(){
+              $(this).find('.controls').animate({'opacity':'0'},200);
+            });
+
+        $('.edit-my-video-info-btn').click(function(){
+              $(this).next('.edit-my-video-info-content').toggle();
+            });
+            $('.media-item').sortable({items: ':not(.disabled)',handle:'.controls-move'}).bind('sortupdate', function(e,data) {
+                console.log(data.beg+"  "+data.end);
+            });
+
+        $(".friend-impression-list li").each(function(index, element){
+                console.log(element);
+                var colorCode = randomColor;
+                $(element).css("background-color",colorCode);
+            });
+
+        $(".friend-impression-list li").click(function(){
+            var tip = $(this).find('.tips');
+            tip.css("background-color",$(this).css("background-color"));
+            tip.toggle();
+        });
+    });
+
+    function randomColor(){
+        var colorList = ["#EA4704","#FE7747","#FFE337","#6BF1CE","#06C7B2","#F48A94","#83A602","#60369C"];
+        var random = parseInt(Math.random()*8);
+        return colorList[random];
+    }
+</script>
+</body>
+</html>

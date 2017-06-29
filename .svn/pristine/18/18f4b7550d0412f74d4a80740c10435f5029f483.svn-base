@@ -1,0 +1,1507 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 微软雅黑;
+}
+
+html {
+    font-size: 20px;
+}
+
+@media screen and (max-width: 1920px) {
+    html {
+        font-size: 18px !important;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    html {
+        font-size: 16px !important;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    html {
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    html {
+        font-size: 12px !important;
+    }
+
+    body {
+        max-width: 750px;
+    }
+}
+
+/*针对ipad的css样式*/
+@media only screen and (device-width: 768px) {
+
+}
+
+/*@media only screen and (min-device-width:481px) and (max-device-width:1024px) and (orientation:portrait){*/
+/*!*ipad竖屏的css样式*!*/
+/*}*/
+/*@media only screen and (min-device-width:481px) and (max-device-width:1024px) and (orientation:landscape){*/
+/*!*ipad横屏的css样式*!*/
+/*}*/
+
+/* iphone6 plus */
+@media (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+    html {
+        font-size: 25.875px;
+    }
+}
+
+/* iphone 6 */
+@media (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+    html {
+        font-size: 23.4375px;
+    }
+}
+
+/* 判断iphone5 *//* 横屏竖屏判断方法与ipad一样 */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+    html {
+        font-size: 20px;
+    }
+}
+
+/* 判断iphone4-iphone4s *//* 横屏竖屏判断方法与ipad一样 */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    /* style */
+}
+
+
+
+/*@media (min-device-width : 320px) and (max-device-width : 375px) and (-webkit-min-device-pixel-ratio : 2){*/
+/*html{font-size: 23.4375px;}*/
+/*}*/
+/*@media only screen and (min-width:320px){*/
+/*html{font-size:11.5px!important}.viewport{max-width:320px}*/
+/*}*/
+/*@media only screen and (min-width:360px){*/
+/*html{font-size:12.5px!important}.viewport{max-width:360px}*/
+/*}*/
+/*@media only screen and (min-width:480px){*/
+/*html{font-size:16px!important}.viewport{max-width:480px}*/
+/*}*/
+
+.clear {
+    clear: both;
+}
+
+.parters{
+    padding: 3rem 0;
+    width: 80%;
+    margin: 0 auto;
+
+}
+.parters li{
+    width: 20%;
+    float: left;
+    height: 10rem;
+}
+.parters li p{
+    width: 70%;
+    height: 70%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    text-align: center;
+    line-height: 6.7rem;
+    padding: 0;
+    background-color:#fff9f9;
+}
+.parters p span{
+    font-size: 1rem;
+    padding: 0;
+}
+.weixinFrame {
+    width: 8rem;
+    height: 14rem;
+    background: url(/images/weixinFrame.png) no-repeat;
+    background-size: contain;
+    position: fixed;
+    left: 0;
+    top: 30%;
+    z-index: 999;
+}
+
+.gis_banner {
+    height: 25rem;
+    background: url(/images/BA-manteng.jpg) no-repeat center top;
+    background-size: 100% 25rem;
+    margin-top: 3.7rem;
+}
+.gis_banner_btn {
+    height: 3rem;
+    position: absolute;
+}
+
+.signUp {
+    display: inline-block;
+    width: 8rem;
+    height: 2.4rem;
+    margin-top:1rem;
+    background: #018b9b;
+    border-radius: 0.2rem;
+    text-align: center;
+    line-height: 2.4rem;
+    color: #fff;
+    font-family: "微软雅黑 Light";
+    font-weight:bold;
+    font-size:0.9rem;
+    letter-spacing: 0.1em;
+}
+
+.signUp:nth-of-type(1) {
+    float: left;
+    margin-left: 7.4rem;
+}
+
+.signUp:nth-of-type(2) {
+    float: right;
+    margin-right: 3rem;
+}
+@media (max-device-width: 320px){
+    .signUp:nth-of-type(1){
+        margin-top: 0.6rem;
+    }
+    .signUp:nth-of-type(2){
+        margin-top: 0.6rem;
+    }
+    .gis_banner {
+        height: 12rem;
+        background: url(/images/BA-manteng.jpg) no-repeat -19rem top;
+        background-size: 190% 12rem;
+        margin-top: 6rem;
+    }
+    .application .consulting{
+        margin: -2rem auto 0 auto;
+
+
+    }
+@media (max-device-width: 750px) {
+    .application .consulting {
+        margin: -2rem auto 0 auto;
+    }
+    }
+
+    .gis_banner_btn {
+        height: 3rem;
+        position: absolute;
+    }
+
+    .signUp {
+        display: inline-block;
+        width: 6.4rem;
+        height: 2.4rem;
+        margin-top:-0.5rem;
+        background: #018b9b;
+        border-radius: 0.2rem;
+        text-align: center;
+        line-height: 2.4rem;
+        color: #fff;
+        font-family: "微软雅黑 Light";
+        font-weight:bold;
+        font-size:0.8rem;
+        letter-spacing: 0;
+    }
+
+    .signUp:nth-of-type(1) {
+        float: left;
+        margin-left: 4rem;
+    }
+
+    .signUp:nth-of-type(2) {
+        float: right;
+        margin-right: 3rem;
+    }
+}
+@media (max-device-width: 375px)and (min-device-width: 321px){
+    .gis_banner {
+        height: 13rem;
+        background: url(/images/BA-manteng.jpg) no-repeat -17rem top;
+        background-size: 170% 13rem;
+        margin-top: 6rem;
+    }
+}
+@media (max-device-width: 414px)and (min-device-width: 376px){
+    .gis_banner {
+        height: 13rem;
+        background: url(/images/BA-manteng.jpg) no-repeat -18rem top;
+        background-size: 167% 13rem;
+        margin-top: 6rem;
+    }
+}
+@media (max-device-width: 768px)and (min-device-width: 415px){
+    .gis_banner {
+        height: 20rem;
+        background: url(/images/BA-manteng.jpg) no-repeat -27rem top;
+        background-size: 157% 20rem;
+        margin-top: 4.7rem;
+    }
+    .signUp:nth-of-type(1),.signUp:nth-of-type(2){
+        margin-top: 2rem;
+    }
+}
+@media (max-device-width: 1024px)and (min-device-width: 769px){
+    .gis_banner {
+        height: 22rem;
+        background: url(/images/BA-manteng.jpg) no-repeat -27rem top;
+        background-size: 143% 22rem;
+        margin-top: 4.7rem;
+    }
+}
+.titles{
+    width:100%;
+    height:2rem;
+    text-align: center;
+    line-height:2rem;
+    font-size:1.8rem;
+    font-weight:400;
+    color: #333;
+    letter-spacing: 1px;
+    margin-bottom: 2.5rem;
+}
+
+.advantage{
+    width:100%;
+    height:auto;
+    position: relative;
+    margin:3rem auto;
+}
+.advantage ul{
+    width:60%;
+    height:27rem;
+    margin:2rem auto;
+}
+.advantage ul li{
+    list-style-type: none;
+    width:30%;
+    height:12rem;
+    float: left;
+    margin:1rem 0 0 1rem;
+    text-align: center;
+    overflow: hidden;
+}
+.advantage ul li:nth-child(4){
+    margin-left: 11.5rem;
+}
+.advantage ul li h4{
+    font-family:"微软雅黑 Light";
+    color: #333;
+    margin-top:6rem;
+}
+.advantage ul li span{
+    display: block;
+    width:80%;
+    height:4rem;
+    margin:1rem auto;
+    font-size:0.8rem;
+    font-family:"微软雅黑 Light";
+    color: #7d7e7e;
+    line-height:1.2rem;
+}
+
+@media (max-width: 769px) {
+    .advantage ul{
+        width:100%;
+        /*height:46rem;*/
+        margin:2rem auto;
+    }
+    .advantage ul li{
+        list-style-type: none;
+        width:31%;
+        height:14rem;
+        float: left;
+        margin:1rem 0 0 1rem;
+        text-align: center;
+        overflow: hidden;
+    }
+    .advantage ul li h4{
+        font-size:0.8rem;
+        font-family:"微软雅黑 Light";
+        color: #333;
+        margin-top:7rem;
+    }
+    .advantage ul li span{
+        display: block;
+        width:80%;
+        height:4rem;
+        margin:1rem auto;
+        font-size:0.7rem;
+        font-family:"微软雅黑 Light";
+        color: #7d7e7e;
+        line-height:1.2rem;
+    }
+
+}
+
+.videoIntroduce{
+    width:100%;
+    height:40rem;
+    position: relative;
+    margin:4rem auto;
+    padding:2rem 0 6rem 0;
+    overflow: hidden;
+   /* background: url(/images/CIS-video.jpg) no-repeat;*/
+}
+.videoWrapper{
+    width: 44.3rem;
+    height: 87%;
+    margin: 2rem auto;
+    background-color: rgb(0,0,0);
+    cursor: pointer;
+    padding: 1rem;
+}
+.videoSignUp{
+    display: block;
+    width:8rem;
+    height:2.4rem;
+    background: #0085a7;
+    border-radius:0.2rem;
+    margin:1rem auto;
+    text-align: center;
+    line-height:2.4rem;
+    color: #fff;
+    font-family:"微软雅黑 Light";
+    font-size:1.2rem;
+    font-weight:bold;
+    letter-spacing: 0.1em;
+}
+.play{
+    position: relative;
+    top: -55%;
+    left:50%;
+    margin-left:-30px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 60px;
+    color: #fff;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+.play:before{
+    content: "\e029";
+    box-sizing: border-box;
+}
+
+@media (max-width: 769px) {
+   /* .videoIntroduce{
+        width:100%;
+        height:28rem;
+        position: relative;
+        margin:4rem auto;
+        padding:2rem 0 5rem 0;
+        overflow: hidden;
+        background: url(/images/CIS-video.jpg) no-repeat;
+    }
+    .videoWrapper{
+        width: 90%;
+        height: 80%;
+        margin:2rem auto 0;
+        background-color: rgb(0,0,0);
+        cursor: pointer;
+    }*/
+    .videoSignUp{
+        display: block;
+        width:8rem;
+        height:2.4rem;
+        background: #0085a7;
+        border-radius:0.2rem;
+        margin:1rem auto;
+        text-align: center;
+        line-height:2.4rem;
+        color: #fff;
+        font-family:"微软雅黑 Light";
+        font-size:1.2rem;
+        font-weight:bold;
+        letter-spacing: 0.1em;
+    }
+}
+.projectDetail{
+    width:100%;
+    height:auto;
+    background: url(/images/keru-detail.jpg) no-repeat ;
+    padding: 3rem 0;
+    margin-top: 4rem;
+   /* background-size: 107%;*/
+}
+.project_details {
+    width: 60rem;
+    height: auto;
+    background-color: #f3f6f9;
+    border-right: 0.45rem solid #16a2b2;
+    border-radius: 1rem;
+    margin: 3rem auto 1.5rem auto;
+    padding:0 0 4rem 0;
+}
+
+.project_details h2 {
+    padding: 2rem 0 2.5rem 5.5rem;
+    color: #018c9c;
+    font-size: 1.8rem;
+}
+
+.project_details .contens {
+    width: 48.7rem;
+    margin-left: 5.45rem;
+    margin-bottom: 1rem;
+    background: url(/images/CIS_05.png) no-repeat 0.1rem 0.05rem;
+    padding-bottom: 0.5rem;
+}
+
+.project_details .contens p {
+    padding-left: 4.2rem;
+    /*padding-top: 1.15rem;*/
+    font-family: Î¢ÈíÑÅºÚ;
+}
+
+.project_details .contens b {
+    font-size: 0.9rem;
+    color: #333333;
+    font-weight: normal;
+    display: block;
+    float: left;
+    ont-family:"Microsoft Yahei";
+}
+
+.project_details .contens span {
+    font-size: 0.9rem;
+    color: #666666;
+    display: inline-block;
+    padding-left: 1.1rem;
+    ont-family:"Microsoft Yahei";
+    letter-spacing: 0.05rem;
+}
+.metarial{
+    display: block;
+    width:80%;
+    height:auto;
+}
+
+/*.project_details .contens i {*/
+    /*font-style: normal;*/
+    /*font-size: 0.9rem;*/
+    /*color: #999999;*/
+/*}*/
+@media (max-width: 769px) {
+    .application .consulting{
+
+    }
+    .project_details {
+        width: 60rem;
+        /*height: 55rem;*/
+        height: auto;
+        background-color: #f3f6f9;
+        border-right: 0.45rem solid #16a2b2;
+        border-radius: 1rem;
+        margin: 0;
+        /*overflow: hidden;*/
+    }
+
+    .project_details .contens {
+        /*width: 48.7rem;*/
+        width: 90%;
+        /*height: 38.4rem;*/
+        height: auto;
+        margin-left: 2rem;
+        background: url(/images/CIS_05.png) no-repeat 0rem 0.05rem;
+        /*background: #f89;*/
+    }
+
+    .project_details h2 {
+        padding: 4rem 0 2.5rem 2rem;
+        color: #018c9c;
+        font-size: 2rem;
+    }
+
+    .project_details .contens p {
+        padding-left: 2.2rem;
+        padding-top: 1.15rem;
+        font-family:"Microsoft Yahei"
+    }
+
+    .project_details .contens span {
+        font-size: 0.9rem;
+        color: #666666;
+        display: inline-block;
+        padding-left: 0;
+        ont-family:"Microsoft Yahei";
+        letter-spacing: 0.05rem;
+    }
+}
+
+
+.activityResults{
+    width:100%;
+    height:auto;
+    position: relative;
+    margin:4rem auto;
+    overflow: hidden;
+}
+.results{
+    width:70%;
+    height:32rem;
+    margin:4rem auto;
+    background:url("/images/BA-results.png") no-repeat center center;
+    background-size: 40%;
+}
+.resultsPart{
+    width:35%;
+    height:32rem;
+    margin-top:0;
+}
+.resultsPart:nth-of-type(1){
+    float: left;
+    text-align: right;
+}
+.resultsPart:nth-of-type(2){
+    float: right;
+    text-align: left;
+}
+.results-parts{
+    width:14rem;
+    height:8rem;
+    margin-top:2rem;
+}
+.results-parts h4{
+    margin-top:2.8rem;
+}
+.resultsPart:nth-of-type(1) .results-parts{
+    float: right;
+}
+.resultsPart:nth-of-type(2) .results-parts{
+    float: left;
+}
+.results-span{
+    display: block;
+    width:14rem;
+    height:6rem;
+    font-size:0.7rem;
+    font-family:"微软雅黑 Light";
+    line-height:1.4rem;
+    padding:0;
+}
+.resultsPart:nth-of-type(1) .results-parts:nth-of-type(2){
+    margin-right:3rem;
+}
+.resultsPart:nth-of-type(2) .results-parts:nth-of-type(2){
+    margin-left:3rem;
+}
+
+@media (max-width: 769px) {
+    .activityResults{
+        width:100%;
+        height:auto;
+        position: relative;
+        margin:4rem auto;
+        overflow: hidden;
+    }
+    .results{
+        width:80%;
+        height:32rem;
+        margin:4rem auto;
+        background:url("/images/BA-results.png") no-repeat center center;
+        background-size: 50%;
+    }
+    .resultsPart{
+        width:35%;
+        height:32rem;
+        margin-top:0;
+    }
+    /*.resultsPart:nth-of-type(1){*/
+        /*float: left;*/
+        /*text-align: right;*/
+    /*}*/
+    /*.resultsPart:nth-of-type(2){*/
+        /*float: right;*/
+        /*text-align: left;*/
+    /*}*/
+    .results-parts{
+        width:14rem;
+        /*height:8rem;*/
+        height:auto;
+        margin-top:1.5rem;
+    }
+    .results-parts h4{
+        font-size:0.8rem;
+        margin-top:2.4rem;
+    }
+    .resultsPart:nth-of-type(1) .results-parts{
+        float: right;
+    }
+    .resultsPart:nth-of-type(2) .results-parts{
+        float: left;
+    }
+    .results-span{
+        display: block;
+        width:14rem;
+        height:4.8rem;
+        font-size:0.7rem;
+        font-family:"微软雅黑 Light";
+        line-height:1.2rem;
+        padding:0;
+    }
+    .resultsPart:nth-of-type(1) .results-parts:nth-of-type(2){
+        margin-right:3rem;
+    }
+    .resultsPart:nth-of-type(2) .results-parts:nth-of-type(2){
+        margin-left:3rem;
+    }
+    @media (max-width: 640px) {
+        .results{
+            width:100%;
+            height:35rem;
+            margin:4rem auto;
+            background:url("/images/BA-results.png") no-repeat center center;
+            background-size: 48%;
+        }
+        .resultsPart{
+            width:40%;
+            height:auto;
+            margin-top:0;
+        }
+        .resultsPart:nth-of-type(1){
+        float: left;
+        text-align: right;
+        }
+        .resultsPart:nth-of-type(2){
+        float: right;
+        text-align: left;
+        }
+        .results-parts{
+            width:10rem;
+            height:auto;
+            margin-top:1rem;
+        }
+        .results-parts h4{
+            font-size:0.8rem;
+            margin-top:2rem;
+        }
+        .resultsPart:nth-of-type(1) .results-parts{
+            float: right;
+        }
+        .resultsPart:nth-of-type(2) .results-parts{
+            float: left;
+        }
+        .results-span{
+            display: block;
+            width:10rem;
+            height:7rem;
+            font-size:0.7rem;
+            font-family:"微软雅黑 Light";
+            line-height:1.2rem;
+            padding:0;
+            margin-top:-0.5rem;
+        }
+        .resultsPart:nth-of-type(1) .results-parts:nth-of-type(2){
+            margin-right:2rem;
+        }
+        .resultsPart:nth-of-type(2) .results-parts:nth-of-type(2){
+            margin-left:2rem;
+        }
+    }
+}
+.successCase{
+    width:100%;
+    height:auto;
+    position: relative;
+    padding:4rem 0 11rem 0;
+    background: url("/images/BA-cases.jpg") no-repeat;
+}
+.cases{
+    width:100%;
+    height:auto;
+    margin-top:2rem;
+    text-align: center;
+}
+.cases ul{
+    width:100%;
+    height:12rem;
+    margin:3rem auto;
+}
+.cases ul li{
+    display: inline-block;
+    width:25%;
+    height:12rem;
+}
+.caseSpan {
+    display: block;
+    width: 56%;
+    height: 4rem;
+    position: relative;
+    margin: 9rem auto;
+    font-size: 0.8rem;
+    font-family: "微软雅黑 Light";
+    line-height: 1.4rem;
+    color: #fff;
+    text-align: center;
+}
+.characters{
+    width:62%;
+    height:4rem;
+    background: url("/images/quotes.png") no-repeat left top;
+    background-size:100%;
+    position: relative;
+    margin:5rem auto 13rem auto;
+    font-family:"微软雅黑 Light";
+    font-size:0.8rem;
+    color: #fff;
+    line-height:1.6rem;
+}
+.characters span{
+    display: none;
+    width: 76%;
+    height: auto;
+    margin: 6rem auto 2rem;
+    font-family: "微软雅黑 Light";
+    font-size: 0.84rem;
+    color: #fff;
+    /* line-height: 1.8rem; */
+    text-align: left;
+    height: 15rem;
+}
+.charactersImg{
+    width:60%;
+    height:auto;
+    position: relative;
+    margin:2rem auto 2rem;
+    text-align: center;
+}
+.charactersImg li{
+    display: inline-block;
+    width:4rem;
+    height:4rem;
+    margin:0 1rem;
+    border-radius: 50%;
+    /*display: none;*/
+    cursor: pointer;
+}
+.charactersImg li img{
+    width:100%;
+    height:auto;
+   /* display: none;*/
+}
+.imgMask{
+    display: block;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.2);
+    border-radius:50%;
+    position: relative;
+    top:-3.8rem;
+    left:0;
+}
+
+@media (max-width: 1024px) {
+    .characters span {
+        width: 82%;
+        height: auto;
+    }
+    .characters span{
+        font-size: 1rem;
+    }
+    .characters{
+        width: 90%;
+    }
+    .successCase {
+        width: 100%;
+        height: auto;
+        position: relative;
+        margin: 0 auto;
+    }
+
+    .cases {
+        width: 100%;
+        height: auto;
+        margin: 3rem auto;
+        text-align: center;
+    }
+    .cases ul {
+        width: 100%;
+        height: auto;
+        margin-top: 0;
+    }
+    .cases ul li {
+        display: inline-block;
+        width: 100%;
+        height: 14rem;
+        padding-top: 4.5rem;
+        margin-top:1rem;
+
+    }
+    .cases ul:nth-of-type(2) li span {
+        display: block;
+        width: 80%;
+        height:4rem;
+    }
+    .caseSpan {
+        display: block;
+        width: 80%;
+        height: 4rem;
+        position: relative;
+        margin:5rem auto;
+        font-size: 0.7rem;
+        font-family: "微软雅黑 Light";
+        line-height: 1.6rem;
+        text-align: center;
+    }
+    @media (max-width: 640px) {
+        .successCase {
+            width: 100%;
+            height: auto;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .cases {
+            width: 100%;
+            height: auto;
+            margin: 3rem auto;
+            text-align: center;
+        }
+        .cases ul {
+            width: 100%;
+            height: auto;
+            margin-top: 0;
+        }
+        .cases ul li {
+            display: inline-block;
+            width: 100%;
+            height: 14rem;
+            padding-top: 4.5rem;
+            margin-top:1rem;
+        }
+        .cases ul:nth-of-type(2) li span {
+            display: block;
+            width: 80%;
+            height:4rem;
+        }
+        .caseSpan {
+            display: block;
+            width: 80%;
+            height: 4rem;
+            position: relative;
+            margin:5rem auto;
+            font-size: 0.7rem;
+            font-family: "微软雅黑 Light";
+            line-height: 1.6rem;
+            text-align: center;
+        }
+    }
+}
+
+.application{
+    width: 100%;
+    height: 30rem;
+    position: relative;
+    background: url(/images/BA-application.jpg) no-repeat center;
+    /*background-size: 100%;*/
+    margin: 4rem auto 0;
+    padding: 2rem 0 3rem;
+}
+.application a{
+    text-decoration: none;
+    color: #333;
+}
+
+.application .consulting {
+    width: 26rem;
+    height: 13rem;
+    margin: -1rem auto 2rem;
+    text-align: center;
+    border-bottom: 0.2rem solid #26baa0;
+}
+.application .consulting span {
+    display: block;
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #666;
+    font-family: 微软雅黑;
+    position: relative;
+}
+.erweima{
+    width:13rem;
+    height:12.8rem;
+    text-align: center;
+    padding-top:1.5rem;
+}
+.erweima:nth-of-type(1){
+    float: left;
+    background: #e8f1f7;
+}
+.erweima:nth-of-type(2){
+    float: right;
+    background: #f0f6fa;
+}
+.erweima span{
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: #111;
+    font-family: 微软雅黑;
+    font-weight:normal;
+    position: relative;
+}
+.erweima img{
+    width:50%;
+    height:auto;
+}
+
+
+.consult_tel {
+    display: block;
+    width: 22rem;
+    height: 2rem;
+    background: url(/images/tel-icon.png) no-repeat 2rem 0;
+    background-size: 10%;
+    position: relative;
+    margin: 3rem auto;
+    padding-left: 5.6rem;
+    line-height: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+@media (max-width: 750px) {
+    .erweima{
+        width:13rem;
+        height:12.8rem;
+        text-align: center;
+        padding-top:1.5rem;
+    }
+    .erweima:nth-of-type(1){
+        float: left;
+        background: #e8f1f7;
+    }
+    .erweima:nth-of-type(2){
+        float: right;
+        background: #f0f6fa;
+    }
+    .erweima span{
+        display: block;
+        margin-top: 1rem;
+        font-size: 0.8rem;
+        color: #111;
+        font-family: 微软雅黑;
+        font-weight:normal;
+        position: relative;
+    }
+    .erweima img{
+        width:50%;
+        height:auto;
+    }
+
+    .application .consulting {
+        width: 26rem;
+        height: 13rem;
+        margin: -1rem auto 2rem;
+        text-align: center;
+        border-bottom: 0.2rem solid #26baa0;
+    }
+    .application {
+        height: 24rem;
+        position: relative;
+        margin: 4rem 0 2rem 0;
+        text-align: center;
+    }
+    .characters {
+        width: 96%;
+        height: 21rem;
+        background-size: 100%;
+        margin: 4rem auto 0 auto ;
+        font-size: 0.8rem;
+        line-height: 1.6rem;
+        text-align: justify;
+    }
+    .charactersImg{
+       /* display: none;*/
+    }
+    .cases {
+        margin: 1rem auto;
+    }
+    .characters span{
+        width: 80%;
+       /* font-size: 0.7rem;*/
+        line-height: 1.5rem;
+    }
+    .successCase{
+        margin: 2rem auto 2rem auto;
+        padding: 2rem 0 14rem 0;
+    }
+
+    .application p {
+        margin: 4.9rem 0 1.5rem 0;
+    }
+
+    .consulting {
+        width: 6rem;
+        height: 12rem;
+        /*border-left: 1px dotted #666666;
+        border-right: 1px dotted #666666;*/
+        margin: 0 auto;
+        padding: 0.5rem 0;
+    }
+
+    .erweima span {
+        display: block;
+        margin-top: 1rem;
+        font-size: 0.8rem;
+        color: #111;
+        font-family: 微软雅黑;
+        font-weight: normal;
+        position: relative;
+    }
+    .consult_tel {
+        display: block;
+        width: 22rem;
+        height: 2rem;
+        background: url(/images/tel-icon.png) no-repeat 2rem 0;
+        background-size: 10%;
+        position: relative;
+        margin: 3rem auto;
+        padding-left: 5.6rem;
+        line-height: 2rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+}
+
+.login-before {
+    width: 35rem;
+    height: 17rem;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 1000;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    background: #e1e4e8;
+    display: none;
+}
+
+.login-before .login-before-close-btn {
+    color: #aaaaaa;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+}
+
+.login-before p {
+    font-family: "Microsoft Yahei";
+    font-size: 0.9rem;
+    margin-top: 4.5rem;
+    width: 100%;
+    text-align: center;
+}
+
+.login-before .login-btn {
+    display: block;
+    width: 7rem;
+    height: 2.75rem;
+    font-size: 1.2rem;
+    line-height: 2.75rem;
+    color: #fff;
+    text-align: center;
+    margin: 3.5rem auto;
+    background-color: #28b38d;
+}
+.leadFrame{
+    display: none;
+}
+
+@media (max-width: 750px) {
+    .parters li{
+        width: 50%;
+        float: left;
+        height: 10rem
+    }
+    .parters{
+        margin: 0 auto -4rem auto;
+    }
+    .login-before {
+        height: 15rem;
+        position: fixed;
+        top: 30%;
+        z-index: -99999;
+        text-align: center;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        background: #e1e4e8;
+        display: none;
+    }
+
+    .login-before p {
+        font-family: "Microsoft Yahei";
+        font-size: 0.8rem;
+        margin-top: 4.5rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .login-before .login-btn {
+        display: block;
+        width: 7rem;
+        height: 2.75rem;
+        font-size: 1.2rem;
+        line-height: 2.75rem;
+        color: #fff;
+        text-align: center;
+        margin: 3rem auto;
+        background-color: #28b38d;
+    }
+    .glyphicon {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        display: inline-block;
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        color: #fff;
+    }
+    .glyphicon-remove {
+        font-size: 25px !important;
+        display: block;
+    }
+
+    .mask {
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 999;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+    }
+    .leadFrame{
+        height: 15rem;
+        position: fixed;
+        top: 55%;
+        z-index: 1000;
+        text-align: center;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        background: #1bb38c;
+        display: none;
+    }
+    .leadFrame p{
+        font-family: "Microsoft Yahei";
+        font-size: 0.8rem;
+        margin-top: 6.5rem;
+        width: 100%;
+        text-align: center;
+        font-weight:bold;
+        font-size:1.4rem;
+        color:#fff;
+        letter-spacing: 0.1em;
+    }
+}
+#goTopBtn {
+    position: fixed;
+    line-height: 36px;
+    width: 36px;
+    bottom: 35px;
+    height: 36px;
+    cursor: pointer;
+    display: none;
+    background: url(/images/goTopBtn.png) no-repeat;
+    background-size: 100%;
+}
+@media (max-width:320px){
+    .characters {
+        height: 29rem;
+    }
+    .characters span {
+        width: 88%;
+    }
+}
+
+/*新增样式start*/
+
+/*学员录取学校start*/
+.businessParters{
+    margin: 0 auto;
+    height: auto;
+}
+
+.businessParters ul{
+    width: 60%;
+    margin: 0 auto;
+}
+.partersList li{
+    width: 20%;
+    height: 8rem;
+    float: left;
+    margin: 3rem 0;
+}
+.partersList li p{
+    width: 76%;
+    margin: 0 auto;
+    padding: 0.5rem;
+    border: 0.1rem solid #999;
+}
+.businessParters .titles{
+    margin: 3.5rem 0 0 0;
+}
+
+/*项目背景start*/
+.projectBackground{
+    margin: 4rem 0;
+    background: url(/images/manteng_xmbjBA.jpg) no-repeat 0rem 30rem;
+}
+.projectAnalyse{
+    width: 60%;
+    margin: 0 auto;
+}
+.projectAnalyse h5{
+    font-size: 1rem;
+    font-weight: normal;
+    width: 96%;
+    line-height: 1.6rem;
+    border: 0.1rem solid #66ab3d;
+    padding: 1rem 3rem;
+    color: #333333;
+    font-family: "Microsoft Yahei";
+    font-size: 0.96rem;
+    margin: 0 auto 2rem;
+}
+.projectAnalyse h5 b{
+    display: block;
+    height: 4rem;
+    float: left;
+    margin-right: 1rem;
+    font-size: 1rem;
+}
+.projectAnalyse h6{
+    font-size: 1.2rem;
+    text-align: left;
+    font-weight: normal;
+    color: #1d8866;
+    font-family:"Microsoft Yahei";
+}
+#hcharts{
+    width: 100%;
+}
+#hcharts img{
+    width: 100%;
+}
+.nakedReason{
+    /*border: 0.2rem dotted #ccc;*/
+    padding: 1rem 1rem 4rem 8rem;
+   /* border-radius: 2rem;*/
+    color: #fff;
+
+}
+.nakedReason p{
+  font-size: 0.99rem;
+}
+.nakedReason b{
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+/*鹰计划*/
+.yjh{
+    width: 100%;
+    margin: 0 auto;
+    background-color: #f1f6f9;
+    padding: 5rem 0;
+    height: 45rem;
+}
+.yjh ul{
+    width: 74%;
+    margin: 0 auto;
+}
+.yjh li{
+    width: 20%;
+    height: 10rem;
+    float: left;
+}
+.yjh li .yjhCont{
+    width: 99%;
+    margin: 0 auto;
+}
+.yjhCont h6{
+    width: 100%;
+    background-color: #32b792;
+    text-align: center;
+    padding: 1.3rem;
+    font-size: 1.4rem;
+    color: #fff;
+    margin: 0;
+}
+.yjhCont .line{
+    display: block;
+    position: relative;
+    font-family: "Microsoft Yahei";
+}
+.yjhCont .line:before{
+    display: block;
+    content: "";
+    width: 100%;
+    height: 1rem;
+    position: absolute;
+    background: url("/images/mantengLine.png")no-repeat center;
+    bottom: -1.5rem;
+    left: 0;
+}
+
+.yjhCont h6 i{
+    font-style: normal;
+    display: block;
+   /* margin-top: 1rem;*/
+    font-weight: normal;
+}
+.yjhInfo {
+    background-color: #eaeaea;
+    height: 19rem;
+    border-bottom: 0.2rem solid #32b792;
+}
+.yjhInfo p{
+    padding: 0.5rem 1rem;
+    font-size: 0.96rem;
+}
+.yjhInfo b{
+    color: #32b792;
+    display: block;
+
+}
+.yjhInfo span{
+    color: #666;
+    display: block;
+    font-family: "Microsoft Yahei";
+}
+
+@media (max-width: 1670px){
+    .projectBackground {
+        margin: 4rem 0;
+        background: url(/images/manteng_xmbjBA.jpg) no-repeat 0rem 27rem;
+    }
+}
+
+@media (max-width: 1024px){
+    .partersList li{
+        margin: 1.3rem 0;
+    }
+    .businessParters ul{
+        width: 74%;
+        margin: 3rem auto;
+    }
+    .partersList li p{
+        width: 92%;
+    }
+
+
+    .advantage ul{
+        width: 94%;
+    }
+
+    .projectAnalyse{
+        width: 84%;
+    }
+
+    .projectBackground{
+        background: url(/images/manteng_xmbjBA.jpg) no-repeat 0rem 24rem;
+    }
+
+}
+@media (max-width: 768px){
+    .projectDetail {
+        background: none;
+    }
+   /* .videoIntroduce{
+        background: none;
+        height: 36rem;
+    }
+    .videoWrapper {
+        width: 76%;
+        height: 88%;
+        margin: 2rem auto 0;
+        background-color: rgb(0,0,0);
+        cursor: pointer;
+    }*/
+
+}
+
+@media (max-width: 767px) {
+
+    .partersList li {
+        width: 50%;
+    }
+
+    .partersList li p {
+        width: 50%;
+    }
+
+    .advantage ul li:nth-child(4){
+        margin-left: 3.1rem;
+    }
+    .advantage ul li{
+        width: 80%;
+        margin-left: 3.1rem;
+        background-position: top 1rem;
+    }
+    .advantage{
+        margin-bottom: 52rem;
+    }
+
+    .projectAnalyse{
+        width: 90%;
+    }
+    .highcharts-title{
+        font-size: 1.3rem;
+    }
+
+    .projectBackground{
+        background: url(/images/manteng_xmbjBA.jpg) no-repeat 0rem 16rem;
+    }
+    .projectAnalyse h5 b{
+        height: auto;
+    }
+    .nakedReason{
+        padding: 1rem 1rem 4rem 1rem;
+    }
+
+}
+@media (max-width: 415px){
+    .partersList li p{
+        width: 75%;
+    }
+    .videoWrapper{
+        width: 27.3rem;
+        height: 55%;
+    }
+    .videoIntroduce{
+        margin: 0 auto;
+    }
+
+}
+@media (max-width: 320px){
+    .partersList li{
+        margin: 0.3rem 0;
+    }
+   /* .successCase{
+        padding: 2rem 0 6rem 0;
+    }*/
+    .videoWrapper{
+        width: 24.3rem;
+        height: 49%;
+    }
+
+}
+
+
+/*新增样式end*/
+

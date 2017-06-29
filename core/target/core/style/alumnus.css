@@ -1,0 +1,581 @@
+*{
+    margin:0;
+    padding: 0px;
+}
+ul{
+    list-style: none;
+}
+section{
+    font-family:"Microsoft Yahei" !important;
+    margin:0!important;
+    padding: 0 !important;
+
+}
+.row{
+    margin:0;
+}
+.alumnus-page img{
+    max-width: none;
+}
+section .sm-first{
+    font-family:"Microsoft Yahei" !important;
+
+    width:100%;
+    max-height: 780px;
+    background-color: #ececec;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+section .sm-first .video-v{
+    /*max-height: 780px;*/
+    width: 100%;
+    /*background:transparent url('../images/background-2.1.jpg') 50% 50% no-repeat;*/
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+}
+section .sm-first .video-tip-1{
+    display: block;
+    width:100%;
+    position: absolute;
+    top: 70%;
+    z-index: 100;
+    color: #fff;
+    font-size:30px;
+    text-align: center;
+    white-space: nowrap;
+    word-break: normal;
+    font-family: "Microsoft Yahei";
+}
+section .sm-first .video-tip-2{
+    display: block;
+    position: absolute;
+    width:100%;
+    top: 75%;
+    z-index: 100;
+    color: #fff;
+    font-size:30px;
+    text-align: center;
+    font-family: "Microsoft Yahei";
+}
+section .sm-first .video-btn{
+    background: url("../images/video-btn.png") no-repeat center;
+    display: block;
+    width: 188px;
+    height: 144px;
+    position: absolute;
+    top: 80%;
+    z-index: 100;
+    left:50%;
+    margin-left: -94px;
+}
+section .sm-second{
+    width:100%;
+    min-height: 450px;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    background-color: #ececec;
+}
+section .sm-second .s-center{
+    width: 1000px;
+    height: auto;
+    margin:0 auto;
+    /*position: relative;*/
+    /*left:50%;*/
+    /*margin-left: -20%;*/
+}
+section .sm-second h2{
+    text-align: center;
+    margin-bottom:50px;
+    font-family: "Microsoft Yahei";
+    margin-top: 0!important;
+}
+section .sm-second .un-list{
+    float: left;
+    background: url("../images/bg1.jpg") no-repeat center;
+    width: 475px;
+    height: 267px;
+    margin-bottom: 100px;
+    /*margin-left:5%;*/
+
+}
+section .sm-second .un-list ul{
+    list-style: square;
+    color: #08ba8c;
+    font-size: 24px;
+    padding:8%;
+}
+section .sm-second .un-list ul li b{
+    color: #3d3d3d;
+    font-weight: 700;
+    font-size: 22px;
+}
+section .sm-second .un-list ul li{
+    margin-bottom: 10px;
+    font-family: "Microsoft Yahei";
+}
+section .sm-second .application{
+    float: left;
+    background: url("../images/bg2.jpg") no-repeat center;
+    width: 475px;
+    height: 267px;
+    margin-left:5%;
+    margin-bottom: 100px;
+    padding:3%;
+
+}
+section .sm-second .application h4{
+    font-size: 24px;
+    color: #ffffff;
+    font-family: "Microsoft Yahei";
+}
+section .sm-second .application p{
+    color: #ffffff;
+    font-size: 18px;
+    margin: 20px 0;
+    font-family: "Microsoft Yahei";
+}
+section .sm-second .application .link-text{
+    width:70%;
+    height: 40px;
+    border-radius: 5px;
+    border:none;
+    padding:0 3%;
+    font-size: 16px;
+}
+section .sm-second .application  .apply-btn{
+    width: 20%;
+    margin-left:3%;
+    height: 40px;
+    background-color: #08ba8c;
+    border:none;
+    color: #ffffff;
+    border-radius: 5px;
+    font-family: "Microsoft Yahei";
+}
+
+
+section .sm-third{
+    padding: 50px 0;
+    clear: both;
+}
+section .sm-third h2{
+    text-align: center;
+    margin:0 !important;
+    font-family: "Microsoft Yahei";
+}
+section .sm-third ul{
+
+    padding:0% 113px;
+    height: auto;
+    margin: 70px auto;
+    text-align: center;
+}
+section .sm-third ul li{
+    height: 260px;
+    padding:0 5px;
+
+}
+section .sm-third ul li div {
+    height: 260px;
+    background: #f0f0f0;
+    border-radius:5px;
+    position: relative;
+}
+section .sm-third ul li div span{
+    /*content: '';*/
+    display: block;
+    width: 100%;
+    height: 70px;
+    position: absolute;
+    top: 83px;
+    opacity:0.5;
+    padding-left: 0;
+}
+section .sm-third ul li h4{
+    font-size: 18px;
+    padding:0 4%;
+    color: #ffffff;
+    font-family: "Microsoft Yahei";
+    position: absolute;
+    top: 90px;
+    text-align: left;
+    font-weight:lighter;
+}
+section .sm-third ul li p{
+    color: #666666;
+    border-top: 1px solid #cccccc;
+    padding-top: 10px;
+    font-size: 13px;
+    margin-top:15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-family: "Microsoft Yahei";
+}
+section .search-mode{
+    margin-top: 100px;
+    clear: both;
+    width:100%;
+    height: 85px;
+    background-color: #3c4a51;
+    text-align: center;
+    display: table;
+}
+section .search-mode .center{
+    display: table-cell;
+    vertical-align: middle;
+}
+section .search-mode .search-school{
+    width: 430px;
+    height: 40px;
+    border:none;
+    border-radius: 5px 0 0 5px;
+    margin:auto 0;
+    /*font-size: 20px;*/
+}
+section .search-mode .go-btn{
+    width: 110px;
+    height: 40px;
+    display: inline-block;
+    line-height: 39px;
+    background-color: #08ba8c;
+    color: #ffffff;
+    font-size: 18px;
+    position: relative;
+    margin-left: -4px;
+}
+section .search-mode .center .go-btn::after{
+    content: '';
+    display: inline-block;
+    width: 0px;
+    height: 0px;
+    border-width:10px;
+    border-style:solid;
+    border-color: transparent #08ba8c  transparent  transparent ;
+    position: absolute;
+    right:100%;
+    top:50%;
+    margin-top:-8px;
+}
+section .sm-forth{
+    clear: both;
+    text-align: center;
+    /*padding: 50px 20%;*/
+}
+section .sm-alumnus{
+    clear: both;
+    text-align: center;
+    padding-bottom: 40px;
+}
+.alumnus-head{
+    background: url("/images/alumnus-head.jpg") no-repeat center;
+    background-size: cover;
+    /*width: 1920px;*/
+    /*height: 399px;*/
+    padding: 50px 0;
+}
+.alumnus-head p{
+    color: #ffffff;
+    font-size: 24px;
+    font-family: "Microsoft Yahei";
+    font-weight: lighter;
+}
+.alumnus-head a{
+    font-size: 18px;
+    display: block;
+    color: #ffffff;
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    text-align: center;
+    margin: 30px auto;
+    border: 1px solid #ffffff;
+}
+.sm-alumnus .alumnus-h2{
+    font-family: "Microsoft Yahei";
+    font-size: 36px;
+    margin: 50px 0;
+}
+.sm-alumnus .alumnus-forth{
+    font-family: "Microsoft Yahei";
+    font-size: 48px;
+    margin-bottom: 50px;
+    color: #ffffff;
+}
+section .sm-forth h5{
+    font-size: 18px;
+    line-height: 35px;
+    padding:0 30%;
+    font-family: "Microsoft Yahei";
+}
+section .sm-forth div em{
+    display: inline-block;
+    width: 470px;
+    border-bottom: 1px solid #3d3d3d;
+    margin:0 20px;
+}
+section .sm-forth h2{
+    font-family: "Microsoft Yahei";
+}
+section .sm-forth .university-mode .more,section .sm-forth .highschool-mode .more{
+    clear: both;
+    display: block;
+    text-align: right;
+    margin:0 65px 0 0;
+    font-size: 16px;
+    color: #08ba8c;
+}
+section .sm-forth .university-mode .school-list,section .sm-forth .highschool-mode .school-list{
+    /*padding:0 65px;*/
+    width: 1000px;
+    margin:0 auto;
+}
+section .sm-forth .university-mode .school-list .school,section .sm-forth .highschool-mode .school-list .school{
+    width: 150px;
+    height: 150px;
+    border: 1px solid #3d3d3d;
+    padding: 5px;
+    float: left;
+    margin: 15px 7px;
+    position: relative;
+}
+section .sm-forth .university-mode .school-list .school .alumnus-list,section .sm-forth .highschool-mode .school-list .school .alumnus-list{
+    width: 100%;
+    height: 40px;
+    background-color:#3d3d3d;
+    position: absolute;
+    bottom: 0%;
+    left:0;
+    padding-left: 20px;
+    padding-top: 5px;
+    opacity: 0.9;
+}
+
+section .sm-forth .university-mode .school-list .school .school-p,section .sm-forth .university-mode .school-list .school .al-p,
+section .sm-forth .highschool-mode .school-list .school .school-p,section .sm-forth .highschool-mode .school-list .school .al-p
+{
+    overflow: hidden;
+    width: 140px;
+    height: 140px;
+    display: inline-block;
+    position: relative;
+}
+section .sm-forth .university-mode .school-list .school .alumnus-list-view p,section .sm-forth .highschool-mode .school-list .school .alumnus-list-view p{
+    width: 100%;
+    height: 40px;
+    background-color:#08ba8c;
+    position: absolute;
+    bottom: 0%;
+    left:0;
+    margin:0;
+    color: #ffffff;
+}
+section .sm-forth .university-mode .school-list .school .school-p,section .sm-forth .university-mode .school-list .school .alumnus-list-view  p span,
+section .sm-forth .highschool-mode .school-list .school .school-p,section .sm-forth .highschool-mode .school-list .school .alumnus-list-view  p span
+
+{
+    display: block;
+    font-size: 12px;
+}
+section .sm-forth .university-mode .school-list .school .alumnus-list .alumnus img,section .sm-forth .highschool-mode .school-list .school .alumnus-list .alumnus img{
+    transition: 1s all;
+}
+section .sm-forth .university-mode .school-list .school .alumnus-list .alumnus:hover img,section .sm-forth .highschool-mode .school-list .school .alumnus-list .alumnus:hover img{
+    width: 60px;
+}
+section .sm-forth .university-mode .school-list .school .alumnus-list li,section .sm-forth .highschool-mode .school-list .school .alumnus-list li{
+    float: left;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: #4cae4c;
+    margin-left: -15px;
+    border: 1px solid #ffffff;
+    overflow: hidden;
+    position: relative;
+    z-index:10;
+    transition: 1s all;
+    padding-left:0 !important;
+}
+section .sm-forth .university-mode .school-list .school .alumnus-list .plus,section .sm-forth .highschool-mode .school-list .school .alumnus-list .plus{
+    background: #3d3d3d;
+    color: #ffffff;
+    font-size: 15px;
+    line-height: 30px;
+    text-align: center;
+    font-weight: bold;
+    padding-left: 2px;
+}
+section .sm-forth .university-mode .school-list .school .alumnus-list .alumnus:hover,section .sm-forth .highschool-mode .school-list .school .alumnus-list .alumnus:hover{
+    z-index:10000;
+    width: 60px;
+    height: 60px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+}
+section .sm-forth .university-mode .school-list .school .point,section .sm-forth .highschool-mode .school-list .school .point{
+    right: 5px;
+    position: absolute;
+    font-size: 20px;
+    bottom: 3px;
+    color: #ffffff;
+}
+.alumnus-list-view li{
+    display: none;
+    padding-left: 0!important;
+}
+section .sm-forth .highschool-mode .more{
+    margin:0;
+}
+.sm-alumnus{
+    background-color: #ececec;
+}
+.sm-alumnus .alumnus-hot{
+    padding: 0 !important;
+    width: 1000px;
+    height: 610px;
+    margin:0 auto;
+}
+.alumnus-hot .li-content{
+    width: 250px;
+    height: 305px;
+    padding: 0px;
+    float: left;
+    position: relative;
+}
+
+
+.alumnus-hot .li-content a .photo{
+    border-radius: 100px;
+    display: block;
+    margin: 0px auto;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+
+}
+.alumnus-hot .li-content a span i{
+    font-size: 16px;
+    font-style: normal;
+}
+.alumnus-hot .li-content img{
+
+}
+.alumnus-hot .li-content b{
+    font-size: 18px;
+    display: block;
+    color: #3d3d3d;
+    font-family: "Microsoft Yahei";
+    font-weight: normal;
+}
+.alumnus-hot .li-content span{
+    font-size:18px;
+    color: #3d3d3d;
+    font-family: "Microsoft Yahei";
+}
+.alumnus-hot .li-content a{
+    display: block;
+}
+.alumnus-hot .li-content em{
+    display: block;
+    width:90%;
+    margin-top: 10px;
+    margin-left:5%;
+}
+.alumnus-hot .li-content .am-introduce{
+    display: block;
+    position: absolute;
+    top:0;
+    height: 292px;
+    padding: 10px;
+    opacity: 0;
+    background-color: #105f86;
+}
+.alumnus-hot .li-content:hover .am-introduce{
+    opacity: 1;
+    transition:opacity 0.5s ease-in-out;
+    -webkit-transition:opacity 0.5s ease-in-out;
+}
+.alumnus-hot .li-content .am-introduce b{
+    margin-top: 20px;
+    color: #fff;
+    text-align: left;
+    margin-left:10px;
+}
+.alumnus-hot .li-content .am-introduce p{
+    margin-top: 15px;
+    color: #fff;
+    text-align: left;
+}
+.alumnus-btn:hover{
+    background: #ffffff;
+    color: #3d3d3d;
+    transition: 0.5s ease-in-out;
+}
+.alumnus-more{
+    display: block;
+    width:100px;
+    height: 35px;
+    border: 1px solid #1bb38c;
+    color: #1bb38c;
+    line-height: 35px;
+    text-align: center;
+    margin: 30px auto;
+    font-size: 16px;
+}
+.alumnus-more:hover{
+    background: #1bb38c;
+    color: #ffffff;
+    transition: 0.5s ease-in-out;
+}
+@media screen and (max-width: 1199px) {
+    section .sm-third ul li{
+        padding:0;
+    }
+    .alumnus-page .sm-third img{
+        width: 300px;
+    }
+    section .sm-third ul li div{
+        height: 300px;
+    }
+    section .sm-third ul li div span{
+        top: 133px;
+    }
+    section .sm-third ul li h4{
+        top: 140px;
+    }
+    section .sm-third ul{
+        padding:0 334px;
+    }
+    section .sm-second{
+        margin-top: -50px;
+        height: 850px;
+    }
+    section .sm-second .s-center{
+        width: 475px;
+
+    }
+    section .sm-second .application{
+        margin-left:0 ;
+        padding: 6%;
+    }
+    section .sm-third ul li{
+        border:none;
+        margin-top: 50px;
+    }
+    section .sm-forth div em{
+        margin: 0px 5px;
+    }
+    section .sm-second h2{
+        margin-top: 50px !important;
+    }
+    section .sm-second .un-list{
+        margin-bottom: 50px;
+    }
+}

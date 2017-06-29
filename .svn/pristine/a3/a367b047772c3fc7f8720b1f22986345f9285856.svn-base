@@ -1,0 +1,231 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 微软雅黑;
+}
+
+html {
+    font-size: 20px;
+}
+.container_box{
+    width:100%;
+    height:auto;
+    background: #f0f5f8;
+    margin:0 auto;
+}
+.mid_cont{
+    width:60%;
+    height:auto;
+    position: relative;
+    margin:3.6rem auto;
+    padding-top:2rem;
+}
+.mid_cont h2{
+    width:100%;
+    height: 2rem;
+    position: relative;
+    line-height: 2rem;
+    font-size: 1.5rem;
+    color: #3d3d3d;
+    font-family: "微软雅黑";
+    font-weight:normal;
+    border-left: 0.5rem solid #04bc8e;
+    padding-left: 1rem;
+}
+.mid_cont em{
+    display: block;
+    border-bottom: 1px solid #dddddd;
+    margin: 15px;
+}
+.payorder{
+    width:100%;
+    height:28rem;
+    background: #f8fafc;
+    box-shadow: 0 0 1px #ecf1f4;
+    margin:2rem auto;
+    padding-top:3rem;
+}
+.pay-con{
+    width:80%;
+    height:auto;
+    position: relative;
+    margin:0 auto;
+}
+.pay{
+    height:2rem;
+    font-size:1.1rem;
+    line-height:2rem;
+    padding:0;
+    font-family: "微软雅黑";
+    font-weight:400;
+    color: #333;
+}
+.orderNumber{
+    display: block;
+    width:50%;
+    height:1.2rem;
+    line-height:1.2rem;
+    float: left;
+    padding:0;
+    color: #333;
+    font-family: "微软雅黑";
+    font-weight:400;
+    font-size:1rem;
+    text-align: left;
+    color: #333;
+}
+.orderNumber i{
+    font-style: normal;
+    font-size:0.8rem;
+    color: #999;
+    line-height:1.2rem;
+}
+.advanceMoney{
+    display: block;
+    width:50%;
+    height:1.2rem;
+    line-height:1.2rem;
+    float: right;
+    padding:0;
+    color: #333;
+    font-family: "微软雅黑";
+    font-weight:400;
+    font-size:1rem;
+    text-align: right;
+}
+.advanceMoney b{
+    color: #ff7e00;
+    font-size:1.2rem;
+}
+.remarks{
+    width:100%;
+    height:1rem;
+    clear: both;
+    padding:0;
+    margin:2.5rem auto;
+    font-family: "微软雅黑";
+    font-weight:400;
+    font-size:0.8rem;
+    line-height:1rem;
+}
+.remarks b{
+    color: #ffa100;
+    font-weight:normal;
+}
+.payment{
+    width:100%;
+    height:auto;
+    background: #fff;
+}
+.payment p{
+    width:100%;
+    height:2rem;
+    background: #e5eaf0;
+    line-height:2rem;
+    padding-left:1rem;
+    font-size:0.8rem;
+}
+.payment ul{
+    width:100%;
+    height:7rem;
+    background: #fff;
+    padding:0;
+}
+.payment ul li{
+    display: inline-block;
+    width:33%;
+    height:7rem;
+    text-align: left;
+    padding-left:2rem;
+}
+.payment ul li input[type="radio"]{
+    margin:2.6rem 0;
+}
+.creditFrame{
+    display: block;
+    width:10rem;
+    height:3rem;
+    border:1px solid #999;
+    border-radius: 0.3rem;
+    z-index: 2;
+    position: absolute;
+    margin-top:-1.6rem;
+    margin-left:-1rem;
+    line-height:3rem;
+    text-align: center;
+    display: none;
+}
+.creditFrame em
+{
+    display: block;
+    border-width: 12px;
+    position: absolute;
+    bottom: 43px;
+    left: -4px;
+    border-style: solid dashed dashed;
+    border-color: transparent transparent #999;
+    font-size: 0;
+    line-height: 0;
+}
+.creditFrame span
+{
+    display: block;
+    border-width: 12px;
+    position: absolute;
+    bottom: 54px;
+    left: 8px;
+    border-style: solid dashed dashed;
+    border-color: transparent transparent #fff;
+    font-size: 0;
+    line-height: 0;
+}
+.payBtn{
+    text-decoration: none;
+    display: block;
+    width:6.8rem;
+    height:2.2rem;
+    background:#10b598;
+    border-radius: 0.2rem;
+    float: right;
+    text-align: center;
+    line-height:2.2rem;
+    color: #fff;
+    font-size:1rem;
+    letter-spacing:0.1em;
+    margin-top:2rem;
+}
+.pay-frame{
+    width:30rem;
+    height:21rem;
+    border-radius:0.2rem;
+    position: absolute;
+    top:10rem;
+    left:50%;
+    margin-left:-15rem;
+    z-index: 99;
+    box-shadow: 2px 2px 2px 2px #e5e9ec;
+    display: none;
+}
+.pay-frame a{
+    text-decoration: none;
+    color: #ccc;
+}
+.pay-frame a i{
+    float: right;
+    margin-top:0.4rem;
+    margin-right:0.4rem;
+}
+.pay-frame-p{
+    width:100%;
+    height:2rem;
+    position: relative;
+    text-align: center;
+    line-height:2rem;
+    font-size:0.8rem;
+    color: #333;
+}
+.p1{
+    margin-top:12rem;
+    font-weight:bold;
+}

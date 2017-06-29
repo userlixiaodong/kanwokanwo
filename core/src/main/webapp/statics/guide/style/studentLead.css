@@ -1,0 +1,87 @@
+@charset "utf-8";
+/* CSS Document */
+/*学生引导页*/
+.studentLead{font-family:Microsoft YaHei;padding-top: 75px;}
+.studentLead h2,.studentLead h3,.studentLead p{margin:0;padding:0;font-family:Microsoft YaHei;}
+.studentLead h2{padding:0 4%;line-height:1.4;}
+.studentLead h2 span{display:block;border-bottom:2px solid #1bb38c;height:10px;width:60px;margin:0 auto;}
+.studentLead .leadBtn{display:inline-block;color:#1bb38c;border:1px solid #1bb38c;padding:6px 10px margin:0 0 1%;font-weight:100;font-size:18px;}
+.studentLead .sLeadbtn{display:inline-block;padding:10px 20px;color:#fff;background:#1bb38c;margin:2.8% 0;}
+@media (max-width:414px){.studentLead p,.studentLead a{font-size:14px !important;}
+.studentLead h2{font-size:18px !important;}}
+.studentLead dl{margin:0;}
+.center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);}
+.lead_center{max-width:1400px;margin:0 auto;padding:2% 0;}
+.pd4{padding:2% !important;}
+@media (max-width:1200px){.lead_center{padding:4% 0 !important;} .pd4{padding:4% !important;}}
+.lead_center h2{text-transform:capitalize;font-size:34px;color:#606060;margin-bottom:2%;font-weight:100;}
+@media (max-width:800px){.banner dl{background:rgba(0,0,0,1);}
+.banner dl p{font-size:12px !important;}
+.banner dt p{font-size:14px !important;}}
+@media (max-width:1200px) and (min-width:930px){.banner dl p{font-size:14px !important;}
+.banner dt p{font-size:18px !important;}}
+@media (max-width:930px) and (min-width:580px){.banner dl{width:100% !important;left:50% !important;}
+.banner dl p{font-size:12px !important;}
+.banner dt p{font-size:14px !important;}}
+@media (max-width:580px) and (min-width:500px){.banner dl{width:100% !important;left:50% !important;top:50% !important;}}
+@media (min-width:500px){.banner dl{background:rgba(0,0,0,.4);width:50%;left:60%;top:44%;position:absolute;transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);}}
+.banner dl{padding:10px;color:#fff;}
+.banner dt p{font-size:42px;margin-bottom:1.2%;}
+.banner dt em{color:#1bb38c;}
+.banner dd{font-size:18px;margin-bottom:1.6%;}
+.banner dd p{position:relative;padding-left:12px;}
+.banner dd p::before{content:'';display:block;position:absolute;top:2px;left:0;background-color:#1bb38c;width:4px;height:20px;}
+.leadModel1{background:url(/statics/guide/images/studentLead/bg1.png) no-repeat;background-size:cover;padding-bottom:2%;}
+.leadModel1 .lead_center{max-width:1140px;}
+.leadModel1 ul li{position:relative;padding-left:12px;}
+.leadModel1 ul li::before{content:'';display:block;position:absolute;top:2px;left:0;background-color:#1bb38c;width:4px;height:20px;}
+.leadModel2 .lead_center{max-width:1000px;}
+.leadModel2 .lead_center img{width:100%;}
+@media (max-width:750px){.leadModel2 .lead_center img{width:auto;}}
+.leadModel3,.leadModel5,.leadModel7{background:#f8f7f7;}
+.leadModel3 .sLeadbtn{margin:0;}
+.leadModel3 dl{width:60%;max-width:260px;margin:8% auto 10%;}
+@media (max-width:768px){.leadModel3 dl{margin:4% auto 2%;}}
+.leadModel3 dt{margin:15px 0;}
+.leadModel3 dl p{text-align:left;}
+.leadModel4 ul li{border:1px solid #e5e5e5;width:100px;height:100px;display:inline-block;position:relative;margin:1% 1.6%;}
+.leadModel4 ul li a{display:block;}
+.leadModel4 ul li img{max-width:inherit;}
+.leadModel5 .leadModel5inner{max-width:620px;margin:10px auto;}
+.leadModel5 p.colleges-tit-middle{font-style:oblique;font-size:14px;}
+.leadModel5 p.colleges-tit-bottom{color:#a0a0a0;margin-top:20px;font-size:14px;}
+.leadModel5 p.colleges-tit-bottom strong{color:#1bb38c;}
+.leadModel5 img{display:block;margin:20px auto;}
+.leadModel5 ul li{width:160px;height:100px;display:inline-block;position:relative;margin:3% 0 0;}
+.leadModel5 ul li a{display:block;}
+.leadModel5 ul li img{max-width:inherit;}
+.leadModel6 p a{border-radius:4px;margin:2% 10px 4%!important;}
+.leadModel7 h2 span{display:block;border-bottom:4px solid #1bb38c;height:10px;width:30px;margin:0 auto;}
+.lessonService{margin-bottom:4%;}
+.lessonService dt,.lessonService dd{height:138px;}
+.lessonService dt{background:#fff;}
+.lessonService dt p{padding-left:28px;text-align:left;padding-top:3%;width:90%;margin:0 auto;}
+.lessonService .sP1{background:url(/statics/guide/images/studentLead/pIcon.png) left 17px no-repeat;}
+.videoService > p{max-width:1000px;margin:0 auto;}
+.videoService dl{width:80%;margin:6% auto;}
+.videoService dt p{font-size:20px;color:#434343;margin:4% 0;}
+.videoService dd p{font-size:14px;margin:4% 0;}
+/*图标*/
+@font-face{
+	font-family:"iconfontloading";src:url('/fonts/fonts-loading/iconfont.eot?t=1460343398');/* IE9*/
+	src:url('/fonts/fonts-loading/iconfont.eot?t=1460343398#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('/fonts/fonts-loading/iconfont.woff?t=1460343398') format('woff'), /* chrome, firefox */
+	url('/fonts/fonts-loading/iconfont.ttf?t=1460343398') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+	url('/fonts/fonts-loading/iconfont.svg?t=1460343398#iconfont') format('svg');/* iOS 4.1- */}
+.icon{font-style:normal;font-weight:900;color:#464646;font-size:50px;}
+@media (max-width:798px){.icon{font-size:40px;line-height:1;}}
+.iconfontloading{font-family:"iconfontloading";}
+.icon-renqun:before{content:"\e600";}
+.icon-chengbao:before{content:"\e601";}
+.icon-duihuakuang:before{content:"\e602";}
+.icon-tv:before{content:"\e603";}
+.icon-qianbi:before{content:"\e604";}
+.icon-dui-copy:before{content:"\e605";}
+.interviewService dl{margin-top:20px;}
+.interviewService dt{margin-bottom:10px;}
+.sVideo{margin-top:4%;display:block;}

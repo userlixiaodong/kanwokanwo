@@ -1,0 +1,20 @@
+package cv.focus.core.application.impl;
+
+import cv.focus.core.application.OrderService;
+import cv.focus.core.domain.user.model.SpecializationRepository;
+import cv.focus.core.infrastructure.persistence.hibernate.OrderRepository;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+
+/**
+ * Created by 晓东 on 2017/5/3.
+ */
+@Service
+public class OrderServiceImpl implements OrderService {
+
+    @Resource
+    private OrderRepository orderRepositoryHibernateImpl;
+
+
+}

@@ -1,0 +1,205 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: 1009
+  Date: 2017/3/27
+  Time: 9:35
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Touch enabled minimalistic slider written in vanilla JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <script src="/js/jquery-2.2.1.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=rZnlDS5W43SL10gjCAHuutp5kmv7wGOQ"></script>
+
+    <link rel="stylesheet" type="text/css" href="/style/public.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/frame.css?20160516"/>
+    <link rel="stylesheet" type="text/css" href="/style/app.css">
+    <link rel="stylesheet" type="text/css" href="/style/international.css?20170329">
+
+</head>
+
+
+<body>
+
+<div class="container_box">
+    <%@include file="/WEB-INF/views/common/top.jsp" %>
+    <div class="top_banner">
+        <div class="int_text">
+            <h2>国际关系学院夏校</h2>
+            <p>——这个暑期，来国关拿教授推荐信</p>
+            <span>报名电话：400-036-5967</span>
+        </div>
+    </div>
+    <div class="cont">
+        <div class="intSummary">
+            <img src="/images/intLog.png" />
+            <div class="intSummary_cont">
+                <img src="/images/intImgs_1.png" />
+                <div class="intSummary_text">
+                    <h5>国际关系学院</h5>
+                    <p>University of International Relations，简称国关，直属中华人民共和国教育部，为财政部6所“小规模试点高校“之一，是以外语、国际问题为教学科研中心的全国重点大学。 国际关系学院曾为诞生新中国第一批“将军大使”开办培训班；五十年代首创侧重外国当代语言学习的教学方法；改革开放初期率先完成从单纯外语专业向复合型涉外专业的转型。国际关系学院多次受到党和国家领导人的重视和关怀，周恩来总理曾亲自批准建校并到校视察；陈毅元帅亲笔题写院名；江泽民 1994年又亲笔题词：“努力把国际关系学院办成富有特色的一流大学”。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--暑期简介申请流程start-->
+    <div class="int_list">
+        <ul>
+            <li style="margin-right: 20px;">
+                <img src="/images/intList_1.png" />
+                <h6>暑期班简介 <img src="/images/intList_line.png"/></h6>
+                <p>
+                    国关暑期班2017年首次针对高中生开放。邀请来自各个国家的知名教授与中国学生面对面授课，通过国际化交流活动的方式培养学生的国家观念和国际视野。特色课程内容涉及“国际政治、国际经济、国际文化、全球化现状及展望、中国“一带一路”战略及其对印度的利弊”等。 课程完成后会有标准化考试体系，可获得官方成绩单。成绩优异者更有机会获得外籍教授的推荐信，对学生申请外国大学，提升专业背景提供了强有力的支持。
+                </p>
+            </li>
+            <li style="margin-right: 20px;">
+                <img src="/images/intList_2.png" />
+                <h6>暑期班特色<img src="/images/intList_line.png"/></h6>
+                <p>
+                    <b>1.高端配置：</b>国内顶级大学针对大学在校生特设课程，首次对高中生开放。<br />
+                    <b>2.国际化：</b>百分百还原国际课堂，增进学员对国际关系的了解。<br />
+                    <b>3.特色课程：</b>课表拒绝标化，取材当今世界问题、国家热点。<br />
+                    <b>4.成绩实用：</b>在与国外教授沟通后，可将课程部分学分转化成大学学分。<br />
+                    <b>5.纯英文授课：</b>学习课程同时也能提高英语应用能力。<br />
+                    <b>6.前景：</b>名校教授知识分享，表现优异者更有机会获得教授推荐信。<br />
+                </p>
+            </li>
+            <li>
+                <img src="/images/intList_3.png" />
+                <h6>申请详情<img src="/images/intList_line.png"/></h6>
+                <p>
+                    <b>名额：</b>
+                    <span>首次针对高中生开放,名额有限,先到先得</span>
+                </p>
+                <p>
+                    <b>申请时间：</b>
+                    <span>即日开始申请</span>
+                </p>
+                <p>
+                    <b>申请要求：</b>
+                    <span>英文面试、学术要求(雅思6分、托福90分)</span>
+                </p>
+                <p>
+                    <b>开课时间：</b>
+                    <span>2017-06-26至2017-07-16</span>
+                </p>
+                <p>
+                    <b>选课数量：</b>
+                    <span>建议学生灵活选择1-4门课程</span>
+                </p>
+
+            </li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+    <!--暑期简介申请流程end-->
+
+    <!--百度地图start-->
+    <div class="map">
+        <div class="map_box">
+            <div class="map_left" id="allmap"></div>
+            <div class="map_right">
+                <p><i></i><span>地址：</span><br /><b>北京市海淀区坡上村12号<br /> 邮政编码 100091</b> </p>
+                <p><i></i><span>路线：</span><br /><b>1）地铁四号线西苑站，A口出，<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;然后坐634/特10/特5一站，<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在坡上村下车</b><b>2）地铁四号线北宫门站下车，<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A口出，向东走10分钟左右</b> </p>
+                <p><i></i><span>负责人：<small>徐老师</small></span><b> <br />15801052300 </b> </p>
+            </div>
+        </div>
+    </div>
+    <!--百度地图end-->
+
+    <!--课程列表start-->
+    <div class="course_box">
+        <h4>课程列表</h4>
+        <p>课程取材当今世界问题、国家热点，有可能会根据时事变化<br />做出细微调整，请随时关注网站动态~</p>
+        <table class="course_list" width="1200px" border="0" cellspacing="0" cellpadding="0" style="table-layout:fixed;">
+            <tr>
+                <th width="50px">序号</th><th width="80px">姓名</th><th width="80px">国籍</th><th width="140px">所在大学</th><th width="150px">课程名称</th><th width="260px">课程名称</th><th width="90px">专业类别</th><th class="last" width="90px">课程安排</th>
+            </tr>
+            <tr>
+                <td>1</td><td>Timothy Shaw</td><td>加拿大</td><td>Umass Boston</td><td>全球发展和区域一体化</td><td>Global Development & Regional Integration</td><td>国际政治</td><td><a target="_blank" href="http://focusedu.oss-cn-hangzhou.aliyuncs.com/files/guoguan/Global%20%26%20Regional--%20Development.pdf"></a></td>
+            </tr>
+            <tr>
+                <td>2</td><td>Hemant Adlakha</td><td>印度</td><td>Jawaharlal Nehru University</td><td>中国“一带一路”战略及其对印度的利弊</td><td> China's One Belt One Road Strategy and Its Pros and Cons for India</td><td>国际政治</td><td><a target="_blank" href="http://focusedu.oss-cn-hangzhou.aliyuncs.com/files/guoguan/%E4%B8%AD%E5%9B%BD%E2%80%9C%E4%B8%80%E5%B8%A6%E4%B8%80%E8%B7%AF%E2%80%9D%E7%AD%96%E7%95%A5%E5%8F%8A%E5%85%B6%E5%AF%B9%E5%8D%B0%E5%BA%A6%E7%9A%84%E5%88%A9%E5%BC%8A.pdf"></a></td>
+            </tr>
+            <tr>
+                <td>3</td><td>Tatsuya Nishida</td><td>日本</td><td>Hiroshima City University</td><td> 当代日本：日本的政治、经济和社会问题</td><td>Contemporary Japan: Political, Economic and Social Issues in Japan</td><td>国际政治</td><td><a target="_blank" href="http://focusedu.oss-cn-hangzhou.aliyuncs.com/files/guoguan/%E6%97%A5%E6%9C%AC%E6%94%BF%E7%BB%8F%E7%A4%BE%E4%BC%9A%E9%97%AE%E9%A2%98.pdf"></a></td>
+            </tr>
+            <tr>
+                <td>4</td><td>Woodrow W. Clark II</td><td>美国</td><td>Lawrence Livermore National Laboratory</td><td>美国与中国：全球化现状及展望</td><td> USA and PRC: Globalization now and into the near Future</td><td>国际政治</td><td><a target="_blank" href="http://focusedu.oss-cn-hangzhou.aliyuncs.com/files/guoguan/USA%20and%20PRC%20Globalization%20now%20and--%20into%20the%20near%20Future.pdf"></a></td>
+            </tr>
+            <tr>
+                <td>5</td><td>Danielle CABANIS</td><td>法国</td><td>University of Toulouse</td><td>欧洲法院与公民权利</td><td> European courts and citizen rights</td><td>国际政治</td><td><a target="_blank"  href="http://focusedu.oss-cn-hangzhou.aliyuncs.com/files/guoguan/%E6%AC%A7%E6%B4%B2%E6%B3%95%E5%BA%AD%E5%92%8C%E5%85%AC%E6%B0%91%E6%9D%83%E5%88%A9.pdf"></a></td>
+            </tr>
+            <tr>
+                <td>6</td><td>Aqab<br>M. Malik</td><td>巴基斯坦</td><td>National Defense University, Pakistan</td><td>恐怖主义研究</td><td>Terrism studies</td><td>国际政治</td><td><a target="_blank" href="http://focusedu.oss-cn-hangzhou.aliyuncs.com/files/guoguan/Terrorism%20Studies.pdf"></a></td>
+            </tr>
+
+            <tr>
+                <td>7</td><td> Henrik Plaschke</td><td>丹麦</td><td>Aalborg University</td><td> 国之富强：市场、机构、国家和全球化治理</td><td>The Wealth of Nations: markets,institutions,states and the governance of globalization</td><td>经济</td><td><a target="_blank" href="http://focusedu.oss-cn-hangzhou.aliyuncs.com/files/guoguan/The%20Wealth%20of%20Nations%20markets%2C--%20institutions%2C%20states%20and%20the%20governance%20of%20globalizatio.pdf"></a></td>
+            </tr>
+            <tr>
+                <td>8</td><td>Gregory Delemeeste</td><td>美国</td><td>Marietta College</td><td> 环境经济学</td><td> Environmental Economics</td><td>经济</td><td><a target="_blank" href="http://focusedu.oss-cn-hangzhou.aliyuncs.com/files/guoguan/%E7%8E%AF%E5%A2%83%E7%BB%8F%E6%B5%8E%E5%AD%A6.pdf"></a></td>
+            </tr>
+            <tr>
+                <td>9</td><td>Jeremy <br>Fei Wang</td><td>美国</td><td>Flagler College</td><td>美国信息技术的最新商业应用与趋势</td><td>Current E-Commerce Developments and Trends in the United States</td><td>信息科技</td><td><a target="_blank" href="http://focusedu.oss-cn-hangzhou.aliyuncs.com/files/guoguan/%E7%BE%8E%E5%9B%BD%E7%94%B5%E5%AD%90%E5%95%86%E5%8A%A1%E7%9A%84%E6%9C%80%E6%96%B0%E5%8F%91%E5%B1%95%E4%B8%8E%E8%B6%8B%E5%8A%BF.pdf"></a></td>
+            </tr>
+            <tr>
+                <td>10</td><td> Robert<br> E. Shapiro</td><td>美国</td><td>St. Xavier University</td><td>美国法律制度</td><td>American Legal System</td><td>法律</td><td><a href="http://focusedu.oss-cn-hangzhou.aliyuncs.com/files/guoguan/%E7%BE%8E%E5%9B%BD%E6%B3%95%E5%BE%8B%E5%88%B6%E5%BA%A6.pdf" target="_blank"></a></td>
+            </tr>
+            <tr>
+                <td>11</td><td> Marlis Paffenroth</td><td>美国</td><td>State University of New York</td><td>美国名著：短篇小说和诗歌</td><td> American Masterpieces: Short Fiction and Poetry</td><td>文学</td><td><a href="http://focusedu.oss-cn-hangzhou.aliyuncs.com/files/guoguan/%E7%BE%8E%E5%9B%BD%E6%96%87%E5%AD%A6%E7%BB%8F%E5%85%B8%EF%BC%9A%E7%9F%AD%E7%AF%87%E5%B0%8F%E8%AF%B4%E5%92%8C%E8%AF%97%E6%AD%8C.pdf" target="_blank"></a></td>
+            </tr>
+            <tr>
+                <td>12</td><td>Colin Osland</td><td>英国</td><td>北京联合大学</td><td>文化差异与人员管理</td><td>Cultural Differences and People Managemen</td><td>文化</td><td><a href="http://focusedu.oss-cn-hangzhou.aliyuncs.com/files/guoguan/Cross_Cultural_People_Management.pdf" target="_blank" ></a></td>
+            </tr>
+            <tr>
+                <td>13</td><td>Ulrike Reisach</td><td>德国</td><td>Ueu-Ulm University of Applied Sciences</td><td> 跨文化管理与沟通（从德、美与中国对比角度）</td><td>Intercultural Management and Communication(German and US-American Approaches compared to China)</td><td>文化</td><td><a href="http://focusedu.oss-cn-hangzhou.aliyuncs.com/files/guoguan/Interculturl%20Management%20and%20Communication.pdf" target="_blank"></a></td>
+            </tr>
+
+        </table>
+    </div>
+    <!--课程列表end-->
+
+    <!--温馨提示start-->
+    <div class="tips">
+        <div class="tips_cont">
+            <div class="tips_text">
+                <h4>温馨 <i></i> 提示</h4>
+                <p>外地学员可提供住宿，缴<br />纳学费后还请尽早预约住宿哦~<br />申请固定室友的同学可以两人一起预<br />订，没有固定室友将由老师推荐安排哦~</p>
+            </div>
+            <div class="consulting">
+                <span>详情咨询</span>
+                <img src="/images/yw_icon.png" >
+                <img src="/images/kanwo_ewm.jpg" >
+            </div>
+        </div>
+    </div>
+    <!--温馨提示end-->
+    <%@include file="/WEB-INF/views/common/bottom.jsp" %>
+</div>
+
+</body>
+<script type="text/javascript">
+
+    var point = new BMap.Point(116.29276,40.010042);
+    // 百度地图API功能
+    var map = new BMap.Map("allmap"); // 创建Map实例
+    map.centerAndZoom(point, 16); // 初始化地图,设置中心点坐标和地图级别
+    map.addControl(new BMap.MapTypeControl()); //添加地图类型控件
+    map.setCurrentCity("北京"); // 设置地图显示的城市 此项是必须设置的
+    /* map.enableScrollWheelZoom(true);*/ //开启鼠标滚轮缩放
+
+    var marker = new BMap.Marker(point);
+    map.addOverlay(marker);               // 将标注添加到地图中
+    marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+</script>
+
+</html>

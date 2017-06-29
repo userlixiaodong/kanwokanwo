@@ -1,0 +1,102 @@
+package cv.focus.core.interfaces.student.web;
+
+import cv.focus.core.application.ReservationService;
+import cv.focus.core.application.SpecializationService;
+import cv.focus.core.domain.user.model.Reservation;
+import cv.focus.core.infrastructure.util.BaseController;
+import cv.focus.core.infrastructure.util.Result;
+import cv.focus.core.infrastructure.util.ResultMessages;
+import cv.focus.core.interfaces.cisactivity.dto.UserItemDTO;
+import cv.focus.core.interfaces.user.dto.UserDTO;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.List;
+
+/**
+ * Created by Administrator on 2016/8/31.
+ */
+@Controller
+@RequestMapping("/reservation")
+public class ReservationController  extends BaseController {
+
+    private final Logger logger = Logger.getLogger(ReservationController.class);
+    @Resource
+    private ReservationService reservationService;
+    @Resource
+    private SpecializationService specializationService;
+
+    @RequestMapping("/submit")
+    @ResponseBody
+    public Result reservationSubmit( HttpServletRequest request) {
+        Result result = null;
+        try {
+            UserDTO loginUser = getLoginUser(request);
+            //测试数据
+            Integer userId  = loginUser.getUserId();
+            String userName  = loginUser.getUserName();
+            Integer tutorId = Integer.parseInt(request.getParameter("tutorId"));
+            String tutorName = (String) request.getParameter("tutorName");
+            String tutorSchool = (String) request.getParameter("school");
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");//小写的mm表示的是分钟
+            String dstr=(String)request.getParameter("reservationTime") +  ":00";
+            Date reservationTime=sdf.parse(dstr);
+            Date insertTime = new Date();
+            int reservationPeriod = Integer.parseInt(request.getParameter("reservationPeriod"));
+            String nickname = StringUtils.trimToEmpty((String) request.getParameter("nickname"));
+            String mobile = StringUtils.trimToEmpty((String) request.getParameter("mobile"));
+            String email = StringUtils.trimToEmpty((String) request.getParameter("email"));
+            String comments = StringUtils.trimToEmpty((String) request.getParameter("comments"));
+            Integer cost  = Integer.parseInt(request.getParameter("cost"));
+            //int state = Integer.parseInt(request.getParameter("state"));
+            //系统支付功能完善前，所有系统表单默认提交状态都为未付款，即state为0.
+            int state = 0;
+            reservationService.createReservation(userId,userName,tutorId,tutorName,tutorSchool,reservationTime,reservationPeriod,nickname,mobile,email,comments,state,insertTime,cost);
+            result = newSuccessResult(ResultMessages.RESERVSTION_SUCCESS, null);
+        } catch (Exception e) {
+            logger.error("ReservationController.reservationSubmit()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }
+
+
+
+    @RequestMapping("/myReservation")
+    public String inBox( HttpServletRequest request) {
+
+        try {
+            UserDTO loginUser = getLoginUser(request);
+            //测试数据
+            Integer userId  = loginUser.getUserId();
+            List<Reservation> reservationList = new ArrayList<Reservation>();
+            List<Reservation> historyReservationList = new ArrayList<Reservation>();
+            if("1".equals(loginUser.getRoleR())){
+                //reservationList = reservationService.findByTutorId(userId);
+                reservationList = reservationService.findCurrentListByTutorId(userId);
+                historyReservationList = reservationService.findHistoryListByTutorId(userId);
+
+            }else if("0".equals(loginUser.getRoleR())){
+                //reservationList = reservationService.findByUserId(userId);
+                reservationList = reservationService.findCurrentListByUserId(userId);
+                historyReservationList = reservationService.findHistoryListByUserId(userId);
+            }
+            List<UserItemDTO> userItemList = new ArrayList<UserItemDTO>();
+            userItemList = specializationService.findUserItemByUserId(userId);
+            request.setAttribute("userItemList",userItemList);
+            request.setAttribute("reservationList",reservationList);
+            request.setAttribute("historyReservationList",historyReservationList);
+        } catch (Exception e) {
+            logger.error("MessageController.inBox()", e);
+        }
+        return "user/myreserve";
+    }
+}

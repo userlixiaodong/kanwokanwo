@@ -1,0 +1,330 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>看我看我:一站式留学服务平台·背景提升·视频简历·院校库</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta name="title" content="看我看我 | 留学 | 活动 | 夏校 | 院校库 | 视频文书">
+    <meta name="keywords" content="看我看我 | 留学 | 活动 | 夏校 | 院校库 | 视频文书">
+    <meta name="description" content="【看我看我】是一个新一代留学服务平台，旨在通过视频简历、独家暑期和实习活动、斯坦福等名师宝典等帮助学生提升申请背景，更充分地向国外高校展示自己，打破顶级名校招生的区域局限性，让更多中国高中拥有录取常青藤名校的学生。">
+    <meta http-equiv="Expires" CONTENT="0"/>
+    <meta http-equiv="Cache-Control" CONTENT="no-cache"/>
+    <meta http-equiv="Pragma" CONTENT="no-cache"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=9, IE=8">
+    <link rel="stylesheet" type="text/css" href="/style/public.css?201604278722121100000"/>
+    <link rel="stylesheet" type="text/css" href="/style/frame.css?20160427"/>
+    <%--<link rel="stylesheet" type="text/css" href="/style/video-js.css?20160322"/>--%>
+    <%--<link rel="stylesheet" type="text/css" href="/style/index.css?20160427222422"/>--%>
+    <link rel="stylesheet" href="/style/newIndex.css">
+</head>
+<%@include file="/WEB-INF/views/common/top.jsp" %>
+<body>
+<div>
+    <%-- 01顶部banner图start--%>
+    <div class="indexBanner">
+        <ul class="bannerBox">
+            <li><img src="/images/BA-Keru.jpg"></li>
+            <li><img src="/images/BA-ASRQ.jpg"></li>
+            <li><img src="/images/BA-CCTV.jpg"></li>
+            <li><img src="/images/BA-africa.jpg"></li>
+            <li><img src="/images/BA-CIS.jpg"></li>
+        </ul>
+        <div class="step">
+            <span class="active">1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </div>
+        <a href="#" class="bannerprev"><img src="/images/prev.png" border="0"></a>
+        <a href="#" class="bannernext"><img src="/images/next.png" border="0"></a>
+    </div>
+    <%-- 顶部banner图end--%>
+    <%--02导航start   --%>
+    <div class="fwtj">
+        <ul class="fwtjList">
+            <li><a href=""><i></i><span>看我看我独家背景提升活动</span></a></li>
+            <li><a href=""><i></i><span>美国大学招生官招生信息分享</span></a></li>
+            <li><a href=""><i></i><span>最新最完善院校库系统</span></a></li>
+            <li><a href=""><i></i><span>私人订制视频简历服务</span></a></li>
+        </ul>
+    </div>
+    <%--导航end   --%>
+    <%--<div>
+        <section class="info-1 clearfix">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <h4>Now use images, videos, and documents on ANY school application</h4>
+                    <p class="large-leading subheader">
+                        As early as 7th grade, begin capturing your passions and achievements to showcase to high schools and colleges.
+                    </p>
+                    <div class="testimonial clearfloat">
+                        <div class="photo fl">
+                            <img alt="" src="/images/info-1-student.jpg">
+                        </div>
+                        <div class="quote">
+                            <blockquote>KanwoKanwo profile is a great tool for students to personalize their college applications and for us to see the real person behind each application. I'd like to see more applicants use KanwoKanwo to showcase their unique identity and extracurricular accomplishments.</blockquote>
+                            <div class="quote-metadata">
+                                <span class="name">Stanley D. Nel |  </span><span class="employer">University of San Francisco</span>
+                                <span class="title">Vice President for International Relations</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="further-info text-center">
+                        <div class="row">
+                            <div class="clearfix">
+                                <div class="col-md-12">
+                                    <a href="javascript:;" class="md-trigger video-container" data-modal="cusGuide">
+                                        <strong>
+                                            <i class="glyphicon glyphicon-play-circle"></i>
+                                        </strong>
+                                        <img src="//kw-cdn.kanwokanwo.com/images/cus_guide_pre.png" materialSrc="//kw-cdn.kanwokanwo.com/videos/cus_guide.mp4">
+                                        <span></span>
+                                    </a>
+                                    <p class="no-leading">Watch how easy it is to build a page.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>--%>
+    <%--03背景提升活动start  --%>
+    <div></div>
+    <%--背景提升活动end   --%>
+    <%--04视频简历留学申请新潮流start  --%>
+    <div class="interview-resume">
+        <p class="titles" style="color: #fff;">视频简历——留学申请新潮流</p>
+        <div class="separator"></div>
+        <div class="interview-content">
+            <div class="interview-content-top">
+                <div class="interview-content-inner">
+                    <ul class="interview-inner-title">
+                        <li>
+                            <span>现在，视频简历可以用于申请所有的美国大学</span>
+                        </li>
+                    </ul>
+                    <span class="interview-inner-enSpan">
+                    “ KanwoKanwo profile is a great tool for students to personalize their college applications and for us to see the real person behind each application. I'd like to see more applicants use KanwoKanwo to showcase their unique identity and extracurricular accomplishments ”
+                </span>
+                    <span class="interview-inner-chSpan">
+                    看我看我是一个对于学生个性化申请具有很大作用的网站，通过看我看我，我们可以看到文书背后对应申请者真正的样子。希望能看到更多的申请人使用看我看我展示他们独特的一面和课外成就。
+                </span>
+                    <div class="interview-describe">
+                        <span>Stanley D. Nel</span>
+                        <span>旧金山大学副校长</span>
+                    </div>
+                </div>
+                <div class="interview-content-inner">
+                    <ul class="interview-inner-title">
+                        <li>
+                            <span>从七年级开始，记录你的活动和成就，以便在申请学校时做出系统性的展现。</span>
+                        </li>
+                    </ul>
+                    <span class="interview-inner-enSpan">
+                    “ It doesn't matter where you are applying, every high school and college can now see your whole story.Sometimes it's hard to choose the words that accurately express your passions; however, Kanwokanwo allowed me to show, rather than just talk.
+                </span>
+                    <span class="interview-inner-chSpan">
+                    不管你申请哪里的大学，每一个个高中和大学都能看到你完整的履历。有时很难选择一个精准的词汇来表达你想说的话，不过在看我看我，你可以用行动与语言一起展示出你想表达的，这回比只用语言描述更到位
+                </span>
+                    <div class="interview-describe">
+                        <span>Cindy Chow</span>
+                        <span>高中申请学员</span>
+                    </div>
+                </div>
+            </div>
+            <ul class="interview-content-bottom">
+                <li><span>100%美国大学认可视频文书</span></li>
+                <li><span>200+视频文书申请成功案例</span></li>
+                <li><span>旧金山大学招生官喜爱视频形式文书</span></li>
+            </ul>
+            <a href="/admission/profile/videoDocument" class="moreMessage">更多信息</a>
+        </div>
+    </div>
+    <%--04视频简历留学申请新潮流end  --%>
+    <%--05独家美国高校采访视频start--%>
+    <div class="interview-video">
+        <p class="titles">看我看我独家美国高校采访视频</p>
+        <div class="separator"></div>
+        <ul>
+            <li>
+                <img src="/images/index-video-school1.jpg">
+                <div class="video-introduce">
+                    <div class="borderLine">
+                        <p>Grier School 专访</p>
+                        <span>Grier School招生官亲自介绍，源自学校的最真实最有用的信息</span>
+                        <a href="#" class="videos-more">更多高中视频</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <img src="/images/index-video-school2.jpg">
+                <div class="video-introduce">
+                    <div class="borderLine">
+                        <p>斯坦福MBA许轶老师教你写文书</p>
+                        <span>如何写好申请文书，低分高录。成功的文书写作案例赏析。</span>
+                        <a href="#" class="videos-more">更多大学视频</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <img src="/images/index-video-school3.jpg">
+                <div class="video-introduce">
+                    <div class="borderLine">
+                        <p>研究生申请问题小百科</p>
+                        <span>哥大实力学姐孟宇，为你解答申请大学与真正的大学生活的相关问题</span>
+                        <a href="#" class="videos-more">更多研究生视频</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <a href="#" class="moreVideo">更多视频</a>
+    </div>
+    <%--独家美国高校采访视频end--%>
+    <%--06最全美国院校信息库start--%>
+    <div class="schoolInfo">
+        <%--<ul class="infoPage">
+            <li class="page01"></li>
+            <li class="page02"></li>
+            <li class="page03"></li>
+        </ul>
+        <ul class="infoBtn">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>--%>
+    </div>
+    <%--最全美国院校信息库end--%>
+    <%--07看我看我，助力你的留学梦start--%>
+    <div></div>
+    <%--看我看我，助力你的留学梦end--%>
+    <%--08国外大学对看我看我的认可start--%>
+    <%--<div class="colleges-column text-center col-lg-12 col-xs-12 relative-position">--%>
+        <%--<img src="/images/colleges-big-pic.jpg" materialSrc="//kw-cdn.kanwokanwo.com/schoolvideo/universityofsanfrancisco.mp4">--%>
+        <%--<div class="colleges-content col-lg-12 col-xs-12">--%>
+            <%--<h3>SCHOOLS COMMITTED TO YOUR STORY</h3>--%>
+            <%--<dl class="absolute-position">--%>
+                <%--<dt>Stanley D. Nel</dt>--%>
+                <%--<dd>Vice President of University of San Francisco</dd>--%>
+                <%--<dd>--%>
+                    <%--<a href="javascript:;" class="md-trigger video-container" data-modal="cusGuide">--%>
+                        <%--<i class="glyphicon glyphicon-play-circle" src="/images/colleges-big-pic.jpg" materialSrc="//kw-cdn.kanwokanwo.com/schoolvideo/universityofsanfrancisco.mp4"></i>--%>
+                    <%--</a>--%>
+                <%--</dd>--%>
+                <%--&lt;%&ndash;<dd><img src="images/colleges-small-pic.jpg"></dd>&ndash;%&gt;--%>
+            <%--</dl>--%>
+            <%--<a href="javascript:;" class="colleges-btn md-trigger video-container" data-modal="cusGuide">--%>
+                <%--<i class="glyphicon glyphicon-play-circle" src="/images/colleges-big-pic.jpg" materialSrc="//kw-cdn.kanwokanwo.com/schoolvideo/universityofsanfrancisco.mp4"></i>--%>
+            <%--</a> </div>--%>
+    <%--</div>--%>
+    <%--国外大学对看我看我的认可end--%>
+    <%--09合作伙伴start--%>
+    <div></div>
+    <%--合作伙伴end--%>
+    <%--10免费咨询start--%>
+    <div></div>
+    <%--免费咨询end--%>
+    <div style="color: white">111</div>
+</div>
+
+<%@include file="/WEB-INF/views/common/bottom.jsp"%>
+</body>
+<script src="/js/video.js"></script>
+<%--<script type="text/javascript" src="/js/index.js?version=20160428"></script>--%>
+<script type="text/javascript" src="/js/video-popup.js?201605121953"></script>
+<script type="text/javascript">
+    //轮播图
+    $(function() {
+        var windowW = $(window).width();
+        $(window).load(function() {
+            var imgH = $(".indexBanner li img").height();
+            $(".indexBanner").css("height",imgH)
+        });
+        if(windowW<=768){
+            $(".indexBanner li img").attr("src","/images/indexBanner01.jpg");
+        }
+
+        $(".indexBanner li").css("width", windowW)
+        var w = $(".indexBanner li").width();
+
+        var l = 0;
+        var timer = null;
+        var len = $(".bannerBox li").length * 2; //复制了一份图片，长度变了。
+        $(".bannerBox").append($(".bannerBox").html()).css({
+            'width': len * w,
+            'left': -len * w / 2
+        });
+
+        //自动每8秒切换一次
+        timer = setInterval(init, 4000);
+        function init() {
+            $(".indexBanner .bannernext").trigger('click');
+        }
+
+        /*鼠标移入清除定时器方法*/
+        function hoverFun (ele) {
+            $(ele).hover(function () {
+                clearInterval(timer);
+            },function () {
+                timer = setInterval(init, 4000);
+            })
+        }
+        hoverFun(".step span");
+        hoverFun(".bannerBox li");
+        hoverFun(".bannernext");
+        hoverFun(".bannerprev")
+
+        $(".bannerprev").click(function() {
+            l = parseInt($(".bannerBox").css("left")) + w; //这里要转成整数，因为后面带了px单位
+            showCurrent(l);
+        });
+        $(".bannernext").click(function() {
+            l = parseInt($(".bannerBox").css("left")) - w; //这里要转成整数，因为后面带了px单位
+            showCurrent(l);
+        });
+
+        function showCurrent(l) { //把图片的左右切换封装成一个函数
+            if($(".bannerBox").is(':animated')) { //当ul正在执行动画的过程中，阻止执行其它动作。关键之处，不然图片切换显示不完全，到最后图片空白不显示。
+                return;
+            }
+            /*console.log("before l:"+l);*/
+            $(".bannerBox").animate({
+                "left": l
+            }, 500, function() {
+                var index = ((-w*(len/2+1))-l)/w;
+                if(l == 0) {
+                    /*console.log("================="+(-len * w / 2));*/
+                    $(".bannerBox").css("left", -len * w / 2);
+                } else if(l == (1 - len) * w) {
+                    //图片位置到最后一张时（第二份最后一张）时，就把图片定位到第一份最后一张。
+                    // 从而显示的是第一份最后一张。
+                    /* console.log("*************"+(1 - len / 2) * w);*/
+                    $(".bannerBox").css('left', (1 - len / 2) * w);
+                    //$(".step span").eq(0).click();
+                }
+                /*console.log("index--"+index);*/
+                $(".step span").eq(index+1).addClass("active").siblings().removeClass("active");
+
+            });
+        }
+        $(".step span").on("click", function() {
+            var index = $(this).index();
+            l = (-w*(len/2+1)) - (index-1)*w;
+            showCurrent(l);
+        });
+
+        // 独家美国高校采访视频模块鼠标悬浮显示遮罩层事件
+//        $(".interview-video ul li").hover(function(){
+//            $(this).children("div").stop().fadeToggle("slow");
+//        });
+
+    });
+</script>
+</html>

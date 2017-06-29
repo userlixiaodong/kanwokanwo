@@ -1,0 +1,447 @@
+package cv.focus.core.application.impl;
+
+import cv.focus.common.infrastructure.util.paginaction.WebPage;
+import cv.focus.core.application.AdmissionProfileService;
+import cv.focus.core.domain.school.model.profile.*;
+import cv.focus.core.domain.material.Material;
+import cv.focus.core.domain.material.MaterialListUtil;
+import cv.focus.core.domain.material.MaterialModule;
+import cv.focus.core.domain.material.Video;
+import cv.focus.core.domain.school.model.profile.SchoolApplication;
+import cv.focus.core.domain.student.model.profile.StudentProfile;
+import cv.focus.core.domain.student.model.profile.StudentProfileRepository;
+import cv.focus.core.domain.user.model.User;
+import cv.focus.core.interfaces.school.dto.AdmissionProfileDTO;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * AdmissionProfileServiceImpl
+ *
+ * @author liuruichao
+ * Created on 2016-04-02 13:07
+ */
+@Service
+public class AdmissionProfileServiceImpl implements AdmissionProfileService {
+    @Resource
+    private AdmissionProfileRepository admissionProfileRepository;
+    @Resource
+    private StudentProfileRepository studentProfileRepository;
+
+
+    @Override
+    public AdmissionProfile createAdmissionProfile(User user, String school, SchoolCountry country) {
+        AdmissionProfile admissionProfile = null;
+        try{
+            admissionProfile = user.createAdmissionProfile(new AdmissionProfileId());
+            admissionProfile.setPublicUri(genAdmissionProfileUri(admissionProfile));
+            admissionProfile.getBiography().setCurrentSchool(school);
+            admissionProfile.setCountry(country);
+            admissionProfileRepository.store(admissionProfile);
+            return admissionProfile;
+        }catch (DataIntegrityViolationException e){
+            return createAdmissionProfile(user, school, country);
+        }
+    }
+
+    private String genAdmissionProfileUri(AdmissionProfile admissionProfile) {
+        String origUri = admissionProfile.getOrigPublicUri();
+        List<AdmissionProfile> admissionProfiles = admissionProfileRepository.findByOrigPublicUri(admissionProfile.getOrigPublicUri());
+        List<StudentProfile> studentProfiles = studentProfileRepository.findByOrigPublicUri(admissionProfile.getOrigPublicUri());
+        int size = admissionProfiles.size();
+        int stuSize = studentProfiles.size();
+        if (size == 0 && stuSize == 0) {
+            if(admissionProfileRepository.findByPublicUri(origUri) == null
+                    && studentProfileRepository.findByPublicUri(origUri).size() == 0) {
+                return origUri;
+            }
+        }
+        if (size == 0) {
+            size = 1;
+        }
+        while (true){
+            if (admissionProfileRepository.findByPublicUri(origUri + size) == null
+                    && studentProfileRepository.findByPublicUri(origUri + size).size() == 0) {
+                break;
+            }
+            size++;
+        }
+        origUri = origUri + size;
+        return origUri;
+    }
+
+    @Override
+    public AdmissionProfile getProfileByEmail(String email) {
+        return admissionProfileRepository.findByEmail(email);
+    }
+
+    @Override
+    public AdmissionProfile findAdmissionProfileByPublicUri(String uri) {
+        return admissionProfileRepository.findByPublicUri(uri);
+    }
+
+    @Override
+    public void addProfileMaterial(String email, MaterialModule module, Material material) {
+        AdmissionProfile admissionProfile = admissionProfileRepository.findByEmail(email);
+        switch (module){
+            case MYSCHOOL:
+                MySchool mySchool = admissionProfile.getMySchool();
+                MaterialListUtil.addMaterial(mySchool.getMaterials(), material);
+                admissionProfile.setMySchool(mySchool);
+                break;
+            case AVATAR:
+            case PROFILE:
+                switch (material.getType()) {
+                    case VIDEO:
+                        // 档案视频 -> 介绍视频
+                        Video introVideo = (Video) material;
+                        admissionProfile.setIntroductionVideo(introVideo);
+                        break;
+                    case IMG:
+                        // 档案图片 -> 头像
+                        Biography biography = admissionProfile.getBiography();
+                        biography.setAvatar(material.getMaterialSrc());
+                        break;
+                }
+                break;
+            case MYASSOCIATION:
+                MyAssociation myAssociation = admissionProfile.getMyAssociation();
+                MaterialListUtil.addMaterial(myAssociation.getMaterials(), material);
+                admissionProfile.setMyAssociation(myAssociation);
+                break;
+            case MYFACULTY:
+                MyFaculty myFaculty = admissionProfile.getMyFaculty();
+                MaterialListUtil.addMaterial(myFaculty.getMaterials(), material);
+                admissionProfile.setMyFaculty(myFaculty);
+                break;
+            case MYCURRICULUM:
+                MyCurriculum myCurriculum = admissionProfile.getMyCurriculum();
+                MaterialListUtil.addMaterial(myCurriculum.getMaterials(), material);
+                admissionProfile.setMyCurriculum(myCurriculum);
+                break;
+            case MYHONOR:
+                MyHonor myHonor = admissionProfile.getMyHonor();
+                MaterialListUtil.addMaterial(myHonor.getMaterials(), material);
+                admissionProfile.setMyHonor(myHonor);
+                break;
+            case MYOURSTUDENT:
+                MyOurStudent myOurStudent = admissionProfile.getMyOurStudent();
+                MaterialListUtil.addMaterial(myOurStudent.getMaterials(), material);
+                admissionProfile.setMyOurStudent(myOurStudent);
+                break;
+            case MYACADEMICS:
+                MyAcademic myAcademic = admissionProfile.getMyAcademic();
+                MaterialListUtil.addMaterial(myAcademic.getMaterials(), material);
+                admissionProfile.setMyAcademic(myAcademic);
+                break;
+            case SCHOOLBGIMG:
+                Biography biography = admissionProfile.getBiography();
+                biography.setSchoolBgImg(material.getMaterialSrc());
+                admissionProfile.setBiography(biography);
+                break;
+        }
+
+        admissionProfileRepository.store(admissionProfile);
+    }
+
+    @Override
+    public void updateBiography(AdmissionProfileId admissionProfileId, Biography biography, MyLinks myLinks) {
+        AdmissionProfile admissionProfile = admissionProfileRepository.findById(admissionProfileId);
+        if (admissionProfile.getBiography() != null) {
+            biography.setAvatar(admissionProfile.getBiography().getAvatar());
+            biography.setPosition(admissionProfile.getBiography().getPosition());
+            biography.setCurrentSchool(admissionProfile.getBiography().getCurrentSchool());
+        }
+        if (StringUtils.isNotBlank(biography.getWebSite())) {
+            // 处理url
+            String url = biography.getWebSite().trim();
+
+            if (!url.contains("http://") && !url.contains("https://") && !url.substring(0, 2).equals("//")) {
+                url = "http://" + url;
+            }
+
+            biography.setWebSite(url);
+        }
+        admissionProfile.setMyLinks(myLinks);
+        admissionProfile.setBiography(biography);
+        admissionProfileRepository.store(admissionProfile);
+    }
+
+    @Override
+    public void deleteMaterial(String email, MaterialModule module, int seq) {
+        AdmissionProfile admissionProfile = admissionProfileRepository.findByEmail(email);
+        switch (module){
+            case MYSCHOOL:
+                MySchool mySchool = admissionProfile.getMySchool();
+                MaterialListUtil.delMaterialByLocation(mySchool.getMaterials(), seq);
+                admissionProfile.setMySchool(mySchool);
+                break;
+            case AVATAR:
+                admissionProfile.getBiography().setAvatar(null);
+                break;
+            case PROFILE:
+                admissionProfile.setIntroductionVideo(null);
+                break;
+            case MYASSOCIATION:
+                MyAssociation myAssociation = admissionProfile.getMyAssociation();
+                MaterialListUtil.delMaterialByLocation(myAssociation.getMaterials(), seq);
+                admissionProfile.setMyAssociation(myAssociation);
+                break;
+            case MYFACULTY:
+                MyFaculty myFaculty = admissionProfile.getMyFaculty();
+                MaterialListUtil.delMaterialByLocation(myFaculty.getMaterials(), seq);
+                admissionProfile.setMyFaculty(myFaculty);
+                break;
+            case MYCURRICULUM:
+                MyCurriculum myCurriculum = admissionProfile.getMyCurriculum();
+                MaterialListUtil.delMaterialByLocation(myCurriculum.getMaterials(), seq);
+                admissionProfile.setMyCurriculum(myCurriculum);
+                break;
+            case MYHONOR:
+                MyHonor myHonor = admissionProfile.getMyHonor();
+                MaterialListUtil.delMaterialByLocation(myHonor.getMaterials(), seq);
+                admissionProfile.setMyHonor(myHonor);
+                break;
+            case MYOURSTUDENT:
+                MyOurStudent myOurStudent = admissionProfile.getMyOurStudent();
+                MaterialListUtil.delMaterialByLocation(myOurStudent.getMaterials(), seq);
+                admissionProfile.setMyOurStudent(myOurStudent);
+                break;
+            case MYACADEMICS:
+                MyAcademic myAcademic = admissionProfile.getMyAcademic();
+                MaterialListUtil.delMaterialByLocation(myAcademic.getMaterials(), seq);
+                admissionProfile.setMyAcademic(myAcademic);
+                break;
+        }
+        admissionProfileRepository.store(admissionProfile);
+    }
+
+    @Override
+    public void updateSchoolDesc(String email, String description) {
+        AdmissionProfile admissionProfile = admissionProfileRepository.findByEmail(email);
+        admissionProfile.getMySchool().setMySchoolDesc(description);
+        admissionProfileRepository.store(admissionProfile);
+    }
+
+    @Override
+    public void changeMaterialLocation(String email, MaterialModule module, int beg, int end) {
+        AdmissionProfile admissionProfile = admissionProfileRepository.findByEmail(email);
+        switch (module){
+            case MYSCHOOL:
+                MySchool mySchool = admissionProfile.getMySchool();
+                MaterialListUtil.exchangeMaterialLocation(mySchool.getMaterials(), beg, end);
+                admissionProfile.setMySchool(mySchool);
+                break;
+            case MYASSOCIATION:
+                MyAssociation myAssociation = admissionProfile.getMyAssociation();
+                MaterialListUtil.exchangeMaterialLocation(myAssociation.getMaterials(), beg, end);
+                admissionProfile.setMyAssociation(myAssociation);
+                break;
+            case MYFACULTY:
+                MyFaculty myFaculty = admissionProfile.getMyFaculty();
+                MaterialListUtil.exchangeMaterialLocation(myFaculty.getMaterials(), beg, end);
+                admissionProfile.setMyFaculty(myFaculty);
+                break;
+            case MYCURRICULUM:
+                MyCurriculum myCurriculum = admissionProfile.getMyCurriculum();
+                MaterialListUtil.exchangeMaterialLocation(myCurriculum.getMaterials(), beg, end);
+                admissionProfile.setMyCurriculum(myCurriculum);
+                break;
+            case MYHONOR:
+                MyHonor myHonor = admissionProfile.getMyHonor();
+                MaterialListUtil.exchangeMaterialLocation(myHonor.getMaterials(), beg, end);
+                admissionProfile.setMyHonor(myHonor);
+                break;
+            case MYOURSTUDENT:
+                MyOurStudent myOurStudent = admissionProfile.getMyOurStudent();
+                MaterialListUtil.exchangeMaterialLocation(myOurStudent.getMaterials(), beg, end);
+                admissionProfile.setMyOurStudent(myOurStudent);
+                break;
+        }
+        admissionProfileRepository.store(admissionProfile);
+    }
+
+    @Override
+    public void updateMyLinks(String email, String linkEmail, String linkTwitter, String linkFacebook, String linkInstagram) {
+        AdmissionProfile admissionProfile = admissionProfileRepository.findByEmail(email);
+        MyLinks myLinks = new MyLinks(linkEmail, linkTwitter, linkFacebook, linkInstagram);
+        admissionProfile.setMyLinks(myLinks);
+        admissionProfileRepository.store(admissionProfile);
+    }
+
+    @Override
+    public List<AdmissionRemark> getRemarkByAdProfileId(AdmissionProfileId admissionProfileId) {
+        return admissionProfileRepository.findRemarkByProfileId(admissionProfileId);
+    }
+
+    @Override
+    public AdmissionRemark addRemark(String fromUser, String toUser, String impression) {
+        AdmissionProfile fromProfile = admissionProfileRepository.findById(new AdmissionProfileId(fromUser));
+        AdmissionProfile toProfile = admissionProfileRepository.findById(new AdmissionProfileId(toUser));
+        AdmissionRemark remark = new AdmissionRemark(impression, fromProfile, toProfile);
+        List<AdmissionRemark> list = toProfile.getRemarkList();
+        if (list == null) {
+            list = new ArrayList<>(1);
+        }
+        list.add(remark);
+        admissionProfileRepository.store(toProfile);
+        return remark;
+    }
+
+    @Override
+    public void updateMaterialTitle(String email, String title, Integer index, MaterialModule module) {
+        AdmissionProfile admissionProfile = admissionProfileRepository.findByEmail(email);
+        switch (module){
+            case MYSCHOOL:
+                MySchool mySchool = admissionProfile.getMySchool();
+                mySchool.getMaterials().get(index).setTitle(title);
+                break;
+            case MYASSOCIATION:
+                MyAssociation myAssociation = admissionProfile.getMyAssociation();
+                myAssociation.getMaterials().get(index).setTitle(title);
+                break;
+            case MYFACULTY:
+                MyFaculty myFaculty = admissionProfile.getMyFaculty();
+                myFaculty.getMaterials().get(index).setTitle(title);
+                break;
+            case MYCURRICULUM:
+                MyCurriculum myCurriculum = admissionProfile.getMyCurriculum();
+                myCurriculum.getMaterials().get(index).setTitle(title);
+                break;
+            case MYHONOR:
+                MyHonor myHonor = admissionProfile.getMyHonor();
+                myHonor.getMaterials().get(index).setTitle(title);
+                break;
+            case MYOURSTUDENT:
+                MyOurStudent myOurStudent = admissionProfile.getMyOurStudent();
+                myOurStudent.getMaterials().get(index).setTitle(title);
+                break;
+        }
+        admissionProfileRepository.store(admissionProfile);
+    }
+
+//    List<AdmissionProfile> getSchools(SchoolCountry country);
+    @Override
+    public List<AdmissionProfile> getSchools(SchoolCountry country) {
+        return admissionProfileRepository.getSchools(country);
+    }
+
+    @Override
+    public List<AdmissionProfile> findSchoolByKeywords(String name) {
+        return admissionProfileRepository.findSchoolByKeywords(name);
+    }
+
+    public List<AdmissionProfile> getUSchools(SchoolCountry country){
+        return admissionProfileRepository.getUSchools(country);
+    }
+
+    public List<AdmissionProfile> getHSchools(SchoolCountry country){
+        return admissionProfileRepository.getHSchools(country);
+    }
+
+    @Override
+    public Biography updateSchoolNameAndRank(String admissionProfileId, String name, String rank) {
+        AdmissionProfile admissionProfile = admissionProfileRepository.findById(new AdmissionProfileId(admissionProfileId));
+        admissionProfile.getBiography().setName(name);
+        admissionProfile.getBiography().setSchoolRank(rank);
+        admissionProfileRepository.store(admissionProfile);
+        return admissionProfile.getBiography();
+    }
+
+    @Override
+    public WebPage<StudentProfile> getSchoolOurStudents(String schoolName, Integer currentPage, Integer pageSize) {
+        WebPage<StudentProfile> webPage = new WebPage<>();
+        webPage.setCurrentPage(currentPage);
+        webPage.setPageSize(pageSize);
+        List<StudentProfile> profiles = admissionProfileRepository.findOurStudents(schoolName, webPage.getStartCount(), webPage.getPageSize());
+        webPage.setData(profiles);
+        webPage.setTotalCount(admissionProfileRepository.queryOurStudentsCount(schoolName));
+        return webPage;
+    }
+
+    @Override
+    public int getSchoolOurStudentsCount(String name) {
+        return admissionProfileRepository.queryOurStudentsCount(name);
+    }
+
+    @Override
+    public void updateMyAcademicDesc(String email, String description) {
+        AdmissionProfile admissionProfile = admissionProfileRepository.findByEmail(email);
+        admissionProfile.getMyAssociation().setMyAssociationDesc(description);
+        admissionProfile.getMyAcademic().setMyAcademicDesc(description);
+        admissionProfileRepository.store(admissionProfile);
+    }
+
+    @Override
+    public void updateApplication(String admissionProfileId, SchoolApplication application) {
+        AdmissionProfile admissionProfile = admissionProfileRepository.findById(new AdmissionProfileId(admissionProfileId));
+        admissionProfile.setApplication(application);
+        admissionProfileRepository.store(admissionProfile);
+    }
+
+    @Override
+    public void updateMyAssociationDesc(String email, String description) {
+        AdmissionProfile admissionProfile = admissionProfileRepository.findByEmail(email);
+        admissionProfile.getMyAssociation().setMyAssociationDesc(description);
+        admissionProfileRepository.store(admissionProfile);
+    }
+
+    @Override
+    public void updateMyCurriculumDesc(String email, String description) {
+        AdmissionProfile admissionProfile = admissionProfileRepository.findByEmail(email);
+        admissionProfile.getMyCurriculum().setMyCurriculumDesc(description);
+        admissionProfileRepository.store(admissionProfile);
+    }
+
+    @Override
+    public void updateMyFacultyDesc(String email, String description) {
+        AdmissionProfile admissionProfile = admissionProfileRepository.findByEmail(email);
+        admissionProfile.getMyFaculty().setMyFacultyDesc(description);
+        admissionProfileRepository.store(admissionProfile);
+    }
+
+    @Override
+    public void updateMyHonorDesc(String email, String description) {
+        AdmissionProfile admissionProfile = admissionProfileRepository.findByEmail(email);
+        admissionProfile.getMyHonor().setMyHonorDesc(description);
+        admissionProfileRepository.store(admissionProfile);
+    }
+
+    @Override
+    public void updateMyOurStudentDesc(String email, String description) {
+        AdmissionProfile admissionProfile = admissionProfileRepository.findByEmail(email);
+        admissionProfile.getMyOurStudent().setMyOurStudentDesc(description);
+        admissionProfileRepository.store(admissionProfile);
+    }
+
+    public WebPage<Object> querySchools(String keywords, WebPage<Object> webPage)
+    {
+        return admissionProfileRepository.querySchools(keywords,webPage);
+    }
+
+    @Override
+    public WebPage<Object> queryMySchools(Integer userId, WebPage<Object> webPage){
+        return admissionProfileRepository.queryMySchools(userId,webPage);
+    }
+
+    @Override
+    public WebPage<Object> getSchoolsList4Page(AdmissionProfile admissionProfile, WebPage<Object> webPage,String strLodge,String schoolLevel,String toeflscore,String ieltsScore) {
+        return admissionProfileRepository.getSchoolsList4Page(admissionProfile,webPage,strLodge,schoolLevel,toeflscore,ieltsScore);
+    }
+
+    @Override
+    public WebPage queryUniversity(String schoolLevel, WebPage page) {
+        return admissionProfileRepository.queryUniversity(schoolLevel,page);
+    }
+
+    @Override
+    public WebPage queryAllSchools(WebPage page) {
+        return admissionProfileRepository.queryAllSchools(page);
+    }
+
+}

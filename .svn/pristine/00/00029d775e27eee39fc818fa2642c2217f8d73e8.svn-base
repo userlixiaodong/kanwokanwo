@@ -1,0 +1,605 @@
+package cv.focus.core.interfaces.user.web;
+
+import com.focusedu.utils.sms.SmsManager;
+import com.focusedu.utils.sms.SmsResult;
+import cv.focus.common.domain.model.AsyncEventEngine;
+import cv.focus.common.domain.model.SendEmail;
+import cv.focus.common.domain.model.edm.ChinaSchoolRegisterEvent;
+import cv.focus.common.domain.model.edm.RegisterSuccessEvent;
+import cv.focus.common.domain.model.edm.SendRegisterVerifyCodeEvent;
+import cv.focus.core.domain.school.model.profile.AdmissionProfile;
+import cv.focus.core.domain.school.model.profile.SchoolCountry;
+import cv.focus.core.domain.student.model.profile.StudentProfile;
+import cv.focus.core.domain.user.model.Role;
+import cv.focus.core.domain.user.model.User;
+import cv.focus.core.infrastructure.util.BaseController;
+import cv.focus.core.infrastructure.util.CreateKey;
+import cv.focus.core.infrastructure.util.Result;
+import cv.focus.core.infrastructure.util.ResultMessages;
+import cv.focus.core.interfaces.school.facade.AdmissionProfileServiceFacade;
+import cv.focus.core.interfaces.student.facade.StudentProfileServiceFacade;
+import cv.focus.core.interfaces.user.dto.UserDTO;
+import cv.focus.core.interfaces.user.facade.UserServiceFacade;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Validate;
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.net.URLEncoder;
+import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * Created by szj on 2016/2/2.
+ */
+@Controller
+@RequestMapping("/user")
+public class UserController extends BaseController {
+    private final Logger logger = Logger.getLogger(UserController.class);
+    @Resource
+    private UserServiceFacade userServiceFacade;
+    @Resource
+    private StudentProfileServiceFacade studentProfileServiceFacade;
+    @Resource
+    private AdmissionProfileServiceFacade admissionProfileServiceFacade;
+
+    @RequestMapping("/active")
+    public String active(@RequestParam String code, HttpServletRequest request) {
+        User user = userServiceFacade.activate(code);
+        if (user != null) {
+            HttpSession session = request.getSession();
+            String publicUri = "";
+            if (user.getType() == Role.STUDENT) {
+                StudentProfile studentProfile = studentProfileServiceFacade.getProfileByEmail(user.getEmail());
+                publicUri = studentProfile.getPublicUri();
+                setSession(user.getUserId(), user.getMobile(), user.getEmail(), user.getRoleR(), studentProfile, session);
+            } else {
+                AdmissionProfile admissionProfile = admissionProfileServiceFacade.getProfileByEmail(user.getEmail());
+                setSession(user.getUserId(), user.getEmail(), admissionProfile, session);
+                publicUri = admissionProfile.getPublicUri();
+            }
+            return "redirect:/" + URLEncoder.encode(publicUri);
+        }
+        //返回kanwokanwo首页(未登录状态)
+        return TOHOME;
+    }
+
+    @RequestMapping("/setup")
+    public String toSetup() {
+        return "user/setting";
+    }
+
+    @RequestMapping("/register")
+    public String studentRegister() {
+        return "user/student/register";
+    }
+
+    @RequestMapping("/admission/register-submit")
+    @ResponseBody
+    public Result<String> admissionRegister(
+            @RequestParam String email,
+            @RequestParam String userName,
+            @RequestParam String userPwd,
+            @RequestParam String school,
+            @RequestParam SchoolCountry country,
+            HttpServletRequest request) {
+        Result<String> result = null;
+        try {
+            if (StringUtils.isBlank(email) || StringUtils.isBlank(userName)
+                    || StringUtils.isBlank(userPwd) || StringUtils.isBlank(school)) {
+                return newFaildResult(ResultMessages.PARAM_ERROR);
+            }
+            // 验证码
+            //默认传入学校角色值
+            String roleR = "10";
+            HttpSession session = request.getSession();
+            if (isValidEmail(email)) {
+                if (userServiceFacade.register(email, userName, userPwd, school, Role.AD_REP, country, roleR)) {
+                    // 注册成功后跳转
+                    User user = userServiceFacade.findUserByEmail(email);
+                    AdmissionProfile admissionProfile = admissionProfileServiceFacade.getProfileByEmail(email);
+                    setSession(user.getUserId(), email, admissionProfile, session);
+                    // 发送欢迎邮件
+                    if (admissionProfile.getCountry() == SchoolCountry.CHINA) {
+                        AsyncEventEngine.fireEvent(new ChinaSchoolRegisterEvent(email, user.getUserName()));
+                    } else {
+                        AsyncEventEngine.fireEvent(new RegisterSuccessEvent(email, user.getUserName()));
+                    }
+                    result = newSuccessResult(ResultMessages.REGISTER_SUCCESS, URLEncoder.encode(admissionProfileServiceFacade.getHomePageUrl(email), "UTF-8"));
+                } else {
+                    result = newFaildResult(ResultMessages.LOGIN_NAME_EXISTS);
+                }
+            } else {
+                result = newFaildResult(ResultMessages.EMAIL_FORMAT_ERROR);
+            }
+        } catch (Exception e) {
+            logger.error("UserController.admissionRegister()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }
+
+    @RequestMapping("/register-submit")
+    @ResponseBody
+    public Result<String> studentRegister(
+            @RequestParam String email,
+            @RequestParam String userName,
+            @RequestParam String userPwd,
+            HttpServletRequest request) {
+        Result<String> result = null;
+        try {
+            if (StringUtils.isBlank(email) || StringUtils.isBlank(userName) || StringUtils.isBlank(userPwd)) {
+                return newFaildResult(ResultMessages.PARAM_ERROR);
+            }
+            //验证码
+            HttpSession session = request.getSession();
+            //默认传入学生角色值
+            String roleR = "0";
+            if (isValidEmail(email)) {
+                if (userServiceFacade.register(email, userName, userPwd, null, Role.STUDENT, roleR)) {
+                    User user = userServiceFacade.findUserByEmail(email);
+                    StudentProfile studentProfile = studentProfileServiceFacade.getProfileByEmail(email);
+                    setSession(user.getUserId(), user.getMobile(), email, user.getRoleR(), studentProfile, session);
+                    //发送欢迎邮件
+                    AsyncEventEngine.fireEvent(new RegisterSuccessEvent(email, user.getUserName()));
+                    //注册成功后 去到他的profile首页
+                    result = newSuccessResult(ResultMessages.REGISTER_SUCCESS, URLEncoder.encode(studentProfileServiceFacade.getHomePageUrl(email), "UTF-8"));
+                } else {
+                    result = newFaildResult(ResultMessages.LOGIN_NAME_EXISTS);
+                }
+            } else {
+                result = newFaildResult(ResultMessages.EMAIL_FORMAT_ERROR);
+            }
+        } catch (Exception e) {
+            logger.error("UserController.studentRegister()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+
+        return result;
+    }
+
+    @RequestMapping("/login")
+    public String userLogin() {
+        return "user/login";
+    }
+
+    @RequestMapping("/checkUserEmail")
+    @ResponseBody
+    public Result checkUserEmail(@RequestParam String email) {
+        Result<String> result = null;
+        try {
+            User user = userServiceFacade.findUserByEmail(email);
+            if (user != null) {
+                result = newFaildResult(ResultMessages.LOGIN_NAME_EXISTS);
+            } else {
+                result = newSuccessResult(ResultMessages.LOGIN_NAME_NO_EXISTS, null);
+            }
+        } catch (Exception e) {
+            logger.error("UserController.checkUserEmail()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }
+
+    @RequestMapping("/login-submit")
+    @ResponseBody
+    public Result userLogin(
+            @RequestParam String loginName,
+            @RequestParam String userPwd,
+            HttpServletRequest request) {
+        Result<String> result = null;
+        try {
+            if (userServiceFacade.checkLogin(loginName, userPwd)) {
+                String mobile = null;
+                String email = null;
+                if (loginName.contains("@")) {
+                    email = loginName;
+                } else {
+                    email = userServiceFacade.findUserByMobile(loginName).getEmail();
+                }
+                StudentProfile studentProfile = studentProfileServiceFacade.getProfileByEmail(email);
+                AdmissionProfile admissionProfile = admissionProfileServiceFacade.getProfileByEmail(email);
+                HttpSession session = request.getSession();
+                User user = userServiceFacade.findUserByEmail(email);
+                // TODO 未激活的用户可以登录
+                //if (user.getState() == 0) {
+                //    return newFaildResult(ResultMessages.ACCOUNT_DEACTIVE);
+                //}
+                if (studentProfile != null) {
+                    setSession(user.getUserId(), mobile, email, user.getRoleR(), studentProfile, session);
+                    //登录成功后 跳回原先页面
+                    String referer = request.getHeader("referer");
+                    if ("http://www.kanwokanwo.com/".equals(referer) || "http://localhost:8080/".equals(referer) || "http://test.kanwokanwo.com/".equals(referer)) {
+                        result = newSuccessResult(ResultMessages.LOGIN_SUCCESS, URLEncoder.encode(studentProfile.getPublicUri(), "UTF-8"));
+
+                    } else {
+                        result = newSuccessResult(ResultMessages.LOGIN_SUCCESS, referer);
+                        result.setStatus(2);
+                    }
+                }
+                if (admissionProfile != null) {
+                    setSession(user.getUserId(), loginName, admissionProfile, session);
+                    //登录成功后 跳回原先页面
+                    //String referer = request.getHeader("referer");
+                    //登录成功后 去到他的profile首页
+                   /* if("http://www.kanwokanwo.com".equals(referer) || "http://localhost:8080".equals(referer) || "http://test.kanwokanwo.com".equals(referer)){
+                        result = newSuccessResult(ResultMessages.LOGIN_SUCCESS, URLEncoder.encode(admissionProfile.getPublicUri(), "UTF-8"));
+                        result.setStatus(2);
+                    }else {
+                        result = newSuccessResult(ResultMessages.LOGIN_SUCCESS, referer);
+                    }*/
+                    result = newSuccessResult(ResultMessages.LOGIN_SUCCESS, URLEncoder.encode(admissionProfile.getPublicUri(), "UTF-8"));
+
+                }
+            } else {
+                result = newFaildResult(ResultMessages.LOGIN_FAIL);
+            }
+        } catch (Exception e) {
+            logger.error("UserController.userLogin()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+
+        return result;
+    }
+
+    @RequestMapping("/logout")
+    public String userLogout(HttpServletRequest request) {
+        try {
+            String email = getLoginEmail(request);
+            if (email != null && !"".equals(email)) {
+                request.getSession().invalidate();
+            }
+        } catch (Exception e) {
+            logger.error("UserController.userLogout()", e);
+            newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+
+        return "redirect:/";
+    }
+
+    @RequestMapping("/modifyMobile")
+    public String modifyMobile() {
+        return "user/modifyMobile";
+    }
+    @RequestMapping("/modifyPassword")
+    public String modifyPassword() {
+        return "user/modifyPassword";
+    }
+
+    @RequestMapping("/forgetPassword")
+    public String forgetPassword() {
+        return "user/forgetPassword";
+    }
+
+    /* 之前版本的重置密码
+    @RequestMapping("/resetPassword")
+    @ResponseBody
+    public Result resetPassword(
+            @RequestParam String password,
+            @RequestParam String email,
+            HttpServletRequest request) {
+        Result result = null;
+        try {
+            String resetEmail = (String) request.getSession().getAttribute("resetEmail");
+            if (email.equals(resetEmail)) {
+                userServiceFacade.resetPassword(email, password);
+                request.getSession().removeAttribute("resetEmail");
+                result = newSuccessResult(ResultMessages.RESET_PASSWORD_SUCCESS, null);
+            } else {
+                result = newFaildResult(ResultMessages.OPERATE_FAIL);
+            }
+
+        } catch (Exception e) {
+            logger.error("UserController.resetPassword()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }*/
+    @RequestMapping("/resetPassword")
+    @ResponseBody
+    public Result resetPassword(@RequestParam String password,
+                                @RequestParam String mobile, @RequestParam String verificationCode, HttpServletRequest request) {
+        Result result = null;
+        try {
+            HttpSession session = request.getSession();
+            String mobileVerifyCode = (String) session.getAttribute("sendMobileVerify");
+            if (StringUtils.isBlank(verificationCode) || StringUtils.isBlank(mobileVerifyCode) || !mobileVerifyCode.equals(verificationCode)) {
+                return newFaildResult("Verification Code Error.");
+            }
+            if (!isValidMobile(mobile)) {
+                return newFaildResult(ResultMessages.MOBILE_FORMAT_ERROR);
+            }
+            Date oldDate = (Date) session.getAttribute("sendCodeTime_" + mobile);
+            if (oldDate != null) {
+                long second = (new Date().getTime() - oldDate.getTime()) / 1000;
+                if (second <= 180) {
+                    return newFaildResult("Can not continuously send a verification code within three minutes.");
+                }
+            }
+            User user = userServiceFacade.findUserByMobile(mobile);
+            if (user != null) {
+                userServiceFacade.resetPassword(user.getEmail(), password);
+            }
+        } catch (Exception e) {
+            logger.error("UserController.resetPassword()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+
+        return result;
+    }
+
+
+    @RequestMapping("/resetSettingPassword")
+    @ResponseBody
+    public Result<String> resetSettingPassword(
+            @RequestParam String password,
+            HttpServletRequest request) {
+        Result<String> result = null;
+        try {
+            String email = getLoginEmail(request);
+            userServiceFacade.resetPassword(email, password);
+            result = newSuccessResult(ResultMessages.RESET_PASSWORD_SUCCESS, null);
+        } catch (Exception e) {
+            logger.error("UserController.resetSettingPassword()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }
+
+
+    @RequestMapping("/sendEmail")
+    @ResponseBody
+    public Result<String> sendEmail(
+            @RequestParam String email,
+            HttpServletRequest request) {
+        Result<String> result = null;
+        try {
+            userServiceFacade.sendEmail(email);
+            result = newSuccessResult(ResultMessages.SEND_MAIL_SUCCESS, null);
+        } catch (Exception e) {
+            logger.error("UserController.sendEmail()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }
+
+    @RequestMapping("/checkResetLink")
+    public String checkResetLink(
+            @RequestParam String sid,
+            @RequestParam String email,
+            HttpServletRequest request) {
+        if (sid != null && !sid.equals("")
+                && email != null && !email.equals("")
+                && userServiceFacade.checkResetLink(email, sid)) {
+            request.getSession().setAttribute("resetEmail", email);
+            return "user/resetPassword";
+        } else {
+            request.setAttribute("mesg", ResultMessages.RESET_LINK_FAIL);
+            return "error";
+        }
+    }
+
+    @RequestMapping("/checkMobileAvail")
+    @ResponseBody
+    public Result<String> checkMobileAvail(@RequestParam String mobile) {
+        Result<String> result = null;
+        try {
+            if (StringUtils.isBlank(mobile)) {
+                return newFaildResult(ResultMessages.PARAM_ERROR);
+            }
+            User user = userServiceFacade.findUserByMobile(mobile);
+            if (user == null) {
+                result = newSuccessResult(ResultMessages.OPERATE_SUCCESS, null);
+            } else {
+                result = newFaildResult(ResultMessages.MOBILE_EXISTS);
+            }
+        } catch (Exception e) {
+            logger.error("UserController.checkMobileAvail()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }
+
+    @RequestMapping("/sendPhoneVerificationCode")
+    @ResponseBody
+    public Result<String> sendPhoneVerificationCode(
+            @RequestParam String mobile,
+            @RequestParam String verifyCode,
+            HttpServletRequest request) {
+        Result<String> result = null;
+        try {
+            HttpSession session = request.getSession();
+            String mobileVerifyCode = (String) session.getAttribute("sendMobileVerify");
+            if (StringUtils.isBlank(mobileVerifyCode) || StringUtils.isBlank(verifyCode) || !verifyCode.equals(mobileVerifyCode)) {
+                return newFaildResult("Verification Code Error.");
+            }
+            if (!isValidMobile(mobile)) {
+                return newFaildResult(ResultMessages.MOBILE_FORMAT_ERROR);
+            }
+            Date oldDate = (Date) session.getAttribute("sendCodeTime_" + mobile);
+            if (oldDate != null) {
+                long second = (new Date().getTime() - oldDate.getTime()) / 1000;
+                if (second <= 180) {
+                    return newFaildResult("Can not continuously send a verification code within three minutes.");
+                }
+            }
+            User user = userServiceFacade.findUserByMobile(mobile);
+            if (user != null) {
+                return newFaildResult(ResultMessages.MOBILE_EXISTS);
+            }
+            String randomNum = CreateKey.createRandomKey();
+            session.setAttribute("sendCodeTime_" + mobile, new Date());
+            session.setAttribute("code_" + mobile, randomNum);
+            //String content = "code:" + randomNum + ".please use this code to complete the verification.";
+            String content = "您的验证码是:" + randomNum + "，最好的出国考试在线学习平台。";
+            SmsResult smsResult = SmsManager.sendMessage(mobile, content);
+            logger.info("verification code: " + randomNum);
+            logger.info("mobile : " + mobile + ", smsResult : " + smsResult.getMsg());
+            result = newSuccessResult(ResultMessages.OPERATE_SUCCESS, null);
+        } catch (Exception e) {
+            logger.error("UserController.sendPhoneVerificationCode()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }
+
+    @RequestMapping("/mobile-register-submit")
+    @ResponseBody
+    public Result<String> mobileRegisterSubmit(
+            @RequestParam String mobile,
+            @RequestParam String verificationCode,
+            @RequestParam String password,
+            @RequestParam String userName,
+            HttpServletRequest request) {
+        Result<String> result = null;
+        try {
+            if (StringUtils.isBlank(mobile) || StringUtils.isBlank(verificationCode)
+                    || StringUtils.isBlank(password) || StringUtils.isBlank(userName)) {
+                return newFaildResult(ResultMessages.PARAM_ERROR);
+            }
+            // 验证码
+            //默认传入学生角色值
+            String roleR = "0";
+            HttpSession session = request.getSession();
+            String vCode = (String) session.getAttribute("code_" + mobile);
+            if (StringUtils.isBlank(vCode) || !vCode.equals(verificationCode)) {
+                return newFaildResult(ResultMessages.VERIFICATIONCODE_ERROR);
+            }
+            if (isValidMobile(mobile)) {
+                String email = mobile + "@kanwokanwo.com";
+                if (userServiceFacade.register(mobile, email, userName, password, roleR)) {
+                    User user = userServiceFacade.findUserByEmail(email);
+                    StudentProfile studentProfile = studentProfileServiceFacade.getProfileByEmail(email);
+                    //session
+                    setSession(user.getUserId(), mobile, email, user.getRoleR(), studentProfile, session);
+                    //注册成功后 去到他的profile首页
+                    result = newSuccessResult(ResultMessages.REGISTER_SUCCESS, URLEncoder.encode(studentProfileServiceFacade.getHomePageUrl(email), "UTF-8"));
+                    session.removeAttribute("code_" + mobile);
+                } else {
+                    result = newFaildResult(ResultMessages.LOGIN_NAME_EXISTS);
+                }
+            } else {
+                result = newFaildResult(ResultMessages.EMAIL_FORMAT_ERROR);
+            }
+        } catch (Exception e) {
+            logger.error("UserController.mobileRegisterSubmit()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }
+
+    @RequestMapping("/updateEmail")
+    @ResponseBody
+    public Result<String> updateEmail(
+            @RequestParam String email,
+            HttpServletRequest request) {
+        // 手机注册更新email
+        Result<String> result = null;
+        try {
+            if (!isValidEmail(email)) {
+                return newFaildResult(ResultMessages.VALID_EMAIL_ERROR);
+            }
+            UserDTO userDTO = getLoginUser(request);
+            if (userDTO == null) {
+                return newFaildResult(ResultMessages.NO_LOGIN);
+            }
+            if (StringUtils.isBlank(userDTO.getMobile())) {
+                return newFaildResult(ResultMessages.OPERATE_FAIL);
+            }
+            if (userServiceFacade.findUserByEmail(email) != null) {
+                return newFaildResult(ResultMessages.LOGIN_NAME_EXISTS);
+            }
+            // 验证码
+            HttpSession session = request.getSession();
+            if (userServiceFacade.updateEmail(userDTO.getMobile(), email)) {
+                UserDTO user = (UserDTO) session.getAttribute("loginUser");
+                user.setEmail(email);
+                session.setAttribute("loginUser", user);
+                AsyncEventEngine.fireEvent(new RegisterSuccessEvent(email, user.getUserName()));
+                result = newSuccessResult(ResultMessages.OPERATE_SUCCESS, userDTO.getPublicUri());
+            } else {
+                result = newFaildResult(ResultMessages.OPERATE_FAIL);
+            }
+        } catch (Exception e) {
+            logger.error("UserController.updateEmail()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }
+
+    @RequestMapping("/follow")
+    @ResponseBody
+    public Result<String> follow(@RequestParam Integer ownerId, HttpServletRequest request) {
+        Result<String> result = null;
+        try {
+            if (ownerId == null || ownerId <= 0) {
+                return newFaildResult(ResultMessages.PARAM_ERROR);
+            }
+            UserDTO loginUser = getLoginUser(request);
+            if (loginUser == null) {
+                return newFaildResult(ResultMessages.NO_LOGIN);
+            }
+            if (loginUser.getUserId().intValue() == ownerId.intValue()) {
+                return newFaildResult(ResultMessages.FOLLOW_FAIL);
+            }
+            userServiceFacade.follow(loginUser.getUserId(), ownerId);
+            result = newSuccessResult(ResultMessages.OPERATE_SUCCESS, null);
+        } catch (Exception e) {
+            logger.error("UserController.follow()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }
+
+    @RequestMapping("/unfollow")
+    @ResponseBody
+    public Result<String> unfollow(@RequestParam Integer ownerId, HttpServletRequest request) {
+        Result<String> result = null;
+        try {
+            if (ownerId == null || ownerId <= 0) {
+                return newFaildResult(ResultMessages.PARAM_ERROR);
+            }
+            UserDTO loginUser = getLoginUser(request);
+            if (loginUser == null) {
+                return newFaildResult(ResultMessages.NO_LOGIN);
+            }
+            if (loginUser.getUserId().intValue() == ownerId.intValue()) {
+                return newFaildResult(ResultMessages.FOLLOW_FAIL);
+            }
+            userServiceFacade.unfollow(loginUser.getUserId(), ownerId);
+            result = newSuccessResult(ResultMessages.OPERATE_SUCCESS, null);
+        } catch (Exception e) {
+            logger.error("UserController.unfollow()", e);
+            result = newFaildResult(ResultMessages.SYSTEM_ERROR);
+        }
+        return result;
+    }
+
+    /**
+     * 检测邮箱地址是否合法
+     *
+     * @param email
+     * @return true合法 false不合法
+     */
+    private boolean isValidEmail(String email) {
+        if (null == email || "".equals(email)) return false;
+        String emailPattern = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";
+        Pattern p = Pattern.compile(emailPattern);
+        Matcher m = p.matcher(email);
+        return m.matches();
+    }
+
+    private boolean isValidMobile(String mobile) {
+        String phonePattern = "^((13[0-9])|(15[^4,\\D])|(18[0,5-9])|(17[0-9]))\\d{8}$";
+        Pattern p = Pattern.compile(phonePattern);
+        Matcher m = p.matcher(mobile);
+        return m.matches();
+    }
+}

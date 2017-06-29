@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="style/frame.css"/>
+<link rel="stylesheet" type="text/css" href="style/public.css"/>
+<style type="text/css">
+.col-lg-3 {
+	border: 1px solid red;
+}
+</style>
+</head>
+
+<body>
+<ul style="height: 611px;" class="subnav-content">
+  <li class="profile-menu-top">
+    <div class="profile-menu-top-left">
+      <div style="" class="subnav-avatar"></div>
+    </div>
+    <div class="profile-menu-top-right"><span>xiaocaifengsun</span><br>
+      <a href="" rel="nofollow">Edit Profile</a></div>
+  </li>
+  <li class="h-divider"></li>
+  <li class="h-spacer"></li>
+  <li class="subnav-link-item"><a href=""><i class="fa fa-check-square-o fa-fw"></i><span>Get your link</span></a></li>
+  
+  
+
+</ul>
+</body>
+</html>

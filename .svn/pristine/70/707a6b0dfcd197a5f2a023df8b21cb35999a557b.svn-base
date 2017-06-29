@@ -1,0 +1,6 @@
+.our_students{width:80%; margin:0 auto;}
+.our_students li,.our_students_more{float:left; text-align:center; font-size:.2rem; margin:.16rem;}
+.our_students li img{border-radius: 10px;width: 1.2rem;height: 1.2rem;}
+.our_students li p{color:#8e8e8e;width: 1.2rem;}
+.our_students_more{color: #1bb38c;}
+

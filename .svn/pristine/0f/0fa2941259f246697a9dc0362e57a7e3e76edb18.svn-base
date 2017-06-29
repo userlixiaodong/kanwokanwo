@@ -1,0 +1,31 @@
+package cv.focus.core.infrastructure.persistence.hibernate.impl;
+
+import cv.focus.core.domain.order.Order;
+import cv.focus.core.domain.order.OrderRepository;
+import cv.focus.core.infrastructure.persistence.hibernate.HibernateRepository;
+import org.hibernate.Query;
+import java.util.List;
+import org.springframework.stereotype.Repository;
+
+/**
+ * Created by 晓东 on 2017/5/3.
+ */
+@Repository
+public class OrderRepositoryHibernateImpl extends HibernateRepository implements OrderRepository {
+    @Override
+    public void store(Order order) {
+        getSession().saveOrUpdate(order);
+    }
+
+    @Override
+    public Order findOrderByOrderNo(String orderNo){
+        Query query = getSession().createQuery("from Order where orderNo = :orderNo");
+        query.setString("orderNo",orderNo);
+        List list = query.list();
+        if (list != null && list.size() > 0) {
+            return (Order) list.get(0);
+        }
+        return null;
+    }
+
+}

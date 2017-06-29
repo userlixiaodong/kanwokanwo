@@ -1,0 +1,80 @@
+@charset "utf-8";
+.loading{color:#3d3d3d;font-family:Microsoft YaHei;line-height:1.5;font-size:18px;color:#7a7a7a;}
+.loading strong {font-size: inherit;font-family: inherit;}
+.row{width:100%;margin:0 auto;max-width:1200px;padding: 0 15px;}
+.pos_r{position:relative;}
+.column{position:absolute;left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}
+.column a{text-decoration:none;-webkit-transition: background-color .2s ease-in-out;transition: background-color .2s ease-in-out;display:inline-block;width:180px;height:44px;line-height:44px;text-align:center;color:#fff;background-color:#24b691;font-weight:900;margin-top:30px;}
+.column a:hover{background-color:#27725f;}
+.column h2{color:#454545;font-size:32px;font-weight:100;line-height: 1.4;font-family:Microsoft YaHei;}
+.column .area-tit{line-height:2;margin-top:20px;}
+.column-text-color,.column-text-color h2{color:#fff;}
+.column h1{font-size:72px;font-weight:100;color:#fff !important;border:none !important;font-family: Microsoft YaHei;}
+/*图标*/
+@font-face {font-family: "iconfontloading";
+  src: url('../fonts/fonts-loading/iconfont.eot?t=1460343398'); /* IE9*/
+  src: url('../fonts/fonts-loading/iconfont.eot?t=1460343398#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/fonts-loading/iconfont.woff?t=1460343398') format('woff'), /* chrome, firefox */
+  url('../fonts/fonts-loading/iconfont.ttf?t=1460343398') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../fonts/fonts-loading/iconfont.svg?t=1460343398#iconfont') format('svg'); /* iOS 4.1- */
+}
+.icon{font-style:normal;font-weight:900;color:#464646;font-size:50px;}
+@media (max-width: 798px){.icon{font-size:40px;line-height:1;}}
+.iconfontloading{font-family:"iconfontloading";}
+.icon-renqun:before{content: "\e600";}
+.icon-chengbao:before{content: "\e601";}
+.icon-duihuakuang:before{content: "\e602";}
+.icon-tv:before{content: "\e603";}
+.icon-qianbi:before{content: "\e604";}
+.icon-dui-copy:before{content: "\e605";}
+.area1{background:url(../images/areabg1.jpg) top center no-repeat; background-size:cover; height:973px;}
+.area1 p{line-height:2.4; margin-top:100px;}
+.area2{height:550px;}
+.area2 h2{margin-bottom:90px;}
+.area2 img{margin-bottom:20px;}
+.area2 p{line-height:2.4; text-align:left;}
+.area2 a{margin-left:-110px;}
+.area3{background:url(../images/areabg2.jpg) top center no-repeat; background-size:cover; height:635px;}
+.area3 h2{margin-bottom:100px;}
+.area3 ul{width:65%; margin:0 auto 40px;}
+.area3 ul li{line-height:2.4; text-align:left; background:url(../images/li.png) left center no-repeat; padding-left:30px;}
+.area4{height:820px;}
+.area4 ul{max-width:1000px; margin:90px auto 0;}
+.area4 ul li{float:left; width:25%;}
+.area5{background-color:#ebebeb; height:770px;}
+.area5 p a{margin-left:30px; margin-right:30px;}
+.area5 dl{margin-top:30px;}
+.area5 dt{margin-bottom:10px;}
+.area6{height:780px;}
+.area6 > div{max-width:620px; margin:0 auto;}
+.area6 p.colleges-tit-middle{font-style:oblique; font-size:14px;}
+.area6 p.colleges-tit-bottom{color:#a0a0a0; margin-top:20px; font-size:14px;}
+.area6 p.colleges-tit-bottom strong{color:#1bb38c;}
+.area6 img{display:block; margin:20px auto;}
+.area7{background:url(../images/areabg3.jpg) top center no-repeat; background-size:cover; height:790px;}
+.area7 dl{width:80%; margin:80px auto 0;}
+.area7 dl a{border-radius:50%; width:205px; height:205px; background-color:#fff; margin-bottom:20px;}
+.area7 dl a img{border-radius:50%;border:2px solid #fff;}
+.area8{height:600px;}
+.area8 h2{margin-bottom:40px;}
+.area8 a.video{width:410px; height:208px;background:none;}
+.area8 p a{margin-left:26px; margin-right:26px;}
+@media (max-width: 768px){body{font-size:14px;}
+.column a{width:120px; height:40px; line-height:40px; margin-top:10px;}
+.column h1{font-size:26px;}
+.column h2{font-size:18px; margin-bottom:20px;}
+.column .area-tit{margin-top:10px;}
+.area1,.area3,.area4{height:400px;}
+.area1 p{line-height:2;margin-top:10px;}
+.area2{height:540px;}
+.area2 p{line-height:2;}
+.area2 a{margin-left:0;}
+.area3 ul{width:100%;}
+.area4 ul{margin-top:20px;}
+.area5{height:1100px;}
+.area6{height:680px;}
+.area7{height:1200px;}
+.area7 dl{margin-top:10px;}
+.area8{height:360px;}
+.area8 a.video{width:100%; height:auto;}}
+@media (max-width: 1000px){.area4{height:500px;}}
